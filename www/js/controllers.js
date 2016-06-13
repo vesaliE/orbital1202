@@ -1,4 +1,6 @@
-angular.module('app.controllers', [])
+
+
+angular.module('app.controllers', ['firebase'])
   
 .controller('yumNUSCtrl', function($scope) {
 
@@ -17,6 +19,41 @@ angular.module('app.controllers', [])
 })
    
 .controller('bizCanteenCtrl', function($scope) {
+
+})
+
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth) {
+	var fb = new Firebase("https://orbital1202.firebaseio.com/");
+
+	var fbAuth = $firebaseAuth(fb);
+
+    $scope.login = function(username, password) {
+        fbAuth.$authWithPassword({
+            email: username,
+            password: password
+        }).then(function(authData) {
+            $state.go("temp");
+        }).catch(function(error) {
+            console.error("ERROR: " + error);
+        });
+    }
+
+    $scope.register = function(username, password) {
+        fbAuth.$createUser({email: username, password: password}).then(function(userData) {
+            return fbAuth.$authWithPassword({
+                email: username,
+                password: password
+            });
+        }).then(function(authData) {
+            $state.go("temp");
+        }).catch(function(error) {
+            console.error("ERROR: " + error);
+        });
+    }
+})
+
+.controller('tempCtrl', function($scope) {
+    
 
 })
    
