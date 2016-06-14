@@ -51,7 +51,7 @@ angular.module('app.controllers', ['firebase'])
     }
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
 
     $scope.list = function() {
         fbAuth = fb.getAuth();
@@ -68,7 +68,7 @@ angular.module('app.controllers', ['firebase'])
             }
             $scope.data.bizCanteen.push({name: fbAuth.uid,
                                     comment: input
-            });
+            }),
             $state.go("bizCanteen");
         } else {
             console.log("No comments in the box detected");
