@@ -247,4 +247,55 @@ angular.module('app.controllers', [])
 .controller('pageCtrl', function($scope) {
 
 })
+.controller('GeoCtrl', function($scope, geoLocation) {
+	//var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $scope.glocation = function (){
+    	return	geoLocation.getGeolocation();
+   };
+ })  
+
+                
+         
+   /*
+  $cordovaGeolocation
+    .getCurrentPosition(posOptions)
+    .then(function (position) {
+      $scope.lat  = position.coords.latitude
+      $scope.long = position.coords.longitude
+      console.log(lat + " " + long);
+    }, function(err) {
+      // error
+      alert('code: ' + error.code + '\n' +
+        'message: ' + error.message + '\n');
+    });
+
+
+  var watchOptions = {
+    timeout : 3000,
+    enableHighAccuracy: false // may cause errors if true
+  };
+
+  var watch = $cordovaGeolocation.watchPosition(watchOptions);
+  watch.then(
+    null,
+    function(err) {
+      // error
+    },
+    function(position) {
+      var lat  = position.coords.latitude
+      var long = position.coords.longitude
+  });
+
+
+  watch.clearWatch();
+  // OR
+  $cordovaGeolocation.clearWatch(watch)
+    .then(function(result) {
+      // success
+      }, function (error) {
+      // error
+    });
+    */
+
+
  
