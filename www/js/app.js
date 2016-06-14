@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+var fb = null;
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase'])
 
 .run(function($ionicPlatform) {
@@ -19,5 +20,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    fb = new Firebase("http://orbital1202.firebaseio.com/")
   });
 })

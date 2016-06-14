@@ -1,13 +1,13 @@
-<ion-view title="See Lah!!!" id="page13" class=" ">
+<ion-view title="Leave your comments!" id="page13" class=" " ng-init="list()">
    <ion-content>
         <div>
             <div class="list list-inset">
                 <label class="item item-input">
-                    <input ng-model="username" type="text" placeholder="Comments" />
+                    <input ng-model="comments" type="text" placeholder="Comments" />
                 </label>                
             </div>           
                 <div class="button-bar">
-                    <a class="button" ng-click="login(username, password)">Submit</a>
+                    <a class="button" ng-click="create(comments)">Submit</a>
                 </div>            
         </div>
     </ion-content>
