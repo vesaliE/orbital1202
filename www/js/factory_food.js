@@ -1,48 +1,9 @@
-angular.module('app.services', [])
+// This is were all restaurants data sits usedin restaurantList.html. Only for NUS.
+// eventually this will come from API/webservices
 
-.factory('BlankFactory', [function(){
+angular.module('wmapp.factory_food', ['greatCircles'])
 
-}])
-
-.service('BlankService', [function(){
-
-}])
-
-.factory('$localStorage', ['$window', function ($window) {
-        return {
-            set: function (key, value) {
-                $window.localStorage[key] = value;
-            },
-            get: function (key, defaultValue) {
-                return $window.localStorage[key] || defaultValue;
-            },
-            setObject: function (key, value) {
-                $window.localStorage[key] = JSON.stringify(value);
-            },
-            getObject: function (key) {
-                return JSON.parse($window.localStorage[key] || '{}');
-            }
-        }
-    }])
-    .factory('geoLocation', function ($localStorage) {
-        return {
-            setGeolocation: function (latitude, longitude) {
-                var _position = {
-                    latitude: latitude,
-                    longitude: longitude
-                }
-                $localStorage.setObject('geoLocation', _position)
-            },
-            getGeolocation: function () {
-                return glocation = {
-                    lat: $localStorage.getObject('geoLocation').latitude,
-                    lng: $localStorage.getObject('geoLocation').longitude
-                }
-            }
-        }
-    })
-
-.factory('foodFactory', function () {
+    .factory('foodFactory', function () {
         "use strict";
         var factory = {
             Restaurants : [
@@ -51,12 +12,15 @@ angular.module('app.services', [])
                     {Name: 'FASS Canteen - The Deck', venueType: 'Canteen ',  itemid: 'Canteen002', lat: 1.2949143, long: 103.7717837, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'Flavours @ UTown', venueType: 'Canteen',  itemid: 'Canteen003', lat: 1.3048615, long: 103.7724473, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'FOE Canteen - Techno Edge', venueType: 'Canteen', itemid: 'Canteen004', lat: 1.2983509 , long: 103.7711677, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
-                    {Name: 'Koufu Foodcourt', venueType: 'Canteen', itemid: 'Canteen005',lat: 1.3038157, long: 103.7739868 , icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
+                    {Name: 'Koufu Foodcourt', venueType: 'Canteen ', itemid: 'Canteen005',lat: 1.3038157, long: 103.7739868 , icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'Science Canteen', venueType: 'Canteen ',  itemid: 'Canteen006',  lat: 1.2966224, long: 103.7805718, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'Food Junction YIH', venueType: 'Canteen ', itemid: 'Canteen007',lat: 1.2983767, long: 103.7745437, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     //cafes
                     {Name: 'Alcove Asian Restaurant Bar',  venueType: 'Cafe', itemid: 'Cafe001', lat: 1.3020569, long: 103.7724088, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
+                    {Name: 'A.R.T. Food House ',  venueType: 'Cafe', itemid: 'Cafe002', lat: 48, long: -24, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'Butter My Bun', venueType: 'Cafe', itemid: 'Cafe014', lat: 1.3047341, long: 103.7725725, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'}, 
+                    {Name: 'Fortune Village',  venueType: 'Cafe', itemid: 'Cafe003', lat:48 , long: -24, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
+                    {Name: 'Good News Cafe',  venueType: 'Cafe', itemid: 'Cafe004', lat: 48.34232, long: -24.4563, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'Humble Origins',  venueType: 'Cafe', itemid: 'Cafe005', lat: 1.2950642, long: 103.7689681,  icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'The Hwang\'s Restaurant University Town ',  venueType: 'Cafe', itemid: 'Cafe006', lat: 1.3038157, long: 103.7739868, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
                     {Name: 'The Royals Bistro Café ',  venueType: 'Cafe', itemid: 'Cafe013', lat: 1.3039084, long: 103.7741073, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png'},
@@ -81,9 +45,6 @@ angular.module('app.services', [])
       return factory;
     
     });
-
-
-
 
 
 

@@ -1,6 +1,6 @@
 
 
-angular.module('app.controllers', ['firebase'])
+angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
   
 .controller('yumNUSCtrl', function($scope) {
 
@@ -35,6 +35,9 @@ angular.module('app.controllers', ['firebase'])
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
+         geoFire.set(username, [latitude, longitude]).then(function() {
+         log("Current user " + username + "'s location has been added to GeoFire");
+     });
     }
 
     $scope.register = function(username, password) {
@@ -42,7 +45,10 @@ angular.module('app.controllers', ['firebase'])
             return fbAuth.$authWithPassword({
                 email: username,
                 password: password
-            });
+            });            
+        geoFire.set(username, [latitude, longitude]).then(function() {
+         log("Current user " + username + "'s location has been added to GeoFire");
+        });
         }).then(function(authData) {
             $state.go("temp");
         }).catch(function(error) {
@@ -152,22 +158,7 @@ angular.module('app.controllers', ['firebase'])
 .controller('seeLah9Ctrl', function($scope) {
 
 })
-   
-.controller('subwayFOECtrl', function($scope) {
 
-})
-   
-.controller('seeLah10Ctrl', function($scope) {
-
-})
-   
-.controller('subwayScienceCtrl', function($scope) {
-
-})
-   
-.controller('seeLah11Ctrl', function($scope) {
-
-})
    
 .controller('subwayUTownCtrl', function($scope) {
 
@@ -185,7 +176,8 @@ angular.module('app.controllers', ['firebase'])
 
 })
    
-.controller('aRTFoodHouseCtrl', function($scope) {
+
+.controller('butterMyBunCtrl', function($scope) {
 
 })
    
@@ -193,19 +185,11 @@ angular.module('app.controllers', ['firebase'])
 
 })
    
-.controller('fortuneVillageCtrl', function($scope) {
+.controller('theRoyalsBistroCafeCtrl', function($scope) {
 
 })
    
 .controller('seeLah15Ctrl', function($scope) {
-
-})
-   
-.controller('goodNewsCafeCtrl', function($scope) {
-
-})
-   
-.controller('seeLah16Ctrl', function($scope) {
 
 })
    
@@ -308,4 +292,27 @@ angular.module('app.controllers', ['firebase'])
 .controller('pageCtrl', function($scope) {
 
 })
+.controller('GeoCtrl', function($scope, geoLocation) {
+    //var posOptions = {timeout: 10000, enableHighAccuracy: false};
+    $scope.glocation = function (){
+        return  geoLocation.getGeolocation();
+   };
+ })  
+
+.controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle) {
+        "use strict";
+      $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
+      $scope.position = geoLocation.getGeolocation();
+      console.log($scope.position.lat); //for checking purposes
+      console.log($scope.position.lng);
+      $scope.distanceTo = function(restaurant){
+        var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
+        restaurant.distance = distance;
+        distance = distance.toFixed(2);
+        return distance;
+    };
+})
+
+
+
  
