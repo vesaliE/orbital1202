@@ -2,7 +2,14 @@
 
 angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
   
-.controller('yumNUSCtrl', function($scope) {
+.controller('yumNUSCtrl', function($scope, geoLocation) {
+        /*
+         var glocation = geoLocation.getGeolocation();
+         var user = username.split(".", 2);
+         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
+         console.log("Current user " + username + "'s location has been added to GeoFire");
+     });
+     */ //to be added once login is performed at the start 
 
 })
    
@@ -22,7 +29,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
 
-.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth) {
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, geoLocation) {
 
 	var fbAuth = $firebaseAuth(fb);
 
@@ -35,8 +42,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
-         geoFire.set(username, [latitude, longitude]).then(function() {
-         log("Current user " + username + "'s location has been added to GeoFire");
+         var glocation = geoLocation.getGeolocation();
+        var user = username.split(".", 2);
+         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
+         console.log("Current user " + username + "'s location has been added to GeoFire");
      });
     }
 
@@ -45,19 +54,22 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             return fbAuth.$authWithPassword({
                 email: username,
                 password: password
-            });            
-        geoFire.set(username, [latitude, longitude]).then(function() {
-         log("Current user " + username + "'s location has been added to GeoFire");
-        });
+            });   
+     
         }).then(function(authData) {
             $state.go("temp");
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
+        var glocation = geoLocation.getGeolocation();
+         var user = username.split(".", 2);
+         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
+         console.log("Current user " + username + "'s location has been added to GeoFire");         
+        });
     }
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state, geoLocation) {   
 
     $scope.list = function() {
         fbAuth = fb.getAuth();
