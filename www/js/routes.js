@@ -58,10 +58,10 @@ angular.module('app.routes', [])
     controller: 'seeLahCtrl'
   })
 
-  .state('suggestions', {
-    url: '/page7',
-    templateUrl: 'templates/suggestions.html',
-    controller: 'suggestionsCtrl'
+  .state('showNearBy', {
+    url: '/show_near_by',
+    templateUrl: 'templates/showNearBy.html',
+    controller: 'restaurantlistController'
   })
 
   .state('fassCanteen', {
@@ -160,29 +160,7 @@ angular.module('app.routes', [])
     controller: 'seeLah9Ctrl'
   })
 
-  .state('subwayFOE', {
-    url: '/subway_foe',
-    templateUrl: 'templates/subwayFOE.html',
-    controller: 'subwayFOECtrl'
-  })
-
-  .state('seeLah10', {
-    url: '/subway_foe_sl',
-    templateUrl: 'templates/seeLah10.html',
-    controller: 'seeLah10Ctrl'
-  })
-
-  .state('subwayScience', {
-    url: '/subway_science',
-    templateUrl: 'templates/subwayScience.html',
-    controller: 'subwayScienceCtrl'
-  })
-
-  .state('seeLah11', {
-    url: '/subway_science_sl',
-    templateUrl: 'templates/seeLah11.html',
-    controller: 'seeLah11Ctrl'
-  })
+  
 
   .state('subwayUTown', {
     url: '/subway_utown',
@@ -206,42 +184,6 @@ angular.module('app.routes', [])
     url: '/alcove_asian_restaurant_bar',
     templateUrl: 'templates/alcoveAsianRestaurantBar.html',
     controller: 'alcoveAsianRestaurantBarCtrl'
-  })
-
-  .state('aRTFoodHouse', {
-    url: '/art_food_house',
-    templateUrl: 'templates/aRTFoodHouse.html',
-    controller: 'aRTFoodHouseCtrl'
-  })
-
-  .state('seeLah14', {
-    url: '/art_food_house_sl',
-    templateUrl: 'templates/seeLah14.html',
-    controller: 'seeLah14Ctrl'
-  })
-
-  .state('fortuneVillage', {
-    url: '/fortune_village',
-    templateUrl: 'templates/fortuneVillage.html',
-    controller: 'fortuneVillageCtrl'
-  })
-
-  .state('seeLah15', {
-    url: '/fortune_village_sl',
-    templateUrl: 'templates/seeLah15.html',
-    controller: 'seeLah15Ctrl'
-  })
-
-  .state('goodNewsCafe', {
-    url: '/good_news_cafe',
-    templateUrl: 'templates/goodNewsCafe.html',
-    controller: 'goodNewsCafeCtrl'
-  })
-
-  .state('seeLah16', {
-    url: '/good_news_cafe_sl',
-    templateUrl: 'templates/seeLah16.html',
-    controller: 'seeLah16Ctrl'
   })
 
   .state('humbleOrigins', {
@@ -392,6 +334,36 @@ angular.module('app.routes', [])
     url: '/page62',
     templateUrl: 'templates/page.html',
     controller: 'pageCtrl'
+  })
+
+ .state('geolocationTest', {
+    url: '/geolocationTest',
+    templateUrl: 'templates/geolocationTest.html',
+    controller: 'GeoCtrl'
+  })
+
+  .state('butterMyBun', {
+    url: '/butter_my_bun',
+    templateUrl: 'templates/butterMyBun.html',
+    controller: 'butterMyBunCtrl'
+  })
+
+  .state('seeLah14', {
+    url: '/butter_my_bun_sl',
+    templateUrl: 'templates/seeLah14.html',
+    controller: 'seeLah14Ctrl'
+  })
+
+  .state('theRoyalsBistroCafe', {
+    url: '/the_royals_bistro_cafe',
+    templateUrl: 'templates/theRoyalsBistroCafe.html',
+    controller: 'theRoyalsBistroCafeCtrl'
+  })
+  
+  .state('seeLah15', {
+    url: '/the_royals_bistro_cafe_sl',
+    templateUrl: 'templates/seeLah15.html',
+    controller: 'seeLah15Ctrl'
   })
 
 $urlRouterProvider.otherwise('/page1')

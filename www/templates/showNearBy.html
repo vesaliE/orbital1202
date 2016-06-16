@@ -1,0 +1,17 @@
+<ion-view title="What's Near??" id="page7" class=" ">
+    <ion-content padding="true" class="has-header">
+        <div  ng-repeat="restaurant in restaurantList | orderBy: 'distance' " href="#">
+        <article class="item_frame">
+          <div class="marker_left_container">
+            <h2 style="color:#660099;">{{ restaurant.Name }}</h2>
+            <p>{{ restaurant.venueType }}</p>
+            <p> Distance: {{ distanceTo(restaurant) }} km from current location</p>
+          
+          </div>
+          <div>
+            <span>-------------------------------------------------</span>
+          </div>
+        </article><!--main article frame 1 -->
+        </div>
+    </ion-content>
+</ion-view>
