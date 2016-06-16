@@ -22,7 +22,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       StatusBar.styleDefault();
     }
 
-    fb = new Firebase("http://orbital1202.firebaseio.com/"); 
+    fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
     geoFire = new GeoFire(fb);
 
    var positionOptions = {timeout: 10000, maximumAge:0, enableHighAccuracy: true};
