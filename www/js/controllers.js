@@ -1,4 +1,6 @@
-angular.module('app.controllers', [])
+
+
+angular.module('app.controllers', ['firebase'])
   
 .controller('yumNUSCtrl', function($scope) {
 
@@ -19,9 +21,68 @@ angular.module('app.controllers', [])
 .controller('bizCanteenCtrl', function($scope) {
 
 })
-   
-.controller('seeLahCtrl', function($scope) {
 
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth) {
+
+	var fbAuth = $firebaseAuth(fb);
+
+    $scope.login = function(username, password) {
+        fbAuth.$authWithPassword({
+            email: username,
+            password: password
+        }).then(function(authData) {
+            $state.go("temp");
+        }).catch(function(error) {
+            console.error("ERROR: " + error);
+        });
+    }
+
+    $scope.register = function(username, password) {
+        fbAuth.$createUser({email: username, password: password}).then(function(userData) {
+            return fbAuth.$authWithPassword({
+                email: username,
+                password: password
+            });
+        }).then(function(authData) {
+            $state.go("temp");
+        }).catch(function(error) {
+            console.error("ERROR: " + error);
+        });
+    }
+})
+
+.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
+
+    $scope.list = function() {
+        fbAuth = fb.getAuth();
+        if (fbAuth) {
+            var syncObject = $firebaseObject(fb.child("food"));
+            syncObject.$bindTo($scope, "data");
+        }
+    }
+
+    $scope.create = function(input) {
+        if (input !== "") {
+            if ($scope.data.hasOwnProperty("bizCanteen") !== true) {
+                $scope.data.bizCanteen = [];
+            }
+            $scope.data.bizCanteen.push({name: fbAuth.uid,
+                                    comment: input
+            }),
+            $state.go("bizCanteen");
+        } else {
+            console.log("No comments in the box detected");
+        }
+    }
+
+}) 
+   
+.controller('seeLahCtrl', function($scope, $firebaseObject) {
+    $scope.list = function() {
+
+        var syncObject = $firebaseObject(fb.child("food"));
+        syncObject.$bindTo($scope, "data");
+    }
 })
    
 .controller('suggestionsCtrl', function($scope) {

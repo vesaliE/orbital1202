@@ -1,13 +1,9 @@
-<ion-view title="See Lah!!!" id="page6" class=" ">
+<ion-view title="See Lah!!! (test)" id="page6" class=" " ng-init="list()">
     <ion-content padding="true" class="has-header">
-        <div style="margin: 0px; line-height: 250px; text-align: center; background-color: rgb(232, 235, 239);">
-            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-        </div>
-        <ion-list id="seeLah-list2" class=" ">
-            <ion-item id="seeLah-list-item6" class="  ">Item</ion-item>
-        </ion-list>
-        <div style="margin: 0px; line-height: 250px; text-align: center; background-color: rgb(232, 235, 239);">
-            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-        </div>
+        <div class="list">
+            <div ng-repeat="biz in data.bizCanteen" class="item">
+                <p> {{biz.name}} : {{biz.comment}} </p>
+            </div>
+        </div>    
     </ion-content>
 </ion-view>

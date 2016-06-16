@@ -40,6 +40,18 @@ angular.module('app.routes', [])
     controller: 'bizCanteenCtrl'
   })
 
+  .state('bizCanteen_contribute', {
+    url: '/biz_canteen_contribute',
+    templateUrl: 'templates/bizCanteen_contribute.html',
+    controller: 'bizCanteen_contributeCtrl'
+  })
+
+  .state('temp', {
+    url: '/temp',
+    templateUrl: 'templates/temp.html',
+    controller: 'tempCtrl'
+  })
+
   .state('seeLah', {
     url: '/biz_canteen_sl',
     templateUrl: 'templates/seeLah.html',
