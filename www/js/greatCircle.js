@@ -2,7 +2,7 @@
 var GreatCircle = {
 
     validateRadius: function(unit) {
-        var r = {'KM': 6371.797560856, 'MI': 3958.761, 'NM': 3440.070, 'YD': 6967420, 'FT': 20902260};
+        var r = {'KM': 6372, 'MI': 3958.761, 'NM': 3440.070, 'YD': 6967420, 'FT': 20902260};
         if ( unit in r ) return r[unit];
         else return unit;
     },
