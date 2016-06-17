@@ -6,6 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var fb = null;
+
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase'])
 
 .run(function($ionicPlatform) {
@@ -20,7 +21,27 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    document.addEventListener('resume', function() {
+      alert("is dis working")
+    })
+    
+    fb = new Firebase("http://orbital--1202.firebaseio.com/");
 
-    fb = new Firebase("http://orbital1202.firebaseio.com/")
+    /*
+    document.addEventListener('deviceready', function() {
+      cordova.plugins.backgroundMode.setDefaults({
+        title: 'testprocess',
+        text: 'I hope this works'
+      });
+
+      cordova.plugins.backgroundMode.enable();
+
+      cordova.plugins.backgroundMode.onactivate = function () {
+        setInterval (function () {
+            
+        }, 3000);
+      }
+    }, false);
+    */
   });
 })
