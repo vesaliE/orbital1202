@@ -29,7 +29,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
 
-.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase) {
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
 
 
     $scope.login = function(username, password) {
@@ -39,10 +39,19 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
+            var glocation = geoLocation.getGeolocation();
+            var user = authData.uid; 
+            geoFire.set(user, [glocation.lat, glocation.lng]).then(function() {
+                console.log("Current user " + username + "'s location has been added to GeoFire");
+            });
             $state.go("temp");
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
+          //var location = $firebaseObject(locationRef.child("Location"));
+        //location.$bindTo($scope, "data");
+         
+         
     }
 
     $scope.register = function(username, password) {                
@@ -57,7 +66,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         .then(function(result) {
             //if (results !== "") {
                 //if (true) {
-
                     //Creates database of user in firebase
                    fbAuth.$createUser({email: username, password: password}).then(function(userData) {
                         return fbAuth.$authWithPassword({
@@ -76,18 +84,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                             userID : authData.uid
                         }), 
                         */
+                        var glocation = geoLocation.getGeolocation();
+                        var user = authData.uid; 
+                        geoFire.set(user, [glocation.lat, glocation.lng]).then(function() {
+                          console.log("Current user " + username + "'s location has been added to GeoFire");
+                    });
                         var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
                         firebaseUsers.child(authData.uid).set ({
                             forumName : result
                         }),
-
+                       
                         $state.go("temp");
+                        //var location = $firebaseObject(fb.child("Location"));
+                        //location.$bindTo($scope, "data");
+                        
                     }).catch(function(error) {
                         console.error("ERROR: " + error);
                     })
-
-                //}
-            //}
         })
     }
 })

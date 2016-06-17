@@ -4,6 +4,7 @@
   "description": "orbital1202: An Ionic project",
   "dependencies": {
     "firebase": "^3.0.5",
+    "geofire": "^4.1.1",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
     "gulp-minify-css": "^0.3.0",

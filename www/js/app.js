@@ -6,6 +6,7 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var fb = null;
+var locationRef = null; 
 var geoFire = null; 
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 
@@ -23,7 +24,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     }
 
     fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
-    geoFire = new GeoFire(fb);
+    
+    /*firebase.initializeApp({
+    apiKey: "CqBgsZoI4184oK6qSYaBxbAiwhZLLVsFOBXKsw4L",
+    databaseURL: "http://orbital--1202.firebaseio.com/"
+    });*/
+    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location"); 
+    geoFire = new GeoFire(locationRef);
 
    var positionOptions = {timeout: 10000, maximumAge:0, enableHighAccuracy: true};
        $cordovaGeolocation
