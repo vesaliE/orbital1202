@@ -29,47 +29,70 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
 
-.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, geoLocation) {
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase) {
 
-	var fbAuth = $firebaseAuth(fb);
 
     $scope.login = function(username, password) {
-        fbAuth.$authWithPassword({
+        var fbAuth = $firebaseAuth(fb);
+        return fbAuth.$authWithPassword({
             email: username,
             password: password
         }).then(function(authData) {
+            $scope.authData = authData;
             $state.go("temp");
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
-         var glocation = geoLocation.getGeolocation();
-        var user = username.split(".", 2);
-         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
-         console.log("Current user " + username + "'s location has been added to GeoFire");
-     });
     }
 
-    $scope.register = function(username, password) {
-        fbAuth.$createUser({email: username, password: password}).then(function(userData) {
-            return fbAuth.$authWithPassword({
-                email: username,
-                password: password
-            });   
-     
-        }).then(function(authData) {
-            $state.go("temp");
-        }).catch(function(error) {
-            console.error("ERROR: " + error);
-        });
-        var glocation = geoLocation.getGeolocation();
-         var user = username.split(".", 2);
-         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
-         console.log("Current user " + username + "'s location has been added to GeoFire");         
-        });
+    $scope.register = function(username, password) {                
+        var UserFb = $firebaseObject(fb.child("Users"));
+        UserFb.$bindTo($scope, "data");
+        var fbAuth = $firebaseAuth(fb);
+        //Prompts for a username
+        $ionicPopup.prompt({
+            title: 'Please choose a Forum Username',
+            inputType: 'text'
+        })
+        .then(function(result) {
+            //if (results !== "") {
+                //if (true) {
+
+                    //Creates database of user in firebase
+                   fbAuth.$createUser({email: username, password: password}).then(function(userData) {
+                        return fbAuth.$authWithPassword({
+                            email: username,
+                            password: password
+                        })
+
+                    }).then(function(authData) {
+                        //Setting up the scope for firebase
+                        /*
+                        if ($scope.data.hasOwnProperty("forumNames") !== true) {
+                            $scope.data.forumNames = [];
+                        }
+                        $scope.data.forumNames.push({
+                            forumName : result,
+                            userID : authData.uid
+                        }), 
+                        */
+                        var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
+                        firebaseUsers.child(authData.uid).set ({
+                            forumName : result
+                        }),
+
+                        $state.go("temp");
+                    }).catch(function(error) {
+                        console.error("ERROR: " + error);
+                    })
+
+                //}
+            //}
+        })
     }
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state, geoLocation) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
 
     $scope.list = function() {
         fbAuth = fb.getAuth();
@@ -81,13 +104,26 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
     $scope.create = function(input) {
         if (input !== "") {
+            var userName = null;
+
             if ($scope.data.hasOwnProperty("bizCanteen") !== true) {
                 $scope.data.bizCanteen = [];
             }
-            $scope.data.bizCanteen.push({name: fbAuth.uid,
-                                    comment: input
-            }),
-            $state.go("bizCanteen");
+
+            var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+            userFb.on("value", function(snapshot) {
+                fbAuth = fb.getAuth();
+                console.log(fbAuth.uid + " value1");
+                userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //console.log(userName + " value2");
+                $scope.data.bizCanteen.push({
+                    name: userName,
+                    comment: input
+                });
+                $state.go("bizCanteen");
+            })
+
+
         } else {
             console.log("No comments in the box detected");
         }
