@@ -8,6 +8,35 @@
 var fb = null;
 var locationRef = null; 
 var geoFire = null; 
+var locationRef2 = null; 
+var bizCanteen= null;
+var locationRef3 = null; 
+var fassCanteen= null;
+var locationRef4 = null 
+var flavoursUTown = null; 
+var locationRef5 = null,
+    locationRef6 = null,
+    locationRef7 = null, 
+    locationRef8 = null, 
+    locationRef9 = null
+    locationRef10 = null, 
+    locationRef11 = null, 
+    locationRef12 = null, 
+    locationRef13 = null, 
+    locationRef14 = null, 
+    locationRef15 = null, 
+    locationRef16 = null, 
+    locationRef17 = null, 
+    locationRef18 = null, 
+    locationRef19 = null, 
+    locationRef20 = null, 
+    locationRef21 = null, 
+    locationRef22 = null, 
+    locationRef23 = null, 
+    locationRef24 = null, 
+    locationRef25 = null; 
+var foeCanteen =null; 
+
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 
 .run(function($ionicPlatform, $cordovaGeolocation, geoLocation) {
@@ -25,13 +54,62 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
 
     fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
     
-    /*firebase.initializeApp({
-    apiKey: "CqBgsZoI4184oK6qSYaBxbAiwhZLLVsFOBXKsw4L",
-    databaseURL: "http://orbital--1202.firebaseio.com/"
-    });*/
-    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location"); 
+ 
+    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/Users"); 
     geoFire = new GeoFire(locationRef);
+    locationRef2 = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen"); 
+    bizCanteen = new GeoFire(locationRef2);
+    locationRef3 = new Firebase("http://orbital--1202.firebaseio.com/location/FASSCanteen"); 
+    fassCanteen = new GeoFire(locationRef3);
+    locationRef4 = new Firebase("http://orbital--1202.firebaseio.com/location/FlavoursUTown"); 
+    flavoursUTown = new GeoFire(locationRef4);
+    locationRef5 = new Firebase("http://orbital--1202.firebaseio.com/location/FoeCanteen"); 
+    foeCanteen = new GeoFire(locationRef5);
+    locationRef6 = new Firebase("http://orbital--1202.firebaseio.com/location/KoufuFoodcourt"); 
+    koufu = new GeoFire(locationRef6);
+    locationRef7 = new Firebase("http://orbital--1202.firebaseio.com/location/ScienceCanteen"); 
+    scienceCanteen = new GeoFire(locationRef7);
+    locationRef8 = new Firebase("http://orbital--1202.firebaseio.com/location/FoodJunctionYIH"); 
+    foodJunctionYIH= new GeoFire(locationRef8);
+    locationRef9 = new Firebase("http://orbital--1202.firebaseio.com/location/AlcoveAsianRestaurantBar"); 
+    alcoveAsian = new GeoFire(locationRef9);
+    locationRef10 = new Firebase("http://orbital--1202.firebaseio.com/location/ButterMyBun"); 
+    butterMyBun= new GeoFire(locationRef10);
+    locationRef11 = new Firebase("http://orbital--1202.firebaseio.com/location/HumbleOrigins"); 
+    humbleOrigins= new GeoFire(locationRef11);
+    locationRef12 = new Firebase("http://orbital--1202.firebaseio.com/location/HwangRestaurant"); 
+    hwangKorean = new GeoFire(locationRef12);
+    locationRef13 = new Firebase("http://orbital--1202.firebaseio.com/location/TheRoyalsBistroCafé"); 
+    royalsBistro = new GeoFire(locationRef13);
+      locationRef14 = new Firebase("http://orbital--1202.firebaseio.com/location/PlatypusFoodBar"); 
+      platypusFood = new GeoFire(locationRef14);
+      locationRef15 = new Firebase("http://orbital--1202.firebaseio.com/location/ReedzCafé"); 
+      reedzCafe = new GeoFire(locationRef15);
+      locationRef16 = new Firebase("http://orbital--1202.firebaseio.com/location/SaporeItaliano"); 
+      sapore = new GeoFire(locationRef16);
+      locationRef17 = new Firebase("http://orbital--1202.firebaseio.com/location/Spinelli"); 
+      spinelli = new GeoFire(locationRef17);
+      locationRef18 = new Firebase("http://orbital--1202.firebaseio.com/location/SpiceTablebyPines"); 
+      spiceTable = new GeoFire(locationRef18);
+      locationRef19 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksMD11"); 
+      starbucksMD11= new GeoFire(locationRef19);
+      locationRef20 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksYIH"); 
+      starbucksYIH= new GeoFire(locationRef20);
+      locationRef21 = new Firebase("http://orbital--1202.firebaseio.com/location/UniversityClub"); 
+      universityClub = new GeoFire(locationRef21); 
+      locationRef22 = new Firebase("http://orbital--1202.firebaseio.com/location/WaaCow"); 
+      waaCow= new GeoFire(locationRef22);
+      locationRef23 = new Firebase("http://orbital--1202.firebaseio.com/location/McDonald"); 
+      mcDonald = new GeoFire(locationRef23);
+      locationRef24 = new Firebase("http://orbital--1202.firebaseio.com/location/SubwayYIH "); 
+      subwayYIH  = new GeoFire(locationRef24);
+      locationRef25 = new Firebase("http://orbital--1202.firebaseio.com/location/SubwayUtown "); 
+      subwayUtown  = new GeoFire(locationRef25);
 
+
+
+    
+  
    var positionOptions = {timeout: 10000, maximumAge:0, enableHighAccuracy: true};
        $cordovaGeolocation
                 .getCurrentPosition()
