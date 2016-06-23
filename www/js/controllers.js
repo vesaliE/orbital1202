@@ -39,7 +39,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
-<<<<<<< HEAD
+
             var glocation = geoLocation.getGeolocation();
             var user = authData.uid; 
             geoFire.set(user, [glocation.lat, glocation.lng]); 
@@ -593,9 +593,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
 
             $state.go("temp");
-=======
             $state.go("yumNUS");
->>>>>>> 96011ce898d7c0e16ef6375a70554b940d253221
+
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
@@ -1189,21 +1188,18 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                         var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
                         firebaseUsers.child(authData.uid).set ({
                             forumName : result
-<<<<<<< HEAD
                         }); 
                         $state.go("temp");
                         
-=======
+
                         }),
 
                         $state.go("yumNUS");
->>>>>>> 96011ce898d7c0e16ef6375a70554b940d253221
                     }).catch(function(error) {
                         console.error("ERROR: " + error);
                     });
-        })
-    }
-})
+                }
+            })
 
 .controller('tempCtrl', function($scope, $firebaseObject, $state) {   
 
