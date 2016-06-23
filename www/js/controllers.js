@@ -11,7 +11,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
      });
      */ //to be added once login is performed at the start 
 
-})
+  })
    
 .controller('chooseCafeCtrl', function($scope) {
 
@@ -21,8 +21,32 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
    
-.controller('chooseCanteenCtrl', function($scope) {
+.controller('chooseCanteenCtrl', function($scope, $firebase) {
+    var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/LocationTest/BizCanteen");
+    $scope.red = 'button button-assertive  button-block';
+    $scope.orange = 'button button-energized  button-block';
+    $scope.color = null;
 
+    $scope.getColorBiz = function() {
+
+      var count = 0;
+      colourBizCanteen.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var timestamp = childSnapshot.val();
+            console.log(timestamp);
+            count++;
+          })
+        if (count === 1) {
+          console.log("here at 1!");
+          return $scope.color = 'button button-balanced  button-block';
+          
+        } else {
+          console.log("here at else!");
+          return $scope.color = 'button button-energized  button-block';
+          
+        }
+      })
+    }
 })
    
 .controller('bizCanteenCtrl', function($scope) {
@@ -39,7 +63,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
-            $state.go("temp");
+            var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/LocationTest/BizCanteen");
+            var currentTimestamp = Firebase.ServerValue.TIMESTAMP;
+            colourBizCanteen.child("test").set( {
+              timestamp : currentTimestamp,
+            });
+            $state.go("yumNUS");
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
@@ -56,7 +85,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         })
         .then(function(result) {
             //if (results !== "") {
-                //if (true) {
+                
+                //if (fb.) {
 
                     //Creates database of user in firebase
                    fbAuth.$createUser({email: username, password: password}).then(function(userData) {
@@ -81,7 +111,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                             forumName : result
                         }),
 
-                        $state.go("temp");
+                        $state.go("yumNUS");
                     }).catch(function(error) {
                         console.error("ERROR: " + error);
                     })
