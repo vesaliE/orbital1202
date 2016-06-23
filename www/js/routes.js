@@ -366,7 +366,7 @@ angular.module('app.routes', [])
     controller: 'seeLah15Ctrl'
   })
 
-$urlRouterProvider.otherwise('/page1')
+$urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
 
