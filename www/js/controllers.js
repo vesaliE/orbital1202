@@ -73,7 +73,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             
             var geoQueryBizCanteen = geoFire.query({
             center: [1.2956205, 103.7741585],
-            radius: 0.5     
+            radius: 0.05     
             });
             var location = glocation; 
             var distance = geoQueryBizCanteen.radius(); 
@@ -99,7 +99,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryScienceCanteen = geoFire.query({
                     center: [1.2966224, 103.7805718],
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -121,7 +121,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFOECanteen = geoFire.query({
                     center: [1.2983509 , 103.7711677],
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -143,7 +143,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryKoufu= geoFire.query({
                      center: [1.3038157, 103.7739868],
-                     radius: 0.5
+                     radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryKoufu.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -165,7 +165,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFoodJunction = geoFire.query({
                     center: [1.2983767, 103.7745437], 
-                    radius: 0.5
+                    radius: 0.05
             });
 
              var onKeyEnteredRegistration = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
@@ -188,7 +188,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
              var geoQueryAlcoveAsian = geoFire.query({
                     center: [1.3020569, 103.7724088], 
-                    radius: 0.5
+                    radius: 0.05
             });
             var onKeyEnteredRegistration = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -210,7 +210,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryButterMyBun = geoFire.query({
                     center: [1.3047341, 103.7725725], 
-                    radius: 0.5
+                    radius: 0.05
             });
 
             var onKeyEnteredRegistration = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
@@ -233,7 +233,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryHumbleOrigins = geoFire.query({
                     center: [1.2950642, 103.7689681], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -256,7 +256,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryTheRoyalsBistroCafe  = geoFire.query({
                     center: [ 1.3039084, 103.7741073], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -279,7 +279,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryHwangKorean = geoFire.query({
                     center: [1.3038157, 103.7739868], 
-                    radius: 0.5
+                    radius: 0.05
             });   
              var onKeyEnteredRegistration = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -301,7 +301,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryPlatypus = geoFire.query({
                     center: [1.2967775, 103.7809592], 
-                    radius: 0.5
+                    radius: 0.05
             });  
              var onKeyEnteredRegistration = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -324,7 +324,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryReedz = geoFire.query({
                     center: [1.2925654, 103.7719733], 
-                    radius: 0.5
+                    radius: 0.05
             });    
              var onKeyEnteredRegistration = geoQueryReedz.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -346,7 +346,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
  
             var geoQuerySaporeItaliano = geoFire.query({
                     center: [1.3041097, 103.7740535], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -369,7 +369,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFassCanteen = geoFire.query({
                         center: [1.2949143, 103.7717837],
-                        radius: 0.5
+                        radius: 0.05
             });
 
         var location2 = geoQueryFassCanteen.center(); 
@@ -393,7 +393,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryFlavoursUtown = geoFire.query({
                                 center: [1.3048615, 103.7724473],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var location3 = geoQueryFlavoursUtown.center(); 
@@ -417,7 +417,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 
                 var geoQuerySpinelli  = geoFire.query({
                                 center: [1.2964077,  103.7805198],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var onKeyEnteredRegistration = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
@@ -439,7 +439,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
                  var geoQuerySpiceTable = geoFire.query({
                                 center: [1.3038699, 103.7741271],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var onKeyEnteredRegistration = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
@@ -462,7 +462,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryStarbucksMD11 = geoFire.query({
                                 center: [1.2941412, 103.781285],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -483,7 +483,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
                 var geoQueryStarbucksYIH = geoFire.query({
                                 center: [1.2972787,  103.7724656],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
                 var onKeyEnteredRegistration = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -505,7 +505,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryUniversityClub = geoFire.query({
                                 center: [1.3056346, 103.772908],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
                 var onKeyEnteredRegistration = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -528,7 +528,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryWaaCow = geoFire.query({
                                 center: [1.2937922, 103.7729176],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
                 var onKeyEnteredRegistration = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -552,7 +552,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryMcDonald = geoFire.query({
                                 center: [1.2984307, 103.7712874],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -576,7 +576,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayYIH = geoFire.query({
                                 center: [1.2980747, 103.7742972],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
                 var onKeyEnteredRegistration = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -600,7 +600,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayUTown = geoFire.query({
                                 center: [1.303689, 103.773356],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -667,7 +667,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                         geoFire.set(user, [glocation.lat, glocation.lng]); 
                         var geoQueryBizCanteen = geoFire.query({
                                 center: [1.2956205, 103.7741585],
-                                radius: 0.5
+                                radius: 0.05
                         });
                         var location = glocation; 
                         var distance = geoQueryBizCanteen.radius(); 
@@ -693,7 +693,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                         var geoQueryScienceCanteen = geoFire.query({
                             center: [1.2966224, 103.7805718],
-                            radius: 0.5
+                            radius: 0.05
                         });
              var onKeyEnteredRegistration = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -715,7 +715,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFOECanteen = geoFire.query({
                     center: [1.2983509 , 103.7711677],
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -737,7 +737,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryKoufu= geoFire.query({
                      center: [1.3038157, 103.7739868],
-                     radius: 0.5
+                     radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryKoufu.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -759,7 +759,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFoodJunction = geoFire.query({
                     center: [1.2983767, 103.7745437], 
-                    radius: 0.5     
+                    radius: 0.05     
             });
 
              var onKeyEnteredRegistration = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
@@ -782,7 +782,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
              var geoQueryAlcoveAsian = geoFire.query({
                     center: [1.3020569, 103.7724088], 
-                    radius: 0.5
+                    radius: 0.05
             });
             var onKeyEnteredRegistration = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -804,7 +804,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryButterMyBun = geoFire.query({
                     center: [1.3047341, 103.7725725], 
-                    radius: 0.5
+                    radius: 0.05
             });
 
             var onKeyEnteredRegistration = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
@@ -827,7 +827,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryHumbleOrigins = geoFire.query({
                     center: [1.2950642, 103.7689681], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -850,7 +850,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryTheRoyalsBistroCafe  = geoFire.query({
                     center: [ 1.3039084, 103.7741073], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -873,7 +873,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryHwangKorean = geoFire.query({
                     center: [1.3038157, 103.7739868], 
-                    radius: 0.5
+                    radius: 0.05
             });   
              var onKeyEnteredRegistration = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -895,7 +895,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryPlatypus = geoFire.query({
                     center: [1.2967775, 103.7809592], 
-                    radius: 0.5
+                    radius: 0.05
             });  
              var onKeyEnteredRegistration = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -918,7 +918,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryReedz = geoFire.query({
                     center: [1.2925654, 103.7719733], 
-                    radius: 0.5
+                    radius: 0.05
             });    
              var onKeyEnteredRegistration = geoQueryReedz.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -940,7 +940,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
  
             var geoQuerySaporeItaliano = geoFire.query({
                     center: [1.3041097, 103.7740535], 
-                    radius: 0.5
+                    radius: 0.05
             });
              var onKeyEnteredRegistration = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -963,7 +963,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
             var geoQueryFassCanteen = geoFire.query({
                         center: [1.2949143, 103.7717837],
-                        radius: 0.5
+                        radius: 0.05
             });
 
         var location2 = geoQueryFassCanteen.center(); 
@@ -987,7 +987,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryFlavoursUtown = geoFire.query({
                                 center: [1.3048615, 103.7724473],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var location3 = geoQueryFlavoursUtown.center(); 
@@ -1011,7 +1011,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 
                 var geoQuerySpinelli  = geoFire.query({
                                 center: [1.2964077,  103.7805198],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var onKeyEnteredRegistration = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
@@ -1033,7 +1033,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
                  var geoQuerySpiceTable = geoFire.query({
                                 center: [1.3038699, 103.7741271],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
                 var onKeyEnteredRegistration = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
@@ -1056,7 +1056,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryStarbucksMD11 = geoFire.query({
                                 center: [1.2941412, 103.781285],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1077,7 +1077,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
                 var geoQueryStarbucksYIH = geoFire.query({
                                 center: [1.2972787,  103.7724656],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1099,7 +1099,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryUniversityClub = geoFire.query({
                                 center: [1.3056346, 103.772908],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1122,7 +1122,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                 var geoQueryWaaCow = geoFire.query({
                                 center: [1.2937922, 103.7729176],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1146,7 +1146,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryMcDonald = geoFire.query({
                                 center: [1.2984307, 103.7712874],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1170,7 +1170,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayYIH = geoFire.query({
                                 center: [1.2980747, 103.7742972],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1194,7 +1194,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayUTown = geoFire.query({
                                 center: [1.303689, 103.773356],
-                                radius: 0.5
+                                radius: 0.05
                 });
                 var onKeyEnteredRegistration = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
@@ -1484,7 +1484,33 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
    };
  })  
 
-.controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle) {
+.controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
+    var colourName = new Firebase("http://orbital--1202.firebaseio.com/location");
+    $scope.color = null;
+
+    $scope.getColor = function(name) {
+
+      var count = 0;
+      colourName.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var timestamp = childSnapshot.val();
+            console.log(timestamp);
+            count++;
+          })
+        if (count === 6) {
+          console.log("here at 0!");
+          return $scope.color = 'balanced';
+          
+           } else if (count <= 10) {
+          console.log("here at else!");
+          return $scope.color = 'energized';
+          
+        } else {
+          return $scope.color = 'assertive';
+        }
+        })
+    }
+
         "use strict";
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       $scope.position = geoLocation.getGeolocation();
@@ -1496,37 +1522,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         distance = distance.toFixed(2);
         return distance;
     };
-    var colourName = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
-    $scope.red = 'button button-assertive  button-block';
-    $scope.orange = 'button button-energized  button-block';
-    $scope.color = null;
-
-    $scope.getColor = function() {
-
-      var count = 0;
-      colourBizCanteen.once("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            var timestamp = childSnapshot.val();
-            console.log(timestamp);
-            count++;
-          })
-        if (count === 0) {
-          console.log("here at 0!");
-          return $scope.color = 'button button-balanced  button-block';
-          
-        } else {
-          console.log("here at else!");
-          return $scope.color = 'button button-energized  button-block';
-          
-        }
-      })
-    }
-
-
-
-
-
-
+   
 })
 
 

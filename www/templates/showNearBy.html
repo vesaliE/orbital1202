@@ -1,6 +1,6 @@
-<ion-view title="What's Near??" id="page7" class=" " ng-init="getColor()">
+<ion-view title="What's Near??" id="page7" class=" " >
     <ion-content padding="true" class="has-header">
-        <div  ng-repeat="restaurant in restaurantList | orderBy: 'distance' " href="#">
+        <div  ng-repeat="restaurant in restaurantList | orderBy: 'distance' " ng-init="getColor(restaurant)" href="#">
         <article class="item_frame">
           <div class="marker_left_container">
             <h2 ng-class="color">{{ restaurant.Name }}</h2>
