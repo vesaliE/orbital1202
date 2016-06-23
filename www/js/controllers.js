@@ -21,8 +21,32 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
    
-.controller('chooseCanteenCtrl', function($scope) {
+.controller('chooseCanteenCtrl', function($scope, $firebase) {
+    var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/LocationTest/BizCanteen");
+    $scope.red = 'button button-assertive  button-block';
+    $scope.orange = 'button button-energized  button-block';
+    $scope.color = null;
 
+    $scope.getColorBiz = function() {
+
+      var count = 0;
+      colourBizCanteen.once("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+            var timestamp = childSnapshot.val();
+            console.log(timestamp);
+            count++;
+          })
+        if (count === 0) {
+          console.log("here at 1!");
+          return $scope.color = 'button button-balanced  button-block';
+          
+        } else {
+          console.log("here at else!");
+          return $scope.color = 'button button-energized  button-block';
+          
+        }
+      })
+    }
 })
    
 .controller('bizCanteenCtrl', function($scope) {
