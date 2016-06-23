@@ -39,7 +39,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
-            $state.go("temp");
+            $state.go("yumNUS");
         }).catch(function(error) {
             console.error("ERROR: " + error);
         });
@@ -81,7 +81,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                             forumName : result
                         }),
 
-                        $state.go("temp");
+                        $state.go("yumNUS");
                     }).catch(function(error) {
                         console.error("ERROR: " + error);
                     })
