@@ -22,7 +22,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 })
    
 .controller('chooseCanteenCtrl', function($scope, $firebase) {
-    var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/LocationTest/BizCanteen");
+    var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
     $scope.red = 'button button-assertive  button-block';
     $scope.orange = 'button button-energized  button-block';
     $scope.color = null;
@@ -36,14 +36,17 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             console.log(timestamp);
             count++;
           })
-        if (count === 0) {
+        if (count <= 5) {
+          console.log(count);
           console.log("here at 1!");
           return $scope.color = 'button button-balanced  button-block';
           
-        } else {
+        } else if (count <= 10) {
           console.log("here at else!");
           return $scope.color = 'button button-energized  button-block';
           
+        } else {
+          return $scope.color = 'button button-assertive  button-block';
         }
       })
     }
@@ -76,7 +79,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             var distance = geoQueryBizCanteen.radius(); 
             var onKeyEnteredRegistration = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
-                    bizCanteen.set(user, location); //adding user here 
+                    bizCanteen.set(user, location);
+                     //adding user here 
             });
 
             var onKeyExitedRegistration = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
