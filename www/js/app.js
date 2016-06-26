@@ -55,7 +55,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
     
  
-    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/zUsers"); 
+    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/Users"); 
     geoFire = new GeoFire(locationRef);
     locationRef2 = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen"); 
     bizCanteen = new GeoFire(locationRef2);

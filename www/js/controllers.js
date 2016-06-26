@@ -66,19 +66,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
-            var currentTimestamp = Firebase.ServerValue.TIMESTAMP;
 
-            //User location adding
             var glocation = geoLocation.getGeolocation();
             var user = authData.uid; 
-            geoFire.set(user, [glocation.lat, glocation.lng]);
-            console.log(user);
-            locationRef.child(user).child("time").set({
-                        time: currentTimestamp
-                    });
-            var jstime = new Date(currentTimestamp);
-            var formatedtime = jstime.toJSON();
-            console.log(jstime);
+            geoFire.set(user, [glocation.lat, glocation.lng]); 
             
             var geoQueryBizCanteen = geoFire.query({
             center: [1.2956205, 103.7741585],
@@ -88,7 +79,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             var distance = geoQueryBizCanteen.radius(); 
             var onKeyEnteredRegistration = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
-                    bizCanteen.set(user, location);                    
+                    bizCanteen.set(user, location);
+                     //adding user here 
             });
 
             var onKeyExitedRegistration = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
