@@ -39,7 +39,7 @@ var foeCanteen =null;
 
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaGeolocation, geoLocation) {
+.run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -53,9 +53,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     }
 
     fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
-    
  
-    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/Users"); 
+    locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/zUsers"); 
     geoFire = new GeoFire(locationRef);
     locationRef2 = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen"); 
     bizCanteen = new GeoFire(locationRef2);
@@ -137,6 +136,14 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
             };
             watch.clearWatch();
          });
+    });
 
-        });
 })
+
+
+
+
+
+
+
+

@@ -66,411 +66,410 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             password: password
         }).then(function(authData) {
             $scope.authData = authData;
-
             var glocation = geoLocation.getGeolocation();
             var user = authData.uid; 
+
             geoFire.set(user, [glocation.lat, glocation.lng]); 
             
             var geoQueryBizCanteen = geoFire.query({
             center: [1.2956205, 103.7741585],
-            radius: 0.5     
+            radius: 0.05    
             });
             var location = glocation; 
             var distance = geoQueryBizCanteen.radius(); 
-            var onKeyEnteredRegistration = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
+
+            var onKeyEnteredRegistration1 = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     bizCanteen.set(user, location);
                      //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration1 = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                bizCanteen.remove("user").then(function() {
+                bizCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration1 = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryScienceCanteen = geoFire.query({
                     center: [1.2966224, 103.7805718],
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration2 = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     scienceCanteen.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration2 = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                scienceCanteen.remove("user").then(function() {
+                scienceCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration2 = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFOECanteen = geoFire.query({
                     center: [1.2983509 , 103.7711677],
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration3 = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foeCanteen.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration3 = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                foeCanteen.remove("user").then(function() {
+                foeCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration3 = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryKoufu= geoFire.query({
                      center: [1.3038157, 103.7739868],
-                     radius: 0.5
+                     radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryKoufu.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration4 = geoQueryKoufu.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     koufu.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryKoufu.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration4 = geoQueryKoufu.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                koufu.remove("user").then(function() {
+                koufu.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryKoufu.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration4 = geoQueryKoufu.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFoodJunction = geoFire.query({
                     center: [1.2983767, 103.7745437], 
-                    radius: 0.5
+                    radius: 0.05
             });
-
-             var onKeyEnteredRegistration = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
+            
+             var onKeyEnteredRegistration5 = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foodJunctionYIH.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration5 = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                foodJunctionYIH.remove("user").then(function() {
+                foodJunctionYIH.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration5 = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
              var geoQueryAlcoveAsian = geoFire.query({
                     center: [1.3020569, 103.7724088], 
-                    radius: 0.5
+                    radius: 0.05
             });
-            var onKeyEnteredRegistration = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
+            var onKeyEnteredRegistration6 = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     alcoveAsian.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration6 = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                alcoveAsian.remove("user").then(function() {
+                alcoveAsian.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration6 = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryButterMyBun = geoFire.query({
                     center: [1.3047341, 103.7725725], 
-                    radius: 0.5
+                    radius: 0.05
             });
 
-            var onKeyEnteredRegistration = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
+            var onKeyEnteredRegistration7 = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     butterMyBun.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration7 = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                butterMyBun.remove("user").then(function() {
+                butterMyBun.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration7 = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryHumbleOrigins = geoFire.query({
                     center: [1.2950642, 103.7689681], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration8 = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     humbleOrigins.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration8 = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                humbleOrigins.remove("user").then(function() {
+                humbleOrigins.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration8 = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryTheRoyalsBistroCafe  = geoFire.query({
                     center: [ 1.3039084, 103.7741073], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     royalsBistro.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                royalsBistro.remove("user").then(function() {
+                royalsBistro.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryHwangKorean = geoFire.query({
                     center: [1.3038157, 103.7739868], 
-                    radius: 0.5
+                    radius: 0.05
             });   
-             var onKeyEnteredRegistration = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration10 = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     hwangKorean.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration10 = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                hwangKorean.remove("user").then(function() {
+                hwangKorean.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration10 = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryPlatypus = geoFire.query({
                     center: [1.2967775, 103.7809592], 
-                    radius: 0.5
+                    radius: 0.05
             });  
-             var onKeyEnteredRegistration = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration11 = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     platypusFood.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration11 = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                platypusFood.remove("user").then(function() {
+                platypusFood.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration11 = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryReedz = geoFire.query({
                     center: [1.2925654, 103.7719733], 
-                    radius: 0.5
+                    radius: 0.05
             });    
-             var onKeyEnteredRegistration = geoQueryReedz.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration12 = geoQueryReedz.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     reedzCafe.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryReedz.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration12 = geoQueryReedz.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                reedzCafe.remove("user").then(function() {
+                reedzCafe.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryReedz.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration12 = geoQueryReedz.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
  
             var geoQuerySaporeItaliano = geoFire.query({
                     center: [1.3041097, 103.7740535], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration13 = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     sapore.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration13 = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                sapore.remove("user").then(function() {
+                sapore.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration13 = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryFassCanteen = geoFire.query({
                         center: [1.2949143, 103.7717837],
-                        radius: 0.5
+                        radius: 0.05
             });
-
-        var location2 = geoQueryFassCanteen.center(); 
-        var onKeyEnteredRegistration = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
+        var onKeyEnteredRegistration14 = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         fassCanteen.set(user, location); //adding user here 
 
             });
 
-                var onKeyExitedRegistration = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration14 = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    fassCanteen.remove("user").then(function() {
+                    fassCanteen.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration14 = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                  var geoQueryFlavoursUtown = geoFire.query({
                                 center: [1.3048615, 103.7724473],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var location3 = geoQueryFlavoursUtown.center(); 
-                var onKeyEnteredRegistration = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
+                
+                var onKeyEnteredRegistration15 = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         flavoursUTown.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration15 = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    flavoursUTown.remove("user").then(function() {
+                    flavoursUTown.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration15 = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                 
                 var geoQuerySpinelli  = geoFire.query({
                                 center: [1.2964077,  103.7805198],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var onKeyEnteredRegistration = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration16 = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spinelli.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration16 = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    spinelli.remove("user").then(function() {
+                    spinelli.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration16 = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                  var geoQuerySpiceTable = geoFire.query({
                                 center: [1.3038699, 103.7741271],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var onKeyEnteredRegistration = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration17 = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spiceTable.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration17 = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    spiceTable.remove("user").then(function() {
+                    spiceTable.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration17 = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                 var geoQueryStarbucksMD11 = geoFire.query({
                                 center: [1.2941412, 103.781285],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration18 = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksMD11.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration18 = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                     starbucksMD11.remove("user").then(function() {
                         console.log("Provided key has been removed from GeoFire");
@@ -478,73 +477,73 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration18 = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                 var geoQueryStarbucksYIH = geoFire.query({
                                 center: [1.2972787,  103.7724656],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
-                var onKeyEnteredRegistration = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration19 = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksYIH.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration19 = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    starbucksYIH.remove("user").then(function() {
+                    starbucksYIH.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration19 = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                 var geoQueryUniversityClub = geoFire.query({
                                 center: [1.3056346, 103.772908],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
-                var onKeyEnteredRegistration = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration20 = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         universityClub.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration20 = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    universityClub.remove("user").then(function() {
+                    universityClub.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration20 = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
 
                 var geoQueryWaaCow = geoFire.query({
                                 center: [1.2937922, 103.7729176],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
-                var onKeyEnteredRegistration = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration21 = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         waaCow.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration21 = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    waaCow.remove("user").then(function() {
+                    waaCow.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryWaaCow.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration21 = geoQueryWaaCow.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
@@ -552,23 +551,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryMcDonald = geoFire.query({
                                 center: [1.2984307, 103.7712874],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration22 = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                        mcDonald .set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration22 = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    mcDonald.remove("user").then(function() {
+                    mcDonald.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration22 = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
@@ -576,23 +575,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayYIH = geoFire.query({
                                 center: [1.2980747, 103.7742972],
-                                radius: 0.5 
+                                radius: 0.05 
                 });
-                var onKeyEnteredRegistration = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration23 = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayYIH.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration23 = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    subwayYIH.remove("user").then(function() {
+                    subwayYIH.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration23 = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
@@ -600,27 +599,27 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayUTown = geoFire.query({
                                 center: [1.303689, 103.773356],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration24 = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayUtown.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration24 = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    subwayUtown.remove("user").then(function() {
+                    subwayUtown.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration24 = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
-            $state.go("temp");
+            //$state.go("temp");
             $state.go("yumNUS");
 
         }).catch(function(error) {
@@ -652,487 +651,475 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                         })
 
                     }).then(function(authData) {
-                        //Setting up the scope for firebase
-                        /*
-                        if ($scope.data.hasOwnProperty("forumNames") !== true) {
-                            $scope.data.forumNames = [];
-                        }
-                        $scope.data.forumNames.push({
-                            forumName : result,
-                            userID : authData.uid
-                        }), 
-                        */
                         var glocation = geoLocation.getGeolocation();
                         var user = authData.uid; 
                         geoFire.set(user, [glocation.lat, glocation.lng]); 
                         var geoQueryBizCanteen = geoFire.query({
                                 center: [1.2956205, 103.7741585],
-                                radius: 0.5
+                                radius: 0.05
                         });
                         var location = glocation; 
                         var distance = geoQueryBizCanteen.radius(); 
-                        var onKeyEnteredRegistration = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
+                        var onKeyEnteredRegistration25 = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
                             console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                             bizCanteen.set(user, location); //adding user here 
 
                         });
 
-                        var onKeyExitedRegistration = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
+                        var onKeyExitedRegistration25 = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
                             console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                            bizCanteen.remove("user").then(function() {
+                            bizCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
                         });
 
-                        var onKeyMovedRegistration = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
+                        var onKeyMovedRegistration25 = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
                             console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                         });
 
 
                         var geoQueryScienceCanteen = geoFire.query({
                             center: [1.2966224, 103.7805718],
-                            radius: 0.5
+                            radius: 0.05
                         });
-             var onKeyEnteredRegistration = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration26 = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     scienceCanteen.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration26 = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                scienceCanteen.remove("user").then(function() {
+                scienceCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration26 = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFOECanteen = geoFire.query({
                     center: [1.2983509 , 103.7711677],
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration27 = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foeCanteen.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration27 = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                foeCanteen.remove("user").then(function() {
+                foeCanteen.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration27 = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryKoufu= geoFire.query({
                      center: [1.3038157, 103.7739868],
-                     radius: 0.5
+                     radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryKoufu.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration28 = geoQueryKoufu.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     koufu.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryKoufu.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration28 = geoQueryKoufu.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                koufu.remove("user").then(function() {
+                koufu.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryKoufu.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration28 = geoQueryKoufu.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFoodJunction = geoFire.query({
                     center: [1.2983767, 103.7745437], 
-                    radius: 0.5     
+                    radius: 0.05     
             });
 
-             var onKeyEnteredRegistration = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration29 = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foodJunctionYIH.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration29 = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                foodJunctionYIH.remove("user").then(function() {
+                foodJunctionYIH.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration29 = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
              var geoQueryAlcoveAsian = geoFire.query({
                     center: [1.3020569, 103.7724088], 
-                    radius: 0.5
+                    radius: 0.05
             });
-            var onKeyEnteredRegistration = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
+            var onKeyEnteredRegistration30 = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     alcoveAsian.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration30 = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                alcoveAsian.remove("user").then(function() {
+                alcoveAsian.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration30  = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryButterMyBun = geoFire.query({
                     center: [1.3047341, 103.7725725], 
-                    radius: 0.5
+                    radius: 0.05
             });
 
-            var onKeyEnteredRegistration = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
+            var onKeyEnteredRegistration31 = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     butterMyBun.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration31 = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                butterMyBun.remove("user").then(function() {
+                butterMyBun.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration31 = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryHumbleOrigins = geoFire.query({
                     center: [1.2950642, 103.7689681], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration32 = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     humbleOrigins.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration32 = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                humbleOrigins.remove("user").then(function() {
+                humbleOrigins.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration32 = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryTheRoyalsBistroCafe  = geoFire.query({
                     center: [ 1.3039084, 103.7741073], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     royalsBistro.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                royalsBistro.remove("user").then(function() {
+                royalsBistro.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryHwangKorean = geoFire.query({
                     center: [1.3038157, 103.7739868], 
-                    radius: 0.5
+                    radius: 0.05
             });   
-             var onKeyEnteredRegistration = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration34 = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     hwangKorean.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration34 = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                hwangKorean.remove("user").then(function() {
+                hwangKorean.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration34 = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryPlatypus = geoFire.query({
                     center: [1.2967775, 103.7809592], 
-                    radius: 0.5
+                    radius: 0.05
             });  
-             var onKeyEnteredRegistration = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration35 = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     platypusFood.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration35 = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                platypusFood.remove("user").then(function() {
+                platypusFood.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration35 = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryReedz = geoFire.query({
                     center: [1.2925654, 103.7719733], 
-                    radius: 0.5
+                    radius: 0.05
             });    
-             var onKeyEnteredRegistration = geoQueryReedz.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration36 = geoQueryReedz.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     reedzCafe.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQueryReedz.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration36 = geoQueryReedz.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                reedzCafe.remove("user").then(function() {
+                reedzCafe.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQueryReedz.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration36 = geoQueryReedz.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
  
             var geoQuerySaporeItaliano = geoFire.query({
                     center: [1.3041097, 103.7740535], 
-                    radius: 0.5
+                    radius: 0.05
             });
-             var onKeyEnteredRegistration = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
+             var onKeyEnteredRegistration37 = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
                     console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     sapore.set(user, location); //adding user here 
             });
 
-            var onKeyExitedRegistration = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
+            var onKeyExitedRegistration37 = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
                 console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                sapore.remove("user").then(function() {
+                sapore.remove(user).then(function() {
                             console.log("Provided key has been removed from GeoFire");
                             }, function(error) {
                                  console.log("Error: " + error);
                             });
              });
 
-            var onKeyMovedRegistration = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
+            var onKeyMovedRegistration37 = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
                 console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
             var geoQueryFassCanteen = geoFire.query({
                         center: [1.2949143, 103.7717837],
-                        radius: 0.5
+                        radius: 0.05
             });
 
-        var location2 = geoQueryFassCanteen.center(); 
-        var onKeyEnteredRegistration = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
+        var onKeyEnteredRegistration38 = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         fassCanteen.set(user, location); //adding user here 
 
             });
 
-                var onKeyExitedRegistration = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration38 = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    fassCanteen.remove("user").then(function() {
+                    fassCanteen.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration38 = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                  var geoQueryFlavoursUtown = geoFire.query({
                                 center: [1.3048615, 103.7724473],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var location3 = geoQueryFlavoursUtown.center(); 
-                var onKeyEnteredRegistration = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration39 = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         flavoursUTown.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration39 = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    flavoursUTown.remove("user").then(function() {
+                    flavoursUTown.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration39 = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                 
                 var geoQuerySpinelli  = geoFire.query({
                                 center: [1.2964077,  103.7805198],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var onKeyEnteredRegistration = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration40 = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spinelli.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration40 = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    spinelli.remove("user").then(function() {
+                    spinelli.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration40 = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                  var geoQuerySpiceTable = geoFire.query({
                                 center: [1.3038699, 103.7741271],
-                                radius: 0.5
+                                radius: 0.05
                 });
 
-                var onKeyEnteredRegistration = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration41 = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spiceTable.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration41 = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    spiceTable.remove("user").then(function() {
+                    spiceTable.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration41 = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                 var geoQueryStarbucksMD11 = geoFire.query({
                                 center: [1.2941412, 103.781285],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration42 = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksMD11.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration42 = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    starbucksMD11.remove("user").then(function() {
+                    starbucksMD11.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration42 = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                 var geoQueryStarbucksYIH = geoFire.query({
                                 center: [1.2972787,  103.7724656],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration43 = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksYIH.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration43 = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    starbucksYIH.remove("user").then(function() {
+                    starbucksYIH.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration43 = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
                 var geoQueryUniversityClub = geoFire.query({
                                 center: [1.3056346, 103.772908],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration44 = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         universityClub.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration44 = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    universityClub.remove("user").then(function() {
+                    universityClub.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration44 = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
 
                 var geoQueryWaaCow = geoFire.query({
                                 center: [1.2937922, 103.7729176],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration45 = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         waaCow.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration45 = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    waaCow.remove("user").then(function() {
+                    waaCow.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
@@ -1146,23 +1133,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQueryMcDonald = geoFire.query({
                                 center: [1.2984307, 103.7712874],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration46 = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                        mcDonald .set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration46 = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    mcDonald.remove("user").then(function() {
+                    mcDonald.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration46 = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
@@ -1170,23 +1157,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayYIH = geoFire.query({
                                 center: [1.2980747, 103.7742972],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration47 = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayYIH.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration47 = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    subwayYIH.remove("user").then(function() {
+                    subwayYIH.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration47 = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
 
@@ -1194,32 +1181,29 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
                  var geoQuerySubWayUTown = geoFire.query({
                                 center: [1.303689, 103.773356],
-                                radius: 0.5
+                                radius: 0.05
                 });
-                var onKeyEnteredRegistration = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
+                var onKeyEnteredRegistration48 = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayUtown.set(user, location); //adding user here 
 
                 });
 
-                var onKeyExitedRegistration = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
+                var onKeyExitedRegistration48 = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
                     console.log(user + " exited query to " + location + " (" + distance + " km from center)");
-                    subwayUtown.remove("user").then(function() {
+                    subwayUtown.remove(user).then(function() {
                         console.log("Provided key has been removed from GeoFire");
                     }, function(error) {
                              console.log("Error: " + error);
                         });       
                     });
-                var onKeyMovedRegistration = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
+                var onKeyMovedRegistration48 = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
                     console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                 });
                         var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
                         firebaseUsers.child(authData.uid).set ({
                             forumName : result
                         }); 
-                        $state.go("temp");
-                        
-
                         }),
 
                         $state.go("yumNUS");
@@ -1484,49 +1468,46 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
    };
  })  
 
-.controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle) {
+.controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
+    $scope.colourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
+    var count =0; 
+    var name = null; 
+
         "use strict";
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       $scope.position = geoLocation.getGeolocation();
-      console.log($scope.position.lat); //for checking purposes
-      console.log($scope.position.lng);
-      $scope.distanceTo = function(restaurant){
+         //console.log($scope.position.lat); //for checking purposes
+        //console.log($scope.position.lng);
+        $scope.distanceTo = function(restaurant){
         var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
         restaurant.distance = distance;
         distance = distance.toFixed(2);
+        //console.log(distance);
         return distance;
     };
-    var colourName = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
-    $scope.red = 'button button-assertive  button-block';
-    $scope.orange = 'button button-energized  button-block';
-    $scope.color = null;
+       $scope.colourCode.orderByKey().endAt("WaaCow").once("value", function(snapshot) {
+  // The callback function will only get called once since we return true
+            snapshot.forEach(function(childSnapshot) {
+                count = childSnapshot.numChildren();
+                name = childSnapshot.key(); 
+                console.log(name);
+                console.log(count);
+            getColour = function() {
+             if (count <= 5) {
+                console.log("===5");
+                return $scope.color = 'balanced'; 
 
-    $scope.getColor = function() {
-
-      var count = 0;
-      colourBizCanteen.once("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-            var timestamp = childSnapshot.val();
-            console.log(timestamp);
-            count++;
-          })
-        if (count === 0) {
-          console.log("here at 0!");
-          return $scope.color = 'button button-balanced  button-block';
-          
-        } else {
-          console.log("here at else!");
-          return $scope.color = 'button button-energized  button-block';
-          
+            } else if (count > 5) {
+                console.log(">5");
+                return $scope.color = 'energized';
+              
+            } else {
+               console.log("else");
+                return $scope.color = 'assertive'; 
+             }
         }
-      })
-    }
-
-
-
-
-
-
+     })  
+    }); 
 })
 
 
