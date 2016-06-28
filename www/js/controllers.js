@@ -68,8 +68,28 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             $scope.authData = authData;
             var glocation = geoLocation.getGeolocation();
             var user = authData.uid; 
+            var FBtime = Firebase.ServerValue.TIMESTAMP;
 
-            geoFire.set(user, [glocation.lat, glocation.lng]); 
+            //Adding users into zUsers
+            geoFire.set(user, [glocation.lat, glocation.lng]);
+            locationRef.child(user).child("time").set({
+              time: FBtime
+            });
+
+            
+            locationRef.once("value", function(snapshot) {
+              var value = snapshot.child(user).child("time/time").val();
+              console.log("time " + value);              
+              var test = value - 3600000;
+              var date = new Date(value);
+              var month = date.getMonth();
+              var hour = date.getHours();
+              console.log("test " + test);
+              console.log("date " + date);
+              console.log("month " + month);
+              console.log("hour " + hour);
+            })
+
             
             var geoQueryBizCanteen = geoFire.query({
             center: [1.2956205, 103.7741585],
@@ -1234,13 +1254,16 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
             userFb.on("value", function(snapshot) {
                 fbAuth = fb.getAuth();
+                var firebaseTime = Firebase.ServerValue.TIMESTAMP;
                 console.log(fbAuth.uid + " value1");
                 userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 $scope.data.bizCanteen.push({
                     name: userName,
-                    comment: input
+                    comment: input,
+                    time: firebaseTime
                 });
+
                 $state.go("bizCanteen");
             })
 
@@ -1252,11 +1275,18 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 }) 
    
-.controller('seeLahCtrl', function($scope, $firebaseObject) {
+.controller('seeLahCtrl', function($scope, $firebaseObject, $firebase) {
     $scope.list = function() {
 
         var syncObject = $firebaseObject(fb.child("food"));
         syncObject.$bindTo($scope, "data");
+    }
+
+    $scope.getTime = function(time) {
+        var dateObj = new Date(time);
+        var hours = dateObj.getHours();
+        var minutes = dateObj.getMinutes();
+        return hours + ":" + minutes;
     }
 })
    
@@ -1469,22 +1499,23 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
  })  
 
 .controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
-    $scope.colourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
-    var count =0; 
-    var name = null; 
+      $scope.colourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
+      var count =0; 
+      var name = null; 
 
-        "use strict";
+      "use strict";
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       $scope.position = geoLocation.getGeolocation();
          //console.log($scope.position.lat); //for checking purposes
         //console.log($scope.position.lng);
-        $scope.distanceTo = function(restaurant){
+      $scope.distanceTo = function(restaurant){
         var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
         restaurant.distance = distance;
         distance = distance.toFixed(2);
         //console.log(distance);
         return distance;
     };
+
        $scope.colourCode.orderByKey().endAt("WaaCow").once("value", function(snapshot) {
   // The callback function will only get called once since we return true
             snapshot.forEach(function(childSnapshot) {
