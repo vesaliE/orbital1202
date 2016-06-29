@@ -21,9 +21,9 @@ What are we currently working on?
 
 
     Login Page 
-    <br>
+    <div>
       <img height="700" src="https://github.com/vesaliE/orbital1202/blob/master/Screen%20Shot%202016-06-23%20at%2011.17.38%20AM.png"/>
-    </br>
+    </div>
  
 
     The app starts off with a login screen where the users will need to login. Upon logging in, the application will obtain and store the location of the user. Users can also sign up here if they do not have an account yet.
