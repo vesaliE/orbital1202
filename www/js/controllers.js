@@ -1547,7 +1547,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
               
                 } else if (count >= 7){
                   console.log("else");
-                  //color = 'assertive'
+                  //color = 'assertive'; 
                   restaurant.color = color2; 
                   console.log(restaurant.color); 
 

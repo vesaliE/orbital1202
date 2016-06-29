@@ -6,7 +6,6 @@
             <!--h2  ng-class= "{'balanced': restaurant.color == 'balanced', 'energized': restaurant.color =='energized', 'assertive': restaurant.color == 'assertive'}"> {{ restaurant.Name }} </h2 -->
              <h2  ng-class= "getColor(restaurant)"> {{ restaurant.Name }} </h2>
             <p>{{ restaurant.venueType }}</p>
-            <p> {{ restaurant.color }} </p>
             <p> Distance: {{ distanceTo(restaurant) }} km from current location</p>
           </div>
           <div>
