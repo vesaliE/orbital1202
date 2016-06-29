@@ -30,7 +30,7 @@ What are we currently working on?
  
 
     Main Screen 
-    <img src="https://cloud.githubusercontent.com/assets/19265844/16440929/c5a55b8e-3df8-11e6-8570-7487800b55d7.png">
+    <img src="https://github.com/vesaliE/orbital1202/blob/master/Screen%20Shot%202016-06-23%20at%2011.17.38%20AM.png"/>
 
     Following login, this page is shown with various options for users to choose from. Currently, show my location is just an option we are using for testing purposes and will be removed in the final app. 
 
