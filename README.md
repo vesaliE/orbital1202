@@ -21,7 +21,7 @@ What are we currently working on?
 
 
     Login Page 
-     ![alt tag](http://i.imgur.com/dNZtkkz.jpg "Login page for app")
+     ![alt text](http://i.imgur.com/dNZtkkz.jpg "Login page for app")
  
 
     The app starts off with a login screen where the users will need to login. Upon logging in, the application will obtain and store the location of the user. Users can also sign up here if they do not have an account yet.
