@@ -21,9 +21,7 @@ What are we currently working on?
 
 
     Login Page 
-    <div>
-      <img height="700" src="https://github.com/vesaliE/orbital1202/blob/master/Screen%20Shot%202016-06-23%20at%2011.17.38%20AM.png"/>
-    </div>
+      ![Login]( http://i.imgur.com/dNZtkkz.png)
  
 
     The app starts off with a login screen where the users will need to login. Upon logging in, the application will obtain and store the location of the user. Users can also sign up here if they do not have an account yet.
@@ -38,7 +36,7 @@ What are we currently working on?
  
 
     Check Canteen
-    <img src="https://cloud.githubusercontent.com/assets/19265844/16440926/c4735068-3df8-11e6-8a06-f21bdd0208a4.png"/> 
+    <img height="700" src="https://github.com/vesaliE/orbital1202/blob/master/Screen%20Shot%202016-06-23%20at%2011.23.00%20AM.png" /> 
 
     Under Check Canteen, Check Cafe, Check Fastfood, a page with all the specified eateries will be listed. Each eatery is color coded according to the data obtained from our database server. Based on the number of people present in each canteen, the level of crowd is color coded in 3 colors: red (very crowded), yellow (getting crowded), and green (not very crowded).
   
