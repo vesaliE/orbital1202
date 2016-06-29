@@ -21,8 +21,7 @@ What are we currently working on?
 
 
     Login Page 
-    <img  height="700" src="https://cloud.githubusercontent.com/assets/19265844/16440964/fb282a48-3df8-11e6-9ffb-4b056a6b4bd4.jpeg"/>
-  
+     ![alt tag](http://i.imgur.com/dNZtkkz.jpg "Login page for app")
  
 
     The app starts off with a login screen where the users will need to login. Upon logging in, the application will obtain and store the location of the user. Users can also sign up here if they do not have an account yet.
