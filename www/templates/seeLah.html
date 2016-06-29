@@ -2,7 +2,9 @@
     <ion-content padding="true" class="has-header">
         <div class="list">
             <div ng-repeat="biz in data.bizCanteen" class="item">
-                <p> {{biz.name}} : {{biz.comment}} </p>
+                <p> {{biz.name}} : {{biz.comment}} 
+                	<div class="shiftRight"> {{getTime(biz.time)}} </div> 
+                </p>
             </div>
         </div>    
     </ion-content>
