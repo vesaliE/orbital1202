@@ -1491,12 +1491,13 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('pageCtrl', function($scope) {
 
 })
-.controller('GeoCtrl', function($scope, geoLocation) {
+/*.controller('GeoCtrl', function($scope, geoLocation) {
     //var posOptions = {timeout: 10000, enableHighAccuracy: false};
     $scope.glocation = function (){
         return  geoLocation.getGeolocation();
    };
  })  
+ */
 
 .controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
       $scope.colourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
