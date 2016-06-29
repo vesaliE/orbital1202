@@ -21,7 +21,7 @@ What are we currently working on?
 
 
     Login Page 
-    <img  height="700" src="https://cloud.githubusercontent.com/assets/19265844/16440964/fb282a48-3df8-11e6-9ffb-4b056a6b4bd4.jpeg">
+    <img  height="700" src="https://cloud.githubusercontent.com/assets/19265844/16440964/fb282a48-3df8-11e6-9ffb-4b056a6b4bd4.jpeg"/>
   
  
 
@@ -67,7 +67,7 @@ What are we currently working on?
  
 
     Show nearby
-    <img  src= "https://cloud.githubusercontent.com/assets/19265844/16440924/c325ade6-3df8-11e6-9e0c-005ba72cfdec.png" />    
+    <img  src= "https://cloud.githubusercontent.com/assets/19265844/16440924/c325ade6-3df8-11e6-9e0c-005ba72cfdec.png"/>    
 
 
     The Show Nearby function in the main page brings us here. Where eateries nearby the user's current location will be displayed with distance from where they are as well as what kind of eatery it is (cafe, canteen, cast food). We are intending to color code these eateries according to its crowd level and will add that in milestone 3.
