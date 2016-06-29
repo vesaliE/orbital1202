@@ -1500,9 +1500,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
  */
 
 .controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
-      getColourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
+      var getColourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
       var count =0; 
       var name = null; 
+      var color0 = 'balanced'; 
+      var color1 = 'energized'; 
+      var color2 = 'assertive'; 
 
       "use strict";
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
@@ -1517,27 +1520,46 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         return distance;
     };
       $scope.colourCode = function(restaurant){
+        var fbName = restaurant.fbName; 
+        //console.log(fbName);
         getColourCode.endAt("WaaCow").once("value", function(snapshot) {
   // The callback function will only get called once since we return true
             snapshot.forEach(function(childSnapshot) {
-                count = childSnapshot.numChildren();
-                name = childSnapshot.key(); 
-                console.log(name);
-                console.log(count);
-             if (count < 5) {
-                console.log("===5");
-                $scope.color = 'balanced'; 
+                if(childSnapshot.key() === fbName){
+                  count = childSnapshot.numChildren();
+                  name = childSnapshot.key(); 
+                  console.log(name);
+                  console.log(count);
 
-            } else if (count > 5) {
-                console.log(">5");
-                $scope.color = 'energized';
+                if (count < 5) {
+                  //color = 'balanced'; 
+                  console.log("< 5"); 
+                 restaurant.color = color0; 
+                  console.log(restaurant.color); 
+
+
+                } else if (count > 5 && count<7) {
+                console.log("> 5");
+                  //color = 'energized'; 
+                  restaurant.color = color1;
+                        console.log(restaurant.color); 
+
               
-            } else {
-               console.log("else");
-                $scope.color = 'assertive'; 
-             }
-        })  
+                } else if (count >= 7){
+                  console.log("else");
+                  //color = 'assertive'
+                  restaurant.color = color2; 
+                  console.log(restaurant.color); 
+
+                }  
+            }
+          })  
       }); 
+    }
+    $scope.getColor = function(restaurant){
+      console.log(restaurant);
+      console.log(restaurant.color); 
+      return restaurant.color; 
     }
 })
 
