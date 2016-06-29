@@ -1516,7 +1516,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         //console.log(distance);
         return distance;
     };
-      $scope.colourCode = function(){
+      $scope.colourCode = function(restaurant){
         getColourCode.endAt("WaaCow").once("value", function(snapshot) {
   // The callback function will only get called once since we return true
             snapshot.forEach(function(childSnapshot) {
@@ -1524,7 +1524,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 name = childSnapshot.key(); 
                 console.log(name);
                 console.log(count);
-             if (count <= 5) {
+             if (count < 5) {
                 console.log("===5");
                 $scope.color = 'balanced'; 
 
