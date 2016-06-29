@@ -336,11 +336,7 @@ angular.module('app.routes', [])
     controller: 'pageCtrl'
   })
 
- .state('geolocationTest', {
-    url: '/geolocationTest',
-    templateUrl: 'templates/geolocationTest.html',
-    controller: 'GeoCtrl'
-  })
+ 
 
   .state('butterMyBun', {
     url: '/butter_my_bun',

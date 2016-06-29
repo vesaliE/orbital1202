@@ -1500,7 +1500,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
  */
 
 .controller('restaurantlistController', function ($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
-      $scope.colourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
+      getColourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
       var count =0; 
       var name = null; 
 
@@ -1516,30 +1516,29 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         //console.log(distance);
         return distance;
     };
-
-       $scope.colourCode.orderByKey().endAt("WaaCow").once("value", function(snapshot) {
+      $scope.colourCode = function(){
+        getColourCode.endAt("WaaCow").once("value", function(snapshot) {
   // The callback function will only get called once since we return true
             snapshot.forEach(function(childSnapshot) {
                 count = childSnapshot.numChildren();
                 name = childSnapshot.key(); 
                 console.log(name);
                 console.log(count);
-            getColour = function() {
              if (count <= 5) {
                 console.log("===5");
-                return $scope.color = 'balanced'; 
+                $scope.color = 'balanced'; 
 
             } else if (count > 5) {
                 console.log(">5");
-                return $scope.color = 'energized';
+                $scope.color = 'energized';
               
             } else {
                console.log("else");
-                return $scope.color = 'assertive'; 
+                $scope.color = 'assertive'; 
              }
-        }
-     })  
-    }); 
+        })  
+      }); 
+    }
 })
 
 
