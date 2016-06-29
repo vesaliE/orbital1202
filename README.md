@@ -21,7 +21,8 @@ What are we currently working on?
 
 
     Login Page 
-
+    https://cloud.githubusercontent.com/assets/19265844/16440964/fb282a48-3df8-11e6-9ffb-4b056a6b4bd4.jpeg
+  
  
 
     The app starts off with a login screen where the users will need to login. Upon logging in, the application will obtain and store the location of the user. Users can also sign up here if they do not have an account yet.
@@ -29,12 +30,14 @@ What are we currently working on?
  
 
     Main Screen 
+    https://cloud.githubusercontent.com/assets/19265844/16440929/c5a55b8e-3df8-11e6-8570-7487800b55d7.png
 
     Following login, this page is shown with various options for users to choose from. Currently, show my location is just an option we are using for testing purposes and will be removed in the final app. 
 
  
 
     Check Canteen
+    https://cloud.githubusercontent.com/assets/19265844/16440926/c4735068-3df8-11e6-8a06-f21bdd0208a4.png
 
     Under Check Canteen, Check Cafe, Check Fastfood, a page with all the specified eateries will be listed. Each eatery is color coded according to the data obtained from our database server. Based on the number of people present in each canteen, the level of crowd is color coded in 3 colors: red (very crowded), yellow (getting crowded), and green (not very crowded).
   
@@ -57,12 +60,15 @@ What are we currently working on?
  
 
     See lah
+    
 
     This is where all the comments from the user is collated and shown. Each user's forum name and message is displayed. Messages are only loaded if they are sent within the day itself. If it is not, the server would delete it. We are still in progress of figuring out how to display the date next to the comments.
 
  
 
     Show nearby
+    https://cloud.githubusercontent.com/assets/19265844/16440924/c325ade6-3df8-11e6-9e0c-005ba72cfdec.png     
+
 
     The Show Nearby function in the main page brings us here. Where eateries nearby the user's current location will be displayed with distance from where they are as well as what kind of eatery it is (cafe, canteen, cast food). We are intending to color code these eateries according to its crowd level and will add that in milestone 3.
 
