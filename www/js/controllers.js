@@ -75,7 +75,9 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             locationRef.child(user).child("time").set({
               time: FBtime
             });
-
+            var currenttime = new Date();
+            console.log(currenttime.getTime());
+            
             
             locationRef.once("value", function(snapshot) {
               var value = snapshot.child(user).child("time/time").val();
@@ -87,7 +89,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
               console.log("test " + test);
               console.log("date " + date);
               console.log("month " + month);
-              console.log("hour " + hour);
+              console.log("hour " + hour);            
             })
 
             
@@ -1259,16 +1261,24 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             userFb.on("value", function(snapshot) {
                 fbAuth = fb.getAuth();
                 var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+                var currentDate = new Date();
+                var currentTime = currentDate.getTime();
                 console.log(fbAuth.uid + " value1");
                 userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
-                $scope.data.bizCanteen.push({
+                
+               /* $scope.data.bizCanteen.push({
                     name: userName,
                     comment: input,
                     time: firebaseTime
                 });
-
-                $state.go("bizCanteen");
+              */
+                fb.child("food").child("bizCanteen").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    time: firebaseTime
+                });
+                console.log("done!");
             })
 
 
@@ -1280,6 +1290,24 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 }) 
    
 .controller('seeLahCtrl', function($scope, $firebaseObject, $firebase) {
+
+    $scope.filter = function() {
+        var bizRef = fb.child("food").child("bizCanteen");
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        var fifteen = 15;
+        bizRef.on("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot){
+                var childTime = childSnapshot.child("time").val();
+                var difference = (currentTime - childTime)/(1000 * 60);
+                console.log(difference);
+                if (difference > fifteen) {
+                    childSnapshot.ref().remove();
+                }
+            })
+        })
+    }
+
     $scope.list = function() {
 
         var syncObject = $firebaseObject(fb.child("food"));
