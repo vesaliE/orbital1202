@@ -1,12 +1,12 @@
-<ion-view title="What's Near??" id="page7" class=" " ng-controller="restaurantlistController" >
+<ion-view title="What's Near You??" id="page7" class=" " ng-controller="restaurantlistController" >
     <ion-content padding="true" class="has-header">
         <div   ng-init="colourCode(restaurant)" ng-repeat="restaurant in restaurantList |  orderBy: 'distance' " href="#"  >
         <article class="item_frame" >
           <div class="marker_left_container" >
             <!--h2  ng-class= "{'balanced': restaurant.color == 'balanced', 'energized': restaurant.color =='energized', 'assertive': restaurant.color == 'assertive'}"> {{ restaurant.Name }} </h2 -->
-             <h2  ng-class= "getColor(restaurant)"> {{ restaurant.Name }} </h2>
-            <p>{{ restaurant.venueType }}</p>
-            <p> Distance: {{ distanceTo(restaurant) }} km from current location</p>
+             <h2  ng-class= "getColor(restaurant)" style="font-family:Comic Sans MS, cursive, sans-serif; font-weight:bold; font-size:30px"> {{ restaurant.Name }} </h2>
+            <p style="font-family:Comic Sans MS, cursive, sans-serif; font-weight:normal; font-size:15px" >{{ restaurant.venueType }}</p>             
+            <p style="font-family:Comic Sans MS, cursive, sans-serif; font-weight:normal; font-size:15px"> Distance: {{ distanceTo(restaurant) }} km from current location</p>
           </div>
           <div>
             <span>-------------------------------------------------</span>
