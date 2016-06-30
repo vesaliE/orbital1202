@@ -644,6 +644,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
         }).catch(function(error) {
             console.error("ERROR: " + error);
+            $ionicPopup.alert({
+              title: 'Wrong password!',
+              template: 'PLease create an account if you do not have one!'
+            });
         });
           //var location = $firebaseObject(locationRef.child("Location"));
         //location.$bindTo($scope, "data");
