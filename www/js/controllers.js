@@ -1554,9 +1554,24 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       $scope.colourCode = function(restaurant){
         var fbName = restaurant.fbName; 
         //console.log(fbName);
+
+        //Variables for current time in milliseconds
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+
         getColourCode.endAt("WaaCow").once("value", function(snapshot) {
   // The callback function will only get called once since we return true
             snapshot.forEach(function(childSnapshot) {
+
+                /* Commented remove update section
+                var timeLog = childSnapshot.child("time").val();
+                var fifteen = 1000 * 60 * 16;
+                var difference = currentTime - timeLog;
+                if (difference > fifteen) {
+                    childSnapshot.ref().remove();
+                }
+                */
+
                 if(childSnapshot.key() === fbName){
                   count = childSnapshot.numChildren();
                   name = childSnapshot.key(); 
