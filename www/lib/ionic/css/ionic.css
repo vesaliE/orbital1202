@@ -9736,6 +9736,7 @@ a.button {
   clear: both;
 }
 
+<<<<<<< HEAD
 .img {
   height:45px; 
   width:50px; 
@@ -9743,4 +9744,13 @@ a.button {
   position: relative; 
   top: 2px; 
   right: 10px; 
+=======
+.shiftLeft {
+  float: left;
+  height: 40px;
+}
+
+.centralise {
+  margin: auto;
+>>>>>>> f53e303572df765f23faeedbeb86ac0aafed3e12
 }
