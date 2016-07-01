@@ -8863,11 +8863,13 @@ progress {
       color: #fff; }
 
 .padding > .button.button-block:first-child {
-  margin-top: 0; }
+  margin-top: 0;
+ }
 
 .button-block {
   display: block;
-  clear: both; }
+  clear: both;
+   }
   .button-block:after {
     clear: both; }
 
@@ -9732,4 +9734,13 @@ a.button {
 .shiftRight {
   float: right;
   clear: both;
+}
+
+.img {
+  height:45px; 
+  width:50px; 
+  vertical-align:middle; 
+  position: relative; 
+  top: 2px; 
+  right: 10px; 
 }
