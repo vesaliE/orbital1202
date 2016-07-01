@@ -9733,3 +9733,12 @@ a.button {
   float: right;
   clear: both;
 }
+
+.shiftLeft {
+  float: left;
+  height: 40px;
+}
+
+.centralise {
+  margin: auto;
+}
