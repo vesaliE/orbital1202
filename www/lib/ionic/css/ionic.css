@@ -8628,10 +8628,12 @@ progress {
      border-color: #30231d;
     background-color: #b5a397;
     color: #5a5c51; 
+    ursor: default; 
   }
   .button.button-show:hover {
       color: #810040;
-      text-decoration: none; }
+      text-decoration: none;
+      cursor: default; }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
