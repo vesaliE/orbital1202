@@ -8526,7 +8526,7 @@ progress {
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 4px;
+  border-radius: 20px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -8881,13 +8881,11 @@ progress {
       color: #fff; }
 
 .padding > .button.button-block:first-child {
-  margin-top: 0;
- }
+  margin-top: 0; }
 
 .button-block {
   display: block;
-  clear: both;
-   }
+  clear: both; }
   .button-block:after {
     clear: both; }
 
@@ -9763,11 +9761,15 @@ a.button {
   top: 2px; 
   right: 10px; 
 }
+
 .shiftLeft {
   float: left;
   height: 40px;
 }
 
-.centralise {
-  margin: auto;
+.mainPageIconContainer {
+  display: block;
+
+  position: relative;
+  left: 20%;
 }
