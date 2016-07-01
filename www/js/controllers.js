@@ -1279,6 +1279,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                     time: firebaseTime
                 });
                 console.log("done!");
+                $state.go("bizCanteen");
             })
 
 
