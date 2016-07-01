@@ -8616,6 +8616,22 @@ progress {
         background-color: #b2b2b2;
         box-shadow: none;
         color: #fff; }
+  .button.button-intro{
+     border-color: #30231d;
+    background-color: #f6f1ed;
+    color: #5a5c51; 
+  }
+  .button.button-intro:hover {
+      color: #810040;
+      text-decoration: none; }
+    .button.button-show{
+     border-color: #30231d;
+    background-color: #b5a397;
+    color: #5a5c51; 
+  }
+  .button.button-show:hover {
+      color: #810040;
+      text-decoration: none; }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
@@ -9732,6 +9748,16 @@ a.button {
 .shiftRight {
   float: right;
   clear: both;
+}
+
+.img {
+  height:40px; 
+  width:50px; 
+  vertical-align:middle; 
+  position: relative; 
+  padding-right: 10px;
+  top: 2px; 
+  right: 10px; 
 }
 
 .shiftLeft {
