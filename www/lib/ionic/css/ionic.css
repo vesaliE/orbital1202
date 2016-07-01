@@ -8616,6 +8616,11 @@ progress {
         background-color: #b2b2b2;
         box-shadow: none;
         color: #fff; }
+  .button.button-intro{
+     border-color: transparent;
+    background-color: #f6f1ed;
+    color: #5a5c51; 
+  }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
@@ -9742,7 +9747,6 @@ a.button {
   vertical-align:middle; 
   position: relative; 
   padding-right: 10px;
-
   top: 2px; 
   right: 10px; 
 }
