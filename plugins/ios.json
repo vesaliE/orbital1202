@@ -4,16 +4,46 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "framework": {
+                "parents": {
+                    "CoreLocation.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
     "installed_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.orbital1202429996"
+        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.orbital1202429996"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.ionicframework.orbital1202429996"
-        }
-    }
+    "dependent_plugins": {}
 }

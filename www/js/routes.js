@@ -187,7 +187,7 @@ angular.module('app.routes', [])
   })
 
   .state('humbleOrigins', {
-    url: '/humble_origins ',
+    url: '/humble_origins',
     templateUrl: 'templates/humbleOrigins.html',
     controller: 'humbleOriginsCtrl'
   })
@@ -223,7 +223,7 @@ angular.module('app.routes', [])
   })
 
   .state('reedzCafe', {
-    url: '/reedz_cafe ',
+    url: '/reedz_cafe',
     templateUrl: 'templates/reedzCafe.html',
     controller: 'reedzCafeCtrl'
   })
@@ -313,13 +313,13 @@ angular.module('app.routes', [])
   })
 
   .state('seeLah27', {
-    url: '/university_club_sl ',
+    url: '/university_club_sl',
     templateUrl: 'templates/seeLah27.html',
     controller: 'seeLah27Ctrl'
   })
 
   .state('waaCow', {
-    url: '/waa_cow ',
+    url: '/waa_cow',
     templateUrl: 'templates/waaCow.html',
     controller: 'waaCowCtrl'
   })
