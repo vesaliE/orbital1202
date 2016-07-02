@@ -34,7 +34,8 @@ var locationRef5 = null,
     locationRef22 = null, 
     locationRef23 = null, 
     locationRef24 = null, 
-    locationRef25 = null; 
+    locationRef25 = null, 
+    locationRef26 = null;
 var foeCanteen =null; 
 
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
@@ -104,6 +105,8 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       subwayYIH  = new GeoFire(locationRef24);
       locationRef25 = new Firebase("http://orbital--1202.firebaseio.com/location/SubwayUtown "); 
       subwayUtown  = new GeoFire(locationRef25);
+      locationRef26 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksUtown"); 
+      starbucksUtown = new GeoFire(locationRef26);
 
 
 
