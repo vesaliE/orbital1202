@@ -1249,6 +1249,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         }
     }
 
+    $scope.choice = null;
+
+    $scope.click = function(buttonClicked) {
+        $scope.choice = buttonClicked;
+    }
+
     $scope.create = function(input) {
         if (input !== "") {
             var userName = null;
@@ -1276,6 +1282,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 fb.child("food").child("bizCanteen").child(currentTime).set({
                     name: userName,
                     comment: input,
+                    option: $scope.choice,
                     time: firebaseTime
                 });
                 console.log("done!");
