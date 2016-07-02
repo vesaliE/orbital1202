@@ -1229,7 +1229,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 var onKeyEnteredRegistration49 = geoQueryStarbucksUtown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksUtown.set(user, location); //adding user here 
-
                 });
 
                 var onKeyExitedRegistration49 = geoQueryStarbucksUtown.on("key_exited", function(user, location, distance) {
