@@ -8628,7 +8628,7 @@ progress {
      border-color: #30231d;
     background-color: #b5a397;
     color: #000000; 
-    ursor: default; 
+    cursor: default; 
   }
   .button.button-show:hover {
       color: #ffffff;
@@ -9772,17 +9772,33 @@ a.button {
   position: relative;
   left: 20%;
 }
-<<<<<<< HEAD
+
 #box1 {
-width:300px;
 float: left;
+vertical-align: top;
 height: 300px;
-margin-right: 10px;
+margin: 0 1.5%;
+width: 30%;
 }
 #box2{
-width: 200px;
 float: left;
 height: 300px;
+margin: 0 1.5%;
+width: 30%;
+}
+#box3{
+vertical-align: top;
+height: 95px;
+text-align:center;
+font-size: 18px;
+float: left;
+margin: 0 1.5%;
+width: 30%;
+line-height: 95px; 
+border-radius: 3px;
+position: relative;
+top:10px;
+
 }
 /*#map{
   map = new google.maps.Map(document.getElementById('map'), {
@@ -9799,7 +9815,7 @@ height: 300px;
     height: 100%;
 }
 
-=======
+
 
 /* CSS FOR THE LOGIN BUTTONS */
 .loginButton {
@@ -9831,4 +9847,3 @@ height: 300px;
     bottom: -6px;
     left: -6px;
 }
->>>>>>> 2d12cb31ebfc618695c4a671190785017be5123b

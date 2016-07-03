@@ -1523,6 +1523,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 })
    
 .controller('playtpusFoodbarCtrl', function($scope, geoLocation, $ionicLoading, $compile) {
+        /*
         function initialize() {
         var myLatlng = new google.maps.LatLng(1.2967775,103.7809592);
         
@@ -1573,7 +1574,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         alert('Example of infowindow with ng-click')
       };
       
-  };
+  }; */
 
 })
 /*
