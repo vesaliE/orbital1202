@@ -2,13 +2,27 @@
     <ion-content padding="true" class="has-header">
         <button id="playtpusFoodbar-button72" class=" button button-show button-block ">Contribute</button>
         <a ui-sref="seeLah19" id="playtpusFoodbar-button73" class=" button button-show  button-block ">See Lah!!</a>
-        <div class="button button-show button-block" >
-        <p style="font-family:Comic Sans MS,  sans-serif; font-weight:600px; font-size:20px" >Opening hours:</p> 
-        <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px" >Mon-Fri 7.30am to 9.00pm</p>
-				<p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px" >Sat, Sun and Public Holiday 7.30am to 8.00pm</p>
-				</div>
-				<div class="button button-show button-block">
-				<p style="font-family:Comic Sans MS,  sans-serif; font-weight:600px; font-size:20px" > Where: Science Blk S16</p>
-				</div>
+       <div> 
+            <div id="box1">
+                <div class="button button-show button-block" style="float:left;">
+                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px" >Opening hours:</p> 
+                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px" >Mon-Fri 7.30am to 9.00pm</p>
+				 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px" >Sat, Sun and Public Holiday 7.30am to 8.00pm</p>
+                 </div>
+		  </div>
+          <div id="box1">
+		      <div class="button button-show button-block" style="float:right;" ng-controller="playtpusFoodbarCtrl">
+				    <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px" > Where: Science Blk S16</p>
+                    <div id="map" data-tap-disabled="true"></div>
+
+                    <!--iframe
+                     width="300"
+                     height="300"
+                    frameborder="0" style="border:0"
+                    src="https://www.google.com/maps/embed/v1/place?&q=NUS,Singapore&zoom=15" allowfullscreen ">
+                    </iframe-->
+			 </div>
+        </div>
+    </div>
     </ion-content>
 </ion-view>
