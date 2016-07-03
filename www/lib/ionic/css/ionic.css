@@ -9860,4 +9860,9 @@ top:10px;
     padding-right: 0;
     padding-left: .2em; }
 
-
+.contributeIconOne {
+    height: 60px;
+    width: 50px;
+    position: relative;
+    top: 5px;
+}
