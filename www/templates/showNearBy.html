@@ -7,8 +7,9 @@
             <div ng-class= "getColor(restaurant)" ng-init="getURL(restaurant)">
               <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px;" class=" button button-intro  button-block">
                 <h2  ng-class= "getColor(restaurant)" style="font-family:Comic Sans MS, sans-serif; font-weight:bold; font-size:25px"> {{ restaurant.Name }} </h2>
-                <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px" >{{ restaurant.venueType }} </p>             
-               <p style="font-family:Comic Sans MS, sans-serif; font-weight:300px; font-size:15px"> Distance: {{ distanceTo(restaurant) }} km from current location</p>
+                <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:15px;" >{{ restaurant.venueType }} </p>             
+               <p style="font-family:Comic Sans MS, sans-serif; font-weight:300px; font-size:15px;"> Distance: {{ distanceTo(restaurant) }} km from current location</p>
+               <p style="font-family:Comic Sans MS, sans-serif; font-weight:300px; font-size:15px;"> Crowd Level:  <img ng-src="{{restaurant.src}}"/> </p>
              </a> 
             </div>
           </div>

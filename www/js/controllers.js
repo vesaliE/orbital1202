@@ -1751,7 +1751,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 if (count < 5) {
                   //color = 'balanced'; 
                   console.log("< 5"); 
-                 restaurant.color = color0; 
+                 restaurant.color = color0;
+                 restaurant.src = "images/user-black-close-up-shape.png"; 
                   console.log(restaurant.color); 
 
 
@@ -1759,6 +1760,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 console.log("> 5");
                   //color = 'energized'; 
                   restaurant.color = color1;
+                  restaurant.src = "images/social.png"; 
+
                         console.log(restaurant.color); 
 
               
@@ -1766,6 +1769,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                   console.log("else");
                   //color = 'assertive'; 
                   restaurant.color = color2; 
+                  restaurant.src = "images/multiple-users-silhouette.png"; 
                   console.log(restaurant.color); 
 
                 }  
