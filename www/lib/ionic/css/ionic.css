@@ -8526,7 +8526,7 @@ progress {
   min-height: 47px;
   border-width: 1px;
   border-style: solid;
-  border-radius: 20px;
+  border-radius: 4px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
@@ -9772,4 +9772,35 @@ a.button {
 
   position: relative;
   left: 20%;
+}
+
+/* CSS FOR THE LOGIN BUTTONS */
+.loginButton {
+    border-color: transparent;
+    background-color: #f8f8f8;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px; /* TO BE CHANGED */
+    min-height: 47px;  /* TO BE CHANGED */
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px; /* TO BE CHANGED */
+    line-height: 42px;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+}
+
+.button:after {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    bottom: -6px;
+    left: -6px;
 }

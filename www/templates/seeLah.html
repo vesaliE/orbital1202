@@ -1,6 +1,11 @@
 <ion-view title="See Lah!!! (test)" id="page6" class=" " ng-init="list(); filter()">
     <ion-content padding="true" class="has-header">
         <div class="list">
+        	<div ng-repeat="closeStalls in closed.bizCanteen" class="item">
+        		<p> {{closeStalls.name}} : {{closeStalls.comment}}
+        			<div class="shiftRight"> {{getTime(closeStalls.time)}} </div>
+        		</p>
+        	</div>
             <div ng-repeat="biz in data.bizCanteen" class="item">
                 <p> {{biz.name}} : {{biz.comment}} 
                 	<div class="shiftRight"> {{getTime(biz.time)}} </div> 

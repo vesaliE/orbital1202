@@ -1229,7 +1229,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 var onKeyEnteredRegistration49 = geoQueryStarbucksUtown.on("key_entered", function(user, location, distance) {
                         console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksUtown.set(user, location); //adding user here 
-
                 });
 
                 var onKeyExitedRegistration49 = geoQueryStarbucksUtown.on("key_exited", function(user, location, distance) {
@@ -1289,6 +1288,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         }
     }
 
+    $scope.choice = null;
+
+    $scope.click = function(buttonClicked) {
+        $scope.choice = buttonClicked;
+    }
+
     $scope.create = function(input) {
         if (input !== "") {
             var userName = null;
@@ -1313,13 +1318,25 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                     time: firebaseTime
                 });
               */
-                fb.child("food").child("bizCanteen").child(currentTime).set({
-                    name: userName,
-                    comment: input,
-                    time: firebaseTime
-                });
-                console.log("done!");
-                $state.go("bizCanteen");
+                if ($scope.choice === 4) {
+                    fb.child("closed").child("bizCanteen").child(currentTime).set({
+                        name: userName,
+                        comment: input,
+                        option: $scope.choice,
+                        time: firebaseTime
+                    });
+                    console.log("done!");
+                    $state.go("bizCanteen");
+                } else {
+                    fb.child("food").child("bizCanteen").child(currentTime).set({
+                        name: userName,
+                        comment: input,
+                        option: $scope.choice,
+                        time: firebaseTime
+                    });
+                    console.log("done!");
+                    $state.go("bizCanteen");
+                }
             })
 
 
@@ -1332,6 +1349,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
    
 .controller('seeLahCtrl', function($scope, $firebaseObject, $firebase) {
 
+    //Filters list for normal comments
     $scope.filter = function() {
         var bizRef = fb.child("food").child("bizCanteen");
         var currentDate = new Date();
@@ -1349,17 +1367,40 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         })
     }
 
+    //Filters list for closed
+    $scope.filterClosed = function() {
+        var closedRef = fb.child("closed").child("bizCanteen");
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        var oneWeek = 1000 * 60 * 60 * 24 * 7;
+        closedRef.on("value", function(snapshot) {
+            snapshot.forEach(function(childSnapshot) {
+                var childTime = childSnapshot.child("time").val();
+                var difference = (currentTime - childTime)/(oneWeek);
+                console.log(difference);
+                if (difference > 7) {
+                    childSnapshot.ref().remove();
+                }
+            })
+        })
+    }
+
     $scope.list = function() {
 
         var syncObject = $firebaseObject(fb.child("food"));
         syncObject.$bindTo($scope, "data");
+
+        var closedObject = $firebaseObject(fb.child("closed"));
+        closedObject.$bindTo($scope, "closed");
     }
 
     $scope.getTime = function(time) {
         var dateObj = new Date(time);
         var hours = dateObj.getHours();
         var minutes = dateObj.getMinutes();
-        return hours + ":" + minutes;
+        var month = (dateObj.getMonth() + 1);
+        var day = dateObj.getDate();
+        return day + "/" + month + " " + hours + ":" + minutes;
     }
 })
    
