@@ -1,17 +1,30 @@
-<ion-view title="Please login to continue" id="page3" class=" ">
+<ion-view title="Please login to continue" id="page3" class=" " style="background-color:#6a5750">
     <ion-content>
         <div class="mainPageIconContainer">
             <img src="images/mainicon.png" style="height:300px; width:300px">
         </div>
         <div>
+            
             <div class="list list-inset">
-                <label class="item item-input">
+                <label class="item item-input item-icon-right">
                     <input ng-model="username" type="text" placeholder="Username" />
+                    <i class="icon ion-email"></i>
                 </label>
-                <label class="item item-input">
+                <label class="item item-input item-icon-right">
                     <input ng-model="password" type="password" placeholder="Password" />
+                    <i class="icon ion-locked"></i>
                 </label>
             </div>
+            
+
+            <!--
+            <div class="loginButton icon-left ion-home">
+            </div>
+            <input class="loginButton icon-left ion-home" ng-model="username" type="text" placeholder="Username" />
+
+            <input class="loginButton" ng-model="password" type="password" placeholder="Password" />
+            -->
+
             <div class="padding-left padding-right">
                 <div class="button-bar">
                     <a class="button" ng-click="login(username, password)">Login</a>
