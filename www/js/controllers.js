@@ -1291,7 +1291,11 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
     $scope.choice = null;
 
     $scope.click = function(buttonClicked) {
-        $scope.choice = buttonClicked;
+        if ($scope.choice !== buttonClicked) {
+            $scope.choice = buttonClicked;
+        } else {
+            $scope.choice = null;
+        }
     }
 
     $scope.create = function(input) {
