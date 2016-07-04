@@ -1761,21 +1761,18 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 
                 } else if (count > 5 && count<7) {
-                console.log("> 5");
+                  console.log("> 5");
                   //color = 'energized'; 
                   restaurant.color = color1;
-                  restaurant.src = "images/social.png"; 
-
-                        console.log(restaurant.color); 
-
-              
+                  restaurant.src = "images/multiple-users-silhouette.png"; 
+                  console.log(restaurant.color); 
+                  
                 } else if (count >= 7){
                   console.log("else");
                   //color = 'assertive'; 
-                  restaurant.color = color2; 
-                  restaurant.src = "images/multiple-users-silhouette.png"; 
+                  restaurant.color = color2;                   
+                  restaurant.src = "images/social.png"; 
                   console.log(restaurant.color); 
-
                 }  
             }
           })  
