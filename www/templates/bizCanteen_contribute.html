@@ -1,15 +1,17 @@
-<ion-view title="Please login to continue" id="page3" class=" " style="background-color:#6a5750">
+<ion-view title="Please login to continue" id="page3" class="login">
     <ion-content>
-        <div class="mainPageIconContainer">
-            <img src="images/mainicon.png" style="height:300px; width:300px">
+        <div class="mainPageIconContainer" style="position: relative; top:20px">
+            <img src="images/loginicon2.png" style="height:300px; width:300px">
         </div>
         <div>
             
-            <div class="list list-inset">
+            <div class="list list-inset" style="position: relative; top: 20px">
                 <label class="item item-input item-icon-right">
                     <input ng-model="username" type="text" placeholder="Username" />
                     <i class="icon ion-email"></i>
                 </label>
+            </div>
+            <div class="list list-inset" style="position: relative; top: 20px">
                 <label class="item item-input item-icon-right">
                     <input ng-model="password" type="password" placeholder="Password" />
                     <i class="icon ion-locked"></i>
@@ -25,10 +27,10 @@
             <input class="loginButton" ng-model="password" type="password" placeholder="Password" />
             -->
 
-            <div class="padding-left padding-right">
+            <div class="padding-left padding-right" style="position: relative; top: 20px">
                 <div class="button-bar">
-                    <a class="button" ng-click="login(username, password)">Login</a>
-                    <a class="button" ng-click="register(username, password)">Register</a>
+                    <a class="button button-stable" ng-click="login(username, password)">Login</a>
+                    <a class="button button-stable" ng-click="register(username, password)">Register</a>
                 </div>
             </div>
         </div>
