@@ -9767,12 +9767,6 @@ a.button {
   height: 40px;
 }
 
-.mainPageIconContainer {
-  display: block;
-  position: relative;
-  left: 20%;
-}
-
 #box1 {
 float: left;
 vertical-align: top;
@@ -9819,6 +9813,13 @@ height:100;
 
 
 /* bizCanteen_contribute css */
+
+.mainPageIconContainer {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
 
 /* CSS FOR THE LOGIN BUTTONS */
 .loginButton {
