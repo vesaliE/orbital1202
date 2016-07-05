@@ -8628,12 +8628,12 @@ progress {
      border-color: #30231d;
     background-color: #b5a397;
     color: #000000; 
-    cursor: default; 
+    
   }
   .button.button-show:hover {
       color: #ffffff;
       text-decoration: none;
-      cursor: default; }
+       }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
@@ -9776,47 +9776,38 @@ a.button {
 #box1 {
 float: left;
 vertical-align: top;
-height: 300px;
+height: 100px;
 margin: 0 1.5%;
 width: 30%;
 }
 #box2{
 float: left;
-height: 300px;
+height: 100px;
 margin: 0 1.5%;
 width: 30%;
 }
 #box3{
 vertical-align: top;
-height: 95px;
+height: 100px;
 text-align:center;
 font-size: 18px;
 float: left;
 margin: 0 1.5%;
-width: 30%;
-line-height: 95px; 
+width: 50%;
+line-height: 100px; 
 border-radius: 3px;
 position: relative;
 top:10px;
-
 }
 #img{
 vertical-align: bottom;
-height: 95px;
-position: relative;
-top:10px;
-left:60px;
+position:relative;
+left:80px; 
+top: 3px;
 margin: 0 1.5%;
-width: 50%;
-/*line-height: 95px; 
-border-radius: 3px;*/
+height:100;
 }
-/*#map{
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-   zoom: 8
-  });
-}*/
+
 .scroll {
     height: 100%;
 }
