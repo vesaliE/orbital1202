@@ -9776,29 +9776,28 @@ a.button {
 #box1 {
 float: left;
 vertical-align: top;
-height: 300px;
+height: 100px;
 margin: 0 1.5%;
 width: 30%;
 }
 #box2{
 float: left;
-height: 300px;
+height: 100px;
 margin: 0 1.5%;
 width: 30%;
 }
 #box3{
 vertical-align: top;
-height: 95px;
+height: 100px;
 text-align:center;
 font-size: 18px;
 float: left;
 margin: 0 1.5%;
-width: 30%;
-line-height: 95px; 
+width: 50%;
+line-height: 100px; 
 border-radius: 3px;
 position: relative;
 top:10px;
-
 }
 #img{
 vertical-align: bottom;
@@ -9806,7 +9805,7 @@ position:relative;
 left:80px; 
 top: 3px;
 margin: 0 1.5%;
-height:200;
+height:100;
 }
 
 .scroll {
