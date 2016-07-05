@@ -252,6 +252,13 @@ angular.module('app.routes', [])
     controller: 'spinelliCtrl'
   })
 
+
+  .state('spinelliMenu', {
+    url: '/spinelli_Menu',
+    templateUrl: 'templates/spinelliMenu.html',
+    controller: 'spinelliMenuCtrl'
+  })
+
   .state('seeLah22', {
     url: '/spinelli_sl',
     templateUrl: 'templates/seeLah22.html',

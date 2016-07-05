@@ -20,6 +20,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('checkFastfoodsCtrl', function($scope) {
 
 })
+
    
 .controller('chooseCanteenCtrl', function($scope, $firebase) {
     var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
@@ -1669,6 +1670,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 })
    
 .controller('spinelliCtrl', function($scope) {
+
+})
+
+.controller('spinelliMenuCtrl', function($scope) {
 
 })
    
