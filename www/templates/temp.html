@@ -1,19 +1,17 @@
 <ion-view title="Leave your comments!" id="page13" class="backgroundImage" ng-init="list()">
    <ion-content>
         <div>
-            <div class="button-bar" style="position:relative; top:20px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
-                <a class="button" ng-click="click(1)" ng-class="{'button-calm':choice==1}">
-                    <img src="images/greenhuman.png" class="contributeIconOne">
-                </a>
-                <a class="button" ng-click="click(2)" ng-class="{'button-calm':choice==2}">
-                    <img src="images/orangehuman.png" class="contributeIconOne">
-                </a>
-                <a class="button" ng-click="click(3)" ng-class="{'button-calm':choice==3}">
-                    <img src="images/redhuman.png" class="contributeIconOne">
-                </a>
-                <a class="button" ng-click="click(4)" ng-class="{'button-calm':choice==4}">
-                    <img src="images/closesign.png" class="contributeIconOne">
-                </a>
+            <div id="iconPosition">
+
+                <img on-tap="iconChange(1)" ng-src="{{ imageUrl1 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(2)" ng-src="{{ imageUrl2 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(3)" ng-src="{{ imageUrl3 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(4)" ng-src="{{ imageUrl4 }}" class="contributeIconOne">
+
+                <span class="stretch"></span>
             </div>
 
             <div class="list list-inset" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">

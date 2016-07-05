@@ -9767,12 +9767,6 @@ a.button {
   height: 40px;
 }
 
-.mainPageIconContainer {
-  display: block;
-  position: relative;
-  left: 20%;
-}
-
 #box1 {
 float: left;
 vertical-align: top;
@@ -9819,6 +9813,13 @@ height:100;
 
 /* bizCanteen_contribute css */
 
+.mainPageIconContainer {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
 /* CSS FOR THE LOGIN BUTTONS */
 .loginButton {
     border-color: transparent;
@@ -9862,14 +9863,40 @@ height:100;
     padding-right: 0;
     padding-left: .2em; }
 
+/* Leaving Comments CSS */
+
 .contributeIconOne {
     height: 84px;
     width: 80px;
-    vertical-align: middle;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 20px
+    padding-right:20px;
     padding-top:2px;
     padding-bottom:2px;
+}
+
+#iconPosition {
+    text-align: justify;
+    margin-left: auto; 
+    margin-right: auto;
+
+    position:relative; 
+    top: 30px; 
+    margin-left:auto; 
+    margin-right:auto; 
+    width:95%; 
+    vertical-align:center;
+}
+
+#iconPosition > a {
+    display: inline-block;
+    vertical-align:top;
+}
+
+.stretch {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
 }
 
 .backgroundImage {
