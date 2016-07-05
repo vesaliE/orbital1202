@@ -9800,6 +9800,17 @@ position: relative;
 top:10px;
 
 }
+#img{
+vertical-align: bottom;
+height: 95px;
+position: relative;
+top:10px;
+left:60px;
+margin: 0 1.5%;
+width: 50%;
+/*line-height: 95px; 
+border-radius: 3px;*/
+}
 /*#map{
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
