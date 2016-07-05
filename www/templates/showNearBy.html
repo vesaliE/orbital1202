@@ -1,4 +1,4 @@
-<ion-view  title="What's Near You??" id="page7" class=" " ng-controller="restaurantlistController" style="background-color:#30231d; font-family:Comic Sans MS, cursive, sans-serif;font-weight:800px" >
+<ion-view  title="What's Near You??" id="page7" class=" " ng-controller="restaurantlistController" style="background-color:#30231d; font-family:Comic Sans MS, cursive, sans-serif;font-weight:800px" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
         <div   ng-init="colourCode(restaurant)" ng-repeat="restaurant in restaurantList |  orderBy: 'distance' " href='#'>
         <article class="item_frame" >
