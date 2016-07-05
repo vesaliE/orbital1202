@@ -1286,15 +1286,45 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
             var syncObject = $firebaseObject(fb.child("food"));
             syncObject.$bindTo($scope, "data");
         }
+            $scope.imageUrl1 = "images/greenhuman.png";
+            $scope.imageUrl2 = "images/orangehuman.png";
+            $scope.imageUrl3 = "images/redhuman.png";
+            $scope.imageUrl4 = "images/closesign.png";
     }
 
     $scope.choice = null;
 
-    $scope.click = function(buttonClicked) {
-        if ($scope.choice !== buttonClicked) {
-            $scope.choice = buttonClicked;
-        } else {
+    $scope.iconChange = function(clickChoice) {
+        if (clickChoice === $scope.choice) {
+            $scope.imageUrl1 = "images/greenhuman.png";
+            $scope.imageUrl2 = "images/orangehuman.png";
+            $scope.imageUrl3 = "images/redhuman.png";
+            $scope.imageUrl4 = "images/closesign.png";
             $scope.choice = null;
+        } else if (clickChoice === 1) {
+            $scope.imageUrl1 = "images/greenhumanclicked.png";
+            $scope.imageUrl2 = "images/orangehuman.png";
+            $scope.imageUrl3 = "images/redhuman.png";
+            $scope.imageUrl4 = "images/closesign.png";
+            $scope.choice = 1;
+        } else if (clickChoice === 2) {
+            $scope.imageUrl1 = "images/greenhuman.png";
+            $scope.imageUrl2 = "images/orangehumanclicked.png";
+            $scope.imageUrl3 = "images/redhuman.png";
+            $scope.imageUrl4 = "images/closesign.png";
+            $scope.choice = 2;
+        } else if (clickChoice === 3) {
+            $scope.imageUrl1 = "images/greenhuman.png";
+            $scope.imageUrl2 = "images/orangehuman.png";
+            $scope.imageUrl3 = "images/redhumanclicked.png";
+            $scope.imageUrl4 = "images/closesign.png";
+            $scope.choice = 3;
+        } else if (clickChoice === 4) {
+            $scope.imageUrl1 = "images/greenhuman.png";
+            $scope.imageUrl2 = "images/orangehuman.png";
+            $scope.imageUrl3 = "images/redhuman.png";
+            $scope.imageUrl4 = "images/closesignclicked.png";
+            $scope.choice = 4;
         }
     }
 
