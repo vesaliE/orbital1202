@@ -9862,13 +9862,16 @@ top:10px;
     padding-left: .2em; }
 
 .contributeIconOne {
-    height: 60px;
-    width: 50px;
-    position: relative;
-    top: 5px;
+    height: 84px;
+    width: 80px;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top:2px;
+    padding-bottom:2px;
 }
 
-.login {
+.backgroundImage {
     background: url('../../../images/bluecircle.jpg');
     background-repeat: no-repeat;
     background-position: center;
