@@ -9816,34 +9816,62 @@ top:10px;
 }
 
 
+/* bizCanteen_contribute css */
 
 /* CSS FOR THE LOGIN BUTTONS */
 .loginButton {
     border-color: transparent;
-    background-color: #f8f8f8;
+    background-color: #30231d;
     color: #444;
     position: relative;
     display: inline-block;
-    margin: 0;
+    margin-left: 10px;
+    margin-right: 10px;
     padding: 0 12px;
-    min-width: 52px; /* TO BE CHANGED */
+    min-width: 60px; /* TO BE CHANGED */
     min-height: 47px;  /* TO BE CHANGED */
     border-width: 1px;
     border-style: solid;
-    border-radius: 20px;
+    border-radius: 30px;
     vertical-align: top;
-    text-align: center;
+    text-align: left;
     text-overflow: ellipsis;
     font-size: 16px; /* TO BE CHANGED */
     line-height: 42px;
     margin-top: 10px;
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
+    width: 95%;    
+}
+ .loginButton .icon {
+    vertical-align: top;
+    pointer-events: none; }
+  .loginButton .icon:before, .loginButton.icon:before, .loginButton.icon-left:before, .loginButton.icon-right:before {
+    display: inline-block;
+    padding: 0 0 1px 0;
+    vertical-align: inherit;
+    font-size: 24px;
+    line-height: 41px;
+    pointer-events: none; }
+  .loginButton.icon-left:before {
+    float: left;
+    padding-right: .2em;
+    padding-left: 0; }
+  .loginButton.icon-right:before {
+    float: right;
+    padding-right: 0;
+    padding-left: .2em; }
+
+.contributeIconOne {
+    height: 60px;
+    width: 50px;
+    position: relative;
+    top: 5px;
 }
 
-.button:after {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
+.login {
+    background: url('../../../images/bluecircle.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
 }
