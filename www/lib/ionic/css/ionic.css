@@ -8628,12 +8628,12 @@ progress {
      border-color: #30231d;
     background-color: #b5a397;
     color: #000000; 
-    cursor: default; 
+    
   }
   .button.button-show:hover {
       color: #ffffff;
       text-decoration: none;
-      cursor: default; }
+       }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
@@ -9806,13 +9806,9 @@ position:relative;
 left:80px; 
 top: 3px;
 margin: 0 1.5%;
+height:200;
 }
-/*#map{
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-   zoom: 8
-  });
-}*/
+
 .scroll {
     height: 100%;
 }
