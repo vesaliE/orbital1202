@@ -1747,7 +1747,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       var count = 0; 
       var name = null; 
       var color0 = 'balanced'; 
-      var color1 = 'energized'; 
+      var color1 = 'orange'; 
       var color2 = 'assertive'; 
       var num = 0;
       "use strict";
