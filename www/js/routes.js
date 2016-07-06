@@ -185,11 +185,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/alcoveAsianRestaurantBar.html',
     controller: 'alcoveAsianRestaurantBarCtrl'
   })
-   .state('alcoveMenu', {
-    url: '/alcove_Menu',
-    templateUrl: 'templates/alcoveMenu.html',
-    controller: 'alcoveMenuCtrl'
-  })
+
 
   .state('humbleOrigins', {
     url: '/humble_origins',
@@ -361,7 +357,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/seeLah14.html',
     controller: 'seeLah14Ctrl'
   })
-
+   .state('butterMyBunMenu', {
+    url: '/butter_my_bun_menu',
+    templateUrl: 'templates/butterMyBunMenu.html',
+    controller: 'butterMyBunMenuCtrl'
+  })
   .state('theRoyalsBistroCafe', {
     url: '/the_royals_bistro_cafe',
     templateUrl: 'templates/theRoyalsBistroCafe.html',
