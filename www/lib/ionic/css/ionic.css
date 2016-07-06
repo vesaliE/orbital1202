@@ -9915,6 +9915,14 @@ height:100;
     margin:auto;
 }
 
+.lightredImage {
+    background: url('../../../images/lightredbg.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
+}
+
 .google-maps {
         position: relative;
         padding-bottom: 75%; // This is the aspect ratio
