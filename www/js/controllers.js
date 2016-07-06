@@ -1523,7 +1523,9 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('alcoveAsianRestaurantBarCtrl', function($scope) {
 
 })
-   
+.controller('alcoveMenuCtrl', function($scope) {
+
+})
 
 .controller('butterMyBunCtrl', function($scope) {
 

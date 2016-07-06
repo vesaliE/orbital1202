@@ -185,6 +185,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/alcoveAsianRestaurantBar.html',
     controller: 'alcoveAsianRestaurantBarCtrl'
   })
+   .state('alcoveMenu', {
+    url: '/alcove_Menu',
+    templateUrl: 'templates/alcoveMenu.html',
+    controller: 'alcoveMenuCtrl'
+  })
 
   .state('humbleOrigins', {
     url: '/humble_origins',
