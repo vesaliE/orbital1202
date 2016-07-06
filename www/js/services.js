@@ -56,7 +56,7 @@ angular.module('app.services', [])
                     {Name: 'Food Junction YIH', venueType: 'Canteen ', itemid: 'Canteen007',lat: 1.2983767, long: 103.7745437, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'FoodJunctionYIH', url:'yih_food_junction'},
                     //cafes
                     {Name: 'Alcove Asian Restaurant Bar',  venueType: 'Cafe', itemid: 'Cafe001', lat: 1.3020569, long: 103.7724088, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png',fbName:'AlcoveAsianRestaurantBar', url:'alcove_asian_restaurant_bar'},
-                    {Name: 'Butter My Bun', venueType: 'Cafe', itemid: 'Cafe014', lat: 1.3047341, long: 103.7725725, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'ButterMyBun', url:'butter_my_bun' }, 
+                    {Name: 'Butter My Buns', venueType: 'Cafe', itemid: 'Cafe014', lat: 1.3047341, long: 103.7725725, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'ButterMyBun', url:'butter_my_bun' }, 
                     {Name: 'Humble Origins',  venueType: 'Cafe', itemid: 'Cafe005', lat: 1.2950642, long: 103.7689681,  icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'HumbleOrigins', url:'humble_origins'},
                     {Name: 'The Hwang\'s Restaurant University Town ',  venueType: 'Cafe', itemid: 'Cafe006', lat: 1.3038157, long: 103.7739868, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'HwangRestaurant', url:'hwang_korean_restaurant'},
                     {Name: 'The Royals Bistro Café ',  venueType: 'Cafe', itemid: 'Cafe013', lat: 1.3039084, long: 103.7741073, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName:'TheRoyalsBistroCafé', url:'the_royals_bistro_cafe' },
