@@ -1,4 +1,4 @@
-<ion-view  title="What's Near You??" id="page7" ng-controller="restaurantlistController" class="backgroundImage">
+<ion-view  title="What's Near You?" id="page7" ng-controller="restaurantlistController" class="backgroundImage">
 
     <ion-content padding="true" class="has-header">
         <div   ng-init="colourCode(restaurant)" ng-repeat="restaurant in restaurantList |  orderBy: 'distance' " href='#'>
@@ -7,9 +7,9 @@
                 <!--h2  ng-class= "{'balanced': restaurant.color == 'balanced', 'energized': restaurant.color =='energized', 'assertive': restaurant.color == 'assertive'}"> {{ restaurant.Name }} </h2 -->
                 <div ng-class= "getColor(restaurant)">
 
-                <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px;" class=" button button-intro  button-block">
+                <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px" class=" button button-intro  button-block blueSegmentImage">
 
-                <h2  ng-class= "getColor(restaurant)" style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-size:20px; text-align:left; position:relative; top:10px"> {{ restaurant.Name }} </h2>
+                <h2  ng-class= "getColor(restaurant)" style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-size:20px; text-align:left; position:relative; top:10px;"> {{ restaurant.Name }} </h2>
 
                 <div style="float:left"> 
                   <div style="font-family:'Open Sans'; text-align:left">

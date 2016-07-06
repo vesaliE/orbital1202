@@ -9907,6 +9907,14 @@ height:100;
     margin: auto;
 }
 
+.blueSegmentImage {
+    background: url('../../../images/bluesegmentbg.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
+}
+
 .google-maps {
         position: relative;
         padding-bottom: 75%; // This is the aspect ratio
