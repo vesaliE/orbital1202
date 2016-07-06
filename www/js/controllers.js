@@ -414,7 +414,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
 
                  var geoQueryFlavoursUtown = geoFire.query({
-                                center: [1.3048615, 103.7724473],
+                                center: [1.305908,103.774672],
                                 radius: 0.05
                 });
 
@@ -1021,7 +1021,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
 
                  var geoQueryFlavoursUtown = geoFire.query({
-                                center: [1.3048615, 103.7724473],
+                                center: [1.305908,103.774672],
                                 radius: 0.05
                 });
 
@@ -2207,7 +2207,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
 
                  var geoQueryFlavoursUtown = geoFire.query({
-                                center: [1.3048615, 103.7724473],
+                                center: [1.305908,103.774672],
                                 radius: 0.05
                 });
 

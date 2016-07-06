@@ -49,7 +49,7 @@ angular.module('app.services', [])
                     {Name: 'Biz Canteen - The Terrace', venueType: 'Canteen', itemid: 'Canteen001', lat:1.2956205, long: 103.7741585, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 
                     'BIZCanteen', url:'biz_canteen'},
                     {Name: 'FASS Canteen - The Deck', venueType: 'Canteen ',  itemid: 'Canteen002', lat: 1.2949143, long: 103.7717837, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'FASSCanteen', url:'fass_canteen'},
-                    {Name: 'Flavours @ UTown', venueType: 'Canteen',  itemid: 'Canteen003', lat: 1.3048615, long: 103.7724473, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'FlavoursUTown', url:'flavours'},
+                    {Name: 'Flavours @ UTown', venueType: 'Canteen',  itemid: 'Canteen003', lat: 1.305908, long: 103.774672, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'FlavoursUTown', url:'flavours'},
                     {Name: 'FOE Canteen - Techno Edge', venueType: 'Canteen', itemid: 'Canteen004', lat: 1.2983509 , long: 103.7711677, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'FoeCanteen', url:'foe_canteen'},
                     {Name: 'Koufu Foodcourt', venueType: 'Canteen ', itemid: 'Canteen005',lat: 1.3038157, long: 103.7739868 , icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'KoufuFoodcourt', url:'koufu_foodcourt'},
                     {Name: 'Science Canteen', venueType: 'Canteen ',  itemid: 'Canteen006',  lat: 1.2966224, long: 103.7805718, icon: 'img/restaurant_pointer_WMcustom_40x49_v3.png', fbName: 'ScienceCanteen', url:'science_canteen'},
