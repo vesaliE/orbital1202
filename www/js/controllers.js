@@ -11,8 +11,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       var restaurants = foodFactory.getRestaurants();
       $scope.position = geoLocation.getGeolocation();
-      var maxCap = restaurant.capacity;
-      var percentage = num / maxCap;
+      
          //console.log($scope.position.lat); //for checking purposes
         //console.log($scope.position.lng);
       $scope.numLimit = 3;
@@ -74,6 +73,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         var newref = new Firebase(locationURL);
         newref.once("value", function(snapshot) {
           var num = snapshot.numChildren();
+          var maxCap = restaurant.capacity;
+          var percentage = num / maxCap;
           if (num <= 1) {
                   //color = 'balanced'; 
               console.log("< 5"); 
