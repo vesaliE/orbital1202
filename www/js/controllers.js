@@ -72,30 +72,53 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         var newref = new Firebase(locationURL);
         newref.once("value", function(snapshot) {
           var num = snapshot.numChildren();
-          //console.log(num);
-          if (num <= 5) {
+          if (num <= 1) {
                   //color = 'balanced'; 
-                  //console.log("< 5"); 
-                 restaurant.color = color0;
-                 restaurant.src = "images/greenhuman.png"; 
-                  //console.log(restaurant.color); 
+              console.log("< 5"); 
+              restaurant.color = color0;
+              restaurant.src = "images/GreenOneBar.png";
+              restaurant.level = "EMPTY";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color); 
 
 
-                } else if (num > 5 && num<7) {
-                  //console.log("> 5");
-                  //color = 'energized'; 
-                  restaurant.color = color1;
-                  restaurant.src = "images/orangehuman.png"; 
-                  //console.log(restaurant.color); 
+          } else if (num <= 3) {
+              console.log("> 5");
+              //color = 'energized'; 
+              restaurant.color = color0;
+              restaurant.src = "images/GreenTwoBar.png";
+              restaurant.level = "EMPTY    ";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color); 
                   
-                } else if (num >= 7){
-                  //console.log("else");
-                  //color = 'assertive'; 
-                  restaurant.color = color2;                   
-                  restaurant.src = "images/redhuman.png"; 
-                  //console.log(restaurant.color); 
-                } 
+          } else if (num <= 4){
+              console.log("else");
+              //color = 'assertive'; 
+              restaurant.color = color1;                   
+              restaurant.src = "images/OrangeThreeBar.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color);
+
+          } else if (num <=6) {
+              console.log("<=5");
+              restaurant.color = color1;
+              restaurant.src = "images/OrangeFourBar.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+          } else if (true) {
+              console.log("else");
+              restaurant.color = color2;
+              restaurant.src = "images/RedFiveBar.png";
+              restaurant.level = "PACKED";
+              restaurant.percentage = percentage;
+              console.log(restaurant.color);
+
+          }
         });
+          
         //Variables for current time in milliseconds
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
