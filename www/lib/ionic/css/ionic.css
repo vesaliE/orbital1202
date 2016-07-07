@@ -9817,7 +9817,6 @@ height:100;
     margin-left: auto;
     margin-right: auto;
     display: block;
-
 }
 
 /* CSS FOR THE LOGIN BUTTONS */
@@ -9905,6 +9904,26 @@ height:100;
     background-position: center;
     background-size: cover;
     margin: auto;
+}
+
+.blueSegmentImage {
+    background: url('../../../images/bluesegmentbg.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
+}
+
+.lightredImage {
+    background: url('../../../images/lightredbg.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
+}
+
+.orange {
+  color: #f98646;
 }
 
 .google-maps {

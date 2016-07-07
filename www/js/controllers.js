@@ -1747,7 +1747,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       var count = 0; 
       var name = null; 
       var color0 = 'balanced'; 
-      var color1 = 'energized'; 
+      var color1 = 'orange'; 
       var color2 = 'assertive'; 
       var num = 0;
       "use strict";
@@ -1774,7 +1774,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                   //color = 'balanced'; 
                   console.log("< 5"); 
                  restaurant.color = color0;
-                 restaurant.src = "images/user-black-close-up-shape.png"; 
+                 restaurant.src = "images/greenhuman.png"; 
                   console.log(restaurant.color); 
 
 
@@ -1782,14 +1782,14 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                   console.log("> 5");
                   //color = 'energized'; 
                   restaurant.color = color1;
-                  restaurant.src = "images/multiple-users-silhouette.png"; 
+                  restaurant.src = "images/orangehuman.png"; 
                   console.log(restaurant.color); 
                   
                 } else if (num >= 7){
                   console.log("else");
                   //color = 'assertive'; 
                   restaurant.color = color2;                   
-                  restaurant.src = "images/social.png"; 
+                  restaurant.src = "images/redhuman.png"; 
                   console.log(restaurant.color); 
                 } 
         });

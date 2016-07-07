@@ -1,14 +1,24 @@
-<ion-view title="See Lah!!! (test)" id="page6" class=" " ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
+<ion-view title="See Lah!!! (test)" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
-        <div class="list">
+        <div class="list" style="font-family:'Open Sans'">
+            <h1 class="item" style="font-size:25px"> Closed Stalls </h1>
         	<div ng-repeat="closeStalls in closed.bizCanteen" class="item">
-        		<p> {{closeStalls.name}} : {{closeStalls.comment}}
-        			<div class="shiftRight"> {{getTime(closeStalls.time)}} </div>
+        		<div style="float:left">
+                    <h1 style="font-size:20px; "> {{closeStalls.name}} </h1>
+                    <p style="font-size:20px"> {{closeStalls.comment}} </p>
+                </div>
+        			<div style="float:right"> {{getTime(closeStalls.time)}} </div>
         		</p>
         	</div>
+        </div>
+        <div class="list">
+            <h1 class="item" style="font-size:25px"> Other Comments </h1>
             <div ng-repeat="biz in data.bizCanteen" class="item">
-                <p> {{biz.name}} : {{biz.comment}} 
-                	<div class="shiftRight"> {{getTime(biz.time)}} </div> 
+                <div style="float:left"> 
+                    <h1 style="font-size:20px"> {{biz.name}} </h1>
+                    <p style="font-size:20px"> {{biz.comment}} </p>
+                </div> 
+                	<div style="float:right"> {{getTime(biz.time)}} </div> 
                 </p>
             </div>
         </div>    
