@@ -111,6 +111,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/seeLah5.html',
     controller: 'seeLah5Ctrl'
   })
+    .state('koufuStall', {
+    url: '/koufu_stall',
+    templateUrl: 'templates/koufuStall.html',
+    controller: 'koufuStallCtrl'
+  })
 
   .state('scienceCanteen', {
     url: '/science_canteen',

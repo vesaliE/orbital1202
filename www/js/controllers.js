@@ -1470,6 +1470,9 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('koufuFoodcourtCtrl', function($scope) {
 
 })
+.controller('koufuStallCtrl', function($scope) {
+
+})
    
 .controller('seeLah5Ctrl', function($scope) {
 
