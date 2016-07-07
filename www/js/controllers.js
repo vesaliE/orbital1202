@@ -1912,7 +1912,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
               restaurant.color = color2;
               restaurant.src = "images/RedFiveBar.png";
               restaurant.level = "PACKED";
-              restaurant.percentage = percentage;
+              restaurant.percent = num; //percentage;
               console.log(restaurant.color);
 
           }
