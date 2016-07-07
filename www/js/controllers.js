@@ -11,6 +11,8 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       var restaurants = foodFactory.getRestaurants();
       $scope.position = geoLocation.getGeolocation();
+      var maxCap = restaurant.capacity;
+      var percentage = num / maxCap;
          //console.log($scope.position.lat); //for checking purposes
         //console.log($scope.position.lng);
       $scope.numLimit = 3;
