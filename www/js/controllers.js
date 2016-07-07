@@ -2,14 +2,110 @@
 
 angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
   
-.controller('yumNUSCtrl', function($scope, geoLocation) {
+.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase) {
+      var color0 = 'balanced'; 
+      var color1 = 'orange'; 
+      var color2 = 'assertive'; 
+     
+      "use strict";
+      $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
+      var restaurants = foodFactory.getRestaurants();
+      $scope.position = geoLocation.getGeolocation();
+         //console.log($scope.position.lat); //for checking purposes
+        //console.log($scope.position.lng);
+      $scope.numLimit = 3;
+      for(var i=0; i<restaurants.length; i++){
+        //console.log(restaurants[i]["lat"]);
+        var distance = GreatCircle.distance(restaurants[i]["lat"],restaurants[i]["long"], $scope.position.lat, $scope.position.lng);
+        restaurants[i]["distance"] = distance;
         /*
-         var glocation = geoLocation.getGeolocation();
-         var user = username.split(".", 2);
-         geoFire.set(user[0], [glocation.lat, glocation.lng]).then(function() {
-         console.log("Current user " + username + "'s location has been added to GeoFire");
-     });
-     */ //to be added once login is performed at the start 
+        var fbName = restaurants[i]["fbName"]; 
+        var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
+        //console.log(locationURL);
+        var newref = new Firebase(locationURL);
+        newref.once("value", function(snapshot) {
+          var num = snapshot.numChildren();
+          //console.log(num);
+          if (num <= 5) {
+                  //color = 'balanced'; 
+                  console.log("< 5");
+                  var color = color0;
+                  var src = "images/greenhuman.png"
+                 restaurants[i]["color"] = color;
+                 restaurants[i]["src"] = src; 
+                //console.log(restaurant.color); 
+
+
+                } else if (num > 5 && num<7) {
+                  console.log("> 5");
+                  //color = 'energized'; 
+                  restaurants[i]["color"] = color1;
+                  restaurants[i]["src"] = "images/orangehuman.png"; 
+                  //console.log(restaurant.color); 
+                  
+                } else if (num >= 7){
+                  console.log("else");
+                  //color = 'assertive'; 
+                  restaurants[i]["color"] = color2;                   
+                  restaurants[i]["src"] = "images/redhuman.png"; 
+                  //console.log(restaurant.color); 
+                } 
+        });
+        //Variables for current time in milliseconds
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();*/
+    }
+
+      /*
+      $scope.distanceTo = function(restaurant){
+        var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
+        restaurant.distance = distance;
+        distance = distance.toFixed(2);
+        //console.log(distance);
+        return distance;
+    };*/
+   
+      $scope.colourCode = function(restaurant){
+        var fbName = restaurant.fbName; 
+        var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
+        //console.log(locationURL);
+        var newref = new Firebase(locationURL);
+        newref.once("value", function(snapshot) {
+          var num = snapshot.numChildren();
+          //console.log(num);
+          if (num <= 5) {
+                  //color = 'balanced'; 
+                  //console.log("< 5"); 
+                 restaurant.color = color0;
+                 restaurant.src = "images/greenhuman.png"; 
+                  //console.log(restaurant.color); 
+
+
+                } else if (num > 5 && num<7) {
+                  //console.log("> 5");
+                  //color = 'energized'; 
+                  restaurant.color = color1;
+                  restaurant.src = "images/orangehuman.png"; 
+                  //console.log(restaurant.color); 
+                  
+                } else if (num >= 7){
+                  //console.log("else");
+                  //color = 'assertive'; 
+                  restaurant.color = color2;                   
+                  restaurant.src = "images/redhuman.png"; 
+                  //console.log(restaurant.color); 
+                } 
+        });
+        //Variables for current time in milliseconds
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+    }
+    $scope.getColor = function(restaurant){
+      console.log(restaurant);
+      console.log(restaurant.color); 
+      return restaurant.color; 
+    }
+        
 
 })
    
