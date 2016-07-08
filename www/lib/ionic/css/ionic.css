@@ -9943,8 +9943,8 @@ height:100;
     background-size: cover;
     margin:auto;
 }
-#addPara{
-  font-family:Comic Sans MS,  sans-serif;
+#addPara{     /*address paragraph for each template*/
+  font-family:Comic Sans MS, sans-serif;
   font-weight:300px; 
   font-size:18px;
   color:#000;

@@ -1,31 +1,25 @@
-<ion-view title="Reedz Cafe " id="page45" class=" " style="background-color:#30231d; font-family:Comic Sans MS, cursive, sans-serif;font-weight:800px" ng-controller="GeoCtrl">
-    <ion-content padding="true" class="has-header">
-        <button id="reedzCafe-button76" class=" button button-positive  button-block ">Contribute</button>
-        <a ui-sref="seeLah20" id="reedzCafe-button77" class=" button button-positive  button-block ">See Lah!!!</a>
-        <div> 
-         
-            <div>
-                <div class="button button-show button-block">
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px;" >Opening hours</p> 
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: <br> 8.00am to 7.00pm</p>
-                 </div>
-		      </div>
-          <div >
-		      <div class="button button-show button-block">
-				    <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px" > <b>NUS Mochtar
-          			  Riady Building</b>,<br>
-           				 School of Computing, NUS Business 
-           				 School <br>
-           		Contact No: 6774 5898 </p>
-			    </div>
-        </div>
-          
-          <a href="https://www.facebook.com/reedzcafe/" class="button button-show button-block" style="color:#000000;text-decoration:none;">Find Out More!</a>  
-         <div class="google-maps">
-         <iframe width="300" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8bgrbP8a2jERq776ISMG8ao&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
-      <br />
-        </div>
-    </div>
-   
-    </ion-content>
-</ion-view>
+<ion-view title="Reedz Cafe " id="page45" class="backgroundImage" style="background-color:#30231d; font-family:Comic Sans MS, cursive, sans-serif;font-weight:800px" ng-controller="GeoCtrl">
+  <ion-content padding="true" class="has-header">
+    <button id="reedzCafe-button76" class=" button button-positive  button-block ">Contribute</button>
+    <a ui-sref="seeLah20" id="reedzCafe-button77" class=" button button-positive  button-block ">See Lah!!!</a>
+    <div class="card whiteSegmentImage"> 
+     <div class="card item button-show button-block whiteSegmentImage">
+      <p id="addPara"> <b>NUS Mochtar
+        Riady Building</b><br>
+        NUS Business 
+        School <br>
+        Contact No: 6774 5898 </p>
+        <div class="google-maps card item">
+         <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8bgrbP8a2jERq776ISMG8ao&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
+         <br />
+       </div>
+     </div>
+     <div class="card item whiteSegmentImage">
+       <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;color:#000;" >Opening hours</p> 
+       <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: 8.00am to 7.00pm</p>
+     </div>
+     <div>
+       <a href="https://www.facebook.com/reedzcafe/" class="button button-show button-block whiteSegmentImage card item" style="color:#000000;text-decoration:none;">Find Out More!</a>   </div>
+     </div>
+   </ion-content>
+ </ion-view>
