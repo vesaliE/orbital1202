@@ -1,29 +1,23 @@
 <ion-view title="The Royals Bistro Café" id="page32" class="backgroundImage" style="font-family:'Open Sans', cursive, sans-serif;font-weight:800px" ng-controller="GeoCtrl">
-
     <ion-content padding="true" class="has-header">
         <button id="aRTFoodHouse-button62" class=" button button-positive  button-block ">Contribute</button>
         <a ui-sref="seeLah15" id="aRTFoodHouse-button63" class=" button button-positive  button-block ">See Lah!!!</a>
-       	<div>
-         <div>
-                <div class="button button-show button-block">
-                 <p style="font-weight:300px; font-size:20px;" >Opening hours</p> 
-                 <p style="font-weight:300px; font-size:18px" > Mon-Sat: 11:00am - 8:30pm</p>
- 				<p style="font-weight:300px; font-size:18px" > Sun &amp PH: Closed</p>
-                 </div>
-		  </div>
-          <div>
-		      	<div class="button button-show button-block">
-				    	<p style="font-weight:300px;font-size:18px" > <b>NUS University Town</b>,<br> Town Plaza,<br> CREATE Tower, Level 1, <br>Singapore 138602</p>
-			 			</div>
-        	</div>
-            <a class="button button-show button-block" href="images/royals_bistro_menu_larger.jpg" style="color:#000000;text-decoration:none;">View Menu</a>  
-        <div class="google-maps">
-            <iframe width="150" height="150" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=The%20Royal%20Bistro%20NUS&key=AIzaSyDqK83MGByK8ut_qkC00WMN1q2QB8vXO5g" allowfullscreen></iframe>
-            <br />
+        <div class="card whiteSegmentImage">
+            <div class="card item button-show button-block whiteSegmentImage">
+                <p id="addPara" > <b>NUS University Town</b><br> Town Plaza,<br>CREATE Tower, Level 1<br>Singapore 138602</p>
+                <div class="google-maps card item">
+                    <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=The%20Royal%20Bistro%20NUS&key=AIzaSyDqK83MGByK8ut_qkC00WMN1q2QB8vXO5g" allowfullscreen></iframe>
+                    <br />
+                </div>
+            </div>
+            <div class="card item whiteSegmentImage">
+               <p style="font-weight:300px; font-size:18px;color:#000;" >Opening hours</p> 
+               <p style="font-weight:300px; font-size:18px;" > Mon-Sat: 11:00am - 8:30pm</p>
+               <p style="font-weight:300px; font-size:18px;" > Sun &amp PH: Closed</p>
+           </div>  
+           <div>
+            <a class="button button-show button-block card item whiteSegmentImage" href="images/royals_bistro_menu_larger.jpg" style="color:#000000;text-decoration:none;">View Menu</a>
         </div>
-       
-        
-     
     </div>
-    </ion-content>
+</ion-content>
 </ion-view>

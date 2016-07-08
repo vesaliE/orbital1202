@@ -9943,3 +9943,11 @@ height:100;
     background-size: cover;
     margin:auto;
 }
+#addPara{
+  font-family:Comic Sans MS,  sans-serif;
+  font-weight:300px; 
+  font-size:18px;
+  color:#000;
+  padding-left:1.5%;
+  padding-top:1.5%;
+}
