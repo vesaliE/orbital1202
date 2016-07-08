@@ -19,42 +19,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         //console.log(restaurants[i]["lat"]);
         var distance = GreatCircle.distance(restaurants[i]["lat"],restaurants[i]["long"], $scope.position.lat, $scope.position.lng);
         restaurants[i]["distance"] = distance;
-        /*
-        var fbName = restaurants[i]["fbName"]; 
-        var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
-        //console.log(locationURL);
-        var newref = new Firebase(locationURL);
-        newref.once("value", function(snapshot) {
-          var num = snapshot.numChildren();
-          //console.log(num);
-          if (num <= 5) {
-                  //color = 'balanced'; 
-                  console.log("< 5");
-                  var color = color0;
-                  var src = "images/greenhuman.png"
-                 restaurants[i]["color"] = color;
-                 restaurants[i]["src"] = src; 
-                //console.log(restaurant.color); 
-
-
-                } else if (num > 5 && num<7) {
-                  console.log("> 5");
-                  //color = 'energized'; 
-                  restaurants[i]["color"] = color1;
-                  restaurants[i]["src"] = "images/orangehuman.png"; 
-                  //console.log(restaurant.color); 
-                  
-                } else if (num >= 7){
-                  console.log("else");
-                  //color = 'assertive'; 
-                  restaurants[i]["color"] = color2;                   
-                  restaurants[i]["src"] = "images/redhuman.png"; 
-                  //console.log(restaurant.color); 
-                } 
-        });
-        //Variables for current time in milliseconds
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();*/
     }
 
       /*
