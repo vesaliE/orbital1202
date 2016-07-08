@@ -1,30 +1,27 @@
-<ion-view title="Spinelli" id="page49" class=" " ng-controller="GeoCtrl">
+<ion-view title="Spinelli" id="page49" class="backgroundImage" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
         <button id="spinelli-button80" class=" button button-positive  button-block ">Contribute</button>
         <a ui-sref="seeLah22" id="spinelli-button81" class=" button button-positive  button-block ">See Lah!!!</a>
         <div class="card whiteSegmentImage"> 
-          <div class="button button-show button-block">
-            <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px" > <b>NUS University Hall</b><br>            
+          <div class="card item button-show button-block whiteSegmentImage">
+            <p id="addPara"> <b>NUS University Hall</b><br>            
                 Tan Chin Tuan Wing,
                 1st Level<br>
                 Contact No:  6777 5025</p>
-            </div>
-        </div>
-        <a href="#/spinelli_Menu" class="button button-show button-block" style="color:#000000;text-decoration:none;">View Menu</a>  
-        <div class="google-maps">
-           <iframe width="300" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJKffnpVca2jERGPybSbqLyxc&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
-           <br />
-       </div>
-
-       <div>
-        <div class="button button-show button-block">
-           <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px;" >Opening hours</p> 
-           <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: <br>8.00am to 6.30pm</p>
-           <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;">For delivery:
-               Minimum order of $25 within a 10 mins walking distance</p>
+                <div class="google-maps card item">
+                   <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJKffnpVca2jERGPybSbqLyxc&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
+                   <br />
+               </div>
            </div>
-           <div >
-
-           </div>
-       </ion-content>
-   </ion-view>
+           <div class="card item whiteSegmentImage">
+               <p style="font-family:  sans-serif; font-weight:300px; font-size:18px;color:#000;" >Opening hours</p> 
+               <p style="font-family:  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: 8.00am to 6.30pm</p>
+               <p style="font-family:  sans-serif; font-weight:300px; font-size:18px;">For delivery:
+                   Minimum order of $25, <br>within a 10 mins walking distance</p>
+               </div>
+               <div >
+                 <a href="#/spinelli_Menu" class="button button-show button-block card item whiteSegmentImage" style="color:#000000;text-decoration:none;">View Menu</a>  
+             </div>
+         </div>
+     </ion-content>
+ </ion-view>
