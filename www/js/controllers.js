@@ -11,6 +11,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       var restaurants = foodFactory.getRestaurants();
       $scope.position = geoLocation.getGeolocation();
+      
          //console.log($scope.position.lat); //for checking purposes
         //console.log($scope.position.lng);
       $scope.numLimit = 3;
@@ -18,42 +19,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         //console.log(restaurants[i]["lat"]);
         var distance = GreatCircle.distance(restaurants[i]["lat"],restaurants[i]["long"], $scope.position.lat, $scope.position.lng);
         restaurants[i]["distance"] = distance;
-        /*
-        var fbName = restaurants[i]["fbName"]; 
-        var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
-        //console.log(locationURL);
-        var newref = new Firebase(locationURL);
-        newref.once("value", function(snapshot) {
-          var num = snapshot.numChildren();
-          //console.log(num);
-          if (num <= 5) {
-                  //color = 'balanced'; 
-                  console.log("< 5");
-                  var color = color0;
-                  var src = "images/greenhuman.png"
-                 restaurants[i]["color"] = color;
-                 restaurants[i]["src"] = src; 
-                //console.log(restaurant.color); 
-
-
-                } else if (num > 5 && num<7) {
-                  console.log("> 5");
-                  //color = 'energized'; 
-                  restaurants[i]["color"] = color1;
-                  restaurants[i]["src"] = "images/orangehuman.png"; 
-                  //console.log(restaurant.color); 
-                  
-                } else if (num >= 7){
-                  console.log("else");
-                  //color = 'assertive'; 
-                  restaurants[i]["color"] = color2;                   
-                  restaurants[i]["src"] = "images/redhuman.png"; 
-                  //console.log(restaurant.color); 
-                } 
-        });
-        //Variables for current time in milliseconds
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();*/
     }
 
       /*
@@ -72,30 +37,55 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         var newref = new Firebase(locationURL);
         newref.once("value", function(snapshot) {
           var num = snapshot.numChildren();
-          //console.log(num);
-          if (num <= 5) {
+          var maxCap = restaurant.capacity;
+          var percentage = num / maxCap;
+          if (num <= 1) {
                   //color = 'balanced'; 
-                  //console.log("< 5"); 
-                 restaurant.color = color0;
-                 restaurant.src = "images/greenhuman.png"; 
-                  //console.log(restaurant.color); 
+              console.log("< 5"); 
+              restaurant.color = color0;
+              restaurant.src = "images/GreenOneBar.png";
+              restaurant.level = "EMPTY";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color); 
 
 
-                } else if (num > 5 && num<7) {
-                  //console.log("> 5");
-                  //color = 'energized'; 
-                  restaurant.color = color1;
-                  restaurant.src = "images/orangehuman.png"; 
-                  //console.log(restaurant.color); 
+          } else if (num <= 3) {
+              console.log("> 5");
+              //color = 'energized'; 
+              restaurant.color = color0;
+              restaurant.src = "images/GreenTwoBar.png";
+              restaurant.level = "EMPTY    ";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color); 
                   
-                } else if (num >= 7){
-                  //console.log("else");
-                  //color = 'assertive'; 
-                  restaurant.color = color2;                   
-                  restaurant.src = "images/redhuman.png"; 
-                  //console.log(restaurant.color); 
-                } 
+          } else if (num <= 4){
+              console.log("else");
+              //color = 'assertive'; 
+              restaurant.color = color1;                   
+              restaurant.src = "images/OrangeThreeBar.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage; 
+              console.log(restaurant.color);
+
+          } else if (num <=6) {
+              console.log("<=5");
+              restaurant.color = color1;
+              restaurant.src = "images/OrangeFourBar.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+          } else if (true) {
+              console.log("else");
+              restaurant.color = color2;
+              restaurant.src = "images/RedFiveBar.png";
+              restaurant.level = "PACKED";
+              restaurant.percentage = percentage;
+              console.log(restaurant.color);
+
+          }
         });
+          
         //Variables for current time in milliseconds
         var currentDate = new Date();
         var currentTime = currentDate.getTime();

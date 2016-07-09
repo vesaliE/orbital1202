@@ -8630,10 +8630,6 @@ progress {
     color: #000000; 
     
   }
-  .button.button-show:hover {
-      color: #ffffff;
-      text-decoration: none;
-       }
   .button.button-positive {
     border-color: transparent;
     background-color: #387ef5;
@@ -9768,11 +9764,11 @@ a.button {
 }
 
 #box1 {
-float: left;
 vertical-align: top;
-height: 100px;
-margin: 0 1.5%;
-width: 30%;
+width: 100%;
+margin: 1.5 1.5%;
+background: 
+
 }
 #box2{
 float: left;
@@ -9938,4 +9934,20 @@ height:100;
         left: 0;
         width: 100% !important;
         height: 100% !important;
+        border:0;
     }
+.whiteSegmentImage {
+    background: url('../../../images/whiteSegmentBackground.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
+}
+#addPara{     /*address paragraph for each template*/
+  font-family:Comic Sans MS, sans-serif;
+  font-weight:300px; 
+  font-size:18px;
+  color:#000;
+  padding-left:1.5%;
+  padding-top:1.5%;
+}
