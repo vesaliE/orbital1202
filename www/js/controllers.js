@@ -1493,12 +1493,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         var closedRef = fb.child("closed").child("bizCanteen");
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        var oneWeek = 1000 * 60 * 60 * 24 * 7;
+        var oneDay = 1000 * 60 * 60 * 24;
         closedRef.on("value", function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
                 var childTime = childSnapshot.child("time").val();
-                var difference = (currentTime - childTime)/(oneWeek);
-                console.log(difference);
+                var difference = (currentTime - childTime)/(oneDay);
+                console.log("closeddiff" + difference);
                 if (difference > 7) {
                     childSnapshot.ref().remove();
                 }
@@ -1515,13 +1515,22 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         closedObject.$bindTo($scope, "closed");
     }
 
-    $scope.getTime = function(time) {
+    $scope.getTimeDay = function(time) {
         var dateObj = new Date(time);
-        var hours = dateObj.getHours();
-        var minutes = dateObj.getMinutes();
-        var month = (dateObj.getMonth() + 1);
-        var day = dateObj.getDate();
-        return day + "/" + month + " " + hours + ":" + minutes;
+        var current = new Date();
+        var commentTime = dateObj.getTime();
+        var currentTime = current.getTime();
+        var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+        return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+        var dateObj = new Date(time);
+        var current = new Date();
+        var commentTime = dateObj.getTime();
+        var currentTime = current.getTime();
+        var day = (currentTime - commentTime)/(1000 * 60);
+        return Math.round(day);
     }
 })
    
@@ -2579,7 +2588,6 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
     $scope.hide = function() {
         var currentName = $state.current.name;
-        console.log(currentName)
         if (currentName==="yumNUS" || currentName==="bizCanteen_contribute") {
             return false;
             console.log('false');
