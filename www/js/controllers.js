@@ -2576,6 +2576,18 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         console.log("click");
         $state.go('yumNUS');
     }
+
+    $scope.hide = function() {
+        var currentName = $state.current.name;
+        console.log(currentName)
+        if (currentName==="yumNUS" || currentName==="bizCanteen_contribute") {
+            return false;
+            console.log('false');
+        } else {
+            return true
+            console.log('true');
+        }
+    }
 });
 
  
