@@ -2570,4 +2570,12 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                 });
 })
 
+
+.controller('navController', function($scope, $state) {
+    $scope.goHome = function() {
+        console.log("click");
+        $state.go('yumNUS');
+    }
+});
+
  
