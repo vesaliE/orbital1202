@@ -40,7 +40,7 @@ var foeCanteen =null;
 
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 
-.run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase) {
+.run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -107,6 +107,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
       subwayUtown  = new GeoFire(locationRef25);
       locationRef26 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksUtown"); 
       starbucksUtown = new GeoFire(locationRef26);
+
 
 
 
