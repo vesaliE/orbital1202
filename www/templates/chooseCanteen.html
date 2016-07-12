@@ -1,6 +1,15 @@
-<ion-view title="Choose Canteen" id="page4" class=" " ng-init="getColorBiz()" ng-controller="GeoCtrl">
+<ion-view title="Choose Canteen" id="page4" class="backgroundImage" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
-        <a ui-sref="bizCanteen" id="chooseCanteen-button22" style="color:#0B0F11;" ng-class="color">Biz Canteen</a>
+        <div ui-sref="bizCanteen" id="chooseCanteen-button22" style="color:#0B0F11; height:80px"; class="button button block blueSegmentImage" ng-init="getColorBiz()">
+        	<div style="float:left">
+	        	<h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Biz Canteen</h1>
+	        	<div style="text-align:left">
+	        		<p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Canteen</p>
+	        	</div>
+	        </div>
+	        <img ng-src="{{color}}" style="height:70px; width:70px; position:relative; top:5px">
+	    </div>
+
         <a ui-sref="fassCanteen" id="chooseCanteen-button19" style="color:#0B0F11;" class=" button button-energized  button-block ">FASS Canteen</a>
         <a ui-sref="flavoursUTown" id="chooseCanteen-button25" style="color:#0B0F11;" class=" button button-balanced  button-block ">Flavours @ UTown</a>
         <a ui-sref="fOECanteen" id="chooseCanteen-button20" style="color:#0B0F11;" class=" button button-assertive  button-block ">FOE Canteen</a>

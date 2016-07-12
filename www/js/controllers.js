@@ -126,14 +126,14 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         if (count <= 5) {
           console.log(count);
           console.log("here at 1!");
-          return $scope.color = 'button button-balanced  button-block';
+          return $scope.color = "../../../images/greenhuman.png"
           
         } else if (count <= 10) {
           console.log("here at else!");
-          return $scope.color = 'button button-energized  button-block';
+          return $scope.color = "images/orangehuman.png";
           
         } else {
-          return $scope.color = 'button button-assertive  button-block';
+          return "../../../image/redhuman.png";
         }
       })
     }
