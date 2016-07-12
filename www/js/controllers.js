@@ -1448,11 +1448,29 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
                     });
                     console.log("done!");
                     $state.go("bizCanteen");
+                } else if ($scope.choice === 1) {
+                    fb.child("food").child("bizCanteen").child(currentTime).set({
+                        name: userName,
+                        comment: input,
+                        option: "images/greenhuman.png",
+                        time: firebaseTime
+                    });
+                    console.log("done!");
+                    $state.go("bizCanteen");
+                } else if ($scope.choice === 2) {
+                    fb.child("food").child("bizCanteen").child(currentTime).set({
+                        name: userName,
+                        comment: input,
+                        option: "images/orangehuman.png",
+                        time: firebaseTime
+                    });
+                    console.log("done!");
+                    $state.go("bizCanteen");
                 } else {
                     fb.child("food").child("bizCanteen").child(currentTime).set({
                         name: userName,
                         comment: input,
-                        option: $scope.choice,
+                        option: "images/redhuman.png",
                         time: firebaseTime
                     });
                     console.log("done!");
@@ -1531,6 +1549,18 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
         var currentTime = current.getTime();
         var day = (currentTime - commentTime)/(1000 * 60);
         return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+        if (number === 1) {
+            return $scope.crowdIcon = "images/greenhuman.png";
+        } else if (number === 2) {
+            return $scope.crowdIcon = "images/orangehuman.png";
+        } else {
+            return $scope.crowdIcon = "images/redhuman.png";
+        }
     }
 })
    
@@ -1844,7 +1874,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       //var getColourCode = new Firebase("http://orbital--1202.firebaseio.com/location");
       var count = 0; 
       var name = null; 
-      var color0 = 'balanced'; 
+      var color0 = 'green'; 
       var color1 = 'orange'; 
       var color2 = 'assertive'; 
       var num = 0;
@@ -1884,7 +1914,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
               console.log("> 5");
               //color = 'energized'; 
               restaurant.color = color0;
-              restaurant.src = "images/GreenTwoBar.png";
+              restaurant.src = "images/greentest.png";
               restaurant.level = "EMPTY    ";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color); 
@@ -1976,6 +2006,7 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
       console.log(restaurant.url); 
       return restaurant.url;
     } */
+
 })
 
 

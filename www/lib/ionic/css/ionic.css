@@ -9903,7 +9903,7 @@ height:100;
 }
 
 .blueSegmentImage {
-    background: url('../../../images/bluesegmentbg.jpg');
+    background: url('../../../images/wood.jpg');
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;
@@ -9918,8 +9918,20 @@ height:100;
     margin:auto;
 }
 
+.circleImage {
+    background: url('../../../images/greentest.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+}
+
 .orange {
   color: #f98646;
+}
+
+.green {
+  color: #20933b;
 }
 
 .google-maps {
@@ -9953,4 +9965,4 @@ height:100;
 }
 
 
-/* IMAGES */
+/* CIRCLE */

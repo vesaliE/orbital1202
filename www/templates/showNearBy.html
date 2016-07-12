@@ -16,19 +16,18 @@
                     <h1 style="font-weight:300px; font-size:15px; display:inline; border-style:solid; border-width:1px; padding-left:5px; padding-right:5px; padding-bottom:2px; color:#4db8ff"> {{ restaurant.venueType }} </h1>
                   </div>
 
-                  <h1 style="font-size:10px; font-family:'Open Sans'; font-weight:bold; font-style:italic; color:#959191; text-align:left; position:relative; top:-20px"> {{ restaurant.level }} </p>
+                  <h1 style="font-size:10px; font-family:'Open Sans'; font-weight:bold; font-style:italic; color:#9d9696; text-align:left; position:relative; top:-20px"> {{ restaurant.level }} </p>
 
-                  <h1 style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px; text-align:left; color:#a6a6a6; position:relative; top:-20px"> {{ distanceTo(restaurant) }} km away</p>
+                  <h1 style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px; text-align:left; color:#9d9696; position:relative; top:-20px"> {{ distanceTo(restaurant) }} km away</p>
                 </div>
 
                 <div style="font-family:'Open Sans', Comic Sans MS, sans-serif"> 
-               
+              
 
-                    <img ng-src="{{restaurant.src}}" style="height:75px; width:50px;position:relative; left:50px; top:5px"/>
-
+                    <img ng-src="{{restaurant.src}}" style="height:75px; width:75px;position:relative; left:50px; top:5px"/>
 
                     <div style="float:right">
-                        <p style="font-size:20px; color:#9d9696; position:relative; top:20px; left:-5px"> {{ restaurant.percent }}% </p>
+                        <p style="font-size:20px; color:#9d9696; position:relative; top:20px; left:-5px" class=""> {{ restaurant.percent }}% </p>
 
                     </div>
                 </div>
