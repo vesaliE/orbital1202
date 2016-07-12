@@ -14,9 +14,12 @@
         <div class="list">
             <h1 class="item" style="font-size:20px"> Other Comments </h1>
             <div ng-repeat="biz in data.bizCanteen" class="item">
-                <div style="float:left"> 
-                    <h1 style="font-size:15px"> {{biz.name}} </h1>
-                    <p style="font-size:15px"> {{biz.comment}} </p>
+                <div style="float:left">
+                    <img ng-src="{{ biz.option }}" style="height:50px; width:50px; float:left"> 
+                    <div style="vertical-align:center">
+                        <h1 style="font-size:15px"> {{biz.name}} </h1>
+                        <p style="font-size:15px"> {{biz.comment}} </p>
+                    </div>
                 </div>
                 	<div class="ion-clock" style="float:right"> {{getTimeMin(biz.time)}}m ago </div> 
                 </p>
