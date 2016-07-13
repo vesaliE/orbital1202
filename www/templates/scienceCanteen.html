@@ -1,27 +1,30 @@
-<ion-view title="Science Canteen - Frontier" id="page16" class=" " ng-controller="GeoCtrl">
-    <ion-content padding="true" class="has-header">
-        <button id="scienceCanteen-button46" class=" button button-positive  button-block ">Contribute!</button>
-        <a ui-sref="seeLah" id="scienceCanteen-button47" class=" button button-positive  button-block ">See Lah!!!</a>
-        <div> 
-            <div>
-                <div class="button button-show button-block">
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px;" >Opening hours</p> 
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: 7.30am to 4.00pm *<br />
-       					Sat: 7.30am to 3.00pm<br />
-        				*Some stalls will be rostered to operate till 8.00pm during term time.<br>Total  No. of Stalls: 13</p>
-                 </div>
-		      </div>
-        	<div class="button button-show button-block">
-				    <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px" > <b>NUS Faculty Of Science </b><br>2 Medical Dr<br> Singapore 117593<br>           
-           	</p>
-			    </div>
-          <div>
-          	<a href="" class="button button-show button-block" style="color:#000000;text-decoration:none;">NONE</a>    
-          </div>
-         <div class="google-maps">
-         <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Science%20Canteen%20NUS&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
-      <br />
-        </div>
+<ion-view title="Science Canteen - Frontier PHASE 1" id="page16" class="backgroundImage" ng-controller="GeoCtrl">
+  <ion-content padding="true" class="has-header">
+    <button id="scienceCanteen-button46" class=" button button-positive  button-block ">Contribute!</button>
+    <a ui-sref="seeLah" id="scienceCanteen-button47" class=" button button-positive  button-block ">See Lah!!!</a>
+    <div class="card whiteSegmentImage">
+      <p id="addPara"> Currently Science Canteen is CLOSED.<br> New Frontier Phase 1 is open <br>with 5 stalls operating.
     </div>
-    </ion-content>
+    <div class="card whiteSegmentImage"> 
+      <div class="card item whiteSegmentImage button-show button-block">
+        <p id="addPara"> <b>NUS Faculty Of Science </b><br>2 Medical Dr<br> Singapore 117593<br>
+        </p>
+        <div class="google-maps card item">
+         <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Science%20Canteen%20NUS&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
+         <br />
+       </div>
+     </div>
+     <div>
+      <div class="card item whiteSegmentImage">
+       <p style="font-family:sans-serif; font-weight:300px; font-size:18px;color:#000;" >Opening hours</p> 
+       <p style="font-family:sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: 7.30am to 4.00pm *<br />
+        Sat: 7.30am to 3.00pm<br />
+        Total  No. of Stalls: 5</p>
+      </div>
+    </div>
+    <div>
+     <a href="#/science_canteen_stalls" class="button button-show button-block card item whiteSegmentImage" style="color:#000000;text-decoration:none;">View Stalls</a>    
+   </div>
+ </div>
+</ion-content>
 </ion-view>

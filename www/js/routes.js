@@ -145,6 +145,13 @@ angular.module('app.routes', [])
     controller: 'scienceCanteenCtrl'
   })
 
+    .state('scienceCanteenStalls', {
+    url: '/science_canteen_stalls',
+    templateUrl: 'templates/scienceCanteenStalls.html',
+    controller: 'scienceCanteenStallsCtrl'
+  })
+
+
   .state('seeLah6', {
     url: '/science_canteen_sl',
     templateUrl: 'templates/seeLah6.html',
