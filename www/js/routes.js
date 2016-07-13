@@ -146,6 +146,12 @@ angular.module('app.routes', [])
     controller: 'yIHFoodJunctionCtrl'
   })
 
+  .state('yIHFoodJunctionStalls', {
+    url: '/yih_food_junction_stalls',
+    templateUrl: 'templates/yIHFoodJunctionStalls.html',
+    controller: 'yIHFoodJunctionStallsCtrl'
+  })
+
   .state('seeLah7', {
     url: '/yih_food_junction_sl',
     templateUrl: 'templates/seeLah7.html',

@@ -1,37 +1,35 @@
-<ion-view title="YIH Food Junction" id="page18" class=" " ng-controller="GeoCtrl">
+<ion-view title="YIH Food Junction" id="page18" class="backgroundImage" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
         <button id="yIHFoodJunction-button48" class=" button button-positive  button-block ">Contribute!</button>
         <a ui-sref="seeLah7" id="yIHFoodJunction-button49" class=" button button-positive  button-block ">See Lah!!!</a>
-         <div>
-                <div class="button button-show button-block">
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:100px; font-size:20px;" >Opening hours</p> 
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >
-                 	Mon-Fri: 8.00am to 8.00pm <br />
-        					Sat: 8.00am to 3.00pm<br>
-        					Total  No. of Stalls: 8
-        					</p>
-                 </div>
-          
-		      <div class="button button-show button-block">
-				    <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px" > <b>NUS Yusof
-            Ishak House</b><br />
-            Level 2<br>            
-           	Contact No: 6774 4940</p>
-			    </div>
-       
-        <div >
-          <a href="" class="button button-show button-block" style="color:#000000;text-decoration:none;">View Menu: Not Done</a>  
+        <div class="card whiteSegmentImage">
+          <div class="card item whiteSegmentImage button-show button-block">
+            <p id="addPara"> <b>NUS Yusof
+                Ishak House</b><br />
+                Level 2<br>            
+                Contact No: 6774 4940</p>
+                <div class="google-maps card item">
+                 <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ6b8PEPga2jEROvB27FERork&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
+                 <br />
+             </div>
          </div>
-         <div class="google-maps">
+         <div class="card item whiteSegmentImage">
+             <p style="font-family:  sans-serif; font-weight:100px; font-size:18px;color:#000;" >Opening hours</p> 
+             <p style="font-family:  sans-serif; font-weight:300px; font-size:18px;" >
+              Mon-Fri: 8.00am to 8.00pm <br />
+              Sat: 8.00am to 3.00pm<br>
+              Total  No. of Stalls: 8
+          </p>
+      </div>
+      <div>
+          <a href="#/yih_food_junction_stalls" class="button button-show button-block card item whiteSegmentImage" style="color:#000000;text-decoration:none;">View Stalls</a>  
+      </div>
 
-         <iframe width="300" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ6b8PEPga2jEROvB27FERork&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe>
-      <br />
-        </div>
-    </div>
+  </div>
 
 
 
 
 
-    </ion-content>
+</ion-content>
 </ion-view>

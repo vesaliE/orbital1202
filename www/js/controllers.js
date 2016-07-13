@@ -1623,6 +1623,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
    
+.controller('yIHFoodJunctionStallsCtrl', function($scope) {
+
+})
+
 .controller('seeLah7Ctrl', function($scope) {
 
 })
