@@ -40,6 +40,12 @@ angular.module('app.routes', [])
     controller: 'bizCanteenCtrl'
   })
 
+  .state('bizCanteenStalls', {
+    url: '/biz_canteen_stalls',
+    templateUrl: 'templates/bizCanteenStalls.html',
+    controller: 'bizCanteenStallsCtrl'
+  })
+
   .state('bizCanteen_contribute', {
     url: '/biz_canteen_contribute',
     templateUrl: 'templates/bizCanteen_contribute.html',

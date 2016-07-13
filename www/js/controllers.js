@@ -143,6 +143,11 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 
 })
 
+.controller('bizCanteenStallsCtrl', function($scope) {
+
+})
+
+
 .controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
 
 
