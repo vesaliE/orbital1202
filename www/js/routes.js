@@ -99,6 +99,12 @@ angular.module('app.routes', [])
     controller: 'fOECanteenCtrl'
   })
 
+  .state('fOECanteenStalls', {
+    url: '/foe_canteen_stalls',
+    templateUrl: 'templates/fOECanteenStalls.html',
+    controller: 'fOECanteenStallsCtrl'
+  })
+
   .state('seeLah4', {
     url: '/foe_canteen_sl',
     templateUrl: 'templates/seeLah4.html',
