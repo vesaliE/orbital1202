@@ -92,6 +92,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/flavoursUTown.html',
     controller: 'flavoursUTownCtrl'
   })
+    .state('flavoursUTownStalls', {
+    url: '/flavours_stalls',
+    templateUrl: 'templates/flavoursUTownStalls.html',
+    controller: 'flavoursUTownStallsCtrl'
+  })
 
   .state('seeLah3', {
     url: '/flavours_sl',

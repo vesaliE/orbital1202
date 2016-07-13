@@ -1588,6 +1588,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('flavoursUTownCtrl', function($scope) {
 
 })
+
+.controller('flavoursUTownStallsCtrl', function($scope) {
+
+})
    
 .controller('seeLah3Ctrl', function($scope) {
 
