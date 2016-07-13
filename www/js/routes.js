@@ -69,6 +69,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/fassCanteen.html',
     controller: 'fassCanteenCtrl'
   })
+    .state('fassCanteenStalls', {
+    url: '/fass_canteen_stalls',
+    templateUrl: 'templates/fassCanteenStalls.html',
+    controller: 'fassCanteenStallsCtrl'
+  })
 
   .state('seeLah2', {
     url: '/fass_canteen_sl',

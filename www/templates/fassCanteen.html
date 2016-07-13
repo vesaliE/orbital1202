@@ -1,27 +1,28 @@
-<ion-view title="Fass Canteen - The Deck" id="page8" class=" " ng-controller="GeoCtrl">
-    <ion-content padding="true" class="has-header">
-        <a ui-sref="seeLah2" id="fassCanteen-button36" class=" button button-positive  button-block ">See Lah!!!</a>
- 
-         <div> 
-            <div>
-                <div class="button button-show button-block">
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:20px;" >Opening hours</p> 
-                 <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: <br>  7.30am to 4.00pm*<br>
-									Sat: 7.30am to 3.00pm<br>
-									*Some stalls operate till 8.00pm during the weekdays.<br>
-        				 Total No. of Stalls: 13</p>
-                 </div>
-		      </div>
-        	<div class="button button-show button-block">
-				    <p style="font-family:Comic Sans MS,  sans-serif; font-weight:300px; font-size:18px" > <b>NUS Faculty of Arts &Social Sciences </b><br>5 Arts Link<br>Singapore 117570<br>           
-			    </div>
-          <div>
-          	<a href="" class="button button-show button-block" style="color:#000000;text-decoration:none;">NONE</a>    
-          </div>
-         <div class="google-maps">
-          <iframe width="300" height="200" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJVVVVJfka2jERZRl7AeJV__s&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe><br />
-        </div>
+<ion-view title="Fass Canteen - The Deck" id="page8" class="backgroundImage" ng-controller="GeoCtrl">
+  <ion-content padding="true" class="has-header">
+    <a ui-sref="seeLah2" id="fassCanteen-button36" class=" button button-positive  button-block ">See Lah!!!</a>
+
+    <div class="card whiteSegmentImage"> 
+
+     <div class="card item whiteSegmentImage button-show button-block">
+      <p id="addPara"> <b>NUS Faculty of Arts & Social Sciences </b><br>5 Arts Link<br>Singapore 117570<br></p>     
+      <div class="google-maps card item">
+        <iframe width="200" height="100" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJVVVVJfka2jERZRl7AeJV__s&key=AIzaSyB_DF8vzm4vFbV3ykwCwZoeQo3Oyx7cXgY" allowfullscreen></iframe><br />
+      </div>      
     </div>
-   </ion-content>
+      <div class="card item whiteSegmentImage">
+      <p style="font-family:sans-serif; font-weight:300px; font-size:18px;color:#000;" >Opening hours</p> 
+       <p style="font-family:sans-serif; font-weight:300px; font-size:18px;" >Mon-Fri: 7.30am to 4.00pm*<br>
+        Sat: 7.30am to 3.00pm<br>
+        *Some stalls operate till 8.00pm during the weekdays.<br>
+        Total No. of Stalls: 13</p>
+      </div>
+
+    <div>
+     <a href="#/fass_canteen_stalls" class="button button-show button-block whiteSegmentImage card item" style="color:#000000;text-decoration:none;">View Stalls</a>    
+   </div>
+
+ </div>
+</ion-content>
 
 </ion-view>

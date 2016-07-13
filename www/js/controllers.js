@@ -1571,6 +1571,10 @@ angular.module('app.controllers', ['firebase', 'app.services','greatCircles'])
 .controller('fassCanteenCtrl', function($scope) {
 
 })
+
+.controller('fassCanteenStallsCtrl', function($scope){
+  
+})
    
 .controller('seeLah2Ctrl', function($scope) {
 
