@@ -3,11 +3,11 @@
     <ion-content padding="true" class="has-header">
         <div   ng-init="colourCode(restaurant)" ng-repeat="restaurant in restaurantList |  orderBy: 'distance' " href='#'>
             <article class="item_frame" >
-                <div class="marker_left_container" >
+                <div class="marker_left_container">
                 <!--h2  ng-class= "{'balanced': restaurant.color == 'balanced', 'energized': restaurant.color =='energized', 'assertive': restaurant.color == 'assertive'}"> {{ restaurant.Name }} </h2 -->
                 <div ng-class= "getColor(restaurant)">
 
-                <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px" class=" button button-intro  button-block blueSegmentImage">
+                <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px; height:130px" class=" button button-intro  button-block blueSegmentImage">
 
                 <h2  ng-class= "getColor(restaurant)" style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-size:20px; font-weight:bold; text-align:left; position:relative; top:10px;"> {{ restaurant.Name }} </h2>
 
@@ -21,15 +21,14 @@
                   <h1 style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px; text-align:left; color:#9d9696; position:relative; top:-20px"> {{ distanceTo(restaurant) }} km away</p>
                 </div>
 
-                <div style="font-family:'Open Sans', Comic Sans MS, sans-serif"> 
-              
+                <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
 
                     <img ng-src="{{restaurant.src}}" style="height:75px; width:75px;position:relative; left:50px; top:5px"/>
 
-                    <div style="float:right">
-                        <p style="font-size:20px; color:#9d9696; position:relative; top:20px; left:-5px" class=""> {{ restaurant.percent }}% </p>
-
+                    <div style="position:absolute; top:20px; left:75px">
+                        {{ restaurant.percent }}%
                     </div>
+                    
                 </div>
                 
                 </a> 
