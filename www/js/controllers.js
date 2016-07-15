@@ -145,7 +145,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.color = "images/orangehuman.png";
+        return $scope.color = "images/testorange.png";
         
       } else {
         return "../../../image/redhuman.png";
