@@ -1821,7 +1821,7 @@ $state.go("yumNUS");
   // spaceRef now points to "images/space.jpg"
   // imagesRef still points to "images"
   var file = 'images/alcove.jpg';
-  var uploadTask = storageRef.child('images/' + file.name).put(file);
+  //var uploadTask = storageRef.child('images/' + file.name).put(file);
 
 })
 //butter my buns see lah page
