@@ -402,6 +402,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/butterMyBunMenu.html',
     controller: 'butterMyBunMenuCtrl'
   })
+     .state('butterMyBunContribute', {
+    url: '/butter_my_bun_contribute',
+    templateUrl: 'templates/butterMyBunContribute.html',
+    controller: 'butterMyBunContributeCtrl'
+  })
   .state('theRoyalsBistroCafe', {
     url: '/the_royals_bistro_cafe',
     templateUrl: 'templates/theRoyalsBistroCafe.html',

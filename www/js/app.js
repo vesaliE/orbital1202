@@ -37,6 +37,7 @@ locationRef24 = null,
 locationRef25 = null, 
 locationRef26 = null;
 var foeCanteen =null; 
+ 
 
 angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 .run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state) {
@@ -65,36 +66,6 @@ push.register(callback);
       // Log out your device token (Save this!)
       console.log("Got Token:",token.token);
     });
-
-    /*var push = new Ionic.Push({
-      "debug": true,
-      "onNotification": function(notification) {
-        var payload = notification.payload;
-        console.log(notification, payload);
-      },
-      "onRegister": function(data) {
-        console.log(data.token);
-      }
-      "pluginConfig": {
-        "ios": {
-          "badge": true,
-          "sound": true
-        },
-        "android": {
-         "iconColor": "#343434"
-       }
-     } 
-   });
-
-    var callback = function(pushToken) {
-      console.log(pushToken.token);
-    }
-
-    push.register(callback);
-    push.register(function(token) {
-     // Log out your device token (Save this!)
-     console.log("Device token:",token.token);
-   });*/
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

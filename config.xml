@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.orbital1202429996" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>orbital1202</name>
-  <description>&#xD;&#xD;
-        An Ionic Framework and Cordova project.&#xD;&#xD;
+  <description>
+        An Ionic Framework and Cordova project.
     </description>
-  <author email="you@example.com" href="http://example.com.com/">&#xD;&#xD;
-      Your Name Here&#xD;&#xD;
+  <author email="you@example.com" href="http://example.com.com/">
+      Your Name Here
     </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -71,14 +71,11 @@
     <splash src="resources/ios/splash/Default@2x~iphone.png" width="640" height="960"/>
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
-<<<<<<< HEAD
+
   <platform name="wp8">
     <icon src="resources/wp8/icon/ApplicationIcon.png" width="99" height="99"/>
     <icon src="resources/wp8/icon/Background.png" width="159" height="159"/>
     <splash src="resources/wp8/splash/SplashScreenImage.png" width="768" height="1280"/>
   </platform>
   <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
-=======
-  <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
->>>>>>> 09a9dcb4294a5fbcc3762844a109cbaae68887d5
 </widget>

@@ -1,6 +1,6 @@
 
 
-angular.module('app.controllers', ['ionic','ionic.service.push','firebase', 'app.services','greatCircles'])
+angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
 .controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush) {
   $ionicPush.init({
@@ -15,8 +15,6 @@ angular.module('app.controllers', ['ionic','ionic.service.push','firebase', 'app
   });
 
   $ionicPush.register();
-
-
 
   var color0 = 'balanced'; 
   var color1 = 'orange'; 
@@ -1698,10 +1696,213 @@ $state.go("yumNUS");
 .controller('butterMyBunCtrl', function($scope) {
 
 })
+//butter my bun contribute page, with storage function
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state){
+  $scope.list = function() {
+    fbAuth = fb.getAuth();
+    if (fbAuth) {
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+    }
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+  }
 
-.controller('seeLah14Ctrl', function($scope) {
+  $scope.choice = null;
+
+  $scope.iconChange = function(clickChoice) {
+    if (clickChoice === $scope.choice) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = null;
+    } else if (clickChoice === 1) {
+      $scope.imageUrl1 = "images/greenhumanclicked.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 1;
+    } else if (clickChoice === 2) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehumanclicked.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 2;
+    } else if (clickChoice === 3) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhumanclicked.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 3;
+    } else if (clickChoice === 4) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesignclicked.png";
+      $scope.choice = 4;
+    }
+  }
+
+  $scope.create = function(input) {
+    if (input !== "") {
+      var userName = null;
+
+      if ($scope.data.hasOwnProperty("butterMyBun") !== true) {
+        $scope.data.butterMyBun = [];
+      }
+
+      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+      userFb.on("value", function(snapshot) {
+        fbAuth = fb.getAuth();
+        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        console.log(fbAuth.uid + " value1");
+        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //console.log(userName + " value2");
+                
+                if ($scope.choice === 4) {
+                  fb.child("closed").child("butterMyBun").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: $scope.choice,
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("butterMyBun");
+                } else if ($scope.choice === 1) {
+                  fb.child("food").child("butterMyBun").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/greenhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("butterMyBun");
+                } else if ($scope.choice === 2) {
+                  fb.child("food").child("butterMyBun").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/orangehuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("butterMyBun");
+                } else {
+                  fb.child("food").child("butterMyBun").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/redhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("butterMyBun");
+                }
+              })
+
+
+    } else {
+      console.log("No comments in the box detected");
+    }
+  }
+   //for storage 
+   var storage = firebase.storage();
+    // Create a storage reference from our storage service
+    var storageRef = storage.ref();
+    console.log("storage");
+    // Create a child reference
+    var imagesRef = storageRef.child('images');
+      // imagesRef now points to 'images'
+  // Child references can also take paths delimited by '/'
+  var spaceRef = storageRef.child('images/space.jpg');
+  // spaceRef now points to "images/space.jpg"
+  // imagesRef still points to "images"
+  var file = 'images/alcove.jpg';
+  var uploadTask = storageRef.child('images/' + file.name).put(file);
 
 })
+//butter my buns see lah page
+.controller('seeLah14Ctrl', function($scope, $firebaseObject, $firebase) {
+    //Filters list for normal comments
+    $scope.filter = function() {
+      var butterRef = fb.child("food").child("butterMyBun");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var fifteen = 15;
+      butterRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > fifteen) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    //Filters list for closed
+    $scope.filterClosed = function() {
+      var closedRef = fb.child("closed").child("butterMyBun");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var oneDay = 1000 * 60 * 60 * 24;
+      closedRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(oneDay);
+          console.log("closeddiff" + difference);
+          if (difference > 7) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    $scope.list = function() {
+
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+
+      var closedObject = $firebaseObject(fb.child("closed"));
+      closedObject.$bindTo($scope, "closed");
+    }
+
+    $scope.getTimeDay = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+      return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60);
+      return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+      if (number === 1) {
+        return $scope.crowdIcon = "images/greenhuman.png";
+      } else if (number === 2) {
+        return $scope.crowdIcon = "images/orangehuman.png";
+      } else {
+        return $scope.crowdIcon = "images/redhuman.png";
+      }
+    }
+
+
+  })
 
 .controller('theRoyalsBistroCafeCtrl', function($scope) {
 
@@ -1727,181 +1928,94 @@ $state.go("yumNUS");
 
 })
 
-.controller('playtpusFoodbarCtrl', function($scope, geoLocation, $ionicLoading, $compile) {
-        /*
-        function initialize() {
-        var myLatlng = new google.maps.LatLng(1.2967775,103.7809592);
-        
-        var mapOptions = {
-          center: myLatlng,
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map"),
-            mapOptions);
-        
-        //Marker + infowindow + angularjs compiled ng-click
-        var contentString = "<div><a ng-click='clickTest()'>Click me!</a></div>";
-        var compiled = $compile(contentString)($scope);
+.controller('playtpusFoodbarCtrl', function($scope) {
 
-        var infowindow = new google.maps.InfoWindow({
-          content: compiled[0]
-        });
+})
 
-        var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
-        });
 
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
-        });
+.controller('seeLah19Ctrl', function($scope) {
 
-        $scope.map = map;
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-      
-      $scope.centerOnMe = function() {
-        if(!$scope.map) {
-          return;
-        }
+})
 
-        $scope.loading = $ionicLoading.show({
-          content: 'Getting current location...',
-          showBackdrop: false
-        });
-         var glocation = geoLocation.getGeolocation();
-        $scope.map.setCenter(new google.maps.LatLng(glocation.lat, glocation.lng));
-          $scope.loading.hide();
-      
-      $scope.clickTest = function() {
-        alert('Example of infowindow with ng-click')
-      };
-      
-    }; */
+.controller('reedzCafeCtrl', function($scope) {
 
-  })
-/*
-    google.maps.event.addDomListener(window, 'load', function() {
-        var myLatlng = new google.maps.LatLng(1.2967775,103.7809592);
- 
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
- 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        var glocation = geoLocation.getGeolocation();
-        //var LatLng = new google.maps.LatLng(glocation.lat, glocation.lng);
-            map.setCenter(new google.maps.LatLng(glocation.lat, glocation.lng);
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
- 
-        $scope.map = map;
-    });
-    $scope.getMap = function(){
-    var glocation = geoLocation.getGeolocation();
-    var latLng = new google.maps.LatLng(glocation.lat, glocation.lng);
-    var mapOptions = {
-      center: latLng,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
- 
-    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    return $scope.map;
-    console.log("Could not get location");
-  }*/
+})
 
-  
-  .controller('seeLah19Ctrl', function($scope) {
+.controller('seeLah20Ctrl', function($scope) {
 
-  })
-  
-  .controller('reedzCafeCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah20Ctrl', function($scope) {
+.controller('saporeItalianoCtrl', function($scope) {
 
-  })
-  
-  .controller('saporeItalianoCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah21Ctrl', function($scope) {
+.controller('seeLah21Ctrl', function($scope) {
 
-  })
-  
-  .controller('spinelliCtrl', function($scope) {
+})
 
-  })
+.controller('spinelliCtrl', function($scope) {
 
-  .controller('spinelliMenuCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah22Ctrl', function($scope) {
+.controller('spinelliMenuCtrl', function($scope) {
 
-  })
-  
-  .controller('spiceTableByPinesCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah23Ctrl', function($scope) {
+.controller('seeLah22Ctrl', function($scope) {
 
-  })
-  
-  .controller('starbucksMD11Ctrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah24Ctrl', function($scope) {
+.controller('spiceTableByPinesCtrl', function($scope) {
 
-  })
-  
-  .controller('starbucksYIHCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah25Ctrl', function($scope) {
+.controller('seeLah23Ctrl', function($scope) {
 
-  })
-  
-  .controller('starbucksUTownCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah26Ctrl', function($scope) {
+.controller('starbucksMD11Ctrl', function($scope) {
 
-  })
-  
-  .controller('universityClubCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah27Ctrl', function($scope) {
+.controller('seeLah24Ctrl', function($scope) {
 
-  })
-  
-  .controller('waaCowCtrl', function($scope) {
+})
 
-  })
-  
-  .controller('seeLah28Ctrl', function($scope) {
+.controller('starbucksYIHCtrl', function($scope) {
 
-  })
-  
-  .controller('pageCtrl', function($scope) {
+})
 
-  })
+.controller('seeLah25Ctrl', function($scope) {
+
+})
+
+.controller('starbucksUTownCtrl', function($scope) {
+
+})
+
+.controller('seeLah26Ctrl', function($scope) {
+
+})
+
+.controller('universityClubCtrl', function($scope) {
+
+})
+
+.controller('seeLah27Ctrl', function($scope) {
+
+})
+
+.controller('waaCowCtrl', function($scope) {
+
+})
+
+.controller('seeLah28Ctrl', function($scope) {
+
+})
+
+.controller('pageCtrl', function($scope) {
+
+})
 /*.controller('GeoCtrl', function($scope, geoLocation) {
     //var posOptions = {timeout: 10000, enableHighAccuracy: false};
     $scope.glocation = function (){

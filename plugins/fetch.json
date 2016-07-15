@@ -45,7 +45,6 @@
             "id": "phonegap-plugin-push"
         },
         "is_top_level": true,
-
         "variables": {
             "SENDER_ID": "315044051864"
         }
@@ -54,6 +53,14 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
         },
         "is_top_level": true,
         "variables": {}
