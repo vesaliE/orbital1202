@@ -15,13 +15,13 @@
             <h1 class="item" style="font-size:20px"> Other Comments </h1>
             <div ng-repeat="biz in data.bizCanteen" class="item">
                 <div style="float:left">
-                    <img ng-src="{{ biz.option }}" style="height:50px; width:50px; float:left"> 
-                    <div style="vertical-align:center">
-                        <h1 style="font-size:15px"> {{biz.name}} </h1>
-                        <p style="font-size:15px"> {{biz.comment}} </p>
+                    <img ng-src="{{ biz.option }}" style="height:50px; width:50px; float:left; position:relative; left:-5px"> 
+                    <div style="vertical-align:center; position:relative; left:3px">
+                        <h1 style="font-size:15px; overflow:visible"> {{biz.name}} </h1>
+                        <p style="font-size:15px; overflow:visible"> {{biz.comment}} </p>
                     </div>
                 </div>
-                	<div class="ion-clock" style="float:right"> {{getTimeMin(biz.time)}}m ago </div> 
+                	<div class="ion-clock" style="float:right;"> {{getTimeMin(biz.time)}}m ago </div> 
                 </p>
             </div>
         </div>    
