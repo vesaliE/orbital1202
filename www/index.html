@@ -6,14 +6,16 @@
     <title></title>
    
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-platform-web-client/dist/ionic.io.bundle.min.js"></script>
    
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
-    <script src="cordova.js"></script>
+    <!-- Cordova is bootstrapped by ionic-platform-web-client, uncomment this if you remove ionic-platform-web-client... -->
+<!-- <script src="cordova.js"></script> -->
 
      <!-- Firebase -->
-    <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/3.2.0/firebase.js"></script>
 
      <!-- GeoFire 
      <script src="https://cdn.firebase.com/libs/geofire/2.0.0/geofire.min.js"></script>
@@ -32,7 +34,7 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
 
     <!-- CSS LINKS -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,600,600italic,700italic,800italic,800' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open%20Sans%3A400%2C300%2C300italic%2C400italic%2C700%2C600%2C600italic%2C700italic%2C800italic%2C800" rel="stylesheet" type="text/css">
     
 
     <style type="text/css">
