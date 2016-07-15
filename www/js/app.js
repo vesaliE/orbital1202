@@ -38,7 +38,7 @@ var locationRef5 = null,
     locationRef26 = null;
 var foeCanteen =null; 
 
-angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
+angular.module('app', ['ionic','ionic.service.core', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
 
 .run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state) {
   $ionicPlatform.ready(function() {
