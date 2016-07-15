@@ -1,6 +1,6 @@
 
 
-angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
+angular.module('app.controllers', ['ionic','ionic.service.push','firebase', 'app.services','greatCircles'])
 
 .controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush) {
   $ionicPush.init({
