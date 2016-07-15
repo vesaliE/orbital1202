@@ -4,8 +4,11 @@
             <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
         	<div ng-repeat="closeStalls in closed.bizCanteen" class="item">
         		<div style="float:left">
-                    <h1 style="font-size:15px; "> {{closeStalls.name}} </h1>
-                    <p style="font-size:15px"> {{closeStalls.comment}} </p>
+                    <img src="images/closesign.png" style="height:50px; width:50px; float:left; position:relative; left:-5px">
+                    <div style="vertical-align:center; position:relative; left:3px">
+                        <h1 style="font-size:15px; overflow:visible"> {{closeStalls.name}} </h1>
+                        <p style="font-size:15px; overflow:visible"> {{closeStalls.comment}} </p>
+                    </div>
                 </div>
         			<div class="ion-clock" style="float:right"> {{getTimeDay(closeStalls.time)}}d ago </div>
         		</p>

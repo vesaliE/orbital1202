@@ -45,8 +45,20 @@
             "id": "phonegap-plugin-push"
         },
         "is_top_level": true,
+<<<<<<< HEAD
         "variables": {
             "SENDER_ID": "315044051864"
         }
+=======
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+>>>>>>> 09a9dcb4294a5fbcc3762844a109cbaae68887d5
     }
 }
