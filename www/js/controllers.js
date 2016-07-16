@@ -1699,7 +1699,7 @@ $state.go("yumNUS");
   var fbAuth = fb.getAuth();
     if(fbAuth) {
         var userReference = fb.child("picture/");
-        var syncArray = $firebaseArray(userReference.child("butterMyBun").child("images"));
+        var syncArray = $firebaseArray(userReference.child("butterMyBun"));
         $scope.images = syncArray;
     } else {
         $state.go("bizCanteenContribute");
@@ -1718,9 +1718,7 @@ $state.go("yumNUS");
       .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
-    //var url = "data:image/jpeg;base64," + data;
-    syncArray.$add({image: data}).then(function() {
-      alert("Image has been uploaded");
+    //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
     userFb.on("value", function(snapshot) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
@@ -1729,16 +1727,15 @@ $state.go("yumNUS");
       console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
                 fb.child("picture").child("butterMyBun").child(currentTime).set({
                   name: userName, 
                   time: firebaseTime,
+                  image: $scope.pictureURL
                 });
                 //console.log("done!");
                 $state.go("butterMyBun");
     })
-
-    });
   }, function(error){
 
   })
