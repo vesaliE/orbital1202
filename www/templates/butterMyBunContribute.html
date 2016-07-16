@@ -1,4 +1,4 @@
-<ion-view title="Leave your comments!" id="page13" class="backgroundImage" ng-init="list()">
+<ion-view title="Leave your comments!" id="page13" class="backgroundImage" ng-init="list()" >
    <ion-content>
         <div>
             <div id="iconPosition">
@@ -13,8 +13,12 @@
 
                 <span class="stretch"></span>
             </div>
+            
+            <div class="button-bar" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center" ng-controller="CameraCtrl">
+                <button ng-click="takePic()" class="button button-block button-white">Take Picture</button>
+            </div>
 
-            <div class="list list-inset" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
+            <div class="list list-inset" style="position:relative; top:30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
                 <label class="item item-input">
                     <input ng-model="comments" type="text" placeholder="Comments" />
                 </label>                

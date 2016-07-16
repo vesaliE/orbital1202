@@ -1693,11 +1693,37 @@ $state.go("yumNUS");
 
 })
 
+.controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebase){
+ $scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.takePic = function(){
+  $cordovaCamera.getPicture({})
+  .then(function(data){
+    console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    var url = "data:image/jpeg;base64," + data;
+      //for storage 
+      var storage = firebase.storage();
+    // Create a storage reference from our storage service
+    var storageRef = storage.ref();
+    console.log("storage");
+    // Create a child reference
+    var imagesRef = storageRef.child('images');
+    var file = 'images/url';
+    //var uploadTask = storageRef.child('images/' + file.name).put(file);
+
+  }, function(error){
+
+  })
+
+}
+
+})
+
 .controller('butterMyBunCtrl', function($scope) {
 
 })
 //butter my bun contribute page, with storage function
-.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state){
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -1808,21 +1834,6 @@ $state.go("yumNUS");
       console.log("No comments in the box detected");
     }
   }
-   //for storage 
-   var storage = firebase.storage();
-    // Create a storage reference from our storage service
-    var storageRef = storage.ref();
-    console.log("storage");
-    // Create a child reference
-    var imagesRef = storageRef.child('images');
-      // imagesRef now points to 'images'
-  // Child references can also take paths delimited by '/'
-  var spaceRef = storageRef.child('images/space.jpg');
-  // spaceRef now points to "images/space.jpg"
-  // imagesRef still points to "images"
-  var file = 'images/alcove.jpg';
-  //var uploadTask = storageRef.child('images/' + file.name).put(file);
-
 })
 //butter my buns see lah page
 .controller('seeLah14Ctrl', function($scope, $firebaseObject, $firebase) {
@@ -2183,14 +2194,8 @@ $state.go("yumNUS");
         console.log(restaurant.color); 
         return restaurant.color; 
       }
-    /*url = restaurant.sref; 
-    $state.go(url)
-    $scope.getURL = function(restaurant){
-      console.log(restaurant.url); 
-      return restaurant.url;
-    } */
 
-  })
+    })
 
 
 .controller('GeoCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation){

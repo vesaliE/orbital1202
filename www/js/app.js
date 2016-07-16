@@ -37,10 +37,10 @@ locationRef24 = null,
 locationRef25 = null, 
 locationRef26 = null;
 var foeCanteen =null; 
- 
+
 
 angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.controllers', 'app.routes', 'app.services', 'app.directives', 'firebase', 'ngCordova'])
-.run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state) {
+.run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state, $cordovaCamera) {
   $ionicPlatform.ready(function() {
     var push = new Ionic.Push({
       "debug": true,
@@ -60,12 +60,36 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
       user.save(); // you NEED to call a save after you add the token
     }
 
-push.register(callback);
+    push.register(callback);
 
     push.register(function(token) {
       // Log out your device token (Save this!)
       console.log("Got Token:",token.token);
     });
+    //cordova Camera plugin
+    document.addEventListener("deviceready", function (){
+
+      var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        allowEdit: true,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 100,
+        targetHeight: 100,
+        popoverOptions: CameraPopoverOptions,
+        saveToPhotoAlbum: false,
+        correctOrientation:true
+      };
+
+      $cordovaCamera.getPicture(options).then(function(imageData) {
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+      }, function(err) {
+      // error
+    });
+
+    }, false);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -76,10 +100,7 @@ push.register(callback);
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-
     fb = new Firebase("http://orbital--1202.firebaseio.com/"); 
-
     locationRef = new Firebase("http://orbital--1202.firebaseio.com/location/zUsers"); 
     geoFire = new GeoFire(locationRef);
     locationRef2 = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen"); 
@@ -132,11 +153,6 @@ push.register(callback);
     subwayUtown  = new GeoFire(locationRef25);
     locationRef26 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksUtown"); 
     starbucksUtown = new GeoFire(locationRef26);
-
-
-
-
-    
 
     var positionOptions = {timeout: 10000, maximumAge:0, enableHighAccuracy: true};
     $cordovaGeolocation

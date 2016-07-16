@@ -22,6 +22,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.orbital1202429996"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.orbital1202429996"
         }
     },
     "dependent_plugins": {
