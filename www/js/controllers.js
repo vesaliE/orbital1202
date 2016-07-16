@@ -804,7 +804,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                     }).then(function(authData) {
                       var glocation = geoLocation.getGeolocation();
                       var user = authData.uid; 
-                      geoFire.set(user, [glocation.lat, glocation.lng]); 
+                      geoFire.set(user, [glocation.lat , glocation.lng]); 
                       var geoQueryBizCanteen = geoFire.query({
                         center: [1.2956205, 103.7741585],
                         radius: 0.05
@@ -1693,37 +1693,66 @@ $state.go("yumNUS");
 
 })
 
-.controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebase){
+.controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebaseArray){
  $scope.pictureURL = "http://placehold.it/50x50"; 
- $scope.takePic = function(){
-  $cordovaCamera.getPicture({})
-  .then(function(data){
-    console.log("camera data: " + angular.toJson(data));
-    $scope.pictureURL = "data:image/jpeg;base64," + data;
-    var url = "data:image/jpeg;base64," + data;
-      //for storage 
-      var storage = firebase.storage();
-    // Create a storage reference from our storage service
-    var storageRef = storage.ref();
-    console.log("storage");
-    // Create a child reference
-    var imagesRef = storageRef.child('images');
-    var file = 'images/url';
-    //var uploadTask = storageRef.child('images/' + file.name).put(file);
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+    if(fbAuth) {
+        var userReference = fb.child("picture/");
+        var syncArray = $firebaseArray(userReference.child("butterMyBun").child("images"));
+        $scope.images = syncArray;
+    } else {
+        $state.go("bizCanteenContribute");
+    }
 
+       $scope.takePic = function(){
+      $cordovaCamera.getPicture({
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,  
+        encodingType: Camera.EncodingType.JPEG,
+        popoverOptions: CameraPopoverOptions,
+        targetWidth: 500,
+        targetHeight: 500,
+        saveToPhotoAlbum: false
+      })
+      .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //var url = "data:image/jpeg;base64," + data;
+    syncArray.$add({image: data}).then(function() {
+      alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("butterMyBun").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                });
+                //console.log("done!");
+                $state.go("butterMyBun");
+    })
+
+    });
   }, function(error){
 
   })
 
-}
+    }
 
-})
+
+  })
 
 .controller('butterMyBunCtrl', function($scope) {
 
 })
 //butter my bun contribute page, with storage function
-.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera){
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -1834,6 +1863,7 @@ $state.go("yumNUS");
       console.log("No comments in the box detected");
     }
   }
+
 })
 //butter my buns see lah page
 .controller('seeLah14Ctrl', function($scope, $firebaseObject, $firebase) {
@@ -1880,6 +1910,9 @@ $state.go("yumNUS");
 
       var closedObject = $firebaseObject(fb.child("closed"));
       closedObject.$bindTo($scope, "closed");
+
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
     }
 
     $scope.getTimeDay = function(time) {
@@ -2201,13 +2234,15 @@ $state.go("yumNUS");
 .controller('GeoCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation){
 
     //$scope.login = function(username, password){
+
       var authData = fb.getAuth();
+      $scope.authData = authData;
       var glocation = geoLocation.getGeolocation();
       var user = authData.uid; 
       var FBtime = Firebase.ServerValue.TIMESTAMP;
 
             //Adding users into zUsers
-            geoFire.set(user, [glocation.lat, glocation.lng]);
+            geoFire.set(user, [glocation.lat , glocation.lng]);
             locationRef.child(user).child("time").set({
               time: FBtime
             });

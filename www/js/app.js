@@ -66,30 +66,6 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
       // Log out your device token (Save this!)
       console.log("Got Token:",token.token);
     });
-    //cordova Camera plugin
-    document.addEventListener("deviceready", function (){
-
-      var options = {
-        quality: 50,
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,
-        allowEdit: true,
-        encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 100,
-        targetHeight: 100,
-        popoverOptions: CameraPopoverOptions,
-        saveToPhotoAlbum: false,
-        correctOrientation:true
-      };
-
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-      }, function(err) {
-      // error
-    });
-
-    }, false);
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

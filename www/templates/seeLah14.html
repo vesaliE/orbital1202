@@ -28,10 +28,24 @@
                 </p>
             </div>
         </div>    
-        <div class="list card" ng-controller="CameraCtrl">
+        <!--div class="list card" ng-controller="CameraCtrl">
                 <div class="item item-image">
                     <img ng-src="{{ pictureURL }}">
                 </div>
+            </div-->
+            <div class="row" ng-repeat="img in images.butterMyBun" >
+            <div class="col col-25" ng-if="$index < images.length">
+                <img ng-src="data:image/jpeg;base64,{{images[$index].img}}" width="100%" />
             </div>
+            <div class="col col-25" ng-if="$index + 1 < images.length">
+                <img ng-src="data:image/jpeg;base64,{{images[$index + 1].img}}" width="100%" />
+            </div>
+            <div class="col col-25" ng-if="$index + 2 < images.length">
+                <img ng-src="data:image/jpeg;base64,{{images[$index + 2].img}}" width="100%" />
+            </div>
+            <div class="col col-25" ng-if="$index + 3 < images.length">
+                <img ng-src="data:image/jpeg;base64,{{images[$index + 3].img}}" width="100%" />
+            </div>
+        </div>
     </ion-content>
 </ion-view>
