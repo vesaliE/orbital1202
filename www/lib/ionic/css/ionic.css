@@ -9887,6 +9887,11 @@ height:100;
     vertical-align:top;
 }
 
+#pos {
+    display:inline-block;
+    vertical-align:top;
+}
+
 .stretch {
     width: 100%;
     display: inline-block;
