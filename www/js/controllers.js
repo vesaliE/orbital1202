@@ -1695,27 +1695,27 @@ $state.go("yumNUS");
 
 .controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebaseArray){
  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-    if(fbAuth) {
-        var userReference = fb.child("picture/");
-        var syncArray = $firebaseArray(userReference.child("butterMyBun"));
-        $scope.images = syncArray;
-    } else {
-        $state.go("bizCanteenContribute");
-    }
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("butterMyBun"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-       $scope.takePic = function(){
-      $cordovaCamera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,  
-        encodingType: Camera.EncodingType.JPEG,
-        popoverOptions: CameraPopoverOptions,
-        targetWidth: 500,
-        targetHeight: 500,
-        saveToPhotoAlbum: false
-      })
-      .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -1735,15 +1735,15 @@ $state.go("yumNUS");
                 });
                 //console.log("done!");
                 $state.go("butterMyBun");
-    })
+              })
   }, function(error){
 
   })
 
-    }
+}
 
 
-  })
+})
 
 .controller('butterMyBunCtrl', function($scope) {
 
@@ -1867,6 +1867,7 @@ $state.go("yumNUS");
     //Filters list for normal comments
     $scope.filter = function() {
       var butterRef = fb.child("food").child("butterMyBun");
+      var butterPicRef = fb.child("picture").child("butterMyBun");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
@@ -1875,10 +1876,21 @@ $state.go("yumNUS");
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > fifteen) {
+          if (difference > 120) {
             childSnapshot.ref().remove();
           }
         })
+      })
+      butterPicRef.on("value", function(snapshot){
+          snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > 120) {
+            childSnapshot.ref().remove();
+          }
+        })
+
       })
     }
 
