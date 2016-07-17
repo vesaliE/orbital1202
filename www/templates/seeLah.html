@@ -1,4 +1,4 @@
-<ion-view title="See Lah!!! (test)" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
+<ion-view title="Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
         <div class="list" style="font-family:'Open Sans'">
             <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
@@ -27,6 +27,7 @@
                 	<div class="ion-clock" style="float:right;"> {{getTimeMin(biz.time)}}m ago </div> 
                 </p>
             </div>
-        </div>    
+        </div>
+        <button ui-sref="temp" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>    
     </ion-content>
 </ion-view>
