@@ -181,14 +181,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.colorBiz = "../../../images/greenhuman.png"
+        return $scope.colorBiz = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.colorBiz = "images/testorange.png";
+        return $scope.colorBiz = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorBiz = "../../../image/redhuman.png";
+        return $scope.colorBiz = "images/redhumantrans.png";
       }
     })
   }
@@ -205,14 +205,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.colorFass = "../../../images/greenhuman.png"
+        return $scope.colorFass = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.colorFass = "images/testorange.png";
+        return $scope.colorFass = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorFass = "../../../image/redhuman.png";
+        return $scope.colorFass = "images/redhumantrans.png";
       }
     })
   }
@@ -229,14 +229,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.colorFlavours = "../../../images/greenhuman.png"
+        return $scope.colorFlavours = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.colorFlavours = "images/testorange.png";
+        return $scope.colorFlavours = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorFlavours = "../../../image/redhuman.png";
+        return $scope.colorFlavours = "images/redhumantrans.png";
       }
     })
   }
@@ -253,14 +253,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("FOEhere at 1!");
-        return $scope.colorFoe = "../../../images/greenhuman.png"
+        return $scope.colorFoe = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("FOEhere at else!");
-        return $scope.colorFoe = "images/testorange.png";
+        return $scope.colorFoe = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorFoe = "../../../image/redhuman.png";
+        return $scope.colorFoe = "images/redhumantrans.png";
       }
     })
   }
@@ -277,14 +277,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.colorKoufu = "../../../images/greenhuman.png"
+        return $scope.colorKoufu = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.colorKoufu = "images/testorange.png";
+        return $scope.colorKoufu = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorKoufu = "../../../image/redhuman.png";
+        return $scope.colorKoufu = "images/redhumantrans.png";
       }
     })
   }
@@ -301,14 +301,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.colorSci = "../../../images/greenhuman.png"
+        return $scope.colorSci = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.colorSci = "images/testorange.png";
+        return $scope.colorSci = "images/orangehumantrans.png";
         
       } else {
-        return $scope.colorSci = "../../../image/redhuman.png";
+        return $scope.colorSci = "images/redhumantrans.png";
       }
     })
   }
@@ -325,14 +325,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.FoodJunction = "../../../images/greenhuman.png"
+        return $scope.FoodJunction = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.FoodJunction = "images/testorange.png";
+        return $scope.FoodJunction = "images/orangehumantrans.png";
         
       } else {
-        return $scope.FoodJunction = "../../../image/redhuman.png";
+        return $scope.FoodJunction = "images/redhumantrans.png";
       }
     })
   }
