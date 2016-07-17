@@ -46,7 +46,7 @@
                
                 <div>
                     
-                    <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px" class=" button button-intro  button-block blueSegmentImage" >
+                    <a href="" ng-href="#/{{restaurant.url}}" style="font-weight:600; text-align:center;line-height:45px; height:130px" class=" button button-intro  button-block blueSegmentImage" >
 
                     <h2  ng-class= "getColor(restaurant)" style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-size:20px; font-weight:bold; text-align:left; position:relative; top:10px;"> {{ restaurant.Name }} </h2>
 
@@ -55,10 +55,18 @@
                         <h1 style="font-weight:300px; font-size:15px; display:inline; border-style:solid; border-width:1px; padding-left:5px; padding-right:5px; padding-bottom:2px; color:#4db8ff"> {{ restaurant.venueType }} </h1>
                         </div>
 
-                        <p style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px; text-align:left; color:#a6a6a6; position:relative; top:20px"> {{ restaurant.distance.toFixed(2)}} km away</p>
+                        <p style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px; text-align:left; color:#a6a6a6; position:relative; top:5px"> {{ restaurant.distance.toFixed(2)}} km away</p>
                     </div >
 
-                    <p style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-weight:300px; font-size:15px;"> <img ng-src="{{restaurant.src}}" style="height:100px; width:100px; position:relative; left:40px; top:5px"/> </p>
+                     <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+                    <img ng-src="{{restaurant.src}}" style="height:75px; width:75px;position:relative; left:50px; top:5px"/>
+
+                    <div style="position:absolute; top:20px; left:75px">
+                        {{ restaurant.percent }}%
+                    </div>
+                    
+                </div>
                     </a> 
                      </div>
                 </div>

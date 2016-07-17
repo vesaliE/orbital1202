@@ -54,48 +54,77 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
           var percentage = num / maxCap;
           if (num <= 1) {
                   //color = 'balanced'; 
-                  console.log("< 5"); 
                   restaurant.color = color0;
-                  restaurant.src = "images/GreenOneBar.png";
+                  restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color); 
 
 
-            } else if (num <= 3) {
-              console.log("> 5");
+            } else if (num <= 2) {
               //color = 'energized'; 
               restaurant.color = color0;
-              restaurant.src = "images/GreenTwoBar.png";
+              restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color); 
               
-            } else if (num <= 4){
-              console.log("else");
+            } else if (num <= 3){
               //color = 'assertive'; 
-              restaurant.color = color1;                   
-              restaurant.src = "images/OrangeThreeBar.png";
-              restaurant.level = "CROWDED";
+              restaurant.color = color0;                   
+              restaurant.src = "images/30.png";
+              restaurant.level = "EMPTY";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color);
 
-            } else if (num <=6) {
-              console.log("<=5");
+            } else if (num <= 4) {
               restaurant.color = color1;
-              restaurant.src = "images/OrangeFourBar.png";
+              restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num; //percentage;
               console.log(restaurant.color);
 
-            } else if (true) {
-              console.log("else");
-              restaurant.color = color2;
-              restaurant.src = "images/RedFiveBar.png";
-              restaurant.level = "PACKED";
-              restaurant.percentage = percentage;
+            } else if (num <= 5) {
+              restaurant.color = color1;
+              restaurant.src = "images/50.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
               console.log(restaurant.color);
 
+            } else if (num <= 6) {
+              restaurant.color = color1;
+              restaurant.src = "images/60.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 7) {
+              restaurant.color = color2;
+              restaurant.src = "images/70.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 8) {
+              restaurant.color = color2;
+              restaurant.src = "images/80.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 9) {
+              restaurant.color = color2;
+              restaurant.src = "images/90.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 10) {
+              restaurant.color = color2;
+              restaurant.src = "images/100.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color)
             }
           });
         
@@ -109,8 +138,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         return restaurant.color; 
       }
       
+      
 
-    })
+})
 
 .controller('chooseCafeCtrl', function($scope) {
 
