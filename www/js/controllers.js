@@ -138,7 +138,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         return restaurant.color; 
       }
       
-      
+
 
 })
 
@@ -153,9 +153,21 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 .controller('chooseCanteenCtrl', function($scope, $firebase) {
   var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
+  var colourFASSCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FASSCanteen");
+  var colourFlavoursCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FlavoursUTown");
+  var colourFOECanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FoeCanteen");
+  var colourKoufuFoodcourt = new Firebase("http://orbital--1202.firebaseio.com/location/KoufuFoodcourt");
+  var colourScienceCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/ScienceCanteen");
+  var colourFoodJunctionYIH = new Firebase("http://orbital--1202.firebaseio.com/location/FoodJunctionYIH");
   $scope.red = 'button button-assertive  button-block';
   $scope.orange = 'button button-energized  button-block';
-  $scope.color = null;
+  $scope.colorBiz = null;
+  $scope.colorFass = null;
+  $scope.colorFlavours = null;
+  $scope.colorFoe = null;
+  $scope.colorKoufu = null;
+  $scope.colorSci = null;
+  $scope.FoodJunction = null;
 
   $scope.getColorBiz = function() {
 
@@ -169,17 +181,162 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.color = "../../../images/greenhuman.png"
+        return $scope.colorBiz = "../../../images/greenhuman.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.color = "images/testorange.png";
+        return $scope.colorBiz = "images/testorange.png";
         
       } else {
-        return "../../../image/redhuman.png";
+        return $scope.colorBiz = "../../../image/redhuman.png";
       }
     })
   }
+
+  $scope.getColorFass = function() {
+
+    var count = 0;
+    colourFASSCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorFass = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorFass = "images/testorange.png";
+        
+      } else {
+        return $scope.colorFass = "../../../image/redhuman.png";
+      }
+    })
+  }
+
+  $scope.getColorFlavours = function() {
+
+    var count = 0;
+    colourFlavoursCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorFlavours = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorFlavours = "images/testorange.png";
+        
+      } else {
+        return $scope.colorFlavours = "../../../image/redhuman.png";
+      }
+    })
+  }
+
+  $scope.getColorFoe = function() {
+
+    var count = 0;
+    colourFOECanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("FOEhere at 1!");
+        return $scope.colorFoe = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("FOEhere at else!");
+        return $scope.colorFoe = "images/testorange.png";
+        
+      } else {
+        return $scope.colorFoe = "../../../image/redhuman.png";
+      }
+    })
+  }
+
+  $scope.getColorKoufu = function() {
+
+    var count = 0;
+    colourKoufuFoodcourt.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorKoufu = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorKoufu = "images/testorange.png";
+        
+      } else {
+        return $scope.colorKoufu = "../../../image/redhuman.png";
+      }
+    })
+  }
+
+  $scope.getColorSci = function() {
+
+    var count = 0;
+    colourScienceCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSci = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSci = "images/testorange.png";
+        
+      } else {
+        return $scope.colorSci = "../../../image/redhuman.png";
+      }
+    })
+  }
+
+  $scope.getColorFoodJunction = function() {
+
+    var count = 0;
+    colourFoodJunctionYIH.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.FoodJunction = "../../../images/greenhuman.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.FoodJunction = "images/testorange.png";
+        
+      } else {
+        return $scope.FoodJunction = "../../../image/redhuman.png";
+      }
+    })
+  }
+
 })
 
 .controller('bizCanteenCtrl', function($scope) {
