@@ -1602,7 +1602,7 @@ $state.go("yumNUS");
 }
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -1720,26 +1720,86 @@ $state.go("yumNUS");
       console.log("No comments in the box detected");
     }
   }
+$scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("bizCanteen"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
+
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("bizCanteen").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("bizCanteen");
+              })
+  }, function(error){
+
+  })
+
+}
 
 }) 
-
+//bizcanteen forum controller 
 .controller('seeLahCtrl', function($scope, $firebaseObject, $firebase) {
 
     //Filters list for normal comments
     $scope.filter = function() {
       var bizRef = fb.child("food").child("bizCanteen");
+      var bizPicRef = fb.child("picture").child("bizCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > fifteen) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
+      })
+      bizPicRef.on("value", function(snapshot){
+          snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > time) {
+            childSnapshot.ref().remove();
+          }
+        })
+
       })
     }
 
@@ -1765,9 +1825,10 @@ $state.go("yumNUS");
 
       var syncObject = $firebaseObject(fb.child("food"));
       syncObject.$bindTo($scope, "data");
-
       var closedObject = $firebaseObject(fb.child("closed"));
       closedObject.$bindTo($scope, "closed");
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
     }
 
     $scope.getTimeDay = function(time) {
@@ -2042,7 +2103,7 @@ $scope.takePic = function(){
 
 })
 //butter my bun contribute page, with storage function
-.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state){
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -2153,6 +2214,54 @@ $scope.takePic = function(){
       console.log("No comments in the box detected");
     }
   }
+   $scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("butterMyBun"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
+
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("butterMyBun").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("butterMyBun");
+              })
+  }, function(error){
+
+  })
+
+}
+
 
 })
 //butter my buns see lah page
@@ -2164,12 +2273,13 @@ $scope.takePic = function(){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
+      var time = 120; 
       butterRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > 120) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
@@ -2179,7 +2289,7 @@ $scope.takePic = function(){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > 120) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
