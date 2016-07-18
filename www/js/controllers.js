@@ -1690,24 +1690,37 @@ $state.go("yumNUS");
   }
 
 }) 
-
+//bizcanteen forum controller 
 .controller('seeLahCtrl', function($scope, $firebaseObject, $firebase) {
 
     //Filters list for normal comments
     $scope.filter = function() {
       var bizRef = fb.child("food").child("bizCanteen");
+      var bizPicRef = fb.child("picture").child("bizCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > fifteen) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
+      })
+      bizPicRef.on("value", function(snapshot){
+          snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > time) {
+            childSnapshot.ref().remove();
+          }
+        })
+
       })
     }
 
@@ -1733,9 +1746,10 @@ $state.go("yumNUS");
 
       var syncObject = $firebaseObject(fb.child("food"));
       syncObject.$bindTo($scope, "data");
-
       var closedObject = $firebaseObject(fb.child("closed"));
       closedObject.$bindTo($scope, "closed");
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
     }
 
     $scope.getTimeDay = function(time) {
@@ -2058,12 +2072,13 @@ $scope.takePic = function(){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
+      var time = 120; 
       butterRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > 120) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
@@ -2073,7 +2088,7 @@ $scope.takePic = function(){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
-          if (difference > 120) {
+          if (difference > time) {
             childSnapshot.ref().remove();
           }
         })
