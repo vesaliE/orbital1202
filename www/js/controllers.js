@@ -1684,7 +1684,7 @@ $state.go("yumNUS");
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("bizCanteen");
+                  $state.go("seeLah");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
                     name: userName,
@@ -1693,7 +1693,7 @@ $state.go("yumNUS");
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("bizCanteen");
+                  $state.go("seeLah");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
                     name: userName,
@@ -1702,7 +1702,7 @@ $state.go("yumNUS");
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("bizCanteen");
+                  $state.go("seeLah");
                 } else {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
                     name: userName,
@@ -1711,7 +1711,7 @@ $state.go("yumNUS");
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("bizCanteen");
+                  $state.go("seeLah");
                 }
               })
 
@@ -2642,7 +2642,7 @@ $scope.takePic = function(){
 
     })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
+.controller('FassContributeCtrl', function($scope, $firebaseObject, $state) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -2697,7 +2697,7 @@ $scope.takePic = function(){
       var userName = null;
 
       if ($scope.data.hasOwnProperty("fassCanteen") !== true) {
-        $scope.data.bizCanteen = [];
+        $scope.data.fassCanteen = [];
       }
 
       var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -2724,7 +2724,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("fassCanteen");
+                  $state.go("seeLah2");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
                     name: userName,
@@ -2733,7 +2733,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("fassCanteen");
+                  $state.go("seeLah2");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
                     name: userName,
@@ -2742,7 +2742,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("fassCanteen");
+                  $state.go("seeLah2");
                 } else {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
                     name: userName,
@@ -2751,7 +2751,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("fassCanteen");
+                  $state.go("seeLah2");
                 }
               })
 

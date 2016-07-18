@@ -425,6 +425,12 @@ angular.module('app.routes', [])
       controller: 'FassContributeCtrl'
   })
 
+  .state('FlavoursContribute', {
+      url: '/Flavours_contribute',
+      templateUrl: 'templates/Flavours_Contribute.html',
+      controller: 'FlavoursContributeCtrl'
+  })
+
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
