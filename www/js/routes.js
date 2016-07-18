@@ -419,6 +419,12 @@ angular.module('app.routes', [])
     controller: 'seeLah15Ctrl'
   })
 
+  .state('FassContribute', {
+      url: '/Fass_contribute',
+      templateUrl: 'templates/Fass_Contribute.html',
+      controller: 'FassContributeCtrl'
+  })
+
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   

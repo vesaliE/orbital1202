@@ -9970,4 +9970,11 @@ height:100;
 }
 
 
-/* CIRCLE */
+/* Darkening after click for image */
+.blackEffect:active {
+    background-color:black;
+}
+
+.blackEffect:active img {
+    opacity: 0.8;
+}
