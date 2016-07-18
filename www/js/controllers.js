@@ -54,48 +54,77 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
           var percentage = num / maxCap;
           if (num <= 1) {
                   //color = 'balanced'; 
-                  console.log("< 5"); 
                   restaurant.color = color0;
-                  restaurant.src = "images/GreenOneBar.png";
+                  restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color); 
 
 
-            } else if (num <= 3) {
-              console.log("> 5");
+            } else if (num <= 2) {
               //color = 'energized'; 
               restaurant.color = color0;
-              restaurant.src = "images/GreenTwoBar.png";
+              restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color); 
               
-            } else if (num <= 4){
-              console.log("else");
+            } else if (num <= 3){
               //color = 'assertive'; 
-              restaurant.color = color1;                   
-              restaurant.src = "images/OrangeThreeBar.png";
-              restaurant.level = "CROWDED";
+              restaurant.color = color0;                   
+              restaurant.src = "images/30.png";
+              restaurant.level = "EMPTY";
               restaurant.percent = num; //percentage; 
               console.log(restaurant.color);
 
-            } else if (num <=6) {
-              console.log("<=5");
+            } else if (num <= 4) {
               restaurant.color = color1;
-              restaurant.src = "images/OrangeFourBar.png";
+              restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num; //percentage;
               console.log(restaurant.color);
 
-            } else if (true) {
-              console.log("else");
-              restaurant.color = color2;
-              restaurant.src = "images/RedFiveBar.png";
-              restaurant.level = "PACKED";
-              restaurant.percentage = percentage;
+            } else if (num <= 5) {
+              restaurant.color = color1;
+              restaurant.src = "images/50.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
               console.log(restaurant.color);
 
+            } else if (num <= 6) {
+              restaurant.color = color1;
+              restaurant.src = "images/60.png";
+              restaurant.level = "CROWDED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 7) {
+              restaurant.color = color2;
+              restaurant.src = "images/70.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 8) {
+              restaurant.color = color2;
+              restaurant.src = "images/80.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 9) {
+              restaurant.color = color2;
+              restaurant.src = "images/90.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color);
+
+            } else if (num <= 10) {
+              restaurant.color = color2;
+              restaurant.src = "images/100.png";
+              restaurant.level = "PACKED";
+              restaurant.percent = num; //percentage;
+              console.log(restaurant.color)
             }
           });
         
@@ -110,7 +139,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       }
       
 
-    })
+
+})
 
 .controller('chooseCafeCtrl', function($scope) {
 
@@ -123,9 +153,21 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 .controller('chooseCanteenCtrl', function($scope, $firebase) {
   var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
+  var colourFASSCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FASSCanteen");
+  var colourFlavoursCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FlavoursUTown");
+  var colourFOECanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FoeCanteen");
+  var colourKoufuFoodcourt = new Firebase("http://orbital--1202.firebaseio.com/location/KoufuFoodcourt");
+  var colourScienceCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/ScienceCanteen");
+  var colourFoodJunctionYIH = new Firebase("http://orbital--1202.firebaseio.com/location/FoodJunctionYIH");
   $scope.red = 'button button-assertive  button-block';
   $scope.orange = 'button button-energized  button-block';
-  $scope.color = null;
+  $scope.colorBiz = null;
+  $scope.colorFass = null;
+  $scope.colorFlavours = null;
+  $scope.colorFoe = null;
+  $scope.colorKoufu = null;
+  $scope.colorSci = null;
+  $scope.FoodJunction = null;
 
   $scope.getColorBiz = function() {
 
@@ -139,17 +181,162 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       if (count <= 5) {
         console.log(count);
         console.log("here at 1!");
-        return $scope.color = "../../../images/greenhuman.png"
+        return $scope.colorBiz = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
         console.log("here at else!");
-        return $scope.color = "images/testorange.png";
+        return $scope.colorBiz = "images/orangehumantrans.png";
         
       } else {
-        return "../../../image/redhuman.png";
+        return $scope.colorBiz = "images/redhumantrans.png";
       }
     })
   }
+
+  $scope.getColorFass = function() {
+
+    var count = 0;
+    colourFASSCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorFass = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorFass = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorFass = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorFlavours = function() {
+
+    var count = 0;
+    colourFlavoursCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorFlavours = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorFlavours = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorFlavours = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorFoe = function() {
+
+    var count = 0;
+    colourFOECanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("FOEhere at 1!");
+        return $scope.colorFoe = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("FOEhere at else!");
+        return $scope.colorFoe = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorFoe = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorKoufu = function() {
+
+    var count = 0;
+    colourKoufuFoodcourt.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorKoufu = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorKoufu = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorKoufu = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorSci = function() {
+
+    var count = 0;
+    colourScienceCanteen.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSci = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSci = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorSci = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorFoodJunction = function() {
+
+    var count = 0;
+    colourFoodJunctionYIH.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.FoodJunction = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.FoodJunction = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.FoodJunction = "images/redhumantrans.png";
+      }
+    })
+  }
+
 })
 
 .controller('bizCanteenCtrl', function($scope) {
