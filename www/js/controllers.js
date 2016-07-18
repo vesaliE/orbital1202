@@ -1570,7 +1570,7 @@ $state.go("yumNUS");
 }
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -1688,6 +1688,53 @@ $state.go("yumNUS");
       console.log("No comments in the box detected");
     }
   }
+$scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("bizCanteen"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
+
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("bizCanteen").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("bizCanteen");
+              })
+  }, function(error){
+
+  })
+
+}
 
 }) 
 //bizcanteen forum controller 
@@ -1950,7 +1997,7 @@ $scope.takePic = function(){
 
 })
 //butter my bun contribute page, with storage function
-.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state){
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -2061,6 +2108,54 @@ $scope.takePic = function(){
       console.log("No comments in the box detected");
     }
   }
+   $scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("butterMyBun"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
+
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("butterMyBun").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("butterMyBun");
+              })
+  }, function(error){
+
+  })
+
+}
+
 
 })
 //butter my buns see lah page

@@ -1,4 +1,4 @@
-<ion-view title="Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
+<ion-view title="Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()">
     <ion-content padding="true" class="has-header">
         <div class="list" style="font-family:'Open Sans'">
             <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
@@ -28,7 +28,7 @@
     </p>
 </div>
 </div>
-<div class="card" ng-repeat="img in image.butterMyBun" >
+<div class="card" ng-repeat="img in image.bizCanteen" >
     <div class="card item" >
         <img ng-src="{{ img.image }}" width="100%" />
         <div style="vertical-align:center; position:relative; left:3px">
