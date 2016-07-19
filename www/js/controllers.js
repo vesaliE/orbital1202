@@ -2081,9 +2081,97 @@ $state.go("yumNUS");
 
 })
 
-.controller('seeLah4Ctrl', function($scope) {
+.controller('seeLah4Ctrl', function($scope, $firebaseObject, $firebase) {
 
-})
+    //Filters list for normal comments
+    $scope.filter = function() {
+      var bizRef = fb.child("food").child("foeCanteen");
+      var flavoursPicRef = fb.child("picture").child("foeCanteen");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var fifteen = 20;
+      var time = 120; 
+      bizRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > fifteen) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+        flavoursPicRef.on("value", function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > time) {
+            childSnapshot.ref().remove();
+          }
+        })
+
+      })
+    }
+
+    //Filters list for closed
+    $scope.filterClosed = function() {
+      var closedRef = fb.child("closed").child("foeCanteen");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var oneDay = 1000 * 60 * 60 * 24;
+      closedRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(oneDay);
+          console.log("closeddiff" + difference);
+          if (difference > 7) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    $scope.list = function() {
+
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+      var closedObject = $firebaseObject(fb.child("closed"));
+      closedObject.$bindTo($scope, "closed");
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
+    }
+
+    $scope.getTimeDay = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+      return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60);
+      return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+      if (number === 1) {
+        return $scope.crowdIcon = "images/greenhuman.png";
+      } else if (number === 2) {
+        return $scope.crowdIcon = "images/orangehuman.png";
+      } else {
+        return $scope.crowdIcon = "images/redhuman.png";
+      }
+    }
+  })
 
 .controller('koufuFoodcourtCtrl', function($scope) {
 
@@ -3167,7 +3255,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("seeLah3");
+                  $state.go("seeLah4");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
                     name: userName,
@@ -3176,7 +3264,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("seeLah3");
+                  $state.go("seeLah4");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
                     name: userName,
@@ -3185,7 +3273,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("seeLah3");
+                  $state.go("seeLah4");
                 } else {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
                     name: userName,
@@ -3194,7 +3282,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("seeLah3");
+                  $state.go("seeLah4");
                 }
               })
 
