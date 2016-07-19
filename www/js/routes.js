@@ -544,6 +544,13 @@ angular.module('app.routes', [])
   })
   
 
+  .state('foodJunctionContribute', {
+    url: '/food_Junction_Contribute',
+    templateUrl: 'templates/foodJunctionContribute.html',
+    controller: 'foodJunctionContributeCtrl'
+  })
+  
+
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
