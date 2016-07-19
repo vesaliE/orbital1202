@@ -2438,7 +2438,9 @@ $state.go("yumNUS");
   }
 
 }) 
+.controller('macdonaldsFOECtrl', function($scope){
 
+})
 .controller('seeLah8Ctrl', function($scope, $firebase, $firebaseObject) {
   $scope.filter = function() {
     var butterRef = fb.child("food").child("macdonaldsFOE");
@@ -2867,7 +2869,7 @@ $state.go("yumNUS");
       var userName = null;
 
       if ($scope.data.hasOwnProperty("subwayUTown") !== true) {
-        $scope.data.subwayYIH = [];
+        $scope.data.subwayUTown= [];
       }
 
       var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -2938,7 +2940,7 @@ $state.go("yumNUS");
     var syncArray = $firebaseArray(userReference.child("subwayUTown"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("seeLah12");
   }
 
   $scope.takePic = function(){
@@ -3176,31 +3178,6 @@ $state.go("yumNUS");
     })
 
     .controller('seeLah7Ctrl', function($scope) {
-
-    })
-
-    .controller('macdonaldsFOECtrl', function($scope) {
-
-    })
-
-    .controller('seeLah8Ctrl', function($scope) {
-
-    })
-
-    .controller('subwayYIHCtrl', function($scope) {
-
-    })
-
-    .controller('seeLah9Ctrl', function($scope) {
-
-    })
-
-
-    .controller('subwayUTownCtrl', function($scope) {
-
-    })
-
-    .controller('seeLah12Ctrl', function($scope) {
 
     })
 
