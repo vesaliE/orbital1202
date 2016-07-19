@@ -3753,7 +3753,7 @@ $scope.takePic = function(){
 })
 
 .controller('royalContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
-$scope.list = function() {
+  $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
       var syncObject = $firebaseObject(fb.child("food"));
@@ -3912,35 +3912,35 @@ $scope.list = function() {
   }
 })
 .controller('seeLah15Ctrl', function($scope, $firebaseObject, $firebase) {
-   $scope.filter = function() {
-      var butterRef = fb.child("food").child("royal");
-      var butterPicRef = fb.child("picture").child("royal");
-      var currentDate = new Date();
-      var currentTime = currentDate.getTime();
-      var fifteen = 20;
-      var time = 120; 
-      butterRef.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > fifteen) {
-            childSnapshot.ref().remove();
-          }
-        })
-      })
-      butterPicRef.on("value", function(snapshot){
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > time) {
-            childSnapshot.ref().remove();
-          }
-        })
+ $scope.filter = function() {
+  var butterRef = fb.child("food").child("royal");
+  var butterPicRef = fb.child("picture").child("royal");
+  var currentDate = new Date();
+  var currentTime = currentDate.getTime();
+  var fifteen = 20;
+  var time = 120; 
+  butterRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > fifteen) {
+        childSnapshot.ref().remove();
+      }
+    })
+  })
+  butterPicRef.on("value", function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > time) {
+        childSnapshot.ref().remove();
+      }
+    })
 
-      })
-    }
+  })
+}
 
     //Filters list for closed
     $scope.filterClosed = function() {
@@ -4003,14 +4003,14 @@ $scope.list = function() {
     }
 
 
-})
+  })
 
 .controller('humbleOriginsCtrl', function($scope) {
 
 })
 
 .controller('humbleContributeCtrl', function($scope, $state, $firebaseObject, $cordovaCamera, $firebaseArray){
-$scope.list = function() {
+  $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
       var syncObject = $firebaseObject(fb.child("food"));
@@ -4171,35 +4171,35 @@ $scope.list = function() {
 
 .controller('seeLah17Ctrl', function($scope, $firebaseObject, $firebase) {
 
-    $scope.filter = function() {
-      var butterRef = fb.child("food").child("humble");
-      var butterPicRef = fb.child("picture").child("humble");
-      var currentDate = new Date();
-      var currentTime = currentDate.getTime();
-      var fifteen = 20;
-      var time = 120; 
-      butterRef.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > fifteen) {
-            childSnapshot.ref().remove();
-          }
-        })
+  $scope.filter = function() {
+    var butterRef = fb.child("food").child("humble");
+    var butterPicRef = fb.child("picture").child("humble");
+    var currentDate = new Date();
+    var currentTime = currentDate.getTime();
+    var fifteen = 20;
+    var time = 120; 
+    butterRef.on("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > fifteen) {
+          childSnapshot.ref().remove();
+        }
       })
-      butterPicRef.on("value", function(snapshot){
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > time) {
-            childSnapshot.ref().remove();
-          }
-        })
+    })
+    butterPicRef.on("value", function(snapshot){
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > time) {
+          childSnapshot.ref().remove();
+        }
+      })
 
-      })
-    }
+    })
+  }
 
     //Filters list for closed
     $scope.filterClosed = function() {
@@ -4261,7 +4261,7 @@ $scope.list = function() {
       }
     }
 
-})
+  })
 
 .controller('hwangSKoreanRestaurantCtrl', function($scope) {
 
@@ -4428,35 +4428,35 @@ $scope.list = function() {
 })
 
 .controller('seeLah18Ctrl', function($scope, $firebaseObject, $firebase) {
-      $scope.filter = function() {
-      var butterRef = fb.child("food").child("hwang");
-      var butterPicRef = fb.child("picture").child("hwang");
-      var currentDate = new Date();
-      var currentTime = currentDate.getTime();
-      var fifteen = 20;
-      var time = 120; 
-      butterRef.on("value", function(snapshot) {
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > fifteen) {
-            childSnapshot.ref().remove();
-          }
-        })
+  $scope.filter = function() {
+    var butterRef = fb.child("food").child("hwang");
+    var butterPicRef = fb.child("picture").child("hwang");
+    var currentDate = new Date();
+    var currentTime = currentDate.getTime();
+    var fifteen = 20;
+    var time = 120; 
+    butterRef.on("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > fifteen) {
+          childSnapshot.ref().remove();
+        }
       })
-      butterPicRef.on("value", function(snapshot){
-        snapshot.forEach(function(childSnapshot){
-          var childTime = childSnapshot.child("time").val();
-          var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > time) {
-            childSnapshot.ref().remove();
-          }
-        })
+    })
+    butterPicRef.on("value", function(snapshot){
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > time) {
+          childSnapshot.ref().remove();
+        }
+      })
 
-      })
-    }
+    })
+  }
 
     //Filters list for closed
     $scope.filterClosed = function() {
@@ -4517,38 +4517,785 @@ $scope.list = function() {
         return $scope.crowdIcon = "images/redhuman.png";
       }
     }
-})
+  })
 
 .controller('playtpusFoodbarCtrl', function($scope) {
 
 })
 
+.controller('platypusContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray,$cordovaCamera) {
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
 
-.controller('seeLah19Ctrl', function($scope) {
+$scope.choice = null;
 
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
+  }
+}
+
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
+
+    if ($scope.data.hasOwnProperty("platypus") !== true) {
+      $scope.data.platypus = [];
+    }
+
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //console.log(userName + " value2");
+                
+                if ($scope.choice === 4) {
+                  fb.child("closed").child("platypus").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: $scope.choice,
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah19");
+                } else if ($scope.choice === 1) {
+                  fb.child("food").child("platypus").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/greenhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah19");
+                } else if ($scope.choice === 2) {
+                  fb.child("food").child("platypus").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/orangehuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah19");
+                } else {
+                  fb.child("food").child("platypus").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/redhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah19");
+                }
+              })
+
+
+  } else {
+    console.log("No comments in the box detected");
+  }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("platypus"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
+
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("platypus").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("seeLah19");
+              })
+  }, function(error){
+
+  })
+
+}
 })
+
+.controller('seeLah19Ctrl', function($scope, $firebaseObject, $firebase) {
+  $scope.filter = function() {
+    var butterRef = fb.child("food").child("platypus");
+    var butterPicRef = fb.child("picture").child("platypus");
+    var currentDate = new Date();
+    var currentTime = currentDate.getTime();
+    var fifteen = 20;
+    var time = 120; 
+    butterRef.on("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > fifteen) {
+          childSnapshot.ref().remove();
+        }
+      })
+    })
+    butterPicRef.on("value", function(snapshot){
+      snapshot.forEach(function(childSnapshot){
+        var childTime = childSnapshot.child("time").val();
+        var difference = (currentTime - childTime)/(1000 * 60);
+        console.log(difference);
+        if (difference > time) {
+          childSnapshot.ref().remove();
+        }
+      })
+
+    })
+  }
+
+    //Filters list for closed
+    $scope.filterClosed = function() {
+      var closedRef = fb.child("closed").child("platypus");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var oneDay = 1000 * 60 * 60 * 24;
+      closedRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(oneDay);
+          console.log("closeddiff" + difference);
+          if (difference > 7) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    $scope.list = function() {
+
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+
+      var closedObject = $firebaseObject(fb.child("closed"));
+      closedObject.$bindTo($scope, "closed");
+
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
+    }
+
+    $scope.getTimeDay = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+      return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60);
+      return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+      if (number === 1) {
+        return $scope.crowdIcon = "images/greenhuman.png";
+      } else if (number === 2) {
+        return $scope.crowdIcon = "images/orangehuman.png";
+      } else {
+        return $scope.crowdIcon = "images/redhuman.png";
+      }
+    }
+
+  })
 
 .controller('reedzCafeCtrl', function($scope) {
 
 })
 
-.controller('seeLah20Ctrl', function($scope) {
+.controller('reedzContributeCtrl', function($scope, $firebaseObject, $state, $firebaseArray, $cordovaCamera) {
+  $scope.list = function() {
+    fbAuth = fb.getAuth();
+    if (fbAuth) {
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+    }
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+  }
 
+  $scope.choice = null;
+
+  $scope.iconChange = function(clickChoice) {
+    if (clickChoice === $scope.choice) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = null;
+    } else if (clickChoice === 1) {
+      $scope.imageUrl1 = "images/greenhumanclicked.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 1;
+    } else if (clickChoice === 2) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehumanclicked.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 2;
+    } else if (clickChoice === 3) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhumanclicked.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 3;
+    } else if (clickChoice === 4) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesignclicked.png";
+      $scope.choice = 4;
+    }
+  }
+
+  $scope.create = function(input) {
+    if (input !== "") {
+      var userName = null;
+
+      if ($scope.data.hasOwnProperty("reedz") !== true) {
+        $scope.data.reedz = [];
+      }
+
+      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+      userFb.on("value", function(snapshot) {
+        fbAuth = fb.getAuth();
+        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        console.log(fbAuth.uid + " value1");
+        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //console.log(userName + " value2");
+                
+                if ($scope.choice === 4) {
+                  fb.child("closed").child("reedz").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: $scope.choice,
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah20");
+                } else if ($scope.choice === 1) {
+                  fb.child("food").child("reedz").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/greenhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah20");
+                } else if ($scope.choice === 2) {
+                  fb.child("food").child("reedz").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/orangehuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah20");
+                } else {
+                  fb.child("food").child("reedz").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/redhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah20");
+                }
+              })
+
+
+    } else {
+      console.log("No comments in the box detected");
+    }
+  }
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("reedz"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
+
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("reedz").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("seeLah20");
+              })
+  }, function(error){
+
+  })
+
+  }
 })
+
+
+.controller('seeLah20Ctrl', function($scope, $firebaseObject, $firebase) {
+ $scope.filter = function() {
+  var butterRef = fb.child("food").child("reedz");
+  var butterPicRef = fb.child("picture").child("reedz");
+  var currentDate = new Date();
+  var currentTime = currentDate.getTime();
+  var fifteen = 20;
+  var time = 120; 
+  butterRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > fifteen) {
+        childSnapshot.ref().remove();
+      }
+    })
+  })
+  butterPicRef.on("value", function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > time) {
+        childSnapshot.ref().remove();
+      }
+    })
+
+  })
+}
+
+    //Filters list for closed
+    $scope.filterClosed = function() {
+      var closedRef = fb.child("closed").child("reedz");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var oneDay = 1000 * 60 * 60 * 24;
+      closedRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(oneDay);
+          console.log("closeddiff" + difference);
+          if (difference > 7) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    $scope.list = function() {
+
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+
+      var closedObject = $firebaseObject(fb.child("closed"));
+      closedObject.$bindTo($scope, "closed");
+
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
+    }
+
+    $scope.getTimeDay = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+      return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60);
+      return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+      if (number === 1) {
+        return $scope.crowdIcon = "images/greenhuman.png";
+      } else if (number === 2) {
+        return $scope.crowdIcon = "images/orangehuman.png";
+      } else {
+        return $scope.crowdIcon = "images/redhuman.png";
+      }
+    }
+
+  })
 
 .controller('saporeItalianoCtrl', function($scope) {
 
 })
 
-.controller('seeLah21Ctrl', function($scope) {
+.controller('saporeContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
+  $scope.list = function() {
+    fbAuth = fb.getAuth();
+    if (fbAuth) {
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+    }
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+  }
 
+  $scope.choice = null;
+
+  $scope.iconChange = function(clickChoice) {
+    if (clickChoice === $scope.choice) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = null;
+    } else if (clickChoice === 1) {
+      $scope.imageUrl1 = "images/greenhumanclicked.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 1;
+    } else if (clickChoice === 2) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehumanclicked.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 2;
+    } else if (clickChoice === 3) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhumanclicked.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 3;
+    } else if (clickChoice === 4) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesignclicked.png";
+      $scope.choice = 4;
+    }
+  }
+
+  $scope.create = function(input) {
+    if (input !== "") {
+      var userName = null;
+
+      if ($scope.data.hasOwnProperty("sapore") !== true) {
+        $scope.data.sapore = [];
+      }
+
+      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+      userFb.on("value", function(snapshot) {
+        fbAuth = fb.getAuth();
+        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        console.log(fbAuth.uid + " value1");
+        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //console.log(userName + " value2");
+                
+                if ($scope.choice === 4) {
+                  fb.child("closed").child("sapore").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: $scope.choice,
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah21");
+                } else if ($scope.choice === 1) {
+                  fb.child("food").child("sapore").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/greenhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah21");
+                } else if ($scope.choice === 2) {
+                  fb.child("food").child("sapore").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/orangehuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah21");
+                } else {
+                  fb.child("food").child("sapore").child(currentTime).set({
+                    name: userName,
+                    comment: input,
+                    option: "images/redhuman.png",
+                    time: firebaseTime
+                  });
+                  console.log("done!");
+                  $state.go("seeLah21");
+                }
+              })
+
+
+    } else {
+      console.log("No comments in the box detected");
+    }
+  }
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("sapore"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
+
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("sapore").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                //console.log("done!");
+                $state.go("seeLah21");
+              })
+  }, function(error){
+
+  })
+
+  }
 })
+.controller('seeLah21Ctrl', function($scope, $firebase, $firebaseObject) {
+ $scope.filter = function() {
+  var butterRef = fb.child("food").child("sapore");
+  var butterPicRef = fb.child("picture").child("sapore");
+  var currentDate = new Date();
+  var currentTime = currentDate.getTime();
+  var fifteen = 20;
+  var time = 120; 
+  butterRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > fifteen) {
+        childSnapshot.ref().remove();
+      }
+    })
+  })
+  butterPicRef.on("value", function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > time) {
+        childSnapshot.ref().remove();
+      }
+    })
+
+  })
+}
+   //Filters list for closed
+    $scope.filterClosed = function() {
+      var closedRef = fb.child("closed").child("sapore");
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      var oneDay = 1000 * 60 * 60 * 24;
+      closedRef.on("value", function(snapshot) {
+        snapshot.forEach(function(childSnapshot) {
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(oneDay);
+          console.log("closeddiff" + difference);
+          if (difference > 7) {
+            childSnapshot.ref().remove();
+          }
+        })
+      })
+    }
+
+    $scope.list = function() {
+
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
+
+      var closedObject = $firebaseObject(fb.child("closed"));
+      closedObject.$bindTo($scope, "closed");
+
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
+    }
+
+    $scope.getTimeDay = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60 * 60 * 24);
+      return Math.round(day);
+    }
+
+    $scope.getTimeMin = function(time) {
+      var dateObj = new Date(time);
+      var current = new Date();
+      var commentTime = dateObj.getTime();
+      var currentTime = current.getTime();
+      var day = (currentTime - commentTime)/(1000 * 60);
+      return Math.round(day);
+    }
+
+    $scope.crowdIcon = null;
+
+    $scope.getImage = function(number) {
+      if (number === 1) {
+        return $scope.crowdIcon = "images/greenhuman.png";
+      } else if (number === 2) {
+        return $scope.crowdIcon = "images/orangehuman.png";
+      } else {
+        return $scope.crowdIcon = "images/redhuman.png";
+      }
+    }
+  })
 
 .controller('spinelliCtrl', function($scope) {
 
 })
 
 .controller('spinelliMenuCtrl', function($scope) {
+
+})
+.controller('spinelliContributeCtrl', function($scope) {
 
 })
 

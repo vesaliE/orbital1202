@@ -480,6 +480,22 @@ angular.module('app.routes', [])
     templateUrl: 'templates/royalContribute.html',
     controller: 'royalContributeCtrl'
   })
+    .state('platypusContribute', {
+    url: '/platypus_Contribute',
+    templateUrl: 'templates/platypusContribute.html',
+    controller: 'platypusContributeCtrl'
+  })
+    .state('reedzContribute', {
+    url: '/reedz_Contribute',
+    templateUrl: 'templates/reedzContribute.html',
+    controller: 'reedzContributeCtrl'
+  })
+    .state('saporeContribute', {
+    url: '/sapore_Contribute',
+    templateUrl: 'templates/saporeContribute.html',
+    controller: 'saporeContributeCtrl'
+  })
+
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
