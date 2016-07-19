@@ -284,6 +284,54 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     })
   }
 
+  $scope.getColorBistro = function() {
+
+    var count = 0;
+    linkBistro.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorBistro = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorBistro = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorBistro = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorPlatypus = function() {
+
+    var count = 0;
+    linkPlatypus.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorPlatypus = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorPlatypus = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorPlatypus = "images/redhumantrans.png";
+      }
+    })
+  }
+
 
 })
 
