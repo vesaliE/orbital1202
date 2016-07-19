@@ -430,6 +430,12 @@ angular.module('app.routes', [])
       templateUrl: 'templates/Flavours_Contribute.html',
       controller: 'FlavoursContributeCtrl'
   })
+  .state('macdonaldsFOEContribute', {
+      url: '/macdonalds_foe_contribute',
+      templateUrl: 'templates/macdonaldsFoeContribute.html',
+      controller: 'macdonaldsFOEContributeCtrl'
+  })
+
 
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
