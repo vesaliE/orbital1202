@@ -443,6 +443,12 @@ angular.module('app.routes', [])
       controller: 'KoufuContributeCtrl'
   })
 
+  .state('ScienceContribute', {
+      url: '/Science_Contribute',
+      templateUrl: 'templates/Science_Contribute.html',
+      controller: 'ScienceContributeCtrl'
+  })
+
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
