@@ -135,6 +135,19 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         console.log(restaurant.color); 
         return restaurant.color; 
       }
+
+      $scope.userName = null;
+
+      $scope.getUsername = function() {
+          var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+          userFb.on("value", function(snapshot) {
+              var fireAuth = fb.getAuth();
+              $scope.userName = snapshot.child(fireAuth.uid).child("forumName").val();
+              console.log(fireAuth.uid);
+              console.log($scope.userName);
+          })
+
+      }
       
       $scope.logout = function() {
           var confirmLogout = $ionicPopup.confirm({
