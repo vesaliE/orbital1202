@@ -458,6 +458,11 @@ angular.module('app.routes', [])
       url: '/Science_Contribute',
       templateUrl: 'templates/Science_Contribute.html',
       controller: 'ScienceContributeCtrl'
+  })  
+  .state('alcoveContribute', {
+      url: '/alcove_Contribute',
+      templateUrl: 'templates/alcoveContribute.html',
+      controller: 'alcoveContributeCtrl'
   })
 
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
