@@ -509,7 +509,7 @@ angular.module('app.routes', [])
   })
   
 
-  .state('staebucksMD11Contribute', {
+  .state('starbucksMD11Contribute', {
     url: '/starbucks_MD11_Contribute',
     templateUrl: 'templates/starbucksMD11Contribute.html',
     controller: 'starbucksMD11ContributeCtrl'
