@@ -1,33 +1,43 @@
 <ion-view title="Flavours Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
+        <button ui-sref="FlavoursContribute" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>  
         <div class="list" style="font-family:'Open Sans'">
             <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
-        	<div ng-repeat="closeStalls in closed.flavoursCanteen" class="item">
-        		<div style="float:left">
-                    <img src="images/closesign.png" style="height:50px; width:50px; float:left; position:relative; left:-5px">
-                    <div style="vertical-align:center; position:relative; left:3px">
-                        <h1 style="font-size:15px; overflow:visible"> {{closeStalls.name}} </h1>
-                        <p style="font-size:15px; overflow:visible"> {{closeStalls.comment}} </p>
-                    </div>
+            <div ng-repeat="closeStalls in closed.flavoursCanteen" class="item">
+              <div style="float:left">
+                <img src="images/closesign.png" style="height:50px; width:50px; float:left; position:relative; left:-5px">
+                <div style="vertical-align:center; position:relative; left:3px">
+                    <h1 style="font-size:15px; overflow:visible"> {{closeStalls.name}} </h1>
+                    <p style="font-size:15px; overflow:visible"> {{closeStalls.comment}} </p>
                 </div>
-        			<div class="ion-clock" style="float:right"> {{getTimeDay(closeStalls.time)}}d ago </div>
-        		</p>
-        	</div>
-        </div>
-        <div class="list">
-            <h1 class="item" style="font-size:20px"> Other Comments </h1>
-            <div ng-repeat="flavours in data.flavoursCanteen" class="item">
-                <div style="float:left">
-                    <img ng-src="{{ flavours.option }}" style="height:50px; width:50px; float:left; position:relative; left:-5px"> 
-                    <div style="vertical-align:center; position:relative; left:3px">
-                        <h1 style="font-size:15px; overflow:visible"> {{flavours.name}} </h1>
-                        <p style="font-size:15px; overflow:visible"> {{flavours.comment}} </p>
-                    </div>
-                </div>
-                	<div class="ion-clock" style="float:right;"> {{getTimeMin(flavours.time)}}m ago </div> 
-                </p>
+            </div>
+            <div class="ion-clock" style="float:right"> {{getTimeDay(closeStalls.time)}}d ago </div>
+        </p>
+    </div>
+</div>
+<div class="list">
+    <h1 class="item" style="font-size:20px"> Other Comments </h1>
+    <div ng-repeat="flavours in data.flavoursCanteen" class="item">
+        <div style="float:left">
+            <img ng-src="{{ flavours.option }}" style="height:50px; width:50px; float:left; position:relative; left:-5px"> 
+            <div style="vertical-align:center; position:relative; left:3px">
+                <h1 style="font-size:15px; overflow:visible"> {{flavours.name}} </h1>
+                <p style="font-size:15px; overflow:visible"> {{flavours.comment}} </p>
             </div>
         </div>
-        <button ui-sref="FlavoursContribute" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>    
-    </ion-content>
+        <div class="ion-clock" style="float:right;"> {{getTimeMin(flavours.time)}}m ago </div> 
+    </p>
+</div>
+</div>
+<div class="card" ng-repeat="img in image.flavoursCanteen" >
+    <div class="card item" >
+        <img ng-src="{{ img.image }}" width="100%" />
+        <div style="vertical-align:center; position:relative; left:3px">
+            <h1  style="font-size:15px; overflow:visible"> {{img.name}} </h1>
+            <div class="ion-clock" style="float:right;"> {{getTimeMin(img.time)}}m ago </div> 
+        </div>
+    </div>
+</div>
+
+</ion-content>
 </ion-view>

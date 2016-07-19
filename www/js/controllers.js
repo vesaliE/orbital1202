@@ -1879,9 +1879,11 @@ $state.go("yumNUS");
     //Filters list for normal comments
     $scope.filter = function() {
       var bizRef = fb.child("food").child("fassCanteen");
+      var fassPicRef = fb.child("picture").child("fassCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 15;
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -1891,6 +1893,17 @@ $state.go("yumNUS");
             childSnapshot.ref().remove();
           }
         })
+      })
+        fassPicRef.on("value", function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > time) {
+            childSnapshot.ref().remove();
+          }
+        })
+
       })
     }
 
@@ -1916,9 +1929,10 @@ $state.go("yumNUS");
 
       var syncObject = $firebaseObject(fb.child("food"));
       syncObject.$bindTo($scope, "data");
-
       var closedObject = $firebaseObject(fb.child("closed"));
       closedObject.$bindTo($scope, "closed");
+       var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
     }
 
     $scope.getTimeDay = function(time) {
@@ -1965,9 +1979,11 @@ $state.go("yumNUS");
     //Filters list for normal comments
     $scope.filter = function() {
       var bizRef = fb.child("food").child("flavoursCanteen");
+      var flavoursPicRef = fb.child("picture").child("flavoursCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      var fifteen = 15;
+      var fifteen = 20;
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -1977,6 +1993,17 @@ $state.go("yumNUS");
             childSnapshot.ref().remove();
           }
         })
+      })
+        flavoursPicRef.on("value", function(snapshot){
+        snapshot.forEach(function(childSnapshot){
+          var childTime = childSnapshot.child("time").val();
+          var difference = (currentTime - childTime)/(1000 * 60);
+          console.log(difference);
+          if (difference > time) {
+            childSnapshot.ref().remove();
+          }
+        })
+
       })
     }
 
@@ -2002,9 +2029,10 @@ $state.go("yumNUS");
 
       var syncObject = $firebaseObject(fb.child("food"));
       syncObject.$bindTo($scope, "data");
-
       var closedObject = $firebaseObject(fb.child("closed"));
       closedObject.$bindTo($scope, "closed");
+      var imageObject = $firebaseObject(fb.child("picture"));
+      imageObject.$bindTo($scope, "image"); 
     }
 
     $scope.getTimeDay = function(time) {
@@ -2889,6 +2917,7 @@ $scope.takePic = function(){
     if (fbAuth) {
       var syncObject = $firebaseObject(fb.child("food"));
       syncObject.$bindTo($scope, "data");
+
     }
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
@@ -3039,7 +3068,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                $state.go("flavoursCanteen");
+                $state.go("seeLah3");
               })
   }, function(error){
 
