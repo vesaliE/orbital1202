@@ -1778,7 +1778,7 @@ $state.go("yumNUS");
       var bizPicRef = fb.child("picture").child("bizCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      var fifteen = 15;
+      var fifteen = 20;
       var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
@@ -1882,7 +1882,7 @@ $state.go("yumNUS");
       var fassPicRef = fb.child("picture").child("fassCanteen");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      var fifteen = 15;
+      var fifteen = 20;
       var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
@@ -2374,7 +2374,7 @@ $scope.takePic = function(){
       var butterPicRef = fb.child("picture").child("butterMyBun");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      var fifteen = 15;
+      var fifteen = 20;
       var time = 120; 
       butterRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
