@@ -9971,7 +9971,7 @@ height:100;
 
 
 /* Darkening after click for image */
-.blackEffect:active {
+.blackEffect.active {
     background-color:black;
 }
 
@@ -9985,6 +9985,6 @@ height:100;
 
 /* Darkening for background colour */
 
-.blackBgEffect: active {
+.blackBgEffect:active {
   background-color:#c8cbcb;
 }
