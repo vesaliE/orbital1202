@@ -1,6 +1,8 @@
-<ion-view title="Flavours Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()">
+<ion-view title="McDonald's Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()">
 	<ion-content padding="true" class="has-header">
-		<button ui-sref="macdonaldsFOEContribute" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>  
+		<div class="list" style="font-family:'Open Sans'">
+			<button ui-sref="macdonaldsFOEContribute"  class="item button button-block" style="font-size:20px; text-align:center;">Contribute!</button>  
+		</div>
 		<div class="list" style="font-family:'Open Sans'">
 			<h1 class="item" style="font-size:20px"> Closed Stalls </h1>
 			<div ng-repeat="closeStalls in closed.macdonaldsFOE" class="item">
