@@ -432,9 +432,15 @@ angular.module('app.routes', [])
   })
 
   .state('FoeContribute', {
-      url: 'Foe_Contribute',
+      url: '/Foe_Contribute',
       templateUrl: 'templates/Foe_Contribute.html',
       controller: 'FoeContributeCtrl'
+  })
+  
+  .state('KoufuContribute', {
+      url: '/Koufu_Contribute',
+      templateUrl: 'templates/Koufu_Contribute.html',
+      controller: 'KoufuContributeCtrl'
   })
 
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
