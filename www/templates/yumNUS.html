@@ -1,5 +1,7 @@
-
 <ion-view hide-back-button="true" title="yumNUS" id="page1" style="background-color:#30231d; font-family:Comic Sans MS, cursive, sans-serif;font-weight:800px" ng-controller="GeoCtrl"  class="backgroundImage">
+    <ion-nav-buttons side="left">
+        <button class="ion-android-settings" style="font-size:25px !important;" ng-click="logout()"></button>
+    </ion-nav-buttons>
     <ion-content padding="true" class="has-header">
         <!-- previous code
         <a ui-sref="showNearBy" id="yumNUS-button40" style="font-weight:600; text-align:center;line-height:45px;" class="blueSegmentImage button button-intro  button-block  icon-right ion-chevron-right"><img src="images/gps_logo.png" class= "img"/> Show Nearby!</a>

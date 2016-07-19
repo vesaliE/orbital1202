@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
-.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush) {
+.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush, $ionicPopup, $state) {
   $ionicPush.init({
     "debug": true,
     "onNotification": function(notification) {
@@ -136,6 +136,22 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         return restaurant.color; 
       }
       
+      $scope.logout = function() {
+          var confirmLogout = $ionicPopup.confirm({
+              title: 'Logging out',
+              template: 'Do you want to logout?'
+          });
+
+          confirmLogout.then(function(res) {
+              if (res) {
+                  fb.unauth();
+                  $state.go('bizCanteen_contribute')
+                  console.log("logout");
+              } else {
+                  console.log("dont logout");
+              }
+          })
+      }
 
 
     })

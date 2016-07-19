@@ -9915,11 +9915,6 @@ height:100;
     margin:auto;
 }
 
-.blueSegmentImage.active, .blueSegmentImage.activated {
-    background-color:#000;
-    opacity:0.5;
-}
-
 .lightredImage {
     background: url('../../../images/lightredbg.jpg');
     background-repeat: no-repeat;
