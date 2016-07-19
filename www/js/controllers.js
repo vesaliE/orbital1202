@@ -159,20 +159,20 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.colorUniversity = null;
   $scope.colorWaaCow = null;
 
-  var linkAlcove = new Firebase("http://orbital--1202.firebaseio.com/location/AlcoveAsianRestaurantBar");
-  var linkButter = new Firebase("http://orbital--1202.firebaseio.com/location/ButterMyBun");
-  var linkHumble = new Firebase("http://orbital--1202.firebaseio.com/location/HumbleOrigins");
-  var linkHwang = new Firebase("http://orbital--1202.firebaseio.com/location/HwangRestaurant");
-  var linkBistro = new Firebase("http://orbital--1202.firebaseio.com/location/TheRoyalsBistroCafe");
-  var linkPlatypus = new Firebase("http://orbital--1202.firebaseio.com/location/PlatypusFoodBar");
-  var linkReedz = new Firebase("http://orbital--1202.firebaseio.com/location/ReedzCafé");
-  var linkSapore = new Firebase("http://orbital--1202.firebaseio.com/location/SaporeItaliano");
-  var linkSpinelli = new Firebase("http://orbital--1202.firebaseio.com/location/Spinelli");
-  var linkSpice = new Firebase("http://orbital--1202.firebaseio.com/location/SpiceTablebyPines");
-  var linkStarbucksMD11 = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksMD11");
-  var linkStarbucksYIH = new Firebase("http://orbital--1202.firebaseio.com/location/StarbucksYIH");
-  var linkUniversity = new Firebase("http://http://orbital--1202.firebaseio.com/location/UniversityClub");
-  var linkWaaCow = new Firebase("http://orbital--1202.firebaseio.com/location/WaaCow");
+  var linkAlcove = new Firebase("https://orbital--1202.firebaseio.com/location/AlcoveAsianRestaurantBar");
+  var linkButter = new Firebase("https://orbital--1202.firebaseio.com/location/ButterMyBun");
+  var linkHumble = new Firebase("https://orbital--1202.firebaseio.com/location/HumbleOrigins");
+  var linkHwang = new Firebase("https://orbital--1202.firebaseio.com/location/HwangRestaurant");
+  var linkBistro = new Firebase("https://orbital--1202.firebaseio.com/location/TheRoyalsBistroCafe");
+  var linkPlatypus = new Firebase("https://orbital--1202.firebaseio.com/location/PlatypusFoodBar");
+  var linkReedz = new Firebase("https://orbital--1202.firebaseio.com/location/ReedzCafé");
+  var linkSapore = new Firebase("https://orbital--1202.firebaseio.com/location/SaporeItaliano");
+  var linkSpinelli = new Firebase("https://orbital--1202.firebaseio.com/location/Spinelli");
+  var linkSpice = new Firebase("https://orbital--1202.firebaseio.com/location/SpiceTablebyPines");
+  var linkStarbucksMD11 = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksMD11");
+  var linkStarbucksYIH = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksYIH");
+  var linkUniversity = new Firebase("https://orbital--1202.firebaseio.com/location/UniversityClub");
+  var linkWaaCow = new Firebase("https://orbital--1202.firebaseio.com/location/WaaCow");
 
 })
 
@@ -184,13 +184,13 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 
 .controller('chooseCanteenCtrl', function($scope, $firebase) {
-  var colourBizCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/BIZCanteen");
-  var colourFASSCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FASSCanteen");
-  var colourFlavoursCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FlavoursUTown");
-  var colourFOECanteen = new Firebase("http://orbital--1202.firebaseio.com/location/FoeCanteen");
-  var colourKoufuFoodcourt = new Firebase("http://orbital--1202.firebaseio.com/location/KoufuFoodcourt");
-  var colourScienceCanteen = new Firebase("http://orbital--1202.firebaseio.com/location/ScienceCanteen");
-  var colourFoodJunctionYIH = new Firebase("http://orbital--1202.firebaseio.com/location/FoodJunctionYIH");
+  var colourBizCanteen = new Firebase("https://orbital--1202.firebaseio.com/location/BIZCanteen");
+  var colourFASSCanteen = new Firebase("https://orbital--1202.firebaseio.com/location/FASSCanteen");
+  var colourFlavoursCanteen = new Firebase("https://orbital--1202.firebaseio.com/location/FlavoursUTown");
+  var colourFOECanteen = new Firebase("https://orbital--1202.firebaseio.com/location/FoeCanteen");
+  var colourKoufuFoodcourt = new Firebase("https://orbital--1202.firebaseio.com/location/KoufuFoodcourt");
+  var colourScienceCanteen = new Firebase("https://orbital--1202.firebaseio.com/location/ScienceCanteen");
+  var colourFoodJunctionYIH = new Firebase("https://orbital--1202.firebaseio.com/location/FoodJunctionYIH");
   $scope.red = 'button button-assertive  button-block';
   $scope.orange = 'button button-energized  button-block';
   $scope.colorBiz = null;
@@ -418,7 +418,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
             
             var geoQueryBizCanteen = geoFire.query({
-              center: [1.2956205, 103.7741585],
+              center: [1.2956205 , 103.7741585],
               radius: 0.05    
             });
             var location = glocation; 

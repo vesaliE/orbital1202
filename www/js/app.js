@@ -134,7 +134,7 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
     $cordovaGeolocation
     .getCurrentPosition()
     .then(function (position) {
-      geoLocation.setGeolocation(position.coords.latitude, position.coords.longitude); 
+      geoLocation.setGeolocation(position.coords.latitude , position.coords.longitude); 
     }, function (err) {
                     //error 
                   });
