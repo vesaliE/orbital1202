@@ -470,7 +470,11 @@ angular.module('app.routes', [])
       templateUrl: 'templates/humbleContribute.html',
       controller: 'humbleContributeCtrl'
   })
-
+    .state('hwangContribute', {
+      url: '/hwang_Contribute',
+      templateUrl: 'templates/hwangContribute.html',
+      controller: 'hwangContributeCtrl'
+  })
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
