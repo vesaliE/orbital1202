@@ -188,6 +188,53 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var linkUniversity = new Firebase("https://orbital--1202.firebaseio.com/location/UniversityClub");
   var linkWaaCow = new Firebase("https://orbital--1202.firebaseio.com/location/WaaCow");
 
+  $scope.getColorAlcove = function() {
+
+    var count = 0;
+    linkAlcove.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorAlcove = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorAlcove = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorAlcove = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorButter = function() {
+
+    var count = 0;
+    linkButter.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorButter = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorButter = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorButter = "images/redhumantrans.png";
+      }
+    })
+  }
 
 
 })
