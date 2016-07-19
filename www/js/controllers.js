@@ -185,6 +185,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var linkSpice = new Firebase("https://orbital--1202.firebaseio.com/location/SpiceTablebyPines");
   var linkStarbucksMD11 = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksMD11");
   var linkStarbucksYIH = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksYIH");
+  var linkStarbucksUTown = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksUTown");
   var linkUniversity = new Firebase("https://orbital--1202.firebaseio.com/location/UniversityClub");
   var linkWaaCow = new Firebase("https://orbital--1202.firebaseio.com/location/WaaCow");
 
@@ -472,6 +473,78 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         
       } else {
         return $scope.colorStarbucksYIH = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorStarbucksUTown = function() {
+
+    var count = 0;
+    linkStarbucksUTown.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorStarbucksUTown = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorStarbucksUTown = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorStarbucksUTown = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorUniversity = function() {
+
+    var count = 0;
+    linkUniversity.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorUniversity = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorUniversity = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorUniversity = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorWaaCow = function() {
+
+    var count = 0;
+    linkWaaCow.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorWaaCow = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorWaaCow = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorWaaCow = "images/redhumantrans.png";
       }
     })
   }
