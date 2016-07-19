@@ -5550,11 +5550,18 @@ $scope.takePic = function(){
 
 })
 
+.controller('spiceContributeCtrl', function($scope) {
+
+})
 .controller('seeLah23Ctrl', function($scope) {
 
 })
 
 .controller('starbucksMD11Ctrl', function($scope) {
+
+})
+
+.controller('starbucksMD11ContributeCtrl', function($scope) {
 
 })
 
@@ -5566,11 +5573,19 @@ $scope.takePic = function(){
 
 })
 
+.controller('starbucksYIHContributeCtrl', function($scope) {
+
+})
+
 .controller('seeLah25Ctrl', function($scope) {
 
 })
 
 .controller('starbucksUTownCtrl', function($scope) {
+
+})
+
+.controller('starbucksUTownContributeCtrl', function($scope) {
 
 })
 
@@ -5582,6 +5597,9 @@ $scope.takePic = function(){
 
 })
 
+.controller('uniClubContributeCtrl', function($scope) {
+
+})
 .controller('seeLah27Ctrl', function($scope) {
 
 })
@@ -5590,6 +5608,9 @@ $scope.takePic = function(){
 
 })
 
+.controller('waaContributeCtrl', function($scope) {
+
+})
 .controller('seeLah28Ctrl', function($scope) {
 
 })
