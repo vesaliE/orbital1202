@@ -1,0 +1,32 @@
+<ion-view title="Leave your comments!" id="page13" class="backgroundImage" ng-init="list()">
+   <ion-content>
+        <div>
+            <div id="iconPosition">
+
+                <img on-tap="iconChange(1)" ng-src="{{ imageUrl1 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(2)" ng-src="{{ imageUrl2 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(3)" ng-src="{{ imageUrl3 }}" class="contributeIconOne">
+
+                <img on-tap="iconChange(4)" ng-src="{{ imageUrl4 }}" class="contributeIconOne">
+
+                <span class="stretch"></span>
+            </div>
+
+             <div class="button-bar" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
+                <button ng-click="takePic()" class="button button-block button-white">Take Picture</button>
+            </div>
+
+
+            <div class="list list-inset" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
+                <label class="item item-input">
+                    <input ng-model="comments" type="text" placeholder="Comments" />
+                </label>                
+            </div>           
+                <div class="button-bar" style="position:relative; top: 40px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
+                    <a class="button" ng-click="create(comments)">Submit</a>
+                </div>            
+        </div>
+    </ion-content>
+</ion-view>

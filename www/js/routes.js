@@ -446,9 +446,21 @@ angular.module('app.routes', [])
       controller: 'subwayUTownContributeCtrl'
   })
   .state('FoeContribute', {
-      url: 'Foe_Contribute',
+      url: '/Foe_Contribute',
       templateUrl: 'templates/Foe_Contribute.html',
       controller: 'FoeContributeCtrl'
+  })
+  
+  .state('KoufuContribute', {
+      url: '/Koufu_Contribute',
+      templateUrl: 'templates/Koufu_Contribute.html',
+      controller: 'KoufuContributeCtrl'
+  })
+
+  .state('ScienceContribute', {
+      url: '/Science_Contribute',
+      templateUrl: 'templates/Science_Contribute.html',
+      controller: 'ScienceContributeCtrl'
   })
 
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
