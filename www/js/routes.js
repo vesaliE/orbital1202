@@ -465,6 +465,12 @@ angular.module('app.routes', [])
       controller: 'alcoveContributeCtrl'
   })
 
+    .state('humbleContribute', {
+      url: '/humble_Contribute',
+      templateUrl: 'templates/humbleContribute.html',
+      controller: 'humbleContributeCtrl'
+  })
+
 $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
