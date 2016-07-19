@@ -1,6 +1,9 @@
 <ion-view title="Fass Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()">
     <ion-content padding="true" class="has-header">
         <div class="list" style="font-family:'Open Sans'">
+            <h1 ui-sref="FassContribute" class="item button button-block" style="font-size:20px; text-align:center">Contribute!</h1>
+        </div>
+        <div class="list" style="font-family:'Open Sans'">
             <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
         	<div ng-repeat="closeStalls in closed.fassCanteen" class="item">
         		<div style="float:left">
@@ -37,6 +40,5 @@
         </div>
     </div>
 </div>
-        <button ui-sref="FassContribute" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>    
     </ion-content>
 </ion-view>

@@ -9978,3 +9978,13 @@ height:100;
 .blackEffect:active img {
     opacity: 0.8;
 }
+
+.blackEffect:active h1 {
+    opacity: 0.8;
+}
+
+/* Darkening for background colour */
+
+.blackBgEffect: active {
+  background-color:#c8cbcb;
+}
