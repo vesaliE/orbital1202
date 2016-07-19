@@ -1,5 +1,3 @@
-
-
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
 .controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush) {
@@ -5238,4 +5236,3 @@ $scope.takePic = function(){
     }
   }
 })
-
