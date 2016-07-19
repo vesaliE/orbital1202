@@ -380,6 +380,54 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     })
   }
 
+  $scope.getColorSpinelli = function() {
+
+    var count = 0;
+    linkSpinelli.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSpinelli = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSpinelli = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorSpinelli = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorSpice = function() {
+
+    var count = 0;
+    linkSpice.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSpice = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSpice = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorSpice = "images/redhumantrans.png";
+      }
+    })
+  }
+
 
 })
 
