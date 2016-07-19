@@ -1,3 +1,33 @@
-<ion-view title="See Lah!!!" id="page13" class=" ">
-    <ion-content padding="true" class="has-header"></ion-content>
+<ion-view title="Foe Forum" id="page6" class="backgroundImage" ng-init="list(); filter(); filterClosed()" ng-controller="GeoCtrl">
+    <ion-content padding="true" class="has-header">
+        <div class="list" style="font-family:'Open Sans'">
+            <h1 class="item" style="font-size:20px"> Closed Stalls </h1>
+        	<div ng-repeat="closeStalls in closed.foeCanteen" class="item">
+        		<div style="float:left">
+                    <img src="images/closesign.png" style="height:50px; width:50px; float:left; position:relative; left:-5px">
+                    <div style="vertical-align:center; position:relative; left:3px">
+                        <h1 style="font-size:15px; overflow:visible"> {{closeStalls.name}} </h1>
+                        <p style="font-size:15px; overflow:visible"> {{closeStalls.comment}} </p>
+                    </div>
+                </div>
+        			<div class="ion-clock" style="float:right"> {{getTimeDay(closeStalls.time)}}d ago </div>
+        		</p>
+        	</div>
+        </div>
+        <div class="list">
+            <h1 class="item" style="font-size:20px"> Other Comments </h1>
+            <div ng-repeat="foe in data.foeCanteen" class="item">
+                <div style="float:left">
+                    <img ng-src="{{ flavours.option }}" style="height:50px; width:50px; float:left; position:relative; left:-5px"> 
+                    <div style="vertical-align:center; position:relative; left:3px">
+                        <h1 style="font-size:15px; overflow:visible"> {{foe.name}} </h1>
+                        <p style="font-size:15px; overflow:visible"> {{foe.comment}} </p>
+                    </div>
+                </div>
+                	<div class="ion-clock" style="float:right;"> {{getTimeMin(foe.time)}}m ago </div> 
+                </p>
+            </div>
+        </div>
+        <button ui-sref="FoeContribute" id="bizCanteen-button39" class=" button " style="font-family:'Open Sans'; border-radius:50px; font-weight:bold; border-style:solid; border-width:2px">Contribute!</button>    
+    </ion-content>
 </ion-view>
