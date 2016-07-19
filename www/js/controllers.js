@@ -1,5 +1,3 @@
-
-
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
 .controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush) {
@@ -3072,12 +3070,12 @@ $state.go("yumNUS");
       }
     }
   })
-    .controller('scienceCanteenCtrl', function($scope) {
+.controller('scienceCanteenCtrl', function($scope) {
 
-    })
-    .controller('scienceCanteenStallsCtrl', function($scope) {
-    })
-    .controller('seeLah6Ctrl', function($scope, $firebaseObject, $firebase) {
+})
+.controller('scienceCanteenStallsCtrl', function($scope) {
+})
+.controller('seeLah6Ctrl', function($scope, $firebaseObject, $firebase) {
 
 
     //Filters list for normal comments
@@ -3169,52 +3167,52 @@ $state.go("yumNUS");
       }
     }
   })
-    .controller('yIHFoodJunctionCtrl', function($scope) {
+.controller('yIHFoodJunctionCtrl', function($scope) {
 
-    })
+})
 
-    .controller('yIHFoodJunctionStallsCtrl', function($scope) {
+.controller('yIHFoodJunctionStallsCtrl', function($scope) {
 
-    })
+})
 
-    .controller('seeLah7Ctrl', function($scope) {
+.controller('seeLah7Ctrl', function($scope) {
 
-    })
+})
 
-    .controller('seeLah13Ctrl', function($scope) {
+.controller('seeLah13Ctrl', function($scope) {
 
-    })
+})
 
-    .controller('alcoveAsianRestaurantBarCtrl', function($scope) {
+.controller('alcoveAsianRestaurantBarCtrl', function($scope) {
 
-    })
-    .controller('butterMyBunMenuCtrl', function($scope) {
+})
+.controller('butterMyBunMenuCtrl', function($scope) {
 
-    })
+})
 
-    .controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebaseArray){
-     $scope.pictureURL = "http://placehold.it/50x50"; 
-     $scope.images = [];
-     var fbAuth = fb.getAuth();
-     if(fbAuth) {
-      var userReference = fb.child("picture/");
-      var syncArray = $firebaseArray(userReference.child("butterMyBun"));
-      $scope.images = syncArray;
-    } else {
-      $state.go("bizCanteenContribute");
-    }
+.controller('CameraCtrl', function($scope, $cordovaCamera, $state, $firebaseArray){
+ $scope.pictureURL = "http://placehold.it/50x50"; 
+ $scope.images = [];
+ var fbAuth = fb.getAuth();
+ if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("butterMyBun"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-    $scope.takePic = function(){
-      $cordovaCamera.getPicture({
-        destinationType: Camera.DestinationType.DATA_URL,
-        sourceType: Camera.PictureSourceType.CAMERA,  
-        encodingType: Camera.EncodingType.JPEG,
-        popoverOptions: CameraPopoverOptions,
-        targetWidth: 500,
-        targetHeight: 500,
-        saveToPhotoAlbum: false
-      })
-      .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -3239,14 +3237,14 @@ $state.go("yumNUS");
 
   })
 
-    }
+}
 
 
-  })
+})
 
-    .controller('butterMyBunCtrl', function($scope) {
+.controller('butterMyBunCtrl', function($scope) {
 
-    })
+})
 //butter my bun contribute page, with storage function
 .controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray){
   $scope.list = function() {
@@ -5238,4 +5236,3 @@ $state.go("yumNUS");
     }
   }
 })
-
