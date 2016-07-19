@@ -140,7 +140,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       
 
 
-})
+    })
 
 .controller('chooseCafeCtrl', function($scope) {
   $scope.colorAlcove = null;
@@ -1720,28 +1720,28 @@ $state.go("yumNUS");
       console.log("No comments in the box detected");
     }
   }
-$scope.pictureURL = "http://placehold.it/50x50"; 
- $scope.images = [];
- var fbAuth = fb.getAuth();
- if(fbAuth) {
-  var userReference = fb.child("picture/");
-  var syncArray = $firebaseArray(userReference.child("bizCanteen"));
-  $scope.images = syncArray;
-} else {
-  $state.go("bizCanteenContribute");
-}
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("bizCanteen"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
 
-$scope.takePic = function(){
-  $cordovaCamera.getPicture({
-    destinationType: Camera.DestinationType.DATA_URL,
-    sourceType: Camera.PictureSourceType.CAMERA,  
-    encodingType: Camera.EncodingType.JPEG,
-    popoverOptions: CameraPopoverOptions,
-    targetWidth: 500,
-    targetHeight: 500,
-    saveToPhotoAlbum: false
-  })
-  .then(function(data){
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -1766,7 +1766,7 @@ $scope.takePic = function(){
 
   })
 
-}
+  }
 
 }) 
 //bizcanteen forum controller 
@@ -1791,7 +1791,7 @@ $scope.takePic = function(){
         })
       })
       bizPicRef.on("value", function(snapshot){
-          snapshot.forEach(function(childSnapshot){
+        snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
@@ -2288,28 +2288,28 @@ $scope.takePic = function(){
       console.log("No comments in the box detected");
     }
   }
-   $scope.pictureURL = "http://placehold.it/50x50"; 
- $scope.images = [];
- var fbAuth = fb.getAuth();
- if(fbAuth) {
-  var userReference = fb.child("picture/");
-  var syncArray = $firebaseArray(userReference.child("butterMyBun"));
-  $scope.images = syncArray;
-} else {
-  $state.go("bizCanteenContribute");
-}
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("butterMyBun"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
 
-$scope.takePic = function(){
-  $cordovaCamera.getPicture({
-    destinationType: Camera.DestinationType.DATA_URL,
-    sourceType: Camera.PictureSourceType.CAMERA,  
-    encodingType: Camera.EncodingType.JPEG,
-    popoverOptions: CameraPopoverOptions,
-    targetWidth: 500,
-    targetHeight: 500,
-    saveToPhotoAlbum: false
-  })
-  .then(function(data){
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -2334,7 +2334,7 @@ $scope.takePic = function(){
 
   })
 
-}
+  }
 
 
 })
@@ -2359,7 +2359,7 @@ $scope.takePic = function(){
         })
       })
       butterPicRef.on("value", function(snapshot){
-          snapshot.forEach(function(childSnapshot){
+        snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           console.log(difference);
@@ -2716,7 +2716,7 @@ $scope.takePic = function(){
 
     })
 
-.controller('FassContributeCtrl', function($scope, $firebaseObject, $state) {   
+.controller('FassContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -2834,10 +2834,55 @@ $scope.takePic = function(){
       console.log("No comments in the box detected");
     }
   }
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("fassCanteen"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
 
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("fassCanteen").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                $state.go("fassCanteen");
+              })
+  }, function(error){
+
+  })
+
+  }
 })
 
-.controller('FlavoursContributeCtrl', function($scope, $firebaseObject, $state) {   
+.controller('FlavoursContributeCtrl', function($scope, $firebaseObject, $state,$firebaseArray, $cordovaCamera) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -2954,6 +2999,52 @@ $scope.takePic = function(){
     } else {
       console.log("No comments in the box detected");
     }
+  }
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("flavoursCanteen"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
+
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
+    //console.log("camera data: " + angular.toJson(data));
+    $scope.pictureURL = "data:image/jpeg;base64," + data;
+    //alert("Image has been uploaded");
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value");
+       //var userReference = fb.child("picture/" + fbAuth.uid);
+       userName = snapshot.child(fbAuth.uid).child("forumName").val();
+                //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
+                fb.child("picture").child("flavoursCanteen").child(currentTime).set({
+                  name: userName, 
+                  time: firebaseTime,
+                  image: $scope.pictureURL
+                });
+                $state.go("flavoursCanteen");
+              })
+  }, function(error){
+
+  })
+
   }
 
 }) 
