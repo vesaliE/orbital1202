@@ -19,9 +19,26 @@
             </div>
             <img ng-src="{{colorButter}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
-         <a ui-sref="butterMyBun" id="chooseCafe-button6" class=" button button-positive  button-block ">Butter My Bun</a>
-        <a ui-sref="humbleOrigins" id="chooseCafe-button9" class=" button button-energized  button-block ">Humble Origins</a>
-        <a ui-sref="hwangSKoreanRestaurant" id="chooseCafe-button33" class=" button button-energized  button-block ">Hwang's Korean Restaurant</a>
+
+        <div ui-sref="humbleOrigins" id="chooseCanteen-button6" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorHumble()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Humble Origins</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Cafe</p>
+                </div>
+            </div>
+            <img ng-src="{{colorHumble}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
+
+        <div ui-sref="hwangSKoreanRestaurant" id="chooseCanteen-button33" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorHwang()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Hwang's Korean Restaurant</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Cafe</p>
+                </div>
+            </div>
+            <img ng-src="{{colorHwang}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
          <a ui-sref="theRoyalsBistroCafe" id="chooseCafe-button6" class=" button button-assertive  button-block ">The Royals Bistro Café </a>
         <a ui-sref="playtpusFoodbar" id="chooseCafe-button10" class=" button button-assertive  button-block ">Platypus Foodbar</a>
         <a ui-sref="reedzCafe" id="chooseCafe-button11" class=" button button-balanced  button-block ">Reedz Café</a>

@@ -236,6 +236,54 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     })
   }
 
+  $scope.getColorHumble = function() {
+
+    var count = 0;
+    linkHumble.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorHumble = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorHumble = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorHumble = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorHwang = function() {
+
+    var count = 0;
+    linkHwang.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorHwang = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorHwang = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorHwang = "images/redhumantrans.png";
+      }
+    })
+  }
+
 
 })
 
