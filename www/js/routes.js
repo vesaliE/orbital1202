@@ -496,6 +496,54 @@ angular.module('app.routes', [])
     controller: 'saporeContributeCtrl'
   })
 
+  .state('spinelliContribute', {
+    url: '/spinelli_Contribute',
+    templateUrl: 'templates/spinelliContribute.html',
+    controller: 'spinelliContributeCtrl'
+  })
+
+  .state('spiceContribute', {
+    url: '/spice_Contribute',
+    templateUrl: 'templates/spiceContribute.html',
+    controller: 'spiceContributeCtrl'
+  })
+  
+
+  .state('starbucksMD11Contribute', {
+    url: '/starbucks_MD11_Contribute',
+    templateUrl: 'templates/starbucksMD11Contribute.html',
+    controller: 'starbucksMD11ContributeCtrl'
+  })
+  
+
+  .state('starbucksUTownContribute', {
+    url: '/starbucks_UTown_Contribute',
+    templateUrl: 'templates/starbucksUTownContribute.html',
+    controller: 'starbucksUTownContributeCtrl'
+  })
+  
+
+  .state('starbucksYIHContribute', {
+    url: '/starbucks_YIH_Contribute',
+    templateUrl: 'templates/starbucksYIHContribute.html',
+    controller: 'starbucksYIHContributeCtrl'
+  })
+  
+
+  .state('waaContribute', {
+    url: '/waa_Contribute',
+    templateUrl: 'templates/waaContribute.html',
+    controller: 'waaContributeCtrl'
+  })
+  
+
+  .state('uniClubContribute', {
+    url: '/uni_Club_Contribute',
+    templateUrl: 'templates/uniClubContribute.html',
+    controller: 'uniClubContributeCtrl'
+  })
+  
+
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
