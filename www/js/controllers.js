@@ -561,6 +561,78 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var linkSubwayYIH =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayYIH");
   var linkSubwayUTown =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayUTown");
 
+  $scope.getColorMac = function() {
+
+    var count = 0;
+    linkMac.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorMac = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorMac = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorMac = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorSubwayYIH = function() {
+
+    var count = 0;
+    linkSubwayYIH.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSubwayYIH = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSubwayYIH = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorSubwayYIH = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorSubwayUTown = function() {
+
+    var count = 0;
+    linkSubwayUTown.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorSubwayUTown = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorSubwayUTown = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorSubwayUTown = "images/redhumantrans.png";
+      }
+    })
+  }
+
 })
 
 
