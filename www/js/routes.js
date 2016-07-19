@@ -7,7 +7,7 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-      .state('yumNUS', {
+  .state('yumNUS', {
     url: '/page1',
     templateUrl: 'templates/yumNUS.html',
     controller: 'yumNUSCtrl'
@@ -72,7 +72,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/fassCanteen.html',
     controller: 'fassCanteenCtrl'
   })
-    .state('fassCanteenStalls', {
+  .state('fassCanteenStalls', {
     url: '/fass_canteen_stalls',
     templateUrl: 'templates/fassCanteenStalls.html',
     controller: 'fassCanteenStallsCtrl'
@@ -89,7 +89,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/flavoursUTown.html',
     controller: 'flavoursUTownCtrl'
   })
-    .state('flavoursUTownStalls', {
+  .state('flavoursUTownStalls', {
     url: '/flavours_stalls',
     templateUrl: 'templates/flavoursUTownStalls.html',
     controller: 'flavoursUTownStallsCtrl'
@@ -130,7 +130,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/seeLah5.html',
     controller: 'seeLah5Ctrl'
   })
-    .state('koufuStall', {
+  .state('koufuStall', {
     url: '/koufu_stall',
     templateUrl: 'templates/koufuStall.html',
     controller: 'koufuStallCtrl'
@@ -142,7 +142,7 @@ angular.module('app.routes', [])
     controller: 'scienceCanteenCtrl'
   })
 
-    .state('scienceCanteenStalls', {
+  .state('scienceCanteenStalls', {
     url: '/science_canteen_stalls',
     templateUrl: 'templates/scienceCanteenStalls.html',
     controller: 'scienceCanteenStallsCtrl'
@@ -381,7 +381,7 @@ angular.module('app.routes', [])
     controller: 'pageCtrl'
   })
 
- 
+
 
   .state('butterMyBun', {
     url: '/butter_my_bun',
@@ -394,12 +394,12 @@ angular.module('app.routes', [])
     templateUrl: 'templates/seeLah14.html',
     controller: 'seeLah14Ctrl'
   })
-   .state('butterMyBunMenu', {
+  .state('butterMyBunMenu', {
     url: '/butter_my_bun_menu',
     templateUrl: 'templates/butterMyBunMenu.html',
     controller: 'butterMyBunMenuCtrl'
   })
-     .state('butterMyBunContribute', {
+  .state('butterMyBunContribute', {
     url: '/butter_my_bun_contribute',
     templateUrl: 'templates/butterMyBunContribute.html',
     controller: 'butterMyBunContributeCtrl'
@@ -417,50 +417,86 @@ angular.module('app.routes', [])
   })
 
   .state('FassContribute', {
-      url: '/Fass_contribute',
-      templateUrl: 'templates/Fass_Contribute.html',
-      controller: 'FassContributeCtrl'
+    url: '/Fass_contribute',
+    templateUrl: 'templates/Fass_Contribute.html',
+    controller: 'FassContributeCtrl'
   })
 
   .state('FlavoursContribute', {
-      url: '/Flavours_contribute',
-      templateUrl: 'templates/Flavours_Contribute.html',
-      controller: 'FlavoursContributeCtrl'
+    url: '/Flavours_contribute',
+    templateUrl: 'templates/Flavours_Contribute.html',
+    controller: 'FlavoursContributeCtrl'
   })
   .state('macdonaldsFOEContribute', {
-      url: '/macdonalds_foe_contribute',
-      templateUrl: 'templates/macdonaldsFoeContribute.html',
-      controller: 'macdonaldsFOEContributeCtrl'
+    url: '/macdonalds_foe_contribute',
+    templateUrl: 'templates/macdonaldsFoeContribute.html',
+    controller: 'macdonaldsFOEContributeCtrl'
   })
-.state('subwayYIHContribute', {
-      url: 'subwayYIH_Contribute',
-      templateUrl: 'templates/subwayYIHContribute.html',
-      controller: 'subwayYIHContributeCtrl'
+  .state('subwayYIHContribute', {
+    url: 'subwayYIH_Contribute',
+    templateUrl: 'templates/subwayYIHContribute.html',
+    controller: 'subwayYIHContributeCtrl'
   })
-.state('subwayUTownContribute', {
-      url: 'subwayUTown_Contribute',
-      templateUrl: 'templates/subwayUTownContribute.html',
-      controller: 'subwayUTownContributeCtrl'
+  .state('subwayUTownContribute', {
+    url: 'subwayUTown_Contribute',
+    templateUrl: 'templates/subwayUTownContribute.html',
+    controller: 'subwayUTownContributeCtrl'
   })
   .state('FoeContribute', {
-      url: '/Foe_Contribute',
-      templateUrl: 'templates/Foe_Contribute.html',
-      controller: 'FoeContributeCtrl'
+    url: '/Foe_Contribute',
+    templateUrl: 'templates/Foe_Contribute.html',
+    controller: 'FoeContributeCtrl'
   })
   
   .state('KoufuContribute', {
-      url: '/Koufu_Contribute',
-      templateUrl: 'templates/Koufu_Contribute.html',
-      controller: 'KoufuContributeCtrl'
+    url: '/Koufu_Contribute',
+    templateUrl: 'templates/Koufu_Contribute.html',
+    controller: 'KoufuContributeCtrl'
   })
 
   .state('ScienceContribute', {
-      url: '/Science_Contribute',
-      templateUrl: 'templates/Science_Contribute.html',
-      controller: 'ScienceContributeCtrl'
+    url: '/Science_Contribute',
+    templateUrl: 'templates/Science_Contribute.html',
+    controller: 'ScienceContributeCtrl'
+  })  
+  .state('alcoveContribute', {
+    url: '/alcove_Contribute',
+    templateUrl: 'templates/alcoveContribute.html',
+    controller: 'alcoveContributeCtrl'
   })
 
-$urlRouterProvider.otherwise('/biz_canteen_contribute')
+  .state('humbleContribute', {
+    url: '/humble_Contribute',
+    templateUrl: 'templates/humbleContribute.html',
+    controller: 'humbleContributeCtrl'
+  })
+  .state('hwangContribute', {
+    url: '/hwang_Contribute',
+    templateUrl: 'templates/hwangContribute.html',
+    controller: 'hwangContributeCtrl'
+  })
+  .state('royalContribute', {
+    url: '/royal_Contribute',
+    templateUrl: 'templates/royalContribute.html',
+    controller: 'royalContributeCtrl'
+  })
+    .state('platypusContribute', {
+    url: '/platypus_Contribute',
+    templateUrl: 'templates/platypusContribute.html',
+    controller: 'platypusContributeCtrl'
+  })
+    .state('reedzContribute', {
+    url: '/reedz_Contribute',
+    templateUrl: 'templates/reedzContribute.html',
+    controller: 'reedzContributeCtrl'
+  })
+    .state('saporeContribute', {
+    url: '/sapore_Contribute',
+    templateUrl: 'templates/saporeContribute.html',
+    controller: 'saporeContributeCtrl'
+  })
+
+  $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
   
 
