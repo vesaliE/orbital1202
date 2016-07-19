@@ -1,7 +1,33 @@
 <ion-view title="Check Fastfoods" id="page3" class="backgroundImage" ng-controller="GeoCtrl">
     <ion-content padding="true" class="has-header">
-        <a ui-sref="macdonaldsFOE" id="checkFastfoods-button27" class=" button button-positive  button-block ">Macdonalds (FOE)</a>
-        <a ui-sref="subwayYIH" id="checkFastfoods-button28" class=" button button-positive  button-block ">Subway (YIH)</a>
-        <a ui-sref="subwayUTown" id="checkFastfoods-button31" class=" button button-positive  button-block ">Subway (UTown)</a>
+    	<div ui-sref="macdonaldsFOE" id="chooseCanteen-button27" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorMac()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Macdonalds (FOE)</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Fastfood</p>
+                </div>
+            </div>
+            <img ng-src="{{colorMac}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
+
+        <div ui-sref="subwayYIH" id="chooseCanteen-button28" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorSubwayYIH()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Subway (YIH)</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Fastfood</p>
+                </div>
+            </div>
+            <img ng-src="{{colorSubwayYIH}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
+
+        <div ui-sref="subwayUTown" id="chooseCanteen-button31" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorSubwayUTown()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Subway (UTown)</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Fastfood</p>
+                </div>
+            </div>
+            <img ng-src="{{colorSubwayUTown}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
     </ion-content>
 </ion-view>
