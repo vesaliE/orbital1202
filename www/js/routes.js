@@ -440,7 +440,11 @@ angular.module('app.routes', [])
       templateUrl: 'templates/subwayYIHContribute.html',
       controller: 'subwayYIHContributeCtrl'
   })
-
+.state('subwayUTownContribute', {
+      url: 'subwayUTown_Contribute',
+      templateUrl: 'templates/subwayUTownContribute.html',
+      controller: 'subwayUTownContributeCtrl'
+  })
   .state('FoeContribute', {
       url: 'Foe_Contribute',
       templateUrl: 'templates/Foe_Contribute.html',
