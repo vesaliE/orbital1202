@@ -430,7 +430,21 @@ angular.module('app.routes', [])
       templateUrl: 'templates/Flavours_Contribute.html',
       controller: 'FlavoursContributeCtrl'
   })
-
+  .state('macdonaldsFOEContribute', {
+      url: '/macdonalds_foe_contribute',
+      templateUrl: 'templates/macdonaldsFoeContribute.html',
+      controller: 'macdonaldsFOEContributeCtrl'
+  })
+.state('subwayYIHContribute', {
+      url: 'subwayYIH_Contribute',
+      templateUrl: 'templates/subwayYIHContribute.html',
+      controller: 'subwayYIHContributeCtrl'
+  })
+.state('subwayUTownContribute', {
+      url: 'subwayUTown_Contribute',
+      templateUrl: 'templates/subwayUTownContribute.html',
+      controller: 'subwayUTownContributeCtrl'
+  })
   .state('FoeContribute', {
       url: '/Foe_Contribute',
       templateUrl: 'templates/Foe_Contribute.html',
