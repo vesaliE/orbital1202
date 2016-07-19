@@ -428,6 +428,54 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     })
   }
 
+  $scope.getColorStarbucksMD11 = function() {
+
+    var count = 0;
+    linkStarbucksMD11.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorStarbucksMD11 = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorStarbucksMD11 = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorStarbucksMD11 = "images/redhumantrans.png";
+      }
+    })
+  }
+
+  $scope.getColorStarbucksYIH = function() {
+
+    var count = 0;
+    linkStarbucksYIH.once("value", function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var timestamp = childSnapshot.val();
+        console.log(timestamp);
+        count++;
+      })
+      if (count <= 5) {
+        console.log(count);
+        console.log("here at 1!");
+        return $scope.colorStarbucksYIH = "images/greenhumantrans.png"
+        
+      } else if (count <= 10) {
+        console.log("here at else!");
+        return $scope.colorStarbucksYIH = "images/orangehumantrans.png";
+        
+      } else {
+        return $scope.colorStarbucksYIH = "images/redhumantrans.png";
+      }
+    })
+  }
+
 
 })
 

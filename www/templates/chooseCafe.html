@@ -99,7 +99,26 @@
             </div>
             <img ng-src="{{colorSpice}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
-        <a ui-sref="starbucksMD11" id="chooseCafe-button17" class=" button button-positive  button-block ">Starbucks (MD11)</a>
+
+        <div ui-sref="starbucksMD11" id="chooseCanteen-button17" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorStarbucksMD11()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Starbucks (MD11)</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Cafe</p>
+                </div>
+            </div>
+            <img ng-src="{{colorStarbucksMD11}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
+
+        <div ui-sref="starbucksYIH" id="chooseCanteen-button17" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorStarbucksYIH()">
+            <div style="float:left">
+                <h1 style="text-align:left; font-size:20px; font-family:'Open Sans'; position:relative; top:10px">Starbucks (YIH)</h1>
+                <div style="text-align:left">
+                    <p style="font-size:10px; border-style:solid; border-width:1px; display:inline; padding-left:5px; padding-right:5px">Cafe</p>
+                </div>
+            </div>
+            <img ng-src="{{colorStarbucksYIH}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+        </div>
         <a ui-sref="starbucksYIH" id="chooseCafe-button16" class=" button button-positive  button-block ">Starbucks (YIH)</a>
         <a ui-sref="starbucksUTown" id="chooseCafe-button18" class=" button button-positive  button-block ">Starbucks (UTown)</a>
         <a ui-sref="universityClub" id="chooseCafe-button13" class=" button button-positive  button-block ">University Club</a>
