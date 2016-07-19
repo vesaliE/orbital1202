@@ -2190,7 +2190,7 @@ $scope.takePic = function(){
                   image: $scope.pictureURL
                 });
                 //console.log("done!");
-                $state.go("butterMyBun");
+                $state.go("seeLah14");
               })
   }, function(error){
 
@@ -2280,7 +2280,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("butterMyBun");
+                  $state.go("seeLah14");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
                     name: userName,
@@ -2289,7 +2289,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("butterMyBun");
+                  $state.go("seeLah14");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
                     name: userName,
@@ -2298,7 +2298,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("butterMyBun");
+                  $state.go("seeLah14");
                 } else {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
                     name: userName,
@@ -2307,7 +2307,7 @@ $scope.takePic = function(){
                     time: firebaseTime
                   });
                   console.log("done!");
-                  $state.go("butterMyBun");
+                  $state.go("seeLah14");
                 }
               })
 
@@ -2356,7 +2356,7 @@ $scope.takePic = function(){
                   image: $scope.pictureURL
                 });
                 //console.log("done!");
-                $state.go("butterMyBun");
+                $state.go("seeLah14");
               })
   }, function(error){
 
