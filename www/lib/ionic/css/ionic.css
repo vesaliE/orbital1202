@@ -9876,14 +9876,18 @@ height:100;
     border-width:3px; 
     border-radius:50%; 
     border-color:#21a6ab; 
-    background-color:#00f0ff
+    background-color:#00f0ff;
+}
+
+.yumNUSIcon:focus {
+   background-color:#000;
 }
 
 .yumNUSIcon:hover {
-    background-color:#02c8d4;
+    background-color:#000;
 }
 
-.yumNUSIcon.active, .yumNUSIcon.activated {
+.yumNUSIcon.active , .yumNUSIcon.activated {
     background-color:#02c8d4;
 }
 
