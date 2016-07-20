@@ -847,7 +847,13 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 
 .controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
+  
+  $scope.rmbMe = { checked: true };
 
+
+  $scope.test = function() {
+      console.log($scope.rmbMe.checked);
+  }
 
   $scope.login = function(username, password){
     var fbAuth = $firebaseAuth(fb);
@@ -855,6 +861,10 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       email: username,
       password: password
     }).then(function(authData) {
+      if ($scope.rmbMe.checked) {
+          window.localstorage.setItem("username", username);
+          window.localStorage.setItem("password", password);
+      }
       $scope.authData = authData;
       var glocation = geoLocation.getGeolocation();
       var user = authData.uid; 
@@ -1487,6 +1497,11 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                       })
 
                     }).then(function(authData) {
+                      if ($scope.rmbMe.checked) {
+                        window.localstorage.setItem("username", username);
+                        window.localStorage.setItem("password", password);
+                      }
+
                       var glocation = geoLocation.getGeolocation();
                       var user = authData.uid; 
                       geoFire.set(user, [glocation.lat , glocation.lng]); 
