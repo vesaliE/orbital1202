@@ -846,7 +846,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 })
 
 
-.controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
+.controller('bizCanteen_contributeCtrl', function($scope, $state, $localstorage, $firebaseAuth, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
   
   $scope.rmbMe = { checked: true };
 
@@ -855,15 +855,36 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       console.log($scope.rmbMe.checked);
   }
 
+  $scope.username = null;
+  $scope.password = null;
+
+  $scope.checkUsername = function() {
+      var storedUsername =  $localstorage.get("username");
+      if (storedUsername !== null) {
+           $scope.username = storedUsername;
+           console.log("OBTAINED");
+      }
+  }
+
+  $scope.checkPassword = function() {
+      var storedPassword =  $localstorage.get("password");
+      if (storedPassword !== null) {
+          $scope.password = storedPassword;
+          console.log("OBTAINED");
+      }
+  }
+
   $scope.login = function(username, password){
     var fbAuth = $firebaseAuth(fb);
     return fbAuth.$authWithPassword({
       email: username,
       password: password
     }).then(function(authData) {
+      console.log(username);
+      console.log(password);
       if ($scope.rmbMe.checked) {
-          window.localstorage.setItem("username", username);
-          window.localStorage.setItem("password", password);
+          $localstorage.set("username", username);
+          $localstorage.set("password", password);
       }
       $scope.authData = authData;
       var glocation = geoLocation.getGeolocation();
@@ -1498,8 +1519,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
                     }).then(function(authData) {
                       if ($scope.rmbMe.checked) {
-                        window.localstorage.setItem("username", username);
-                        window.localStorage.setItem("password", password);
+                        $localstorage.set("username", username);
+                        $localStorage.set("password", password);
                       }
 
                       var glocation = geoLocation.getGeolocation();
