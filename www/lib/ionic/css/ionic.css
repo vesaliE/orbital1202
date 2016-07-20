@@ -9869,6 +9869,24 @@ height:100;
     padding-bottom:2px;
 }
 
+.yumNUSIcon {
+    height:80px;
+    width:80px;
+    border-style:solid; 
+    border-width:3px; 
+    border-radius:50%; 
+    border-color:#21a6ab; 
+    background-color:#00f0ff
+}
+
+.yumNUSIcon:hover {
+    background-color:#02c8d4;
+}
+
+.yumNUSIcon.active, .yumNUSIcon.activated {
+    background-color:#02c8d4;
+}
+
 #iconPosition {
     text-align: justify;
     margin-left: auto; 
