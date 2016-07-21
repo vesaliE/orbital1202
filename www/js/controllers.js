@@ -1,7 +1,7 @@
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
-.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPush, $ionicPopup, $state) {
-  $ionicPush.init({
+.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPopup, $state, $ionicSideMenuDelegate) {
+  /*$ionicPush.init({
     "debug": true,
     "onNotification": function(notification) {
       var payload = notification.payload;
@@ -12,8 +12,10 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     }
   });
 
-  $ionicPush.register();
-
+  $ionicPush.register();*/
+  $scope.toggleLeft = function(){
+    $ionicSideMenuDelegate.toggleLeft(); 
+  }
   var color0 = 'balanced'; 
   var color1 = 'orange'; 
   var color2 = 'assertive'; 
@@ -139,31 +141,31 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       $scope.userName = null;
 
       $scope.getUsername = function() {
-          var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-          userFb.on("value", function(snapshot) {
-              var fireAuth = fb.getAuth();
-              $scope.userName = snapshot.child(fireAuth.uid).child("forumName").val();
-              console.log(fireAuth.uid);
-              console.log($scope.userName);
-          })
+        var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+        userFb.on("value", function(snapshot) {
+          var fireAuth = fb.getAuth();
+          $scope.userName = snapshot.child(fireAuth.uid).child("forumName").val();
+          console.log(fireAuth.uid);
+          console.log($scope.userName);
+        })
 
       }
       
       $scope.logout = function() {
-          var confirmLogout = $ionicPopup.confirm({
-              title: 'Logging out',
-              template: 'Do you want to logout?'
-          });
+        var confirmLogout = $ionicPopup.confirm({
+          title: 'Logging out',
+          template: 'Do you want to logout?'
+        });
 
-          confirmLogout.then(function(res) {
-              if (res) {
-                  fb.unauth();
-                  $state.go('bizCanteen_contribute')
-                  console.log("logout");
-              } else {
-                  console.log("dont logout");
-              }
-          })
+        confirmLogout.then(function(res) {
+          if (res) {
+            fb.unauth();
+            $state.go('bizCanteen_contribute')
+            console.log("logout");
+          } else {
+            console.log("dont logout");
+          }
+        })
       }
 
 
@@ -847,47 +849,47 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 
 .controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $localstorage, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
-  
+
   $scope.rmbMe = { checked: true };
 
 
   $scope.test = function() {
-      console.log($scope.rmbMe.checked);
+    console.log($scope.rmbMe.checked);
   }
 
   $scope.username = null;
   $scope.password = null;
 
   $scope.checkUsername = function() {
-      var storedUsername =  $localstorage.get("username");
-      if (storedUsername !== null) {
-           $scope.username = storedUsername;
-           console.log("OBTAINED");
-      }
-  }
+    var storedUsername =  $localstorage.get("username");
+    if (storedUsername !== null) {
+     $scope.username = storedUsername;
+     console.log("OBTAINED");
+   }
+ }
 
-  $scope.checkPassword = function() {
-      var storedPassword =  $localstorage.get("password");
-      if (storedPassword !== null) {
-          $scope.password = storedPassword;
-          console.log("OBTAINED");
-      }
+ $scope.checkPassword = function() {
+  var storedPassword =  $localstorage.get("password");
+  if (storedPassword !== null) {
+    $scope.password = storedPassword;
+    console.log("OBTAINED");
   }
+}
 
-  $scope.login = function(username, password){
-    var fbAuth = $firebaseAuth(fb);
-    return fbAuth.$authWithPassword({
-      email: username,
-      password: password
-    }).then(function(authData) {
-      if ($scope.rmbMe.checked) {
-          $localstorage.set("username", username);
-          $localstorage.set("password", password);
-      }
-      $scope.authData = authData;
-      var glocation = geoLocation.getGeolocation();
-      var user = authData.uid; 
-      var FBtime = Firebase.ServerValue.TIMESTAMP;
+$scope.login = function(username, password){
+  var fbAuth = $firebaseAuth(fb);
+  return fbAuth.$authWithPassword({
+    email: username,
+    password: password
+  }).then(function(authData) {
+    if ($scope.rmbMe.checked) {
+      $localstorage.set("username", username);
+      $localstorage.set("password", password);
+    }
+    $scope.authData = authData;
+    var glocation = geoLocation.getGeolocation();
+    var user = authData.uid; 
+    var FBtime = Firebase.ServerValue.TIMESTAMP;
 
             //Adding users into zUsers
             geoFire.set(user, [glocation.lat, glocation.lng]);
@@ -1517,8 +1519,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
                     }).then(function(authData) {
                       if ($scope.rmbMe.checked) {
-                          $localstorage.set("username", username);
-                          $localstorage.set("password", password);
+                        $localstorage.set("username", username);
+                        $localstorage.set("password", password);
                       }
 
                       var glocation = geoLocation.getGeolocation();
@@ -3670,70 +3672,70 @@ $state.go("yumNUS");
 })
 
 .controller('foodJunctionContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
-$scope.list = function() {
-  fbAuth = fb.getAuth();
-  if (fbAuth) {
-    var syncObject = $firebaseObject(fb.child("food"));
-    syncObject.$bindTo($scope, "data");
-  }
-  $scope.imageUrl1 = "images/greenhuman.png";
-  $scope.imageUrl2 = "images/orangehuman.png";
-  $scope.imageUrl3 = "images/redhuman.png";
-  $scope.imageUrl4 = "images/closesign.png";
-}
-
-$scope.choice = null;
-
-$scope.iconChange = function(clickChoice) {
-  if (clickChoice === $scope.choice) {
-    $scope.imageUrl1 = "images/greenhuman.png";
-    $scope.imageUrl2 = "images/orangehuman.png";
-    $scope.imageUrl3 = "images/redhuman.png";
-    $scope.imageUrl4 = "images/closesign.png";
-    $scope.choice = null;
-  } else if (clickChoice === 1) {
-    $scope.imageUrl1 = "images/greenhumanclicked.png";
-    $scope.imageUrl2 = "images/orangehuman.png";
-    $scope.imageUrl3 = "images/redhuman.png";
-    $scope.imageUrl4 = "images/closesign.png";
-    $scope.choice = 1;
-  } else if (clickChoice === 2) {
-    $scope.imageUrl1 = "images/greenhuman.png";
-    $scope.imageUrl2 = "images/orangehumanclicked.png";
-    $scope.imageUrl3 = "images/redhuman.png";
-    $scope.imageUrl4 = "images/closesign.png";
-    $scope.choice = 2;
-  } else if (clickChoice === 3) {
-    $scope.imageUrl1 = "images/greenhuman.png";
-    $scope.imageUrl2 = "images/orangehuman.png";
-    $scope.imageUrl3 = "images/redhumanclicked.png";
-    $scope.imageUrl4 = "images/closesign.png";
-    $scope.choice = 3;
-  } else if (clickChoice === 4) {
-    $scope.imageUrl1 = "images/greenhuman.png";
-    $scope.imageUrl2 = "images/orangehuman.png";
-    $scope.imageUrl3 = "images/redhuman.png";
-    $scope.imageUrl4 = "images/closesignclicked.png";
-    $scope.choice = 4;
-  }
-}
-
-$scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
-
-    if ($scope.data.hasOwnProperty("foodJunction") !== true) {
-      $scope.data.alcove = [];
+  $scope.list = function() {
+    fbAuth = fb.getAuth();
+    if (fbAuth) {
+      var syncObject = $firebaseObject(fb.child("food"));
+      syncObject.$bindTo($scope, "data");
     }
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+  }
 
-    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-    userFb.on("value", function(snapshot) {
-      fbAuth = fb.getAuth();
-      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-      var currentDate = new Date();
-      var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
-      userName = snapshot.child(fbAuth.uid).child("forumName").val();
+  $scope.choice = null;
+
+  $scope.iconChange = function(clickChoice) {
+    if (clickChoice === $scope.choice) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = null;
+    } else if (clickChoice === 1) {
+      $scope.imageUrl1 = "images/greenhumanclicked.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 1;
+    } else if (clickChoice === 2) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehumanclicked.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 2;
+    } else if (clickChoice === 3) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhumanclicked.png";
+      $scope.imageUrl4 = "images/closesign.png";
+      $scope.choice = 3;
+    } else if (clickChoice === 4) {
+      $scope.imageUrl1 = "images/greenhuman.png";
+      $scope.imageUrl2 = "images/orangehuman.png";
+      $scope.imageUrl3 = "images/redhuman.png";
+      $scope.imageUrl4 = "images/closesignclicked.png";
+      $scope.choice = 4;
+    }
+  }
+
+  $scope.create = function(input) {
+    if (input !== "") {
+      var userName = null;
+
+      if ($scope.data.hasOwnProperty("foodJunction") !== true) {
+        $scope.data.alcove = [];
+      }
+
+      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+      userFb.on("value", function(snapshot) {
+        fbAuth = fb.getAuth();
+        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+        var currentDate = new Date();
+        var currentTime = currentDate.getTime();
+        console.log(fbAuth.uid + " value1");
+        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -3776,32 +3778,32 @@ $scope.create = function(input) {
               })
 
 
-  } else {
-    console.log("No comments in the box detected");
+    } else {
+      console.log("No comments in the box detected");
+    }
   }
-}
-$scope.pictureURL = "http://placehold.it/50x50"; 
-$scope.images = [];
-var fbAuth = fb.getAuth();
-if(fbAuth) {
-  var userReference = fb.child("picture/");
-  var syncArray = $firebaseArray(userReference.child("foodJunction"));
-  $scope.images = syncArray;
-} else {
-  $state.go("bizCanteenContribute");
-}
+  $scope.pictureURL = "http://placehold.it/50x50"; 
+  $scope.images = [];
+  var fbAuth = fb.getAuth();
+  if(fbAuth) {
+    var userReference = fb.child("picture/");
+    var syncArray = $firebaseArray(userReference.child("foodJunction"));
+    $scope.images = syncArray;
+  } else {
+    $state.go("bizCanteenContribute");
+  }
 
-$scope.takePic = function(){
-  $cordovaCamera.getPicture({
-    destinationType: Camera.DestinationType.DATA_URL,
-    sourceType: Camera.PictureSourceType.CAMERA,  
-    encodingType: Camera.EncodingType.JPEG,
-    popoverOptions: CameraPopoverOptions,
-    targetWidth: 500,
-    targetHeight: 500,
-    saveToPhotoAlbum: false
-  })
-  .then(function(data){
+  $scope.takePic = function(){
+    $cordovaCamera.getPicture({
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,  
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    })
+    .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -3825,41 +3827,41 @@ $scope.takePic = function(){
   }, function(error){
 
   })
-  
-} 
+
+  } 
 
 })
 
 .controller('seeLah7Ctrl', function($scope, $firebase, $firebaseObject) {
-   $scope.filter = function() {
-    var bizRef = fb.child("food").child("foodJunction");
-    var flavoursPicRef = fb.child("picture").child("foodJunction");
-    var currentDate = new Date();
-    var currentTime = currentDate.getTime();
-    var fifteen = 20;
-    var time = 120; 
-    bizRef.on("value", function(snapshot) {
-      snapshot.forEach(function(childSnapshot){
-        var childTime = childSnapshot.child("time").val();
-        var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
-        if (difference > fifteen) {
-          childSnapshot.ref().remove();
-        }
-      })
+ $scope.filter = function() {
+  var bizRef = fb.child("food").child("foodJunction");
+  var flavoursPicRef = fb.child("picture").child("foodJunction");
+  var currentDate = new Date();
+  var currentTime = currentDate.getTime();
+  var fifteen = 20;
+  var time = 120; 
+  bizRef.on("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > fifteen) {
+        childSnapshot.ref().remove();
+      }
     })
-    flavoursPicRef.on("value", function(snapshot){
-      snapshot.forEach(function(childSnapshot){
-        var childTime = childSnapshot.child("time").val();
-        var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
-        if (difference > time) {
-          childSnapshot.ref().remove();
-        }
-      })
+  })
+  flavoursPicRef.on("value", function(snapshot){
+    snapshot.forEach(function(childSnapshot){
+      var childTime = childSnapshot.child("time").val();
+      var difference = (currentTime - childTime)/(1000 * 60);
+      console.log(difference);
+      if (difference > time) {
+        childSnapshot.ref().remove();
+      }
+    })
 
-    })
-  }
+  })
+}
     //Filters list for closed
     $scope.filterClosed = function() {
       var closedRef = fb.child("closed").child("foodJunction");
@@ -3918,7 +3920,7 @@ $scope.takePic = function(){
       }
     }
 
-})
+  })
 
 .controller('alcoveContributeCtrl', function($scope, $firebaseArray, $firebaseObject, $state, $cordovaCamera) {
  $scope.list = function() {
@@ -6293,7 +6295,7 @@ $scope.takePic = function(){
 })
 
 .controller('spiceContributeCtrl', function($scope, $firebaseObject, $state, $firebaseArray, $cordovaCamera) {
-    $scope.list = function() {
+  $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
       var syncObject = $firebaseObject(fb.child("food"));
@@ -6548,70 +6550,70 @@ $scope.takePic = function(){
 })
 
 .controller('starbucksMD11ContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
-     $scope.list = function() {
-    fbAuth = fb.getAuth();
-    if (fbAuth) {
-      var syncObject = $firebaseObject(fb.child("food"));
-      syncObject.$bindTo($scope, "data");
-    }
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
+
+$scope.choice = null;
+
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
     $scope.imageUrl3 = "images/redhuman.png";
     $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
   }
+}
 
-  $scope.choice = null;
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
 
-  $scope.iconChange = function(clickChoice) {
-    if (clickChoice === $scope.choice) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = null;
-    } else if (clickChoice === 1) {
-      $scope.imageUrl1 = "images/greenhumanclicked.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 1;
-    } else if (clickChoice === 2) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehumanclicked.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 2;
-    } else if (clickChoice === 3) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhumanclicked.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 3;
-    } else if (clickChoice === 4) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesignclicked.png";
-      $scope.choice = 4;
+    if ($scope.data.hasOwnProperty("starbucksMD11") !== true) {
+      $scope.data.starbucksMD11 = [];
     }
-  }
 
-  $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
-
-      if ($scope.data.hasOwnProperty("starbucksMD11") !== true) {
-        $scope.data.starbucksMD11 = [];
-      }
-
-      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-      userFb.on("value", function(snapshot) {
-        fbAuth = fb.getAuth();
-        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
-        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -6652,32 +6654,32 @@ $scope.takePic = function(){
                   $state.go("seeLah24");
                 }
               })
-    } else {
-      console.log("No comments in the box detected");
-    }
-  }
-  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-  if(fbAuth) {
-    var userReference = fb.child("picture/");
-    var syncArray = $firebaseArray(userReference.child("starbucksMD11"));
-    $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    console.log("No comments in the box detected");
   }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("starbucksMD11"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-  $scope.takePic = function(){
-    $cordovaCamera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,  
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    })
-    .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -6702,12 +6704,12 @@ $scope.takePic = function(){
 
   })
 
-  }
+}
 
 })
 
 .controller('seeLah24Ctrl', function($scope, $firebase, $firebaseObject) {
-    $scope.filter = function() {
+  $scope.filter = function() {
     var butterRef = fb.child("food").child("starbucksMD11");
     var butterPicRef = fb.child("picture").child("starbucksMD11");
     var currentDate = new Date();
@@ -6802,70 +6804,70 @@ $scope.takePic = function(){
 })
 
 .controller('starbucksYIHContributeCtrl', function($scope, $firebaseObject,$state, $firebaseArray, $cordovaCamera) {
-     $scope.list = function() {
-    fbAuth = fb.getAuth();
-    if (fbAuth) {
-      var syncObject = $firebaseObject(fb.child("food"));
-      syncObject.$bindTo($scope, "data");
-    }
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
+
+$scope.choice = null;
+
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
     $scope.imageUrl3 = "images/redhuman.png";
     $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
   }
+}
 
-  $scope.choice = null;
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
 
-  $scope.iconChange = function(clickChoice) {
-    if (clickChoice === $scope.choice) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = null;
-    } else if (clickChoice === 1) {
-      $scope.imageUrl1 = "images/greenhumanclicked.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 1;
-    } else if (clickChoice === 2) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehumanclicked.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 2;
-    } else if (clickChoice === 3) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhumanclicked.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 3;
-    } else if (clickChoice === 4) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesignclicked.png";
-      $scope.choice = 4;
+    if ($scope.data.hasOwnProperty("starbucksYIH") !== true) {
+      $scope.data.starbucksYIH = [];
     }
-  }
 
-  $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
-
-      if ($scope.data.hasOwnProperty("starbucksYIH") !== true) {
-        $scope.data.starbucksYIH = [];
-      }
-
-      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-      userFb.on("value", function(snapshot) {
-        fbAuth = fb.getAuth();
-        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
-        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -6908,32 +6910,32 @@ $scope.takePic = function(){
               })
 
 
-    } else {
-      console.log("No comments in the box detected");
-    }
-  }
-  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-  if(fbAuth) {
-    var userReference = fb.child("picture/");
-    var syncArray = $firebaseArray(userReference.child("starbucksYIH"));
-    $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    console.log("No comments in the box detected");
   }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("starbucksYIH"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-  $scope.takePic = function(){
-    $cordovaCamera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,  
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    })
-    .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -6958,12 +6960,12 @@ $scope.takePic = function(){
 
   })
 
-  }
+}
 
 })
 
 .controller('seeLah25Ctrl', function($scope, $firebase, $firebaseObject) {
-    $scope.filter = function() {
+  $scope.filter = function() {
     var butterRef = fb.child("food").child("starbucksYIH");
     var butterPicRef = fb.child("picture").child("starbucksYIH");
     var currentDate = new Date();
@@ -7058,70 +7060,70 @@ $scope.takePic = function(){
 })
 
 .controller('starbucksUTownContributeCtrl', function($scope, $firebaseObject, $firebaseArray, $state, $cordovaCamera) {
-       $scope.list = function() {
-    fbAuth = fb.getAuth();
-    if (fbAuth) {
-      var syncObject = $firebaseObject(fb.child("food"));
-      syncObject.$bindTo($scope, "data");
-    }
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
+
+$scope.choice = null;
+
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
     $scope.imageUrl3 = "images/redhuman.png";
     $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
   }
+}
 
-  $scope.choice = null;
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
 
-  $scope.iconChange = function(clickChoice) {
-    if (clickChoice === $scope.choice) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = null;
-    } else if (clickChoice === 1) {
-      $scope.imageUrl1 = "images/greenhumanclicked.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 1;
-    } else if (clickChoice === 2) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehumanclicked.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 2;
-    } else if (clickChoice === 3) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhumanclicked.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 3;
-    } else if (clickChoice === 4) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesignclicked.png";
-      $scope.choice = 4;
+    if ($scope.data.hasOwnProperty("starbucksUTown") !== true) {
+      $scope.data.starbucksUTown = [];
     }
-  }
 
-  $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
-
-      if ($scope.data.hasOwnProperty("starbucksUTown") !== true) {
-        $scope.data.starbucksUTown = [];
-      }
-
-      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-      userFb.on("value", function(snapshot) {
-        fbAuth = fb.getAuth();
-        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
-        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -7164,32 +7166,32 @@ $scope.takePic = function(){
               })
 
 
-    } else {
-      console.log("No comments in the box detected");
-    }
-  }
-  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-  if(fbAuth) {
-    var userReference = fb.child("picture/");
-    var syncArray = $firebaseArray(userReference.child("starbucksUTown"));
-    $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    console.log("No comments in the box detected");
   }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("starbucksUTown"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-  $scope.takePic = function(){
-    $cordovaCamera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,  
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    })
-    .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -7214,7 +7216,7 @@ $scope.takePic = function(){
 
   })
 
-  }
+}
 
 })
 
@@ -7314,70 +7316,70 @@ $scope.takePic = function(){
 })
 
 .controller('uniClubContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
-       $scope.list = function() {
-    fbAuth = fb.getAuth();
-    if (fbAuth) {
-      var syncObject = $firebaseObject(fb.child("food"));
-      syncObject.$bindTo($scope, "data");
-    }
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
+
+$scope.choice = null;
+
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
     $scope.imageUrl3 = "images/redhuman.png";
     $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
   }
+}
 
-  $scope.choice = null;
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
 
-  $scope.iconChange = function(clickChoice) {
-    if (clickChoice === $scope.choice) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = null;
-    } else if (clickChoice === 1) {
-      $scope.imageUrl1 = "images/greenhumanclicked.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 1;
-    } else if (clickChoice === 2) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehumanclicked.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 2;
-    } else if (clickChoice === 3) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhumanclicked.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 3;
-    } else if (clickChoice === 4) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesignclicked.png";
-      $scope.choice = 4;
+    if ($scope.data.hasOwnProperty("uniClub") !== true) {
+      $scope.data.uniClub = [];
     }
-  }
 
-  $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
-
-      if ($scope.data.hasOwnProperty("uniClub") !== true) {
-        $scope.data.uniClub = [];
-      }
-
-      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-      userFb.on("value", function(snapshot) {
-        fbAuth = fb.getAuth();
-        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
-        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -7420,32 +7422,32 @@ $scope.takePic = function(){
               })
 
 
-    } else {
-      console.log("No comments in the box detected");
-    }
-  }
-  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-  if(fbAuth) {
-    var userReference = fb.child("picture/");
-    var syncArray = $firebaseArray(userReference.child("uniClub"));
-    $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    console.log("No comments in the box detected");
   }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("uniClub"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-  $scope.takePic = function(){
-    $cordovaCamera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,  
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    })
-    .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -7470,7 +7472,7 @@ $scope.takePic = function(){
 
   })
 
-  }
+}
 
 })
 .controller('seeLah27Ctrl', function($scope, $firebase, $firebaseObject) {
@@ -7569,70 +7571,70 @@ $scope.takePic = function(){
 })
 
 .controller('waaContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
-       $scope.list = function() {
-    fbAuth = fb.getAuth();
-    if (fbAuth) {
-      var syncObject = $firebaseObject(fb.child("food"));
-      syncObject.$bindTo($scope, "data");
-    }
+ $scope.list = function() {
+  fbAuth = fb.getAuth();
+  if (fbAuth) {
+    var syncObject = $firebaseObject(fb.child("food"));
+    syncObject.$bindTo($scope, "data");
+  }
+  $scope.imageUrl1 = "images/greenhuman.png";
+  $scope.imageUrl2 = "images/orangehuman.png";
+  $scope.imageUrl3 = "images/redhuman.png";
+  $scope.imageUrl4 = "images/closesign.png";
+}
+
+$scope.choice = null;
+
+$scope.iconChange = function(clickChoice) {
+  if (clickChoice === $scope.choice) {
     $scope.imageUrl1 = "images/greenhuman.png";
     $scope.imageUrl2 = "images/orangehuman.png";
     $scope.imageUrl3 = "images/redhuman.png";
     $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = null;
+  } else if (clickChoice === 1) {
+    $scope.imageUrl1 = "images/greenhumanclicked.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 1;
+  } else if (clickChoice === 2) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehumanclicked.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 2;
+  } else if (clickChoice === 3) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhumanclicked.png";
+    $scope.imageUrl4 = "images/closesign.png";
+    $scope.choice = 3;
+  } else if (clickChoice === 4) {
+    $scope.imageUrl1 = "images/greenhuman.png";
+    $scope.imageUrl2 = "images/orangehuman.png";
+    $scope.imageUrl3 = "images/redhuman.png";
+    $scope.imageUrl4 = "images/closesignclicked.png";
+    $scope.choice = 4;
   }
+}
 
-  $scope.choice = null;
+$scope.create = function(input) {
+  if (input !== "") {
+    var userName = null;
 
-  $scope.iconChange = function(clickChoice) {
-    if (clickChoice === $scope.choice) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = null;
-    } else if (clickChoice === 1) {
-      $scope.imageUrl1 = "images/greenhumanclicked.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 1;
-    } else if (clickChoice === 2) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehumanclicked.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 2;
-    } else if (clickChoice === 3) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhumanclicked.png";
-      $scope.imageUrl4 = "images/closesign.png";
-      $scope.choice = 3;
-    } else if (clickChoice === 4) {
-      $scope.imageUrl1 = "images/greenhuman.png";
-      $scope.imageUrl2 = "images/orangehuman.png";
-      $scope.imageUrl3 = "images/redhuman.png";
-      $scope.imageUrl4 = "images/closesignclicked.png";
-      $scope.choice = 4;
+    if ($scope.data.hasOwnProperty("waa") !== true) {
+      $scope.data.waa = [];
     }
-  }
 
-  $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
-
-      if ($scope.data.hasOwnProperty("waa") !== true) {
-        $scope.data.waa = [];
-      }
-
-      var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
-      userFb.on("value", function(snapshot) {
-        fbAuth = fb.getAuth();
-        var firebaseTime = Firebase.ServerValue.TIMESTAMP;
-        var currentDate = new Date();
-        var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
-        userName = snapshot.child(fbAuth.uid).child("forumName").val();
+    var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+    userFb.on("value", function(snapshot) {
+      fbAuth = fb.getAuth();
+      var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+      var currentDate = new Date();
+      var currentTime = currentDate.getTime();
+      console.log(fbAuth.uid + " value1");
+      userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
@@ -7675,32 +7677,32 @@ $scope.takePic = function(){
               })
 
 
-    } else {
-      console.log("No comments in the box detected");
-    }
-  }
-  $scope.pictureURL = "http://placehold.it/50x50"; 
-  $scope.images = [];
-  var fbAuth = fb.getAuth();
-  if(fbAuth) {
-    var userReference = fb.child("picture/");
-    var syncArray = $firebaseArray(userReference.child("waa"));
-    $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    console.log("No comments in the box detected");
   }
+}
+$scope.pictureURL = "http://placehold.it/50x50"; 
+$scope.images = [];
+var fbAuth = fb.getAuth();
+if(fbAuth) {
+  var userReference = fb.child("picture/");
+  var syncArray = $firebaseArray(userReference.child("waa"));
+  $scope.images = syncArray;
+} else {
+  $state.go("bizCanteenContribute");
+}
 
-  $scope.takePic = function(){
-    $cordovaCamera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA,  
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    })
-    .then(function(data){
+$scope.takePic = function(){
+  $cordovaCamera.getPicture({
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType: Camera.PictureSourceType.CAMERA,  
+    encodingType: Camera.EncodingType.JPEG,
+    popoverOptions: CameraPopoverOptions,
+    targetWidth: 500,
+    targetHeight: 500,
+    saveToPhotoAlbum: false
+  })
+  .then(function(data){
     //console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
@@ -7725,12 +7727,12 @@ $scope.takePic = function(){
 
   })
 
-  }
+}
 
 })
 .controller('seeLah28Ctrl', function($scope, $firebase, $firebaseObject) {
 
-$scope.filter = function() {
+  $scope.filter = function() {
     var butterRef = fb.child("food").child("waa");
     var butterPicRef = fb.child("picture").child("waa");
     var currentDate = new Date();
