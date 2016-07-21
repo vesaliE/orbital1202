@@ -8537,6 +8537,11 @@ progress {
     color: #444;
     text-decoration: none; }
   .button.active, .button.activated {
+    background: url('../../../images/greywood.png');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    margin:auto;
     background-color: #e5e5e5; }
   .button:after {
     position: absolute;
