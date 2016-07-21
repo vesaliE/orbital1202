@@ -2260,7 +2260,7 @@ $state.go("yumNUS");
                   image: $scope.pictureURL
                 });
                 //console.log("done!");
-                $state.go("bizCanteen");
+                $state.go("seeLah");
               })
   }, function(error){
 
