@@ -4,13 +4,13 @@
                 <img src="images/loginicon2.png" class="mainPageIconContainer" style="height:300px; width:300px; position:relative; top:20px">
             </div>
       
-            <div class="list list-inset" style="position: relative; top: 20px">
+            <div class="list list-inset" style="position: relative; top: 20px" ng-init="checkUsername()">
                 <label class="item item-input item-icon-right">
                     <input ng-model="username" type="text" placeholder="Email" />
                     <i class="icon ion-email"></i>
                 </label>
             </div>
-            <div class="list list-inset" style="position: relative; top: 20px">
+            <div class="list list-inset" style="position: relative; top: 20px" ng-init="checkPassword()">
                 <label class="item item-input item-icon-right">
                     <input ng-model="password" type="password" placeholder="Password" />
                     <i class="icon ion-locked"></i>
@@ -32,6 +32,8 @@
                     <a class="button button-stable" ng-click="register(username, password)">Register</a>
                 </div>
             </div>
+            <ion-checkbox ng-model="rmbMe.checked" ng-check="rmbMe.checked" style="background-color:transparent; border-color:transparent; position:relative; top:30px">Remember Me</ion-checkbox>
+            <button ng-click="test()" style="position:relative; top:30px">test</button>
         </div>
     </ion-content>
 </ion-view>
