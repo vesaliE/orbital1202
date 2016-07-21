@@ -14,6 +14,10 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
   $ionicPush.register();*/
 
+  $scope.goInfo = function() {
+      $state.go("aboutUs");
+  }
+
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft(); 
   }
@@ -9549,4 +9553,8 @@ $scope.takePic = function(){
       console.log('true');
     }
   }
+})
+
+.controller('aboutUsCtrl', function($scope) {
+    
 })
