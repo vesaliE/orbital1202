@@ -63,8 +63,9 @@
         <ion-side-menu side="left">
             <ion-content class="has-header">
                 <ion-list>
-                    <ion-item>Reset Password</ion-item>
-                    <ion-item>Logout</ion-item>
+                    <ion-item menu-close ng-click="changePassword()">Change Password</ion-item>
+                    <ion-item menu-close ng-click="logout()">Logout</ion-item>
+                    <ion-item menu-close ng-click="goInfo()">About Us</ion-item>
                 </ion-list>
             </ion-content>
         </ion-side-menu>

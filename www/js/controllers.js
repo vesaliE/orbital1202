@@ -13,6 +13,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   });
 
   $ionicPush.register();*/
+
   $scope.toggleLeft = function(){
     $ionicSideMenuDelegate.toggleLeft(); 
   }
@@ -167,6 +168,75 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
           }
         })
       }
+
+  $scope.changePassword = function() {
+      $scope.data = {}
+      var passwordChange = $ionicPopup.show({
+          template: 'Please enter your email<input type="test" ng-model="data.email"> <br>Enter Old Password<input type="password" ng-model="data.oldPassword"> <br>Enter new Password<input type="password" ng-model="data.newPassword1"> <br>Re-enter new Password<input type="password" ng-model="data.newPassword2">',
+          title: 'Change of Password',
+          scope: $scope,
+          buttons: [{
+            text: 'Cancel'
+          }, {
+            text: 'Change',
+            type: 'button-positive',
+            onTap: function(e) {
+                return $scope.data;
+            }
+          }]
+      })
+
+      passwordChange.then(function(res) {
+          if (res) {
+              console.log('success');
+              if (res.newPassword1 === res.newPassword2) {
+                  fb.changePassword({
+                      email: res.email,
+                      oldPassword: res.oldPassword,
+                      newPassword: res.newPassword1
+                  }, function(error) {
+                      if (error) {
+                          switch (error.code) {
+                              case "INVALID_PASSWORD":
+                                  $ionicPopup.alert({
+                                      title: "Password is incorrect!",
+                                      template: 'Please try again'
+                                  }) ;
+                                  console.log("Password Incorrect");
+                                  break;
+                              case "INVALID_USER":
+                                  $ionicPopup.alert({
+                                      title: "Invalid email!",
+                                      template: 'Please try again'
+                                  });
+                                  console.log("Invalid User");
+                                  break;
+                              default:
+                                  $ionicPopup.alert({
+                                      title: "Error",
+                                      template: 'There is an error in changing your password. Please try again'
+                                  })
+                                  console.log("Error changing password", error);
+                          }
+                      } else {
+                          $ionicPopup.alert({
+                              title: "Successful!",
+                              template: 'Your password has been successfully changed!'
+                          });
+                          console.log("Password change successful!");
+                      }
+                  })
+              } else {
+                  $ionicPopup.alert({
+                      title: "Password Mismatch",
+                      template: 'Your passwords do not match, please try again'
+                  })
+                  console.log("Password different");
+              }
+              console.log(res.oldPassword + res.newPassword1 + res.newPassword2);
+          }
+      })
+  }
 
 
     })
