@@ -60,12 +60,21 @@
             </ion-content>
         </ion-side-menu-content>
         <!-- Left menu -->
-        <ion-side-menu side="left">
-            <ion-content class="has-header">
+        <ion-side-menu side="left" class="menuImage">
+            <ion-content class="has-header" style="font-family:'Open Sans'; font-weight:bold">
                 <ion-list>
-                    <ion-item menu-close ng-click="changePassword()">Change Password</ion-item>
-                    <ion-item menu-close ng-click="logout()">Logout</ion-item>
-                    <ion-item menu-close ng-click="goInfo()">About Us</ion-item>
+                    <ion-item menu-close style="background-color:transparent" ng-click="changePassword()">
+                        Change Password
+                        <i class="icon ion-chevron-right" style="float:right"></i>
+                    </ion-item>
+                    <ion-item menu-close style="background-color:transparent" ng-click="logout()">
+                        Logout
+                        <i class="icon ion-chevron-right" style="float:right"></i>
+                    </ion-item>
+                    <ion-item menu-close style="background-color:transparent" ng-click="goInfo()">
+                        About Us
+                        <i class="icon ion-chevron-right" style="float:right"></i>
+                    </ion-item>
                 </ion-list>
             </ion-content>
         </ion-side-menu>

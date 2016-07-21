@@ -10002,6 +10002,14 @@ height:100;
     margin: auto;
 }
 
+.menuImage {
+    background: url('../../../images/bluecircledim.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: auto;
+}
+
 .blueSegmentImage {
     background: url('../../../images/wood.jpg');
     background-repeat: no-repeat;
