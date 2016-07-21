@@ -4,13 +4,13 @@
                 <img src="images/loginicon2.png" class="mainPageIconContainer" style="height:300px; width:300px; position:relative; top:20px">
             </div>
       
-            <div class="list list-inset" style="position: relative; top: 20px">
+            <div class="list list-inset" style="position: relative; top: 20px" ng-init="checkUsername()">
                 <label class="item item-input item-icon-right">
                     <input ng-model="username" type="text" placeholder="Email" />
                     <i class="icon ion-email"></i>
                 </label>
             </div>
-            <div class="list list-inset" style="position: relative; top: 20px">
+            <div class="list list-inset" style="position: relative; top: 20px" ng-init="checkPassword()">
                 <label class="item item-input item-icon-right">
                     <input ng-model="password" type="password" placeholder="Password" />
                     <i class="icon ion-locked"></i>
