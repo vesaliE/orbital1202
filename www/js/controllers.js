@@ -920,8 +920,42 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
 .controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $localstorage, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
 
-  $scope.rmbMe = { checked: true };
+  $scope.forgotPassword = function() {
+      $scope.data = {};
 
+      $ionicPopup.prompt({
+          title: 'Please enter registered email',
+          inputType: 'text'
+        })
+        .then(function(result) {
+            fb.resetPassword({
+                email: result
+            }, function(error) {
+                if (error) {
+                    switch (error.code) {
+                        case "INVALID_USER":
+                          $ionicPopup.alert({
+                            title: 'Invalid User',
+                            template: 'The specified email does not exist. Please create an account if you do not have one!'
+                          });
+                          break;
+                        default:
+                          $ionicPopup.alert({
+                            title: 'Error!',
+                            template: 'Please try again'
+                          });
+                    }
+                } else {
+                    $ionicPopup.alert({
+                        title: 'Success!',
+                        template: 'Password reset email sent successfully'
+                    });
+                }
+            })
+        })
+  }
+
+  $scope.rmbMe = { checked: true };
 
   $scope.test = function() {
     console.log($scope.rmbMe.checked);
