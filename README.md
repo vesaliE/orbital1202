@@ -16,8 +16,8 @@ What have we completed?
     Feature 4 - Shows the canteens nearest to you and its crowdedness level.
     Feature 5 - Menu for cafes/fastfood and stalls for canteens 
     Feature 6 - Map and address for food oulets included 
-      Based on a survey conducted, many students themselves do not have knowledege about the different food outlets available in NUS. 
-      Thus we have included the address and google map for those who have the time and wish to expolre other food outlets in NUS. 
+      Based on a survey conducted, many students themselves do not have knowledge about the different food outlets available in NUS. 
+      Thus we have included the address and google map for those who have the time and wish to explore other food outlets in NUS. 
  
   Below we will demonstrate how a user will use our app. The video below also shows a live demostration of how our app works. 
   We will also show the various versions our app have been through after continous user-testing with friends and family as well as surveys conducted to get feedback and peer evaluation comments.
