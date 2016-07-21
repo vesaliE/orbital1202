@@ -23,26 +23,26 @@
         <p ng-init="getUsername()" style="font-family:'Atma','Open Sans'; font-size:25px; font-weight:bold">Hello {{ userName }}!</p>
         <div id="iconPosition" style="top:10px">
             <div style="text-align:center" id="pos" class="">
-              <img class="yumNUSIcon" src="images/gpsiconsimple.png" ui-sref="showNearBy">
-                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:-15px">Nearby</h1>
+                <button class="yumNUSIcon1" ui-sref="showNearBy">
+                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:70px">Nearby</h1>
             </div>
             <div style="text-align:center" id="pos">
-                <img src="images/forkspoonicon.png" class="contributeIconOne" ui-sref="chooseCanteen">
-                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:-15px">Canteen</h1>
+                <button class="yumNUSIcon4" ui-sref="chooseCanteen">
+                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:70px; left:-10px; width:82px;">Canteen</h1>
             </div>
             <div style="text-align:center" id="pos">
-                <img src="images/cofeeicon.png" class="contributeIconOne" ui-sref="chooseCafe">
-                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:-15px">Cafe</h1>
+                <button class="yumNUSIcon3" ui-sref="chooseCafe">
+                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:70px">Cafe</h1>
             </div>
             <div style="text-align:center" id="pos">
-                <img src="images/burgericon.png"; class="contributeIconOne" ui-sref="checkFastfoods">
-                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:-15px">Fastfood</h1>
+                <button class="yumNUSIcon2" ui-sref="checkFastfoods">
+                <h1 style="font-family:'Open Sans'; font-size:15px; font-weight:bold; position:relative; top:70px; left:-10px; width:82px">Fastfood</h1>
             </div>
             <span class="stretch"></span>
         </div>
 
-         <h2>Top 3 Picks</h2>
-         <div   ng-init="colourCode(restaurant)" ng-repeat="restaurant in restaurantList | orderBy: 'distance'| limitTo : numLimit " href='#'>
+         <h2 style="position:relative; top:20px">Top 3 Picks</h2>
+         <div   ng-init="col2urCode(restaurant)" ng-repeat="restaurant in restaurantList | orderBy: 'distance'| limitTo : numLimit " href='#' style="position:relative; top:20px">
             <article class="item_frame" >
                 <div class="marker_left_container" >
                 <div ng-class= "getColor(restaurant)" >
