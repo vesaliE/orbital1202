@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
-.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPopup, $state, $ionicSideMenuDelegate) {
+.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPopup, $state, $ionicSideMenuDelegate, $firebaseAuth) {
   /*$ionicPush.init({
     "debug": true,
     "onNotification": function(notification) {
@@ -13,8 +13,36 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   });
 
   $ionicPush.register();*/
+  var linkIssue = new Firebase("https://orbital--1202.firebaseio.com/Issues");
   $scope.report =function(){
-    $state.go("reportProblem"); 
+    //$state.go("reportProblem"); 
+    $scope.data = {}
+    var issue = $ionicPopup.show({
+      template: 'Please enter your email<input type="test" ng-model="data.email"> <br>Enter Issue<input type="text" ng-model="data.issue">',
+      title: 'Let Us Know!',
+      scope: $scope,
+      buttons: [{
+        text: 'Cancel'
+      }, {
+        text: 'Submit',
+        type: 'button-positive',
+        onTap: function(e) {
+         fbAuth = fb.getAuth();
+         var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+         userFb.on("value", function(snapshot) {
+          var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+          var currentDate = new Date();
+          var currentTime = currentDate.getTime();
+          userName = snapshot.child(fbAuth.uid).child("forumName").val();
+          fb.child("Issues").child(currentTime).set({
+            name: userName, 
+            time: firebaseTime,
+            issue: $scope.data
+          });
+        })
+       }
+     }]
+   })
   }
 
   $scope.goInfo = function() {
@@ -9594,6 +9622,3 @@ $scope.takePic = function(){
 
 })
 
-.controller('reportProblemCtrl', function($scope){
-
-})

@@ -555,11 +555,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/aboutUs.html',
     controller: 'aboutUsCtrl'
   })
-    .state('reportProblem', {
+  /*.state('reportProblem', {
     url: '/reportProblem',
     templateUrl: 'templates/reportProblem.html',
     controller: 'reportProblemCtrl'
-  })
+  })*/
 
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
