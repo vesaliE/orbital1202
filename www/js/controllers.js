@@ -13,6 +13,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   });
 
   $ionicPush.register();*/
+  $scope.report =function(){
+    $state.go("reportProblem"); 
+  }
 
   $scope.goInfo = function() {
     $state.go("aboutUs");
@@ -9575,10 +9578,9 @@ $scope.takePic = function(){
     //console.log("click");
     $state.go('yumNUS');
   }
-
   $scope.hide = function() {
     var currentName = $state.current.name;
-    if (currentName==="yumNUS" || currentName==="bizCanteen_contribute") {
+    if (currentName ==="yumNUS" || currentName==="bizCanteen_contribute") {
       return false;
       //console.log('false');
     } else {
@@ -9589,5 +9591,9 @@ $scope.takePic = function(){
 })
 
 .controller('aboutUsCtrl', function($scope) {
+
+})
+
+.controller('reportProblemCtrl', function($scope){
 
 })
