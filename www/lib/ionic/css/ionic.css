@@ -8515,8 +8515,8 @@ progress {
  * --------------------------------------------------
  */
 .button {
-  border-color: transparent;
-  background-color: #f8f8f8;
+  border-color: #transparent;
+  background-color: #f5f5f5;
   color: #444;
   position: relative;
   display: inline-block;
@@ -8537,12 +8537,11 @@ progress {
     color: #444;
     text-decoration: none; }
   .button.active, .button.activated {
-    background: url('../../../images/greywood.png');
     background-repeat: no-repeat;
     background-position:center;
     background-size: cover;
     margin:auto;
-    background-color: #e5e5e5; }
+    background-color:#c4c4c4; }
   .button:after {
     position: absolute;
     top: -6px;
@@ -8622,9 +8621,7 @@ progress {
         box-shadow: none;
         color: #fff; }
   .button.button-intro{
-     border-color: #30231d;
-    background-color: #f6f1ed;
-    color: #5a5c51; 
+    border-color: #30231d;
   }
   /*.button.button-intro:hover {
       color: #810040;
@@ -9888,8 +9885,8 @@ height:100;
     border-style:solid; 
     border-width:3px; 
     border-radius:50%; 
-    border-color:#f5f5f5; 
-    background-color:transparent;
+    border-color:#904c04; 
+    background-color:#f5f5f5;
 }
 
 .yumNUSIcon1.active, .yumNUSIcon1.activated {
@@ -9910,8 +9907,8 @@ height:100;
     border-style:solid; 
     border-width:3px; 
     border-radius:50%; 
-    border-color:#f5f5f5; 
-    background-color:transparent;
+    border-color:#904c04; 
+    background-color:#f5f5f5;
 }
 
 .yumNUSIcon2.active, .yumNUSIcon2.activated {
@@ -9932,8 +9929,8 @@ height:100;
     border-style:solid; 
     border-width:3px; 
     border-radius:50%; 
-    border-color:#f5f5f5; 
-    background-color:transparent;
+    border-color:#904c04; 
+    background-color:#f5f5f5;
 }
 
 .yumNUSIcon3.active, .yumNUSIcon3.activated {
@@ -9955,8 +9952,8 @@ height:100;
     border-style:solid; 
     border-width:3px; 
     border-radius:50%; 
-    border-color:#f5f5f5; 
-    background-color:transparent;
+    border-color:#904c04; 
+    background-color:#f5f5f5;
 }
 
 .yumNUSIcon4.active, .yumNUSIcon4.activated {
@@ -9995,7 +9992,7 @@ height:100;
 }
 
 .backgroundImage {
-    background: url('../../../images/bluebg.png');
+    background: url('../../../images/canteenbg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

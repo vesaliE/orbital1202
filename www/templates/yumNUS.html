@@ -6,7 +6,7 @@
         <ion-side-menu-content class="backgroundImage">
             <ion-content padding="true" class="has-header">
 
-                <p ng-init="getUsername()" style="font-family:'Atma','Open Sans'; font-size:25px; font-weight:bold">Hello {{ userName }}!</p>
+                <p ng-init="getUsername()" style="font-family:'Open Sans'; font-size:25px; font-weight:bold">Hello {{ userName }}!</p>
                 <div id="iconPosition" style="top:10px">
                     <div style="text-align:center" id="pos" class="">
                         <button class="yumNUSIcon1" ui-sref="showNearBy">
@@ -36,7 +36,7 @@
                         <div class="marker_left_container">
                             <div ng-class= "getColor(restaurant)">
                                 <div>
-                                    <a href="" ng-href="#/{{ restaurant.url }}" style="font-weight:600; text-align:center;line-height:45px; height:130px" class=" button button-intro button-block" style="background-color:#f5f5f5">
+                                    <a href="" ng-href="#/{{ restaurant.url }}" style="font-weight:600; text-align:center;line-height:45px; height:130px" class=" button button-intro button-block">
                                         <h2 ng-class= "getColor(restaurant)" style="font-family:'Open Sans', Comic Sans MS, sans-serif; font-size:20px; font-weight:bold; text-align:left; position:relative; top:10px;"> {{ restaurant.Name }} </h2>
                                         <div style="float:left"> 
                                             <div style="font-family:'Open Sans'; text-align:left">
