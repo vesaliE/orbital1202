@@ -5,14 +5,17 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     "debug": true,
     "onNotification": function(notification) {
       var payload = notification.payload;
-      console.log(notification, payload);
+      //console.log(notification, payload);
     },
     "onRegister": function(data) {
-      console.log(data.token);
+      //console.log(data.token);
     }
   });
 
   $ionicPush.register();*/
+  $scope.report =function(){
+    $state.go("reportProblem"); 
+  }
 
   $scope.goInfo = function() {
     $state.go("aboutUs");
@@ -30,11 +33,11 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       var restaurants = foodFactory.getRestaurants();
       $scope.position = geoLocation.getGeolocation();
       
-         //console.log($scope.position.lat); //for checking purposes
-        //console.log($scope.position.lng);
+         ////console.log($scope.position.lat); //for checking purposes
+        ////console.log($scope.position.lng);
         $scope.numLimit = 3;
         for(var i=0; i<restaurants.length; i++){
-        //console.log(restaurants[i]["lat"]);
+        ////console.log(restaurants[i]["lat"]);
         var distance = GreatCircle.distance(restaurants[i]["lat"],restaurants[i]["long"], $scope.position.lat, $scope.position.lng);
         restaurants[i]["distance"] = distance;
       }
@@ -44,14 +47,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
         restaurant.distance = distance;
         distance = distance.toFixed(2);
-        //console.log(distance);
+        ////console.log(distance);
         return distance;
       };*/
       
       $scope.colourCode = function(restaurant){
         var fbName = restaurant.fbName; 
         var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
-        //console.log(locationURL);
+        ////console.log(locationURL);
         var newref = new Firebase(locationURL);
         newref.once("value", function(snapshot) {
           var num = snapshot.numChildren();
@@ -63,7 +66,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                   restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              //console.log(restaurant.color); 
+              ////console.log(restaurant.color); 
 
 
             } else if (num <= 2) {
@@ -80,56 +83,56 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
               restaurant.src = "images/30.png";
               restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 4) {
               restaurant.color = color1;
               restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 5) {
               restaurant.color = color1;
               restaurant.src = "images/50.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 6) {
               restaurant.color = color1;
               restaurant.src = "images/60.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 7) {
               restaurant.color = color2;
               restaurant.src = "images/70.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 8) {
               restaurant.color = color2;
               restaurant.src = "images/80.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 9) {
               restaurant.color = color2;
               restaurant.src = "images/90.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color);
+              ////console.log(restaurant.color);
 
             } else if (num <= 10) {
               restaurant.color = color2;
               restaurant.src = "images/100.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              //console.log(restaurant.color)
+              ////console.log(restaurant.color)
             }
           });
         
@@ -138,8 +141,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         var currentTime = currentDate.getTime();
       }
       $scope.getColor = function(restaurant){
-        //console.log(restaurant);
-        //console.log(restaurant.color); 
+        ////console.log(restaurant);
+        ////console.log(restaurant.color); 
         return restaurant.color; 
       }
 
@@ -150,8 +153,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         userFb.on("value", function(snapshot) {
           var fireAuth = fb.getAuth();
           $scope.userName = snapshot.child(fireAuth.uid).child("forumName").val();
-          //console.log(fireAuth.uid);
-          //console.log($scope.userName);
+          ////console.log(fireAuth.uid);
+          ////console.log($scope.userName);
         })
 
       }
@@ -166,9 +169,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
           if (res) {
             fb.unauth();
             $state.go('bizCanteen_contribute')
-            console.log("logout");
+            //console.log("logout");
           } else {
-            console.log("dont logout");
+            //console.log("dont logout");
           }
         })
       }
@@ -192,7 +195,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
         passwordChange.then(function(res) {
           if (res) {
-            console.log('success');
+            //console.log('success');
             if (res.newPassword1 === res.newPassword2) {
               fb.changePassword({
                 email: res.email,
@@ -206,28 +209,28 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                       title: "Password is incorrect!",
                       template: 'Please try again'
                     }) ;
-                    console.log("Password Incorrect");
+                    //console.log("Password Incorrect");
                     break;
                     case "INVALID_USER":
                     $ionicPopup.alert({
                       title: "Invalid email!",
                       template: 'Please try again'
                     });
-                    console.log("Invalid User");
+                    //console.log("Invalid User");
                     break;
                     default:
                     $ionicPopup.alert({
                       title: "Error",
                       template: 'There is an error in changing your password. Please try again'
                     })
-                    console.log("Error changing password", error);
+                    //console.log("Error changing password", error);
                   }
                 } else {
                   $ionicPopup.alert({
                     title: "Successful!",
                     template: 'Your password has been successfully changed!'
                   });
-                  console.log("Password change successful!");
+                  //console.log("Password change successful!");
                 }
               })
             } else {
@@ -235,9 +238,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                 title: "Password Mismatch",
                 template: 'Your passwords do not match, please try again'
               })
-              console.log("Password different");
+              //console.log("Password different");
             }
-            console.log(res.oldPassword + res.newPassword1 + res.newPassword2);
+            //console.log(res.oldPassword + res.newPassword1 + res.newPassword2);
           }
         })
       }
@@ -255,7 +258,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 
   // Check Ionic Deploy for new code
   $scope.checkForUpdates = function() {
-    console.log('Ionic Deploy: Checking for updates');
+    //console.log('Ionic Deploy: Checking for updates');
     deploy.check().then(function(hasUpdate) {
       console.log('Ionic Deploy: Update available: ' + hasUpdate);
       $scope.hasUpdate = hasUpdate;
@@ -270,7 +273,6 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         title: "Update Available!",
         template: 'Please click on Download Update.'
       });
-
     }
   }, function(err) {
     console.error('Ionic Deploy: Unable to check for updates', err);
@@ -318,16 +320,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkAlcove.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        ////console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        ////console.log(count);
+        ////console.log("here at 1!");
         return $scope.colorAlcove = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        ////console.log("here at else!");
         return $scope.colorAlcove = "images/orangehumantrans.png";
         
       } else {
@@ -342,16 +344,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkButter.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        ////console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        ////console.log(count);
+        ////console.log("here at 1!");
         return $scope.colorButter = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorButter = "images/orangehumantrans.png";
         
       } else {
@@ -366,16 +368,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkHumble.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorHumble = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorHumble = "images/orangehumantrans.png";
         
       } else {
@@ -390,16 +392,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkHwang.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorHwang = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorHwang = "images/orangehumantrans.png";
         
       } else {
@@ -414,16 +416,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkBistro.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorBistro = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorBistro = "images/orangehumantrans.png";
         
       } else {
@@ -438,16 +440,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkPlatypus.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorPlatypus = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorPlatypus = "images/orangehumantrans.png";
         
       } else {
@@ -462,16 +464,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkReedz.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorReedz = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorReedz = "images/orangehumantrans.png";
         
       } else {
@@ -486,16 +488,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSapore.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSapore = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSapore = "images/orangehumantrans.png";
         
       } else {
@@ -510,16 +512,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSpinelli.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSpinelli = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSpinelli = "images/orangehumantrans.png";
         
       } else {
@@ -534,16 +536,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSpice.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSpice = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSpice = "images/orangehumantrans.png";
         
       } else {
@@ -558,16 +560,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkStarbucksMD11.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorStarbucksMD11 = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorStarbucksMD11 = "images/orangehumantrans.png";
         
       } else {
@@ -582,16 +584,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkStarbucksYIH.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorStarbucksYIH = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorStarbucksYIH = "images/orangehumantrans.png";
         
       } else {
@@ -606,16 +608,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkStarbucksUTown.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorStarbucksUTown = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorStarbucksUTown = "images/orangehumantrans.png";
         
       } else {
@@ -630,16 +632,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkUniversity.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorUniversity = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorUniversity = "images/orangehumantrans.png";
         
       } else {
@@ -654,16 +656,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkWaaCow.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorWaaCow = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorWaaCow = "images/orangehumantrans.png";
         
       } else {
@@ -690,16 +692,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkMac.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorMac = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorMac = "images/orangehumantrans.png";
         
       } else {
@@ -714,16 +716,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSubwayYIH.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSubwayYIH = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSubwayYIH = "images/orangehumantrans.png";
         
       } else {
@@ -738,16 +740,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSubwayUTown.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSubwayUTown = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSubwayUTown = "images/orangehumantrans.png";
         
       } else {
@@ -783,16 +785,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourBizCanteen.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorBiz = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorBiz = "images/orangehumantrans.png";
         
       } else {
@@ -807,16 +809,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourFASSCanteen.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorFass = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorFass = "images/orangehumantrans.png";
         
       } else {
@@ -831,16 +833,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourFlavoursCanteen.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorFlavours = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorFlavours = "images/orangehumantrans.png";
         
       } else {
@@ -855,16 +857,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourFOECanteen.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("FOEhere at 1!");
+        //console.log(count);
+        //console.log("FOEhere at 1!");
         return $scope.colorFoe = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("FOEhere at else!");
+        //console.log("FOEhere at else!");
         return $scope.colorFoe = "images/orangehumantrans.png";
         
       } else {
@@ -879,16 +881,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourKoufuFoodcourt.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorKoufu = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorKoufu = "images/orangehumantrans.png";
         
       } else {
@@ -903,16 +905,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourScienceCanteen.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.colorSci = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.colorSci = "images/orangehumantrans.png";
         
       } else {
@@ -927,16 +929,16 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     colourFoodJunctionYIH.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        console.log(timestamp);
+        //console.log(timestamp);
         count++;
       })
       if (count <= 5) {
-        console.log(count);
-        console.log("here at 1!");
+        //console.log(count);
+        //console.log("here at 1!");
         return $scope.FoodJunction = "images/greenhumantrans.png"
         
       } else if (count <= 10) {
-        console.log("here at else!");
+        //console.log("here at else!");
         return $scope.FoodJunction = "images/orangehumantrans.png";
         
       } else {
@@ -996,7 +998,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.rmbMe = { checked: true };
 
   $scope.test = function() {
-    console.log($scope.rmbMe.checked);
+    //console.log($scope.rmbMe.checked);
   }
 
   $scope.username = null;
@@ -1006,7 +1008,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     var storedUsername =  $localstorage.get("username");
     if (storedUsername !== null) {
      $scope.username = storedUsername;
-     console.log("OBTAINED");
+     //console.log("OBTAINED");
    }
  }
 
@@ -1014,7 +1016,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var storedPassword =  $localstorage.get("password");
   if (storedPassword !== null) {
     $scope.password = storedPassword;
-    console.log("OBTAINED");
+    //console.log("OBTAINED");
   }
 }
 
@@ -1039,20 +1041,20 @@ $scope.login = function(username, password){
               time: FBtime
             });
             var currenttime = new Date();
-            console.log(currenttime.getTime());
+            //console.log(currenttime.getTime());
             
             
             locationRef.once("value", function(snapshot) {
               var value = snapshot.child(user).child("time/time").val();
-              console.log("time " + value);              
+              //console.log("time " + value);              
               var test = value - 3600000;
               var date = new Date(value);
               var month = date.getMonth();
               var hour = date.getHours();
-              console.log("test " + test);
-              console.log("date " + date);
-              console.log("month " + month);
-              console.log("hour " + hour);            
+              //console.log("test " + test);
+              //console.log("date " + date);
+              //console.log("month " + month);
+              //console.log("hour " + hour);            
             })
 
             
@@ -1064,22 +1066,22 @@ $scope.login = function(username, password){
             var distance = geoQueryBizCanteen.radius(); 
 
             var onKeyEnteredRegistration1 = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
               bizCanteen.set(user, location);
                      //adding user here 
                    });
 
             var onKeyExitedRegistration1 = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               bizCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration1 = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1088,21 +1090,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration2 = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     scienceCanteen.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration2 = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               scienceCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration2 = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFOECanteen = geoFire.query({
@@ -1110,21 +1112,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration3 = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foeCanteen.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration3 = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               foeCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration3 = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryKoufu= geoFire.query({
@@ -1132,21 +1134,21 @@ $scope.login = function(username, password){
              radius: 0.05
            });
             var onKeyEnteredRegistration4 = geoQueryKoufu.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     koufu.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration4 = geoQueryKoufu.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               koufu.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration4 = geoQueryKoufu.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFoodJunction = geoFire.query({
@@ -1155,21 +1157,21 @@ $scope.login = function(username, password){
             });
             
             var onKeyEnteredRegistration5 = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foodJunctionYIH.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration5 = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               foodJunctionYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration5 = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryAlcoveAsian = geoFire.query({
@@ -1177,21 +1179,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration6 = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     alcoveAsian.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration6 = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               alcoveAsian.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration6 = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryButterMyBun = geoFire.query({
@@ -1200,21 +1202,21 @@ $scope.login = function(username, password){
             });
 
             var onKeyEnteredRegistration7 = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     butterMyBun.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration7 = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               butterMyBun.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration7 = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryHumbleOrigins = geoFire.query({
@@ -1222,21 +1224,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration8 = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     humbleOrigins.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration8 = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               humbleOrigins.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration8 = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1245,21 +1247,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     royalsBistro.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               royalsBistro.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1268,21 +1270,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });   
             var onKeyEnteredRegistration10 = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     hwangKorean.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration10 = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               hwangKorean.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration10 = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryPlatypus = geoFire.query({
@@ -1290,21 +1292,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });  
             var onKeyEnteredRegistration11 = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     platypusFood.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration11 = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               platypusFood.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration11 = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1313,21 +1315,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });    
             var onKeyEnteredRegistration12 = geoQueryReedz.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     reedzCafe.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration12 = geoQueryReedz.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               reedzCafe.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration12 = geoQueryReedz.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             
             var geoQuerySaporeItaliano = geoFire.query({
@@ -1335,21 +1337,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration13 = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     sapore.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration13 = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               sapore.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration13 = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1358,21 +1360,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration14 = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         fassCanteen.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration14 = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               fassCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration14 = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFlavoursUtown = geoFire.query({
@@ -1382,21 +1384,21 @@ $scope.login = function(username, password){
 
             
             var onKeyEnteredRegistration15 = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         flavoursUTown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration15 = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               flavoursUTown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration15 = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             
             var geoQuerySpinelli  = geoFire.query({
@@ -1405,21 +1407,21 @@ $scope.login = function(username, password){
             });
 
             var onKeyEnteredRegistration16 = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spinelli.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration16 = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               spinelli.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration16 = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             var geoQuerySpiceTable = geoFire.query({
               center: [1.3038699, 103.7741271],
@@ -1427,21 +1429,21 @@ $scope.login = function(username, password){
             });
 
             var onKeyEnteredRegistration17 = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spiceTable.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration17 = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               spiceTable.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration17 = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryStarbucksMD11 = geoFire.query({
@@ -1449,42 +1451,42 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration18 = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksMD11.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration18 = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksMD11.remove("user").then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration18 = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             var geoQueryStarbucksYIH = geoFire.query({
               center: [1.2972787,  103.7724656],
               radius: 0.05 
             });
             var onKeyEnteredRegistration19 = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksYIH.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration19 = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration19 = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryUniversityClub = geoFire.query({
@@ -1492,21 +1494,21 @@ $scope.login = function(username, password){
               radius: 0.05 
             });
             var onKeyEnteredRegistration20 = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         universityClub.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration20 = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               universityClub.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration20 = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1515,21 +1517,21 @@ $scope.login = function(username, password){
               radius: 0.05 
             });
             var onKeyEnteredRegistration21 = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         waaCow.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration21 = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               waaCow.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration21 = geoQueryWaaCow.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1539,21 +1541,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration22 = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                        mcDonald .set(user, location); //adding user here 
 
                      });
 
             var onKeyExitedRegistration22 = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               mcDonald.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration22 = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -1563,21 +1565,21 @@ $scope.login = function(username, password){
               radius: 0.05 
             });
             var onKeyEnteredRegistration23 = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayYIH.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration23 = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               subwayYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration23 = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryStarbucksUtown = geoFire.query({
@@ -1585,21 +1587,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration50 = geoQueryStarbucksUtown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksUtown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration50 = geoQueryStarbucksUtown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksUtown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration50 = geoQueryStarbucksUtown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQuerySubWayUTown = geoFire.query({
@@ -1607,21 +1609,21 @@ $scope.login = function(username, password){
               radius: 0.05
             });
             var onKeyEnteredRegistration24 = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayUtown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration24 = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               subwayUtown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration24 = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             //$state.go("temp");
@@ -1675,22 +1677,22 @@ $scope.login = function(username, password){
                       var location = glocation; 
                       var distance = geoQueryBizCanteen.radius(); 
                       var onKeyEnteredRegistration25 = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                             bizCanteen.set(user, location); //adding user here 
 
                           });
 
                       var onKeyExitedRegistration25 = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         bizCanteen.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration25 = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -1699,21 +1701,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration26 = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     scienceCanteen.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration26 = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         scienceCanteen.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration26 = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryFOECanteen = geoFire.query({
@@ -1721,21 +1723,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration27 = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foeCanteen.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration27 = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         foeCanteen.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration27 = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryKoufu= geoFire.query({
@@ -1743,21 +1745,21 @@ $scope.login = function(username, password){
                        radius: 0.05
                      });
                       var onKeyEnteredRegistration28 = geoQueryKoufu.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     koufu.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration28 = geoQueryKoufu.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         koufu.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration28 = geoQueryKoufu.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryFoodJunction = geoFire.query({
@@ -1766,21 +1768,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration29 = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foodJunctionYIH.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration29 = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         foodJunctionYIH.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration29 = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryAlcoveAsian = geoFire.query({
@@ -1788,21 +1790,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration30 = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     alcoveAsian.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration30 = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         alcoveAsian.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration30  = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryButterMyBun = geoFire.query({
@@ -1811,21 +1813,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration31 = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     butterMyBun.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration31 = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         butterMyBun.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration31 = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryHumbleOrigins = geoFire.query({
@@ -1833,21 +1835,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration32 = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     humbleOrigins.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration32 = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         humbleOrigins.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration32 = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -1856,21 +1858,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     royalsBistro.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         royalsBistro.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration33 = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -1879,21 +1881,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });   
                       var onKeyEnteredRegistration34 = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     hwangKorean.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration34 = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         hwangKorean.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration34 = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryPlatypus = geoFire.query({
@@ -1901,21 +1903,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });  
                       var onKeyEnteredRegistration35 = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     platypusFood.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration35 = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         platypusFood.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration35 = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -1924,21 +1926,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });    
                       var onKeyEnteredRegistration36 = geoQueryReedz.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     reedzCafe.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration36 = geoQueryReedz.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         reedzCafe.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration36 = geoQueryReedz.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       
                       var geoQuerySaporeItaliano = geoFire.query({
@@ -1946,21 +1948,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration37 = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     sapore.set(user, location); //adding user here 
                   });
 
                       var onKeyExitedRegistration37 = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         sapore.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });
                       });
 
                       var onKeyMovedRegistration37 = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -1970,21 +1972,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration38 = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         fassCanteen.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration38 = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         fassCanteen.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration38 = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryFlavoursUtown = geoFire.query({
@@ -1993,21 +1995,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration39 = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         flavoursUTown.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration39 = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         flavoursUTown.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration39 = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       
                       var geoQuerySpinelli  = geoFire.query({
@@ -2016,21 +2018,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration40 = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spinelli.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration40 = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         spinelli.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration40 = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       var geoQuerySpiceTable = geoFire.query({
                         center: [1.3038699, 103.7741271],
@@ -2038,21 +2040,21 @@ $scope.login = function(username, password){
                       });
 
                       var onKeyEnteredRegistration41 = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spiceTable.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration41 = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         spiceTable.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration41 = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryStarbucksMD11 = geoFire.query({
@@ -2060,42 +2062,42 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration42 = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksMD11.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration42 = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         starbucksMD11.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration42 = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       var geoQueryStarbucksYIH = geoFire.query({
                         center: [1.2972787,  103.7724656],
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration43 = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksYIH.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration43 = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         starbucksYIH.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration43 = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
                       var geoQueryUniversityClub = geoFire.query({
@@ -2103,21 +2105,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration44 = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         universityClub.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration44 = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         universityClub.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration44 = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -2126,21 +2128,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration45 = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         waaCow.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration45 = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         waaCow.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration = geoQueryWaaCow.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -2150,21 +2152,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration46 = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                        mcDonald .set(user, location); //adding user here 
 
                      });
 
                       var onKeyExitedRegistration46 = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         mcDonald.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration46 = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -2174,41 +2176,41 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration47 = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayYIH.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration47 = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         subwayYIH.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration47 = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       var geoQueryStarbucksUtown = geoFire.query({
                         center: [1.3056609, 103.7727733],
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration49 = geoQueryStarbucksUtown.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksUtown.set(user, location); //adding user here 
                       });
 
                       var onKeyExitedRegistration49 = geoQueryStarbucksUtown.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         starbucksUtown.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration49 = geoQueryStarbucksUtown.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
 
 
@@ -2217,21 +2219,21 @@ $scope.login = function(username, password){
                         radius: 0.05
                       });
                       var onKeyEnteredRegistration48 = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
-                        console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+                        //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayUtown.set(user, location); //adding user here 
 
                       });
 
                       var onKeyExitedRegistration48 = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
-                        console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
                         subwayUtown.remove(user).then(function() {
-                          console.log("Provided key has been removed from GeoFire");
+                          //console.log("Provided key has been removed from GeoFire");
                         }, function(error) {
-                         console.log("Error: " + error);
+                         //console.log("Error: " + error);
                        });       
                       });
                       var onKeyMovedRegistration48 = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
-                        console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+                        //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
                       });
                       var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
                       firebaseUsers.child(authData.uid).set ({
@@ -2310,9 +2312,9 @@ $state.go("yumNUS");
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -2327,7 +2329,7 @@ $state.go("yumNUS");
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
@@ -2336,7 +2338,7 @@ $state.go("yumNUS");
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
@@ -2345,7 +2347,7 @@ $state.go("yumNUS");
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah");
                 } else {
                   fb.child("food").child("bizCanteen").child(currentTime).set({
@@ -2354,14 +2356,14 @@ $state.go("yumNUS");
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -2386,7 +2388,7 @@ $state.go("yumNUS");
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -2394,7 +2396,7 @@ $state.go("yumNUS");
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -2403,7 +2405,7 @@ $state.go("yumNUS");
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah");
               })
   }, function(error){
@@ -2428,8 +2430,8 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
-          if (difference > time) {
+          //console.log(difference);
+          if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
         })
@@ -2438,7 +2440,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -2457,7 +2459,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -2532,7 +2534,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -2542,7 +2544,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -2561,7 +2563,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -2632,7 +2634,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -2642,7 +2644,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -2661,7 +2663,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -2732,7 +2734,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -2742,7 +2744,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -2761,7 +2763,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -2831,7 +2833,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -2841,7 +2843,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -2860,7 +2862,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -2973,9 +2975,9 @@ $state.go("yumNUS");
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -2990,7 +2992,7 @@ $state.go("yumNUS");
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah8");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("macdonaldsFOE").child(currentTime).set({
@@ -2999,7 +3001,7 @@ $state.go("yumNUS");
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah8");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("macdonaldsFOE").child(currentTime).set({
@@ -3008,7 +3010,7 @@ $state.go("yumNUS");
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah8");
                 } else {
                   fb.child("food").child("macdonaldsFOE").child(currentTime).set({
@@ -3017,14 +3019,14 @@ $state.go("yumNUS");
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah8");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3049,7 +3051,7 @@ $state.go("yumNUS");
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -3057,7 +3059,7 @@ $state.go("yumNUS");
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -3090,7 +3092,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -3100,7 +3102,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -3119,7 +3121,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -3238,9 +3240,9 @@ $state.go("yumNUS");
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -3255,7 +3257,7 @@ $state.go("yumNUS");
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah9");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("subwayYIH").child(currentTime).set({
@@ -3264,7 +3266,7 @@ $state.go("yumNUS");
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah9");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("subwayYIH").child(currentTime).set({
@@ -3273,7 +3275,7 @@ $state.go("yumNUS");
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah9");
                 } else {
                   fb.child("food").child("subwayYIH").child(currentTime).set({
@@ -3282,14 +3284,14 @@ $state.go("yumNUS");
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah9");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3314,7 +3316,7 @@ $state.go("yumNUS");
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -3322,7 +3324,7 @@ $state.go("yumNUS");
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -3353,7 +3355,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -3363,7 +3365,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -3382,7 +3384,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -3515,9 +3517,9 @@ $state.go("yumNUS");
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -3532,7 +3534,7 @@ $state.go("yumNUS");
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah12");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("subwayUTown").child(currentTime).set({
@@ -3541,7 +3543,7 @@ $state.go("yumNUS");
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah12");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("subwayUTown").child(currentTime).set({
@@ -3550,7 +3552,7 @@ $state.go("yumNUS");
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah12");
                 } else {
                   fb.child("food").child("subwayUTown").child(currentTime).set({
@@ -3559,14 +3561,14 @@ $state.go("yumNUS");
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah12");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3591,7 +3593,7 @@ $state.go("yumNUS");
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -3599,7 +3601,7 @@ $state.go("yumNUS");
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -3630,7 +3632,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -3640,7 +3642,7 @@ $state.go("yumNUS");
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -3659,7 +3661,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -3728,7 +3730,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -3738,7 +3740,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -3757,7 +3759,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -3876,9 +3878,9 @@ $state.go("yumNUS");
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("foodJunction").child(currentTime).set({
@@ -3887,7 +3889,7 @@ $state.go("yumNUS");
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah7");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("foodJunction").child(currentTime).set({
@@ -3896,7 +3898,7 @@ $state.go("yumNUS");
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah7");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("foodJunction").child(currentTime).set({
@@ -3905,7 +3907,7 @@ $state.go("yumNUS");
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah7");
                 } else {
                   fb.child("food").child("foodJunction").child(currentTime).set({
@@ -3914,14 +3916,14 @@ $state.go("yumNUS");
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah7");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3946,7 +3948,7 @@ $state.go("yumNUS");
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -3954,7 +3956,7 @@ $state.go("yumNUS");
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -3963,7 +3965,7 @@ $state.go("yumNUS");
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah7");
               })
   }, function(error){
@@ -3986,7 +3988,7 @@ $state.go("yumNUS");
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > fifteen) {
         childSnapshot.ref().remove();
       }
@@ -3996,7 +3998,7 @@ $state.go("yumNUS");
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > time) {
         childSnapshot.ref().remove();
       }
@@ -4014,7 +4016,7 @@ $state.go("yumNUS");
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -4127,9 +4129,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("alcove").child(currentTime).set({
@@ -4138,7 +4140,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah13");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("alcove").child(currentTime).set({
@@ -4147,7 +4149,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah13");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("alcove").child(currentTime).set({
@@ -4156,7 +4158,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah13");
                 } else {
                   fb.child("food").child("alcove").child(currentTime).set({
@@ -4165,14 +4167,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah13");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4197,7 +4199,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -4205,7 +4207,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -4214,7 +4216,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah13");
               })
   }, function(error){
@@ -4240,7 +4242,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -4250,7 +4252,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -4268,7 +4270,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -4345,7 +4347,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -4353,7 +4355,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -4362,7 +4364,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah14");
               })
   }, function(error){
@@ -4441,9 +4443,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("butterMyBun").child(currentTime).set({
@@ -4452,7 +4454,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah14");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
@@ -4461,7 +4463,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah14");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
@@ -4470,7 +4472,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah14");
                 } else {
                   fb.child("food").child("butterMyBun").child(currentTime).set({
@@ -4479,14 +4481,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah14");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4511,7 +4513,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -4519,7 +4521,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -4528,7 +4530,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah14");
               })
   }, function(error){
@@ -4552,7 +4554,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
@@ -4562,7 +4564,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
-          console.log(difference);
+          //console.log(difference);
           if (difference > time) {
             childSnapshot.ref().remove();
           }
@@ -4581,7 +4583,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -4701,9 +4703,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("royal").child(currentTime).set({
@@ -4712,7 +4714,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah15");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("royal").child(currentTime).set({
@@ -4721,7 +4723,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah15");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("royal").child(currentTime).set({
@@ -4730,7 +4732,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah15");
                 } else {
                   fb.child("food").child("royal").child(currentTime).set({
@@ -4739,14 +4741,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah15");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4771,7 +4773,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -4779,7 +4781,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -4788,7 +4790,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah15");
               })
   }, function(error){
@@ -4809,7 +4811,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > fifteen) {
         childSnapshot.ref().remove();
       }
@@ -4819,7 +4821,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > time) {
         childSnapshot.ref().remove();
       }
@@ -4838,7 +4840,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -4958,9 +4960,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("humble").child(currentTime).set({
@@ -4969,7 +4971,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah17");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("humble").child(currentTime).set({
@@ -4978,7 +4980,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah17");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("humble").child(currentTime).set({
@@ -4987,7 +4989,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah17");
                 } else {
                   fb.child("food").child("humble").child(currentTime).set({
@@ -4996,14 +4998,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah17");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5028,7 +5030,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -5036,7 +5038,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -5045,7 +5047,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah17");
               })
   }, function(error){
@@ -5068,7 +5070,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -5078,7 +5080,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -5097,7 +5099,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -5216,9 +5218,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("hwang").child(currentTime).set({
@@ -5227,7 +5229,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah18");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("hwang").child(currentTime).set({
@@ -5236,7 +5238,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah18");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("hwang").child(currentTime).set({
@@ -5245,7 +5247,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah18");
                 } else {
                   fb.child("food").child("hwang").child(currentTime).set({
@@ -5254,14 +5256,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah18");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5286,7 +5288,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -5294,7 +5296,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -5303,7 +5305,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah18");
               })
   }, function(error){
@@ -5325,7 +5327,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -5335,7 +5337,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -5354,7 +5356,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -5472,9 +5474,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("platypus").child(currentTime).set({
@@ -5483,7 +5485,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah19");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("platypus").child(currentTime).set({
@@ -5492,7 +5494,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah19");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("platypus").child(currentTime).set({
@@ -5501,7 +5503,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah19");
                 } else {
                   fb.child("food").child("platypus").child(currentTime).set({
@@ -5510,14 +5512,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah19");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5542,7 +5544,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -5550,7 +5552,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -5559,7 +5561,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah19");
               })
   }, function(error){
@@ -5581,7 +5583,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -5591,7 +5593,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -5610,7 +5612,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -5729,9 +5731,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("reedz").child(currentTime).set({
@@ -5740,7 +5742,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah20");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("reedz").child(currentTime).set({
@@ -5749,7 +5751,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah20");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("reedz").child(currentTime).set({
@@ -5758,7 +5760,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah20");
                 } else {
                   fb.child("food").child("reedz").child(currentTime).set({
@@ -5767,14 +5769,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah20");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5799,7 +5801,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -5807,7 +5809,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -5816,7 +5818,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah20");
               })
   }, function(error){
@@ -5839,7 +5841,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > fifteen) {
         childSnapshot.ref().remove();
       }
@@ -5849,7 +5851,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > time) {
         childSnapshot.ref().remove();
       }
@@ -5868,7 +5870,7 @@ $scope.takePic = function(){
         snapshot.forEach(function(childSnapshot) {
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(oneDay);
-          console.log("closeddiff" + difference);
+          //console.log("closeddiff" + difference);
           if (difference > 7) {
             childSnapshot.ref().remove();
           }
@@ -5987,9 +5989,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("sapore").child(currentTime).set({
@@ -5998,7 +6000,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah21");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("sapore").child(currentTime).set({
@@ -6007,7 +6009,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah21");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("sapore").child(currentTime).set({
@@ -6016,7 +6018,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah21");
                 } else {
                   fb.child("food").child("sapore").child(currentTime).set({
@@ -6025,14 +6027,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah21");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6057,7 +6059,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -6065,7 +6067,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -6074,7 +6076,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah21");
               })
   }, function(error){
@@ -6095,7 +6097,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > fifteen) {
         childSnapshot.ref().remove();
       }
@@ -6105,7 +6107,7 @@ $scope.takePic = function(){
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
       var difference = (currentTime - childTime)/(1000 * 60);
-      console.log(difference);
+      //console.log(difference);
       if (difference > time) {
         childSnapshot.ref().remove();
       }
@@ -6123,7 +6125,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -6244,9 +6246,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("spinelli").child(currentTime).set({
@@ -6255,7 +6257,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah22");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("spinelli").child(currentTime).set({
@@ -6264,7 +6266,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah22");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("spinelli").child(currentTime).set({
@@ -6273,7 +6275,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah22");
                 } else {
                   fb.child("food").child("spinelli").child(currentTime).set({
@@ -6282,14 +6284,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah22");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6314,7 +6316,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -6322,7 +6324,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -6331,7 +6333,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah22");
               })
   }, function(error){
@@ -6353,7 +6355,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -6363,7 +6365,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -6381,7 +6383,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -6499,9 +6501,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("spice").child(currentTime).set({
@@ -6510,7 +6512,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah23");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("spice").child(currentTime).set({
@@ -6519,7 +6521,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah23");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("spice").child(currentTime).set({
@@ -6528,7 +6530,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah23");
                 } else {
                   fb.child("food").child("spice").child(currentTime).set({
@@ -6537,14 +6539,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah23");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6569,7 +6571,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -6577,7 +6579,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -6586,7 +6588,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah23");
               })
   }, function(error){
@@ -6608,7 +6610,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -6618,7 +6620,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -6636,7 +6638,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -6754,9 +6756,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("starbucksMD11").child(currentTime).set({
@@ -6765,7 +6767,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah24");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("starbucksMD11").child(currentTime).set({
@@ -6774,7 +6776,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah24");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("starbucksMD11").child(currentTime).set({
@@ -6783,7 +6785,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah24");
                 } else {
                   fb.child("food").child("starbucksMD11").child(currentTime).set({
@@ -6792,12 +6794,12 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah24");
                 }
               })
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6822,7 +6824,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -6830,7 +6832,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -6839,7 +6841,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah24");
               })
   }, function(error){
@@ -6862,7 +6864,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -6872,7 +6874,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -6890,7 +6892,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -7008,9 +7010,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("starbucksYIH").child(currentTime).set({
@@ -7019,7 +7021,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah25");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("starbucksYIH").child(currentTime).set({
@@ -7028,7 +7030,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah25");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("starbucksYIH").child(currentTime).set({
@@ -7037,7 +7039,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah25");
                 } else {
                   fb.child("food").child("starbucksYIH").child(currentTime).set({
@@ -7046,14 +7048,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah25");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7078,7 +7080,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -7086,7 +7088,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -7095,7 +7097,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah25");
               })
   }, function(error){
@@ -7118,7 +7120,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -7128,7 +7130,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -7146,7 +7148,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -7264,9 +7266,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("starbucksUTown").child(currentTime).set({
@@ -7275,7 +7277,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah26");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("starbucksUTown").child(currentTime).set({
@@ -7284,7 +7286,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah26");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("starbucksUTown").child(currentTime).set({
@@ -7293,7 +7295,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah26");
                 } else {
                   fb.child("food").child("starbucksUTown").child(currentTime).set({
@@ -7302,14 +7304,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah26");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7334,7 +7336,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -7342,7 +7344,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -7351,7 +7353,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah26");
               })
   }, function(error){
@@ -7374,7 +7376,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -7384,7 +7386,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -7402,7 +7404,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -7520,9 +7522,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("uniClub").child(currentTime).set({
@@ -7531,7 +7533,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah27");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("uniClub").child(currentTime).set({
@@ -7540,7 +7542,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah27");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("uniClub").child(currentTime).set({
@@ -7549,7 +7551,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah27");
                 } else {
                   fb.child("food").child("uniClub").child(currentTime).set({
@@ -7558,14 +7560,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah27");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7590,7 +7592,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -7598,7 +7600,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -7607,7 +7609,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah27");
               })
   }, function(error){
@@ -7629,7 +7631,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -7639,7 +7641,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -7657,7 +7659,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -7775,9 +7777,9 @@ $scope.create = function(input) {
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value1");
+      //console.log(fbAuth.uid + " value1");
       userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                 if ($scope.choice === 4) {
                   fb.child("closed").child("waa").child(currentTime).set({
@@ -7786,7 +7788,7 @@ $scope.create = function(input) {
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah28");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("waa").child(currentTime).set({
@@ -7795,7 +7797,7 @@ $scope.create = function(input) {
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah28");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("waa").child(currentTime).set({
@@ -7804,7 +7806,7 @@ $scope.create = function(input) {
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah28");
                 } else {
                   fb.child("food").child("waa").child(currentTime).set({
@@ -7813,14 +7815,14 @@ $scope.create = function(input) {
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah28");
                 }
               })
 
 
   } else {
-    console.log("No comments in the box detected");
+    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7845,7 +7847,7 @@ $scope.takePic = function(){
     saveToPhotoAlbum: false
   })
   .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -7853,7 +7855,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -7862,7 +7864,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                //console.log("done!");
+                ////console.log("done!");
                 $state.go("seeLah28");
               })
   }, function(error){
@@ -7885,7 +7887,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > fifteen) {
           childSnapshot.ref().remove();
         }
@@ -7895,7 +7897,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(1000 * 60);
-        console.log(difference);
+        //console.log(difference);
         if (difference > time) {
           childSnapshot.ref().remove();
         }
@@ -7913,7 +7915,7 @@ $scope.takePic = function(){
       snapshot.forEach(function(childSnapshot) {
         var childTime = childSnapshot.child("time").val();
         var difference = (currentTime - childTime)/(oneDay);
-        console.log("closeddiff" + difference);
+        //console.log("closeddiff" + difference);
         if (difference > 7) {
           childSnapshot.ref().remove();
         }
@@ -7985,32 +7987,32 @@ $scope.takePic = function(){
       "use strict";
       $scope.restaurantList = foodFactory.getRestaurants(); //call to restaurantfactory
       $scope.position = geoLocation.getGeolocation();
-         //console.log($scope.position.lat); //for checking purposes
-        //console.log($scope.position.lng);
+         ////console.log($scope.position.lat); //for checking purposes
+        ////console.log($scope.position.lng);
         $scope.distanceTo = function(restaurant){
           var distance = GreatCircle.distance(restaurant.lat,restaurant.long, $scope.position.lat, $scope.position.lng);
           restaurant.distance = distance;
           distance = distance.toFixed(2);
-        //console.log(distance);
+        ////console.log(distance);
         return distance;
       };
       $scope.colourCode = function(restaurant){
         var fbName = restaurant.fbName; 
         var locationURL = "http://orbital--1202.firebaseio.com/location/" + fbName; 
-        //console.log(locationURL);
+        ////console.log(locationURL);
         var newref = new Firebase(locationURL);
         newref.once("value", function(snapshot) {
           var num = snapshot.numChildren();
           var maxCap = restaurant.capacity;
           var percentage = num / maxCap;
-          console.log(count);
+          //console.log(count);
           if (num <= 1) {
                   //color = 'balanced'; 
                   restaurant.color = color0;
                   restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color); 
+              //console.log(restaurant.color); 
 
 
             } else if (num <= 2) {
@@ -8019,7 +8021,7 @@ $scope.takePic = function(){
               restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color); 
+              //console.log(restaurant.color); 
               
             } else if (num <= 3){
               //color = 'assertive'; 
@@ -8027,56 +8029,56 @@ $scope.takePic = function(){
               restaurant.src = "images/30.png";
               restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 4) {
               restaurant.color = color1;
               restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 5) {
               restaurant.color = color1;
               restaurant.src = "images/50.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 6) {
               restaurant.color = color1;
               restaurant.src = "images/60.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 7) {
               restaurant.color = color2;
               restaurant.src = "images/70.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 8) {
               restaurant.color = color2;
               restaurant.src = "images/80.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 9) {
               restaurant.color = color2;
               restaurant.src = "images/90.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 10) {
               restaurant.color = color2;
               restaurant.src = "images/100.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color)
+              //console.log(restaurant.color)
             }
           });
         //Variables for current time in milliseconds
@@ -8099,38 +8101,38 @@ $scope.takePic = function(){
                 if (childSnapshot.key() === fbName){
                   count = childSnapshot.numChildren();
                   name = childSnapshot.key(); 
-                  console.log(name);
-                  console.log(count);
+                  //console.log(name);
+                  //console.log(count);
 
                 if (count < 5) {
                   //color = 'balanced'; 
-                  console.log("< 5"); 
+                  //console.log("< 5"); 
                  restaurant.color = color0;
                  restaurant.src = "images/user-black-close-up-shape.png"; 
-                  console.log(restaurant.color); 
+                  //console.log(restaurant.color); 
 
 
                 } else if (count > 5 && count<7) {
-                  console.log("> 5");
+                  //console.log("> 5");
                   //color = 'energized'; 
                   restaurant.color = color1;
                   restaurant.src = "images/multiple-users-silhouette.png"; 
-                  console.log(restaurant.color); 
+                  //console.log(restaurant.color); 
                   
                 } else if (count >= 7){
-                  console.log("else");
+                  //console.log("else");
                   //color = 'assertive'; 
                   restaurant.color = color2;                   
                   restaurant.src = "images/social.png"; 
-                  console.log(restaurant.color); 
+                  //console.log(restaurant.color); 
                 }  
             }
           }) 
         }); */
       }
       $scope.getColor = function(restaurant){
-        console.log(restaurant);
-        console.log(restaurant.color); 
+        //console.log(restaurant);
+        //console.log(restaurant.color); 
         return restaurant.color; 
       }
 
@@ -8200,9 +8202,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -8217,7 +8219,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah2");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
@@ -8226,7 +8228,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah2");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
@@ -8235,7 +8237,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah2");
                 } else {
                   fb.child("food").child("fassCanteen").child(currentTime).set({
@@ -8244,14 +8246,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah2");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -8276,7 +8278,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -8284,7 +8286,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -8366,9 +8368,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -8383,7 +8385,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah3");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("flavoursCanteen").child(currentTime).set({
@@ -8392,7 +8394,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah3");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("flavoursCanteen").child(currentTime).set({
@@ -8401,7 +8403,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah3");
                 } else {
                   fb.child("food").child("flavoursCanteen").child(currentTime).set({
@@ -8410,14 +8412,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah3");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -8442,7 +8444,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -8450,7 +8452,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -8533,9 +8535,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -8550,7 +8552,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah4");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
@@ -8559,7 +8561,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah4");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
@@ -8568,7 +8570,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah4");
                 } else {
                   fb.child("food").child("foeCanteen").child(currentTime).set({
@@ -8577,14 +8579,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah4");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -8609,7 +8611,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -8617,7 +8619,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -8700,9 +8702,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -8717,7 +8719,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah5");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("koufuFC").child(currentTime).set({
@@ -8726,7 +8728,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah5");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("koufuFC").child(currentTime).set({
@@ -8735,7 +8737,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah5");
                 } else {
                   fb.child("food").child("koufuFC").child(currentTime).set({
@@ -8744,14 +8746,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah5");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -8776,7 +8778,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -8784,7 +8786,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -8866,9 +8868,9 @@ $scope.takePic = function(){
         var firebaseTime = Firebase.ServerValue.TIMESTAMP;
         var currentDate = new Date();
         var currentTime = currentDate.getTime();
-        console.log(fbAuth.uid + " value1");
+        //console.log(fbAuth.uid + " value1");
         userName = snapshot.child(fbAuth.uid).child("forumName").val();
-                //console.log(userName + " value2");
+                ////console.log(userName + " value2");
                 
                /* $scope.data.bizCanteen.push({
                     name: userName,
@@ -8883,7 +8885,7 @@ $scope.takePic = function(){
                     option: $scope.choice,
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah6");
                 } else if ($scope.choice === 1) {
                   fb.child("food").child("sciCanteen").child(currentTime).set({
@@ -8892,7 +8894,7 @@ $scope.takePic = function(){
                     option: "images/greenhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah6");
                 } else if ($scope.choice === 2) {
                   fb.child("food").child("sciCanteen").child(currentTime).set({
@@ -8901,7 +8903,7 @@ $scope.takePic = function(){
                     option: "images/orangehuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah6");
                 } else {
                   fb.child("food").child("sciCanteen").child(currentTime).set({
@@ -8910,14 +8912,14 @@ $scope.takePic = function(){
                     option: "images/redhuman.png",
                     time: firebaseTime
                   });
-                  console.log("done!");
+                  //console.log("done!");
                   $state.go("seeLah6");
                 }
               })
 
 
     } else {
-      console.log("No comments in the box detected");
+      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -8942,7 +8944,7 @@ $scope.takePic = function(){
       saveToPhotoAlbum: false
     })
     .then(function(data){
-    //console.log("camera data: " + angular.toJson(data));
+    ////console.log("camera data: " + angular.toJson(data));
     $scope.pictureURL = "data:image/jpeg;base64," + data;
     //alert("Image has been uploaded");
     var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
@@ -8950,7 +8952,7 @@ $scope.takePic = function(){
       var firebaseTime = Firebase.ServerValue.TIMESTAMP;
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
-      console.log(fbAuth.uid + " value");
+      //console.log(fbAuth.uid + " value");
        //var userReference = fb.child("picture/" + fbAuth.uid);
        userName = snapshot.child(fbAuth.uid).child("forumName").val();
                 //var syncArray = $firebaseArray(fb.child("picture").child("butterMyBun")); 
@@ -8984,20 +8986,20 @@ $scope.takePic = function(){
               time: FBtime
             });
             var currenttime = new Date();
-            console.log(currenttime.getTime());
+            //console.log(currenttime.getTime());
             
             
             locationRef.once("value", function(snapshot) {
               var value = snapshot.child(user).child("time/time").val();
-              console.log("time " + value);              
+              //console.log("time " + value);              
               var test = value - 3600000;
               var date = new Date(value);
               var month = date.getMonth();
               var hour = date.getHours();
-              console.log("test " + test);
-              console.log("date " + date);
-              console.log("month " + month);
-              console.log("hour " + hour);            
+              //console.log("test " + test);
+              //console.log("date " + date);
+              //console.log("month " + month);
+              //console.log("hour " + hour);            
             }); 
 
             
@@ -9009,22 +9011,22 @@ $scope.takePic = function(){
             var distance = geoQueryBizCanteen.radius(); 
 
             var onKeyEnteredRegistration1 = geoQueryBizCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered geoQueryBizCanteen at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered geoQueryBizCanteen at " + location + " (" + distance + " km from center)");
               bizCanteen.set(user, location);
                      //adding user here 
                    });
 
             var onKeyExitedRegistration1 = geoQueryBizCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited geoQueryBizCanteen to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited geoQueryBizCanteen to " + location + " (" + distance + " km from center)");
               bizCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration1 = geoQueryBizCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within geoQueryBizCanteen to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within geoQueryBizCanteen to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9033,21 +9035,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration2 = geoQueryScienceCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     scienceCanteen.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration2 = geoQueryScienceCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               scienceCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration2 = geoQueryScienceCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFOECanteen = geoFire.query({
@@ -9055,21 +9057,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration3 = geoQueryFOECanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foeCanteen.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration3 = geoQueryFOECanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               foeCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration3 = geoQueryFOECanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryKoufu= geoFire.query({
@@ -9077,21 +9079,21 @@ $scope.takePic = function(){
              radius: 0.05
            });
             var onKeyEnteredRegistration4 = geoQueryKoufu.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     koufu.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration4 = geoQueryKoufu.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               koufu.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration4 = geoQueryKoufu.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFoodJunction = geoFire.query({
@@ -9100,21 +9102,21 @@ $scope.takePic = function(){
             });
             
             var onKeyEnteredRegistration5 = geoQueryFoodJunction.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     foodJunctionYIH.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration5 = geoQueryFoodJunction.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               foodJunctionYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration5 = geoQueryFoodJunction.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryAlcoveAsian = geoFire.query({
@@ -9122,21 +9124,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration6 = geoQueryAlcoveAsian.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     alcoveAsian.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration6 = geoQueryAlcoveAsian.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               alcoveAsian.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration6 = geoQueryAlcoveAsian.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryButterMyBun = geoFire.query({
@@ -9145,21 +9147,21 @@ $scope.takePic = function(){
             });
 
             var onKeyEnteredRegistration7 = geoQueryButterMyBun.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     butterMyBun.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration7 = geoQueryButterMyBun.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               butterMyBun.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration7 = geoQueryButterMyBun.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryHumbleOrigins = geoFire.query({
@@ -9167,21 +9169,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration8 = geoQueryHumbleOrigins.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     humbleOrigins.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration8 = geoQueryHumbleOrigins.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               humbleOrigins.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration8 = geoQueryHumbleOrigins.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9190,21 +9192,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     royalsBistro.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               royalsBistro.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration9 = geoQueryTheRoyalsBistroCafe.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9213,21 +9215,21 @@ $scope.takePic = function(){
               radius: 0.05
             });   
             var onKeyEnteredRegistration10 = geoQueryHwangKorean.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     hwangKorean.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration10 = geoQueryHwangKorean.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               hwangKorean.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration10 = geoQueryHwangKorean.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryPlatypus = geoFire.query({
@@ -9235,21 +9237,21 @@ $scope.takePic = function(){
               radius: 0.05
             });  
             var onKeyEnteredRegistration11 = geoQueryPlatypus.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     platypusFood.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration11 = geoQueryPlatypus.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               platypusFood.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration11 = geoQueryPlatypus.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9258,21 +9260,21 @@ $scope.takePic = function(){
               radius: 0.05
             });    
             var onKeyEnteredRegistration12 = geoQueryReedz.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     reedzCafe.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration12 = geoQueryReedz.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               reedzCafe.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration12 = geoQueryReedz.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             
             var geoQuerySaporeItaliano = geoFire.query({
@@ -9280,21 +9282,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration13 = geoQuerySaporeItaliano.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                     sapore.set(user, location); //adding user here 
                   });
 
             var onKeyExitedRegistration13 = geoQuerySaporeItaliano.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               sapore.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });
             });
 
             var onKeyMovedRegistration13 = geoQuerySaporeItaliano.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9303,21 +9305,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration14 = geoQueryFassCanteen.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         fassCanteen.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration14 = geoQueryFassCanteen.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               fassCanteen.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration14 = geoQueryFassCanteen.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryFlavoursUtown = geoFire.query({
@@ -9327,21 +9329,21 @@ $scope.takePic = function(){
 
             
             var onKeyEnteredRegistration15 = geoQueryFlavoursUtown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         flavoursUTown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration15 = geoQueryFlavoursUtown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               flavoursUTown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration15 = geoQueryFlavoursUtown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             
             var geoQuerySpinelli  = geoFire.query({
@@ -9350,21 +9352,21 @@ $scope.takePic = function(){
             });
 
             var onKeyEnteredRegistration16 = geoQuerySpinelli.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spinelli.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration16 = geoQuerySpinelli.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               spinelli.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration16 = geoQuerySpinelli.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             var geoQuerySpiceTable = geoFire.query({
               center: [1.3038699, 103.7741271],
@@ -9372,21 +9374,21 @@ $scope.takePic = function(){
             });
 
             var onKeyEnteredRegistration17 = geoQuerySpiceTable.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         spiceTable.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration17 = geoQuerySpiceTable.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               spiceTable.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration17 = geoQuerySpiceTable.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryStarbucksMD11 = geoFire.query({
@@ -9394,42 +9396,42 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration18 = geoQueryStarbucksMD11.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksMD11.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration18 = geoQueryStarbucksMD11.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksMD11.remove("user").then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration18 = geoQueryStarbucksMD11.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
             var geoQueryStarbucksYIH = geoFire.query({
               center: [1.2972787,  103.7724656],
               radius: 0.05 
             });
             var onKeyEnteredRegistration19 = geoQueryStarbucksYIH.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksYIH.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration19 = geoQueryStarbucksYIH.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration19 = geoQueryStarbucksYIH.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryUniversityClub = geoFire.query({
@@ -9437,21 +9439,21 @@ $scope.takePic = function(){
               radius: 0.05 
             });
             var onKeyEnteredRegistration20 = geoQueryUniversityClub.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         universityClub.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration20 = geoQueryUniversityClub.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               universityClub.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration20 = geoQueryUniversityClub.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9460,21 +9462,21 @@ $scope.takePic = function(){
               radius: 0.05 
             });
             var onKeyEnteredRegistration21 = geoQueryWaaCow.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         waaCow.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration21 = geoQueryWaaCow.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               waaCow.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration21 = geoQueryWaaCow.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9484,21 +9486,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration22 = geoQueryMcDonald.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                        mcDonald .set(user, location); //adding user here 
 
                      });
 
             var onKeyExitedRegistration22 = geoQueryMcDonald.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               mcDonald.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration22 = geoQueryMcDonald.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
 
@@ -9508,21 +9510,21 @@ $scope.takePic = function(){
               radius: 0.05 
             });
             var onKeyEnteredRegistration23 = geoQuerySubWayYIH.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayYIH.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration23 = geoQuerySubWayYIH.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               subwayYIH.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration23 = geoQuerySubWayYIH.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQueryStarbucksUtown = geoFire.query({
@@ -9530,21 +9532,21 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration50 = geoQueryStarbucksUtown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         starbucksUtown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration50 = geoQueryStarbucksUtown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               starbucksUtown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration50 = geoQueryStarbucksUtown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
 
             var geoQuerySubWayUTown = geoFire.query({
@@ -9552,43 +9554,46 @@ $scope.takePic = function(){
               radius: 0.05
             });
             var onKeyEnteredRegistration24 = geoQuerySubWayUTown.on("key_entered", function(user, location, distance) {
-              console.log(user + " entered query at " + location + " (" + distance + " km from center)");
+              //console.log(user + " entered query at " + location + " (" + distance + " km from center)");
                         subwayUtown.set(user, location); //adding user here 
 
                       });
 
             var onKeyExitedRegistration24 = geoQuerySubWayUTown.on("key_exited", function(user, location, distance) {
-              console.log(user + " exited query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " exited query to " + location + " (" + distance + " km from center)");
               subwayUtown.remove(user).then(function() {
-                console.log("Provided key has been removed from GeoFire");
+                //console.log("Provided key has been removed from GeoFire");
               }, function(error) {
-               console.log("Error: " + error);
+               //console.log("Error: " + error);
              });       
             });
             var onKeyMovedRegistration24 = geoQuerySubWayUTown.on("key_moved", function(user, location, distance) {
-              console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
+              //console.log(user + " moved within query to " + location + " (" + distance + " km from center)");
             });
           })
 
 
 .controller('navController', function($scope, $state) {
   $scope.goHome = function() {
-    console.log("click");
+    //console.log("click");
     $state.go('yumNUS');
   }
-
   $scope.hide = function() {
     var currentName = $state.current.name;
-    if (currentName==="yumNUS" || currentName==="bizCanteen_contribute") {
+    if (currentName ==="yumNUS" || currentName==="bizCanteen_contribute") {
       return false;
-      console.log('false');
+      //console.log('false');
     } else {
       return true
-      console.log('true');
+      //console.log('true');
     }
   }
 })
 
 .controller('aboutUsCtrl', function($scope) {
+
+})
+
+.controller('reportProblemCtrl', function($scope){
 
 })
