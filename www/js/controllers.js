@@ -9635,7 +9635,6 @@ $scope.takePic = function(){
   $scope.previous = function() {
     $ionicSlideBoxDelegate.previous();
   };
-
   // Called each time the slide changes
   $scope.slideChanged = function(index) {
     $scope.slideIndex = index;

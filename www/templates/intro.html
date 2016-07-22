@@ -11,42 +11,68 @@
 </ion-nav-buttons>
 <ion-nav-buttons side="right"> 
   <button class="button button-positive button-clear no-animation"
-  ng-click="next()" ng-show="slideIndex != 2">
+  ng-click="next()" ng-show="slideIndex != 6">
   Next
 </button>
 <button class="button button-positive button-clear no-animation"
- ng-click="startApp()" ng-show="slideIndex == 2">
-Start using MyApp
+ng-click="startApp()" ng-show="slideIndex == 6">
+Start using yumNUS
 </button>
 </ion-nav-buttons>
 <ion-slide-box on-slide-changed="slideChanged(index)">
   <ion-slide>
-    <h3>Thank you for choosing yumNUS!</h3>
+    <h3>Welcome to yumNUS!</h3>
     <div id="logo">
-      <img style="height:100px;" src="images/icon.png">
+      <img style="height:300px; position:relative; top:30px" src="images/icon.png">
     </div>
-    <p>
-      We've worked super hard to make you happy.
-    </p>
   </ion-slide>
   <ion-slide>
-    <h3>Using Awesome</h3>
+    <h4>Using yumNUS</h4>
+    <div>
+      <ul>
+        <li><button class="yumNUSIcon1"></button> <p id="detail">Shows all eateries in NUS,<br> starting with the nearest from your current location</p></li>
+        <li><button class="yumNUSIcon4"></button><p id="detail">Shows all canteens in NUS</p></li>
+        <li><button class="yumNUSIcon3"></button><p id="detail">Shows all cafes in NUS</p></li>
+        <li><button class="yumNUSIcon2"></button><p id="detail">Shows all fastfoods in NUS</p></li>
+      </ul>
+    </div>
+  </ion-slide>
+  <ion-slide>
+    <h4>Indication of Level Of Crowdness</h4><br />
+    <h4>Empty</h4><br />
+    <img src="images/10.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">10%</p>
+    <img src="images/20.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">20%</p>
+    <img src="images/30.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">30%</p>
 
-    <div id="list">
-      <h5>Just three steps:</h5>
-      <ol>
-        <li>Be awesome</li>
-        <li>Stay awesome</li>
-        <li>There is no step 3</li>
-      </ol>
-    </div>
   </ion-slide>
   <ion-slide>
-    <h3>Any questions?</h3>
-    <p>
-      Too bad!
-    </p>
-  </ion-slide>
+   <h4>Indication of Level Of Crowdness</h4><br />
+   <h4 >Crowded</h4><br />
+   <img src="images/40.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">40%</p>
+   <img src="images/50.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">50%</p>
+   <img src="images/60.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">60%</p>
+ </ion-slide>
+ <ion-slide>
+  <h4>Indication of Level Of Crowdness</h4><br />
+  <h4 >Packed</h4><br />
+  <img src="images/70.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">70%</p>
+  <img src="images/80.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">80%</p>
+  <img src="images/90.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">90%</p>
+  <img src="images/100.png" style="height:75px; width:75px;position:relative;"/><p style="position:relative; top:-55px;text-align:center;">100%</p>
+</ion-slide>
+<ion-slide>
+<h4>Leave us your valuable inputs in the forum section!</h4><br />
+ <img src="images/closesign.png" style="height:75px; width:75px;position:relative;"/><p style="text-align:center;">Choose if a stall is closed</p>
+ <img src="images/greenhumantrans.png" style="height:75px; width:75px;position:relative;"/><p style="text-align:center;">Choose if eatery is relatively empty</p>
+ <img src="images/orangehumantrans.png" style="height:75px; width:75px;position:relative;"/><p style="text-align:center;">Choose if eatery is relatively crowded</p>
+ <img src="images/redhumantrans.png" style="height:75px; width:75px;position:relative;"/><p style="text-align:center;">Choose if eatery is relatively packed</p>
+</ion-slide>
+<ion-slide>
+  <h4>Stay in touch with us!</h4><br />
+  <ul>
+    <li>Report a problem!</li>
+  </ul>
+</ion-slide>
 </ion-slide-box>
 </ion-view>
 </body>
