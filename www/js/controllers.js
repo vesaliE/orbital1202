@@ -270,7 +270,6 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         title: "Update Available!",
         template: 'Please click on Download Update.'
       });
-
     }
   }, function(err) {
     console.error('Ionic Deploy: Unable to check for updates', err);
