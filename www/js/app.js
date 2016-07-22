@@ -43,7 +43,7 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
 .run(function($ionicPlatform, $cordovaGeolocation, geoLocation, $firebase, $state, $cordovaCamera) {
   $ionicPlatform.ready(function() {
 
-    var push = new Ionic.Push({
+    /*var push = new Ionic.Push({
       "debug": true,
       "onNotification": function(notification) {
         var payload = notification.payload;
@@ -66,7 +66,7 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
     push.register(function(token) {
       // Log out your device token (Save this!)
       console.log("Got Token:",token.token);
-    });
+    });*/
      //navigator.splashscreen.hide(); 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
