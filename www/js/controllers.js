@@ -2428,7 +2428,7 @@ $state.go("yumNUS");
           var childTime = childSnapshot.child("time").val();
           var difference = (currentTime - childTime)/(1000 * 60);
           //console.log(difference);
-          if (difference > time) {
+          if (difference > fifteen) {
             childSnapshot.ref().remove();
           }
         })
