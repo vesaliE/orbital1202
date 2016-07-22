@@ -13,6 +13,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   });
 
   $ionicPush.register();*/
+  $scope.toIntro = function(){
+    $state.go('intro');
+  }
   var linkIssue = new Firebase("https://orbital--1202.firebaseio.com/Issues");
   $scope.report =function(){
     //$state.go("reportProblem"); 
@@ -9621,4 +9624,20 @@ $scope.takePic = function(){
 .controller('aboutUsCtrl', function($scope) {
 
 })
+.controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate){
+  // Called to navigate to the main app
+  $scope.startApp = function() {
+    $state.go('yumNUS');
+  };
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
 
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
+})

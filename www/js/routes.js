@@ -560,6 +560,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/reportProblem.html',
     controller: 'reportProblemCtrl'
   })*/
+  .state('intro', {
+    url: '/intro',
+    templateUrl: 'templates/intro.html',
+    controller: 'introCtrl'
+  })
 
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
