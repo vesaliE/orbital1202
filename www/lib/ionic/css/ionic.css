@@ -8515,7 +8515,7 @@ progress {
  * --------------------------------------------------
  */
 .button {
-  border-color: #transparent;
+  border-color:transparent;
   background-color: #f5f5f5;
   color: #444;
   position: relative;
