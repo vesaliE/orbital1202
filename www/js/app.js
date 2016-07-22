@@ -161,8 +161,6 @@ angular.module('app', ['ionic','ionic.service.core', 'ionic.service.push', 'app.
               });
           });
 
-
-
 })
 
 
