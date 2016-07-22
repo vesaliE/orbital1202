@@ -8518,7 +8518,7 @@ progress {
  * --------------------------------------------------
  */
 .button {
-  border-color: #transparent;
+  border-color:transparent;
   background-color: #f5f5f5;
   color: #444;
   position: relative;
@@ -9893,7 +9893,7 @@ height:100;
 }
 
 .yumNUSIcon1.active, .yumNUSIcon1.activated {
-    background-color:#00cfdc;
+    background-color:#c4c4c4;
 }
 
 .yumNUSIcon2 {
@@ -9915,7 +9915,7 @@ height:100;
 }
 
 .yumNUSIcon2.active, .yumNUSIcon2.activated {
-    background-color:#00cfdc;
+    background-color:#c4c4c4;
 }
 
 .yumNUSIcon3 {
@@ -9937,7 +9937,7 @@ height:100;
 }
 
 .yumNUSIcon3.active, .yumNUSIcon3.activated {
-    background-color:#00cfdc;
+    background-color:#c4c4c4;
 }
 
 
@@ -9960,7 +9960,7 @@ height:100;
 }
 
 .yumNUSIcon4.active, .yumNUSIcon4.activated {
-    background-color:#00cfdc;
+    background-color:#c4c4c4;
 }
 
 
