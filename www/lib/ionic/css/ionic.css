@@ -10064,8 +10064,8 @@ height:100;
     margin:auto;
 }
 #addPara{     /*address paragraph for each template*/
-  font-family:Comic Sans MS, sans-serif;
-  font-weight:300px; 
+  font-family:'Open Sans';
+  font-weight:100px; 
   font-size:18px;
   color:#000;
   padding-left:1.5%;
@@ -10090,4 +10090,14 @@ height:100;
 
 .blackBgEffect:active {
   background-color:#c8cbcb;
+}
+.forum
+{
+  background-color:#f5f5f5;
+}
+#detail{
+  font-family:'Open Sans';
+  font-weight:300px; 
+  font-size:15px;
+  color:#000;
 }
