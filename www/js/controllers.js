@@ -11,10 +11,41 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       //console.log(data.token);
     }
   });
-
+  
   $ionicPush.register();*/
+  $scope.toIntro = function(){
+    $state.go('intro');
+  }
+  var linkIssue = new Firebase("https://orbital--1202.firebaseio.com/Issues");
   $scope.report =function(){
-    $state.go("reportProblem"); 
+    //$state.go("reportProblem"); 
+    $scope.data = {}
+    var issue = $ionicPopup.show({
+      template: 'Please enter your email<input type="test" ng-model="data.email"> <br>Enter Issue<input type="text" ng-model="data.issue">',
+      title: 'Let Us Know!',
+      scope: $scope,
+      buttons: [{
+        text: 'Cancel'
+      }, {
+        text: 'Submit',
+        type: 'button-positive',
+        onTap: function(e) {
+         fbAuth = fb.getAuth();
+         var userFb = new Firebase("http://orbital--1202.firebaseio.com/Users");
+         userFb.on("value", function(snapshot) {
+          var firebaseTime = Firebase.ServerValue.TIMESTAMP;
+          var currentDate = new Date();
+          var currentTime = currentDate.getTime();
+          userName = snapshot.child(fbAuth.uid).child("forumName").val();
+          fb.child("Issues").child(currentTime).set({
+            name: userName, 
+            time: firebaseTime,
+            issue: $scope.data
+          });
+        })
+       }
+     }]
+   })
   }
 
   $scope.goInfo = function() {
@@ -9615,4 +9646,21 @@ $scope.takePic = function(){
 
 .controller('reportProblemCtrl', function($scope){
 
+})
+
+.controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate){
+  // Called to navigate to the main app
+  $scope.startApp = function() {
+    $state.go('yumNUS');
+  };
+  $scope.next = function() {
+    $ionicSlideBoxDelegate.next();
+  };
+  $scope.previous = function() {
+    $ionicSlideBoxDelegate.previous();
+  };
+  // Called each time the slide changes
+  $scope.slideChanged = function(index) {
+    $scope.slideIndex = index;
+  };
 })
