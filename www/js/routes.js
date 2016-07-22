@@ -550,6 +550,11 @@ angular.module('app.routes', [])
     controller: 'foodJunctionContributeCtrl'
   })
   
+  .state('aboutUs', {
+    url: '/aboutUs',
+    templateUrl: 'templates/aboutUs.html',
+    controller: 'aboutUsCtrl'
+  })
 
   $urlRouterProvider.otherwise('/biz_canteen_contribute')
 
