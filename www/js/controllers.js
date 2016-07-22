@@ -1633,7 +1633,7 @@ $scope.login = function(username, password){
             console.error("ERROR: " + error);
             $ionicPopup.alert({
               title: 'Wrong password!',
-              template: 'PLease create an account if you do not have one!'
+              template: 'Please create an account if you do not have one!'
             });
           });
           //var location = $firebaseObject(locationRef.child("Location"));
@@ -1646,6 +1646,15 @@ $scope.login = function(username, password){
         var UserFb = $firebaseObject(fb.child("Users"));
         UserFb.$bindTo($scope, "data");
         var fbAuth = $firebaseAuth(fb);
+
+        if (username === "" || username === undefined || password === "" || password === undefined) {
+            $ionicPopup.alert({
+                title: "No Email or Password detected",
+                template: "Please enter an email or password to create your account"
+            })
+        } else {
+        console.log(username);
+        console.log(password);
         //Prompts for a username
         $ionicPopup.prompt({
           title: 'Please choose a Forum Username',
@@ -2245,6 +2254,7 @@ $state.go("yumNUS");
 }).catch(function(error) {
   console.error("ERROR: " + error);
 });
+}
 }
 })
 
