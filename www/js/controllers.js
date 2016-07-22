@@ -15,7 +15,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $ionicPush.register();*/
 
   $scope.goInfo = function() {
-      $state.go("aboutUs");
+    $state.go("aboutUs");
   }
 
   $scope.toggleLeft = function(){
@@ -63,7 +63,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                   restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color); 
+              //console.log(restaurant.color); 
 
 
             } else if (num <= 2) {
@@ -72,7 +72,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
               restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color); 
+              //console.log(restaurant.color); 
               
             } else if (num <= 3){
               //color = 'assertive'; 
@@ -80,56 +80,56 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
               restaurant.src = "images/30.png";
               restaurant.level = "EMPTY";
               restaurant.percent = num * 10; //percentage; 
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 4) {
               restaurant.color = color1;
               restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 5) {
               restaurant.color = color1;
               restaurant.src = "images/50.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 6) {
               restaurant.color = color1;
               restaurant.src = "images/60.png";
               restaurant.level = "CROWDED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 7) {
               restaurant.color = color2;
               restaurant.src = "images/70.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 8) {
               restaurant.color = color2;
               restaurant.src = "images/80.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 9) {
               restaurant.color = color2;
               restaurant.src = "images/90.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color);
+              //console.log(restaurant.color);
 
             } else if (num <= 10) {
               restaurant.color = color2;
               restaurant.src = "images/100.png";
               restaurant.level = "PACKED";
               restaurant.percent = num * 10; //percentage;
-              console.log(restaurant.color)
+              //console.log(restaurant.color)
             }
           });
         
@@ -138,8 +138,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         var currentTime = currentDate.getTime();
       }
       $scope.getColor = function(restaurant){
-        console.log(restaurant);
-        console.log(restaurant.color); 
+        //console.log(restaurant);
+        //console.log(restaurant.color); 
         return restaurant.color; 
       }
 
@@ -150,8 +150,8 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         userFb.on("value", function(snapshot) {
           var fireAuth = fb.getAuth();
           $scope.userName = snapshot.child(fireAuth.uid).child("forumName").val();
-          console.log(fireAuth.uid);
-          console.log($scope.userName);
+          //console.log(fireAuth.uid);
+          //console.log($scope.userName);
         })
 
       }
@@ -173,9 +173,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         })
       }
 
-  $scope.changePassword = function() {
-      $scope.data = {}
-      var passwordChange = $ionicPopup.show({
+      $scope.changePassword = function() {
+        $scope.data = {}
+        var passwordChange = $ionicPopup.show({
           template: 'Please enter your email<input type="test" ng-model="data.email"> <br>Enter Old Password<input type="password" ng-model="data.oldPassword"> <br>Enter new Password<input type="password" ng-model="data.newPassword1"> <br>Re-enter new Password<input type="password" ng-model="data.newPassword2">',
           title: 'Change of Password',
           scope: $scope,
@@ -185,65 +185,99 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
             text: 'Change',
             type: 'button-positive',
             onTap: function(e) {
-                return $scope.data;
+              return $scope.data;
             }
           }]
-      })
+        })
 
-      passwordChange.then(function(res) {
+        passwordChange.then(function(res) {
           if (res) {
-              console.log('success');
-              if (res.newPassword1 === res.newPassword2) {
-                  fb.changePassword({
-                      email: res.email,
-                      oldPassword: res.oldPassword,
-                      newPassword: res.newPassword1
-                  }, function(error) {
-                      if (error) {
-                          switch (error.code) {
-                              case "INVALID_PASSWORD":
-                                  $ionicPopup.alert({
-                                      title: "Password is incorrect!",
-                                      template: 'Please try again'
-                                  }) ;
-                                  console.log("Password Incorrect");
-                                  break;
-                              case "INVALID_USER":
-                                  $ionicPopup.alert({
-                                      title: "Invalid email!",
-                                      template: 'Please try again'
-                                  });
-                                  console.log("Invalid User");
-                                  break;
-                              default:
-                                  $ionicPopup.alert({
-                                      title: "Error",
-                                      template: 'There is an error in changing your password. Please try again'
-                                  })
-                                  console.log("Error changing password", error);
-                          }
-                      } else {
-                          $ionicPopup.alert({
-                              title: "Successful!",
-                              template: 'Your password has been successfully changed!'
-                          });
-                          console.log("Password change successful!");
-                      }
-                  })
-              } else {
+            console.log('success');
+            if (res.newPassword1 === res.newPassword2) {
+              fb.changePassword({
+                email: res.email,
+                oldPassword: res.oldPassword,
+                newPassword: res.newPassword1
+              }, function(error) {
+                if (error) {
+                  switch (error.code) {
+                    case "INVALID_PASSWORD":
+                    $ionicPopup.alert({
+                      title: "Password is incorrect!",
+                      template: 'Please try again'
+                    }) ;
+                    console.log("Password Incorrect");
+                    break;
+                    case "INVALID_USER":
+                    $ionicPopup.alert({
+                      title: "Invalid email!",
+                      template: 'Please try again'
+                    });
+                    console.log("Invalid User");
+                    break;
+                    default:
+                    $ionicPopup.alert({
+                      title: "Error",
+                      template: 'There is an error in changing your password. Please try again'
+                    })
+                    console.log("Error changing password", error);
+                  }
+                } else {
                   $ionicPopup.alert({
-                      title: "Password Mismatch",
-                      template: 'Your passwords do not match, please try again'
-                  })
-                  console.log("Password different");
-              }
-              console.log(res.oldPassword + res.newPassword1 + res.newPassword2);
+                    title: "Successful!",
+                    template: 'Your password has been successfully changed!'
+                  });
+                  console.log("Password change successful!");
+                }
+              })
+            } else {
+              $ionicPopup.alert({
+                title: "Password Mismatch",
+                template: 'Your passwords do not match, please try again'
+              })
+              console.log("Password different");
+            }
+            console.log(res.oldPassword + res.newPassword1 + res.newPassword2);
           }
-      })
+        })
+      }
+      var deploy = new Ionic.Deploy(); 
+ // Update app code with new release from Ionic Deploy
+ $scope.doUpdate = function() {
+  deploy.update().then(function(res) {
+    console.log('Ionic Deploy: Update Success! ', res);
+  }, function(err) {
+    console.log('Ionic Deploy: Update error! ', err);
+  }, function(prog) {
+    console.log('Ionic Deploy: Progress... ', prog);
+  });
+};
+
+  // Check Ionic Deploy for new code
+  $scope.checkForUpdates = function() {
+    console.log('Ionic Deploy: Checking for updates');
+    deploy.check().then(function(hasUpdate) {
+      console.log('Ionic Deploy: Update available: ' + hasUpdate);
+      $scope.hasUpdate = hasUpdate;
+      if(hasUpdate === false){
+       $ionicPopup.alert({
+        title: "No Update",
+        template: 'No updates available at the moment!'
+      });
+     }
+     else{
+      $ionicPopup.alert({
+        title: "Update Available!",
+        template: 'Please click on Download Update.'
+      });
+
+    }
+  }, function(err) {
+    console.error('Ionic Deploy: Unable to check for updates', err);
+  });
   }
 
-
-    })
+})
 
 .controller('chooseCafeCtrl', function($scope) {
   $scope.colorAlcove = null;
@@ -925,38 +959,38 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
 .controller('bizCanteen_contributeCtrl', function($scope, $state, $firebaseAuth, $localstorage, $ionicPopup, $firebaseObject, $firebase, geoLocation) {
 
   $scope.forgotPassword = function() {
-      $scope.data = {};
+    $scope.data = {};
 
-      $ionicPopup.prompt({
-          title: 'Please enter registered email',
-          inputType: 'text'
-        })
-        .then(function(result) {
-            fb.resetPassword({
-                email: result
-            }, function(error) {
-                if (error) {
-                    switch (error.code) {
-                        case "INVALID_USER":
-                          $ionicPopup.alert({
-                            title: 'Invalid User',
-                            template: 'The specified email does not exist. Please create an account if you do not have one!'
-                          });
-                          break;
-                        default:
-                          $ionicPopup.alert({
-                            title: 'Error!',
-                            template: 'Please try again'
-                          });
-                    }
-                } else {
-                    $ionicPopup.alert({
-                        title: 'Success!',
-                        template: 'Password reset email sent successfully'
-                    });
-                }
-            })
-        })
+    $ionicPopup.prompt({
+      title: 'Please enter registered email',
+      inputType: 'text'
+    })
+    .then(function(result) {
+      fb.resetPassword({
+        email: result
+      }, function(error) {
+        if (error) {
+          switch (error.code) {
+            case "INVALID_USER":
+            $ionicPopup.alert({
+              title: 'Invalid User',
+              template: 'The specified email does not exist. Please create an account if you do not have one!'
+            });
+            break;
+            default:
+            $ionicPopup.alert({
+              title: 'Error!',
+              template: 'Please try again'
+            });
+          }
+        } else {
+          $ionicPopup.alert({
+            title: 'Success!',
+            template: 'Password reset email sent successfully'
+          });
+        }
+      })
+    })
   }
 
   $scope.rmbMe = { checked: true };
@@ -9556,5 +9590,5 @@ $scope.takePic = function(){
 })
 
 .controller('aboutUsCtrl', function($scope) {
-    
+
 })
