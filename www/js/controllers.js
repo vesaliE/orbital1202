@@ -62,7 +62,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
                   restaurant.color = color0;
                   restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color); 
 
 
@@ -71,7 +71,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
               restaurant.color = color0;
               restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color); 
               
             } else if (num <= 3){
@@ -79,56 +79,56 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
               restaurant.color = color0;                   
               restaurant.src = "images/30.png";
               restaurant.level = "EMPTY";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color);
 
             } else if (num <= 4) {
               restaurant.color = color1;
               restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 5) {
               restaurant.color = color1;
               restaurant.src = "images/50.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 6) {
               restaurant.color = color1;
               restaurant.src = "images/60.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 7) {
               restaurant.color = color2;
               restaurant.src = "images/70.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 8) {
               restaurant.color = color2;
               restaurant.src = "images/80.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 9) {
               restaurant.color = color2;
               restaurant.src = "images/90.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 10) {
               restaurant.color = color2;
               restaurant.src = "images/100.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color)
             }
           });
@@ -7975,7 +7975,7 @@ $scope.takePic = function(){
                   restaurant.color = color0;
                   restaurant.src = "images/10.png";
                   restaurant.level = "EMPTY";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color); 
 
 
@@ -7984,7 +7984,7 @@ $scope.takePic = function(){
               restaurant.color = color0;
               restaurant.src = "images/20.png";
               restaurant.level = "EMPTY    ";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color); 
               
             } else if (num <= 3){
@@ -7992,56 +7992,56 @@ $scope.takePic = function(){
               restaurant.color = color0;                   
               restaurant.src = "images/30.png";
               restaurant.level = "EMPTY";
-              restaurant.percent = num; //percentage; 
+              restaurant.percent = num * 10; //percentage; 
               console.log(restaurant.color);
 
             } else if (num <= 4) {
               restaurant.color = color1;
               restaurant.src = "images/40.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 5) {
               restaurant.color = color1;
               restaurant.src = "images/50.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 6) {
               restaurant.color = color1;
               restaurant.src = "images/60.png";
               restaurant.level = "CROWDED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 7) {
               restaurant.color = color2;
               restaurant.src = "images/70.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 8) {
               restaurant.color = color2;
               restaurant.src = "images/80.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 9) {
               restaurant.color = color2;
               restaurant.src = "images/90.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color);
 
             } else if (num <= 10) {
               restaurant.color = color2;
               restaurant.src = "images/100.png";
               restaurant.level = "PACKED";
-              restaurant.percent = num; //percentage;
+              restaurant.percent = num * 10; //percentage;
               console.log(restaurant.color)
             }
           });
