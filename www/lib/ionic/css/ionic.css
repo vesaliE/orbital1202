@@ -10011,11 +10011,8 @@ height:100;
 }
 
 .blueSegmentImage {
-    background: url('../../../images/wood.jpg');
-    background-repeat: no-repeat;
-    background-position:center;
-    background-size: cover;
-    margin:auto;
+    background-color:rgba(245, 245, 245, 0.8);
+    font-effect:bold;
 }
 
 .lightredImage {
