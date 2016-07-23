@@ -259,6 +259,11 @@ angular.module('app.routes', [])
     templateUrl: 'templates/seeLah19.html',
     controller: 'seeLah19Ctrl'
   })
+    .state('platypusMenu', {
+    url: '/platypus_menu',
+    templateUrl: 'templates/platypusMenu.html',
+    controller: 'platypusMenuCtrl'
+  })
 
   .state('reedzCafe', {
     url: '/reedz_cafe',
