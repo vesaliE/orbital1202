@@ -2835,6 +2835,7 @@ $scope.login = function(username, password){
                       })
 
                     }).then(function(authData) {
+                      console.log("created!")
                       if ($scope.rmbMe.checked) {
                         $localstorage.set("username", username);
                         $localstorage.set("password", password);
@@ -3414,7 +3415,7 @@ $scope.login = function(username, password){
                       }); 
                     }),
 
-$state.go("yumNUS");
+$state.go("intro");
 }).catch(function(error) {
   console.error("ERROR: " + error);
 });
