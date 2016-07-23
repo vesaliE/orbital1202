@@ -2960,7 +2960,7 @@ $state.go("yumNUS");
     }
 
   })
-.controller('macdonaldsFOEContributeCtrl', function($scope, $firebaseObject, $state,$firebaseArray, $cordovaCamera) {   
+.controller('macdonaldsFOEContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state,$firebaseArray, $cordovaCamera) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -3012,8 +3012,17 @@ $state.go("yumNUS");
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("macdonaldsFOE") !== true) {
         $scope.data.macdonaldsFOE = [];
@@ -3074,9 +3083,6 @@ $state.go("yumNUS");
                 }
               })
 
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3225,7 +3231,7 @@ $state.go("yumNUS");
 .controller('subwayYIHCtrl', function($scope) {
 
 })
-.controller('subwayYIHContributeCtrl', function($scope, $firebaseObject, $state,$firebaseArray, $cordovaCamera) {   
+.controller('subwayYIHContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state,$firebaseArray, $cordovaCamera) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -3277,8 +3283,17 @@ $state.go("yumNUS");
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("subwayYIH") !== true) {
         $scope.data.subwayYIH = [];
@@ -3338,10 +3353,6 @@ $state.go("yumNUS");
                   $state.go("seeLah9");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3501,7 +3512,7 @@ $state.go("yumNUS");
 })
 
 
-.controller('subwayUTownContributeCtrl', function($scope, $firebaseObject, $state,$firebaseArray, $cordovaCamera) {   
+.controller('subwayUTownContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state,$firebaseArray, $cordovaCamera) {   
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -3554,8 +3565,17 @@ $state.go("yumNUS");
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("subwayUTown") !== true) {
         $scope.data.subwayUTown= [];
@@ -3615,10 +3635,6 @@ $state.go("yumNUS");
                   $state.go("seeLah12");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -3865,7 +3881,7 @@ $state.go("yumNUS");
 
 })
 
-.controller('foodJunctionContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
+.controller('foodJunctionContributeCtrl', function($scope, $state, $ionicPopup, $firebaseObject, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -3915,8 +3931,17 @@ $state.go("yumNUS");
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("foodJunction") !== true) {
         $scope.data.alcove = [];
@@ -3971,9 +3996,6 @@ $state.go("yumNUS");
                 }
               })
 
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4116,7 +4138,7 @@ $state.go("yumNUS");
 
   })
 
-.controller('alcoveContributeCtrl', function($scope, $firebaseArray, $firebaseObject, $state, $cordovaCamera) {
+.controller('alcoveContributeCtrl', function($scope, $firebaseArray, $firebaseObject, $ionicPopup, $state, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -4166,8 +4188,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("alcove") !== true) {
       $scope.data.alcove = [];
@@ -4221,10 +4252,6 @@ $scope.create = function(input) {
                   $state.go("seeLah13");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4430,7 +4457,7 @@ $scope.takePic = function(){
 
 })
 //butter my bun contribute page, with storage function
-.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray){
+.controller('butterMyBunContributeCtrl', function($scope, $firebaseObject, $state, $ionicPopup, $cordovaCamera, $firebaseArray){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -4480,8 +4507,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("butterMyBun") !== true) {
         $scope.data.butterMyBun = [];
@@ -4535,10 +4571,6 @@ $scope.takePic = function(){
                   $state.go("seeLah14");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4690,7 +4722,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('royalContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
+.controller('royalContributeCtrl', function($scope, $state, $firebaseObject, $ionicPopup, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -4740,8 +4772,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("royal") !== true) {
         $scope.data.royal = [];
@@ -4795,10 +4836,6 @@ $scope.takePic = function(){
                   $state.go("seeLah15");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -4947,7 +4984,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('humbleContributeCtrl', function($scope, $state, $firebaseObject, $cordovaCamera, $firebaseArray){
+.controller('humbleContributeCtrl', function($scope, $state, $ionicPopup, $firebaseObject, $cordovaCamera, $firebaseArray){
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -4997,8 +5034,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("humble") !== true) {
         $scope.data.humble = [];
@@ -5052,10 +5098,6 @@ $scope.takePic = function(){
                   $state.go("seeLah17");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5205,7 +5247,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('hwangContributeCtrl', function($scope, $state, $cordovaCamera, $firebaseArray, $firebaseObject) {
+.controller('hwangContributeCtrl', function($scope, $state, $ionicPopup, $cordovaCamera, $firebaseArray, $firebaseObject) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -5255,8 +5297,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("hwang") !== true) {
         $scope.data.hwang = [];
@@ -5310,10 +5361,6 @@ $scope.takePic = function(){
                   $state.go("seeLah18");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5461,7 +5508,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('platypusContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray,$cordovaCamera) {
+.controller('platypusContributeCtrl', function($scope, $state, $ionicPopup, $firebaseObject, $firebaseArray,$cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -5511,8 +5558,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("platypus") !== true) {
       $scope.data.platypus = [];
@@ -5566,10 +5622,6 @@ $scope.create = function(input) {
                   $state.go("seeLah19");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5718,7 +5770,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('reedzContributeCtrl', function($scope, $firebaseObject, $state, $firebaseArray, $cordovaCamera) {
+.controller('reedzContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -5768,8 +5820,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("reedz") !== true) {
         $scope.data.reedz = [];
@@ -5823,10 +5884,6 @@ $scope.takePic = function(){
                   $state.go("seeLah20");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -5976,7 +6033,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('saporeContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
+.controller('saporeContributeCtrl', function($scope, $state, $ionicPopup, $firebaseObject, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -6026,8 +6083,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("sapore") !== true) {
         $scope.data.sapore = [];
@@ -6081,10 +6147,6 @@ $scope.takePic = function(){
                   $state.go("seeLah21");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6233,7 +6295,7 @@ $scope.takePic = function(){
 .controller('spinelliMenuCtrl', function($scope) {
 
 })
-.controller('spinelliContributeCtrl', function($scope, $state, $firebaseObject, $firebaseArray, $cordovaCamera) {
+.controller('spinelliContributeCtrl', function($scope, $state, $ionicPopup, $firebaseObject, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -6283,8 +6345,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("spinelli") !== true) {
         $scope.data.spinelli = [];
@@ -6338,10 +6409,6 @@ $scope.takePic = function(){
                   $state.go("seeLah22");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6488,7 +6555,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('spiceContributeCtrl', function($scope, $firebaseObject, $state, $firebaseArray, $cordovaCamera) {
+.controller('spiceContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state, $firebaseArray, $cordovaCamera) {
   $scope.list = function() {
     fbAuth = fb.getAuth();
     if (fbAuth) {
@@ -6538,8 +6605,17 @@ $scope.takePic = function(){
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
-      var userName = null;
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
       if ($scope.data.hasOwnProperty("spice") !== true) {
         $scope.data.spice = [];
@@ -6593,10 +6669,6 @@ $scope.takePic = function(){
                   $state.go("seeLah23");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6743,7 +6815,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('starbucksMD11ContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
+.controller('starbucksMD11ContributeCtrl', function($scope, $state, $ionicPopup, $firebaseArray, $firebaseObject, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -6793,9 +6865,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
-
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
     if ($scope.data.hasOwnProperty("starbucksMD11") !== true) {
       $scope.data.starbucksMD11 = [];
     }
@@ -6848,8 +6928,6 @@ $scope.create = function(input) {
                   $state.go("seeLah24");
                 }
               })
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -6997,7 +7075,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('starbucksYIHContributeCtrl', function($scope, $firebaseObject,$state, $firebaseArray, $cordovaCamera) {
+.controller('starbucksYIHContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $state, $firebaseArray, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -7047,8 +7125,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("starbucksYIH") !== true) {
       $scope.data.starbucksYIH = [];
@@ -7102,10 +7189,6 @@ $scope.create = function(input) {
                   $state.go("seeLah25");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7253,7 +7336,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('starbucksUTownContributeCtrl', function($scope, $firebaseObject, $firebaseArray, $state, $cordovaCamera) {
+.controller('starbucksUTownContributeCtrl', function($scope, $firebaseObject, $ionicPopup, $firebaseArray, $state, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -7303,8 +7386,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("starbucksUTown") !== true) {
       $scope.data.starbucksUTown = [];
@@ -7358,10 +7450,6 @@ $scope.create = function(input) {
                   $state.go("seeLah26");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7509,7 +7597,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('uniClubContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
+.controller('uniClubContributeCtrl', function($scope, $state, $ionicPopup, $firebaseArray, $firebaseObject, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -7559,8 +7647,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("uniClub") !== true) {
       $scope.data.uniClub = [];
@@ -7614,10 +7711,6 @@ $scope.create = function(input) {
                   $state.go("seeLah27");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -7764,7 +7857,7 @@ $scope.takePic = function(){
 
 })
 
-.controller('waaContributeCtrl', function($scope, $state, $firebaseArray, $firebaseObject, $cordovaCamera) {
+.controller('waaContributeCtrl', function($scope, $state, $ionicPopup, $firebaseArray, $firebaseObject, $cordovaCamera) {
  $scope.list = function() {
   fbAuth = fb.getAuth();
   if (fbAuth) {
@@ -7814,8 +7907,17 @@ $scope.iconChange = function(clickChoice) {
 }
 
 $scope.create = function(input) {
-  if (input !== "") {
-    var userName = null;
+  if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
 
     if ($scope.data.hasOwnProperty("waa") !== true) {
       $scope.data.waa = [];
@@ -7869,10 +7971,6 @@ $scope.create = function(input) {
                   $state.go("seeLah28");
                 }
               })
-
-
-  } else {
-    //console.log("No comments in the box detected");
   }
 }
 $scope.pictureURL = "http://placehold.it/50x50"; 
