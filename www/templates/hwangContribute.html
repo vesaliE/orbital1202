@@ -1,6 +1,5 @@
 <ion-view title="Leave your comments!" id="page13" class="backgroundImage" ng-init="list()">
    <ion-content>
-        <div>
             <div id="iconPosition">
 
                 <img on-tap="iconChange(1)" ng-src="{{ imageUrl1 }}" class="contributeIconOne">
@@ -14,19 +13,21 @@
                 <span class="stretch"></span>
             </div>
 
-             <div class="button-bar" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
-                <button ng-click="takePic()" class="button button-block button-white">Take Picture</button>
-            </div>
-
-
             <div class="list list-inset" style="position:relative; top: 30px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
                 <label class="item item-input">
                     <input ng-model="comments" type="text" placeholder="Comments" />
                 </label>                
             </div>           
-                <div class="button-bar" style="position:relative; top: 40px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
-                    <a class="button" ng-click="create(comments)">Submit</a>
+            <div class="button-bar" style="position:relative; top: 40px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center">
+                    <a class="button" ng-click="create(comments)">Submit comment</a>
                 </div>            
-        </div>
+            </div>
+
+            <h1 style="text-align:center; position:relative; top:55px"> OR </h1>
+            
+
+            <div class="button-bar" style="position:relative; top: 80px; margin-left:auto; margin-right:auto; width:95%; vertical-align:center" class="">
+                <button ng-click="takePic()" class="button button-block button-white icon-right ion-camera">Take a Picture instead!</button>
+            </div>
     </ion-content>
 </ion-view>
