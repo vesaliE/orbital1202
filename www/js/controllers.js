@@ -9664,3 +9664,7 @@ $scope.takePic = function(){
     $scope.slideIndex = index;
   };
 })
+
+.controller('platypusMenuCtrl', function($scope){
+  
+})
