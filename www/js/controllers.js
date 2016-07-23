@@ -1240,18 +1240,62 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      if (count <= 5) {
-        //console.log(count);
-        //console.log("here at 1!");
-        return $scope.FoodJunction = "images/greenhumantrans.png"
-        
-      } else if (count <= 10) {
-        //console.log("here at else!");
-        return $scope.FoodJunction = "images/orangehumantrans.png";
-        
-      } else {
-        return $scope.FoodJunction = "images/redhumantrans.png";
-      }
+      var total = 181;
+      var percent = count / total * 100;
+      if (count <= 1) {
+                  //color = 'balanced'; ;
+              $scope.colorFoodJunction = "images/10.png";
+              $scope.numberFoodJunction = count * 10; //percentage; 
+              ////console.log(restaurant.color); 
+
+
+            } else if (count <= 2) {
+              //color = 'energized'; 
+              $scope.colorFoodJunction = "images/20.png";
+              $scope.numberFoodJunction = count * 10; //percentage; 
+              //console.log(restaurant.color); 
+              
+            } else if (count <= 3){
+              //color = 'assertive';              
+              $scope.colorFoodJunction = "images/30.png";
+              $scope.numberFoodJunction = count * 10; //percentage; 
+              ////console.log(restaurant.color);
+
+            } else if (count <= 4) {
+              $scope.colorFoodJunction = "images/40.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 5) {
+              $scope.colorFoodJunction = "images/50.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 6) {
+              $scope.colorFoodJunction = "images/60.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 7) {
+              $scope.colorFoodJunction = "images/70.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 8) {
+              $scope.colorFoodJunction = "images/80.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 9) {
+              $scope.colorFoodJunction = "images/90.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 10) {
+              $scope.colorFoodJunction = "images/100.png";
+              $scope.numberFoodJunction = count * 10; //percentage;
+              ////console.log(restaurant.color)
+            }
     })
   }
 
