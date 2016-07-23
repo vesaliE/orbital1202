@@ -39,7 +39,13 @@
                 <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">UTown</p>
             </div>
         </div>
-        <img ng-src="{{colorFlavours}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+         <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+            <img ng-src="{{colorFlavours}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:20px; left:101px">
+                {{ numberFlavours }}%
+            </div>
+        </div>
     </div>
 
     <div ui-sref="fOECanteen" id="chooseCanteen-button20" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFoe()">
