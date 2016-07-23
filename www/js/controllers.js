@@ -810,6 +810,14 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.colorSci = null;
   $scope.FoodJunction = null;
 
+  $scope.numberBiz = null;
+  $scope.numberFass = null;
+  $scope.numberFlavours = null;
+  $scope.numberFoe = null;
+  $scope.numberKoufu = null;
+  $scope.numberSci = null;
+  $scope.numberFoodJunction = null;
+
   $scope.getColorBiz = function() {
 
     var count = 0;
@@ -819,18 +827,63 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      if (count <= 5) {
-        //console.log(count);
-        //console.log("here at 1!");
-        return $scope.colorBiz = "images/greenhumantrans.png"
-        
-      } else if (count <= 10) {
-        //console.log("here at else!");
-        return $scope.colorBiz = "images/orangehumantrans.png";
-        
-      } else {
-        return $scope.colorBiz = "images/redhumantrans.png";
-      }
+      var total = 474;
+      var percent = count / total * 100
+
+      if (count <= 1) {
+                  //color = 'balanced'; ;
+              $scope.colorBiz = "images/10.png";
+              $scope.numberBiz = count * 10; //percentage; 
+              ////console.log(restaurant.color); 
+
+
+            } else if (count <= 2) {
+              //color = 'energized'; 
+              $scope.colorBiz = "images/20.png";
+              $scope.numberBiz = count * 10; //percentage; 
+              //console.log(restaurant.color); 
+              
+            } else if (count <= 3){
+              //color = 'assertive';              
+              $scope.colorBiz = "images/30.png";
+              $scope.numberBiz = count * 10; //percentage; 
+              ////console.log(restaurant.color);
+
+            } else if (count <= 4) {
+              $scope.colorBiz = "images/40.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 5) {
+              $scope.colorBiz = "images/50.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 6) {
+              $scope.colorBiz = "images/60.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 7) {
+              $scope.colorBiz = "images/70.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 8) {
+              $scope.colorBiz = "images/80.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 9) {
+              $scope.colorBiz = "images/90.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 10) {
+              $scope.colorBiz = "images/100.png";
+              $scope.numberBiz = count * 10; //percentage;
+              ////console.log(restaurant.color)
+            }
     })
   }
 
@@ -9761,8 +9814,4 @@ $scope.takePic = function(){
   $scope.slideChanged = function(index) {
     $scope.slideIndex = index;
   };
-})
-
-.controller('platypusMenuCtrl', function($scope){
-  
 })
