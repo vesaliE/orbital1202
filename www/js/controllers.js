@@ -964,7 +964,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      var total = 426;
+      var total = 350;
       var percent = count / total * 100;
 
       if (count <= 1) {
@@ -1033,7 +1033,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      var total = 245;
+      var total = 426;
       var percent = count / total * 100;
 
       if (count <= 1) {
@@ -1102,18 +1102,63 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      if (count <= 5) {
-        //console.log(count);
-        //console.log("here at 1!");
-        return $scope.colorKoufu = "images/greenhumantrans.png"
-        
-      } else if (count <= 10) {
-        //console.log("here at else!");
-        return $scope.colorKoufu = "images/orangehumantrans.png";
-        
-      } else {
-        return $scope.colorKoufu = "images/redhumantrans.png";
-      }
+      var total = 245;
+      var percent = count / total * 100;
+
+      if (count <= 1) {
+                  //color = 'balanced'; ;
+              $scope.colorKoufu = "images/10.png";
+              $scope.numberKoufu = count * 10; //percentage; 
+              ////console.log(restaurant.color); 
+
+
+            } else if (count <= 2) {
+              //color = 'energized'; 
+              $scope.colorKoufu = "images/20.png";
+              $scope.numberKoufu = count * 10; //percentage; 
+              //console.log(restaurant.color); 
+              
+            } else if (count <= 3){
+              //color = 'assertive';              
+              $scope.colorKoufu = "images/30.png";
+              $scope.numberKoufu = count * 10; //percentage; 
+              ////console.log(restaurant.color);
+
+            } else if (count <= 4) {
+              $scope.colorKoufu = "images/40.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 5) {
+              $scope.colorKoufu = "images/50.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 6) {
+              $scope.colorKoufu = "images/60.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 7) {
+              $scope.colorKoufu = "images/70.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 8) {
+              $scope.colorKoufu = "images/80.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 9) {
+              $scope.colorKoufu = "images/90.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 10) {
+              $scope.colorKoufu = "images/100.png";
+              $scope.numberKoufu = count * 10; //percentage;
+              ////console.log(restaurant.color)
+            }
     })
   }
 
@@ -1126,18 +1171,63 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      if (count <= 5) {
-        //console.log(count);
-        //console.log("here at 1!");
-        return $scope.colorSci = "images/greenhumantrans.png"
-        
-      } else if (count <= 10) {
-        //console.log("here at else!");
-        return $scope.colorSci = "images/orangehumantrans.png";
-        
-      } else {
-        return $scope.colorSci = "images/redhumantrans.png";
-      }
+      var total = 519;
+      var percent = count / total * 100;
+
+      if (count <= 1) {
+                  //color = 'balanced'; ;
+              $scope.colorSci = "images/10.png";
+              $scope.numberSci = count * 10; //percentage; 
+              ////console.log(restaurant.color); 
+
+
+            } else if (count <= 2) {
+              //color = 'energized'; 
+              $scope.colorSci = "images/20.png";
+              $scope.numberSci = count * 10; //percentage; 
+              //console.log(restaurant.color); 
+              
+            } else if (count <= 3){
+              //color = 'assertive';              
+              $scope.colorSci = "images/30.png";
+              $scope.numberSci = count * 10; //percentage; 
+              ////console.log(restaurant.color);
+
+            } else if (count <= 4) {
+              $scope.colorSci = "images/40.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 5) {
+              $scope.colorSci = "images/50.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 6) {
+              $scope.colorSci = "images/60.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 7) {
+              $scope.colorSci = "images/70.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 8) {
+              $scope.colorSci = "images/80.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 9) {
+              $scope.colorSci = "images/90.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 10) {
+              $scope.colorSci = "images/100.png";
+              $scope.numberSci = count * 10; //percentage;
+              ////console.log(restaurant.color)
+            }
     })
   }
 
