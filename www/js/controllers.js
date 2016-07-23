@@ -1,6 +1,6 @@
 angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.push','firebase', 'app.services','greatCircles'])
 
-.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPopup, $state, $ionicSideMenuDelegate, $firebaseAuth) {
+.controller('yumNUSCtrl', function($scope, $rootScope, foodFactory, geoLocation, GreatCircle, $firebase, $ionicPopup, $state, $ionicSideMenuDelegate) {
   /*$ionicPush.init({
     "debug": true,
     "onNotification": function(notification) {
@@ -11,7 +11,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       //console.log(data.token);
     }
   });
-
+  
   $ionicPush.register();*/
   $scope.toIntro = function(){
     $state.go('intro');
@@ -1664,7 +1664,7 @@ $scope.login = function(username, password){
             console.error("ERROR: " + error);
             $ionicPopup.alert({
               title: 'Wrong password!',
-              template: 'PLease create an account if you do not have one!'
+              template: 'Please create an account if you do not have one!'
             });
           });
           //var location = $firebaseObject(locationRef.child("Location"));
@@ -1677,6 +1677,15 @@ $scope.login = function(username, password){
         var UserFb = $firebaseObject(fb.child("Users"));
         UserFb.$bindTo($scope, "data");
         var fbAuth = $firebaseAuth(fb);
+
+        if (username === "" || username === undefined || password === "" || password === undefined) {
+            $ionicPopup.alert({
+                title: "No Email or Password detected",
+                template: "Please enter an email or password to create your account"
+            })
+        } else {
+        console.log(username);
+        console.log(password);
         //Prompts for a username
         $ionicPopup.prompt({
           title: 'Please choose a Forum Username',
@@ -2277,9 +2286,10 @@ $state.go("yumNUS");
   console.error("ERROR: " + error);
 });
 }
+}
 })
 
-.controller('tempCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray) {   
+.controller('tempCtrl', function($scope, $firebaseObject, $state, $cordovaCamera, $firebaseArray, $ionicPopup) {   
 
   $scope.list = function() {
     fbAuth = fb.getAuth();
@@ -2330,7 +2340,20 @@ $state.go("yumNUS");
   }
 
   $scope.create = function(input) {
-    if (input !== "") {
+    if ($scope.choice === null) {
+      $ionicPopup.alert({
+          title: "No Icon selected",
+          template: "Please select one of the 4 Icons"
+      })
+    } else if (input === undefined) {
+      $ionicPopup.alert({
+          title: "No comment detected",
+          template: "Please type in a comment"
+      })
+    } else {
+      console.log($scope.choice)
+      console.log(input);
+      console.log("there is a comment!");
       var userName = null;
 
       if ($scope.data.hasOwnProperty("bizCanteen") !== true) {
@@ -2391,10 +2414,6 @@ $state.go("yumNUS");
                   $state.go("seeLah");
                 }
               })
-
-
-    } else {
-      //console.log("No comments in the box detected");
     }
   }
   $scope.pictureURL = "http://placehold.it/50x50"; 
@@ -2456,7 +2475,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -2560,7 +2579,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -2660,7 +2679,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -2760,7 +2779,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -2859,7 +2878,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -3118,7 +3137,7 @@ $state.go("yumNUS");
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -3381,7 +3400,7 @@ $state.go("yumNUS");
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -3658,7 +3677,7 @@ $state.go("yumNUS");
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -3756,7 +3775,7 @@ $state.go("yumNUS");
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -4014,7 +4033,7 @@ $state.go("yumNUS");
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 20; 
+  var time = 120; 
   bizRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -4268,7 +4287,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     bizRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -4580,7 +4599,7 @@ $scope.takePic = function(){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 20; 
+      var time = 120; 
       butterRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -4837,7 +4856,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 20; 
+  var time = 120; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -5096,7 +5115,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -5353,7 +5372,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -5609,7 +5628,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -5867,7 +5886,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 20; 
+  var time = 120; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -6123,7 +6142,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 20; 
+  var time = 120; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -6381,7 +6400,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -6636,7 +6655,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -6890,7 +6909,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7146,7 +7165,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7402,7 +7421,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7657,7 +7676,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7913,7 +7932,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 20; 
+    var time = 120; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -9624,6 +9643,11 @@ $scope.takePic = function(){
 .controller('aboutUsCtrl', function($scope) {
 
 })
+
+.controller('reportProblemCtrl', function($scope){
+
+})
+
 .controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate){
   // Called to navigate to the main app
   $scope.startApp = function() {
