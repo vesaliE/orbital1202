@@ -896,18 +896,62 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
         //console.log(timestamp);
         count++;
       })
-      if (count <= 5) {
-        //console.log(count);
-        //console.log("here at 1!");
-        return $scope.colorFass = "images/greenhumantrans.png"
-        
-      } else if (count <= 10) {
-        //console.log("here at else!");
-        return $scope.colorFass = "images/orangehumantrans.png";
-        
-      } else {
-        return $scope.colorFass = "images/redhumantrans.png";
-      }
+      var total = 509;
+      var percent = count / 509 * 10
+      if (count <= 1) {
+                  //color = 'balanced'; ;
+              $scope.colorFass = "images/10.png";
+              $scope.numberFass = count * 10; //percentage; 
+              ////console.log(restaurant.color); 
+
+
+            } else if (count <= 2) {
+              //color = 'energized'; 
+              $scope.colorFass = "images/20.png";
+              $scope.numberFass = count * 10; //percentage; 
+              //console.log(restaurant.color); 
+              
+            } else if (count <= 3){
+              //color = 'assertive';              
+              $scope.colorFass = "images/30.png";
+              $scope.numberFass = count * 10; //percentage; 
+              ////console.log(restaurant.color);
+
+            } else if (count <= 4) {
+              $scope.colorFass = "images/40.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 5) {
+              $scope.colorFass = "images/50.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 6) {
+              $scope.colorFass = "images/60.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 7) {
+              $scope.colorFass = "images/70.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 8) {
+              $scope.colorFass = "images/80.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 9) {
+              $scope.colorFass = "images/90.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color);
+
+            } else if (count <= 10) {
+              $scope.colorFass = "images/100.png";
+              $scope.numberFass = count * 10; //percentage;
+              ////console.log(restaurant.color)
+            }
     })
   }
 
