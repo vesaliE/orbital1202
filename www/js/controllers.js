@@ -21,7 +21,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     //$state.go("reportProblem"); 
     $scope.data = {}
     var issue = $ionicPopup.show({
-      template: 'Please enter your email<input type="test" ng-model="data.email"> <br>Enter Issue<input type="text" ng-model="data.issue">',
+      template: 'Please enter your email<input type="text" ng-model="data.email"> <br>Enter Issue<input type="text" ng-model="data.issue">',
       title: 'Let Us Know!',
       scope: $scope,
       buttons: [{
