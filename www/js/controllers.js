@@ -329,6 +329,22 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.colorUniversity = null;
   $scope.colorWaaCow = null;
 
+  $scope.numberAlcove = null;
+  $scope.numberButter = null;
+  $scope.numberHumble = null;
+  $scope.numberHwang = null;
+  $scope.numberBistro = null;
+  $scope.numberPlatypus = null;
+  $scope.numberReedz = null;
+  $scope.numberSapore = null;
+  $scope.numberSpinelli = null;
+  $scope.numberSpice = null;
+  $scope.numberStarbucksMD11 = null;
+  $scope.numberStarbucksYIH = null;
+  $scope.numberStarbucksUTown = null;
+  $scope.numberUniversity = null;
+  $scope.numberWaaCow = null;
+
   var linkAlcove = new Firebase("https://orbital--1202.firebaseio.com/location/AlcoveAsianRestaurantBar");
   var linkButter = new Firebase("https://orbital--1202.firebaseio.com/location/ButterMyBun");
   var linkHumble = new Firebase("https://orbital--1202.firebaseio.com/location/HumbleOrigins");
