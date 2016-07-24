@@ -10015,6 +10015,12 @@ height:100;
     font-effect:bold;
 }
 
+.buttonUI {
+    background-color:rgba(245, 245, 245, 0.8);
+    font-effect:bold;
+}
+
+
 .lightredImage {
     background: url('../../../images/lightredbg.jpg');
     background-repeat: no-repeat;
