@@ -2,73 +2,115 @@
     <ion-content padding="true" class="has-header">
         <div ui-sref="bizCanteen" id="chooseCanteen-button22" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorBiz()">
         	<div style="float:left">
-	        	<h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Biz Canteen - The Terrace</h1>
-	        	<div style="text-align:left">
-	        		<p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">SOC</p>
-	        	</div>
-	        </div>
-	        <img ng-src="{{colorBiz}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
-	    </div>
-
-        <div ui-sref="fassCanteen" id="chooseCanteen-button19" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFass()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">FASS Canteen - The Deck</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FASS</p>
-                </div>
-            </div>
-            <img ng-src="{{colorFass}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
+              <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Biz Canteen - The Terrace</h1>
+              <div style="text-align:left">
+                 <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">SOC</p>
+             </div>
         </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
 
-        <div ui-sref="flavoursUTown" id="chooseCanteen-button25" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFlavours()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Flavours</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">UTown</p>
-                </div>
+            <img ng-src="{{colorBiz}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberBiz }}%
             </div>
-            <img ng-src="{{colorFlavours}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
+    </div>
 
-        <div ui-sref="fOECanteen" id="chooseCanteen-button20" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFoe()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">FOE Canteen - Techno Edge</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FOE</p>
-                </div>
+    <div ui-sref="fassCanteen" id="chooseCanteen-button19" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFass()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">FASS Canteen - The Deck</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FASS</p>
             </div>
-            <img ng-src="{{colorFoe}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
 
-        <div ui-sref="koufuFoodcourt" id="chooseCanteen-button24" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorKoufu()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Koufu Foodcourt</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">UTown</p>
-                </div>
+            <img ng-src="{{colorFass}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberFass }}%
             </div>
-            <img ng-src="{{colorKoufu}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
+    </div>
 
-        <div ui-sref="scienceCanteen" id="chooseCanteen-button21" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorSci()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Science Canteen</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FOS</p>
-                </div>
+    <div ui-sref="flavoursUTown" id="chooseCanteen-button25" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFlavours()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Flavours</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">UTown</p>
             </div>
-            <img ng-src="{{colorSci}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
 
-        <div ui-sref="yIHFoodJunction" id="chooseCanteen-button23" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFoodJunction()">
-            <div style="float:left">
-                <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Food Junction</h1>
-                <div style="text-align:left">
-                    <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">YIH</p>
-                </div>
+            <img ng-src="{{colorFlavours}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberFlavours }}%
             </div>
-            <img ng-src="{{FoodJunction}}" style="height:70px; width:70px; position:relative; top:5px; float:right">
         </div>
+    </div>
 
-    </ion-content>
+    <div ui-sref="fOECanteen" id="chooseCanteen-button20" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFoe()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">FOE Canteen - Techno Edge</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FOE</p>
+            </div>
+        </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+            <img ng-src="{{colorFoe}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberFoe }}%
+            </div>
+        </div>
+    </div>
+
+    <div ui-sref="koufuFoodcourt" id="chooseCanteen-button24" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorKoufu()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Koufu Foodcourt</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">UTown</p>
+            </div>
+        </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+            <img ng-src="{{colorKoufu}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberKoufu }}%
+            </div>
+        </div>
+    </div>
+
+    <div ui-sref="scienceCanteen" id="chooseCanteen-button21" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorSci()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Science Canteen</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">FOS</p>
+            </div>
+        </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+            <img ng-src="{{colorSci}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberSci }}%
+            </div>
+        </div>
+    </div>
+
+    <div ui-sref="yIHFoodJunction" id="chooseCanteen-button23" style="color:#0B0F11; height:80px; border-color:black"; class="button button-block blueSegmentImage" ng-init="getColorFoodJunction()">
+        <div style="float:left">
+            <h1 style="text-align:left; font-size:15px; font-family:'Open Sans'; position:relative; top:10px">Food Junction</h1>
+            <div style="text-align:left">
+                <p style="font-size:12px; color:#49a0da; font-weight:bold; border-style:solid; border-width:2px; display:inline; padding-left:5px; padding-right:5px">YIH</p>
+            </div>
+        </div>
+        <div style="font-family:'Open Sans', Comic Sans MS, sans-serif; position:relative; text-align:center; float:right; right:80px"> 
+
+            <img ng-src="{{colorFoodJunction}}" style="height:70px; width:70px;position:relative; left:80px; top:5px"/>
+            <div style="position:absolute; top:18px; left:101px">
+                {{ numberFoodJunction }}%
+            </div>
+        </div>
+    </div>
+
+</ion-content>
 </ion-view>
