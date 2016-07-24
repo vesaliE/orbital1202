@@ -6899,6 +6899,9 @@ $scope.takePic = function(){
     }
 
   })
+.controller('platypusMenuCtrl', function($scope){
+
+})
 
 .controller('reedzCafeCtrl', function($scope) {
 
