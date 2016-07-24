@@ -9580,7 +9580,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                $state.go("fassCanteen");
+                $state.go("seeLah2");
               })
   }, function(error){
 
