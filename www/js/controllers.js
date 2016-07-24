@@ -2828,6 +2828,13 @@ $scope.login = function(username, password){
             //if (results !== "") {
                 //if (true) {
                     //Creates database of user in firebase
+                    if (result === "" || result === undefined) {
+                      $ionicPopup.alert({
+                          title: 'No username detected!',
+                          template: 'Please enter a username'
+                      })
+                    } else {
+
                     fbAuth.$createUser({email: username, password: password}).then(function(userData) {
                       return fbAuth.$authWithPassword({
                         email: username,
@@ -3412,10 +3419,11 @@ $scope.login = function(username, password){
                       var firebaseUsers = new Firebase("http://orbital--1202.firebaseio.com/Users");
                       firebaseUsers.child(authData.uid).set ({
                         forumName : result
-                      }); 
-                    }),
+                      });
+                      $state.go("intro");
+                    })
 
-$state.go("intro");
+}
 }).catch(function(error) {
   console.error("ERROR: " + error);
 });
@@ -6899,9 +6907,6 @@ $scope.takePic = function(){
     }
 
   })
-.controller('platypusMenuCtrl', function($scope){
-
-})
 
 .controller('reedzCafeCtrl', function($scope) {
 
@@ -9580,7 +9585,7 @@ $scope.takePic = function(){
                   time: firebaseTime,
                   image: $scope.pictureURL
                 });
-                $state.go("seeLah2");
+                $state.go("fassCanteen");
               })
   }, function(error){
 
