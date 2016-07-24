@@ -3638,7 +3638,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -3742,7 +3742,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -3842,7 +3842,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -3942,7 +3942,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -4041,7 +4041,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -4306,7 +4306,7 @@ $scope.login = function(username, password){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -4574,7 +4574,7 @@ $scope.login = function(username, password){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -4856,7 +4856,7 @@ $scope.login = function(username, password){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -4954,7 +4954,7 @@ $scope.login = function(username, password){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       bizRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -5218,7 +5218,7 @@ $scope.login = function(username, password){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 120; 
+  var time = 20; 
   bizRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -5477,7 +5477,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     bizRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -5794,7 +5794,7 @@ $scope.takePic = function(){
       var currentDate = new Date();
       var currentTime = currentDate.getTime();
       var fifteen = 20;
-      var time = 120; 
+      var time = 20; 
       butterRef.on("value", function(snapshot) {
         snapshot.forEach(function(childSnapshot){
           var childTime = childSnapshot.child("time").val();
@@ -6056,7 +6056,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 120; 
+  var time = 20; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -6320,7 +6320,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -6582,7 +6582,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -6843,7 +6843,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7106,7 +7106,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 120; 
+  var time = 20; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -7367,7 +7367,7 @@ $scope.takePic = function(){
   var currentDate = new Date();
   var currentTime = currentDate.getTime();
   var fifteen = 20;
-  var time = 120; 
+  var time = 20; 
   butterRef.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot){
       var childTime = childSnapshot.child("time").val();
@@ -7630,7 +7630,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -7890,7 +7890,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -8150,7 +8150,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -8411,7 +8411,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -8672,7 +8672,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -8932,7 +8932,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
@@ -9193,7 +9193,7 @@ $scope.takePic = function(){
     var currentDate = new Date();
     var currentTime = currentDate.getTime();
     var fifteen = 20;
-    var time = 120; 
+    var time = 20; 
     butterRef.on("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot){
         var childTime = childSnapshot.child("time").val();
