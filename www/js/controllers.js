@@ -2817,8 +2817,8 @@ $scope.login = function(username, password){
             template: "Please enter an email or password to create your account"
           })
         } else {
-          console.log(username);
-          console.log(password);
+          //console.log(username);
+          //console.log(password);
         //Prompts for a username
         $ionicPopup.prompt({
           title: 'Please choose a Forum Username',
@@ -3587,7 +3587,7 @@ $scope.login = function(username, password){
     var syncArray = $firebaseArray(userReference.child("bizCanteen"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -4256,7 +4256,7 @@ $scope.login = function(username, password){
     var syncArray = $firebaseArray(userReference.child("macdonaldsFOE"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -4526,7 +4526,7 @@ $scope.login = function(username, password){
     var syncArray = $firebaseArray(userReference.child("subwayYIH"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -5169,7 +5169,7 @@ $scope.login = function(username, password){
     var syncArray = $firebaseArray(userReference.child("foodJunction"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -5425,7 +5425,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("alcove"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -5573,7 +5573,7 @@ $scope.takePic = function(){
   var syncArray = $firebaseArray(userReference.child("butterMyBun"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -5744,7 +5744,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("butterMyBun"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -6009,7 +6009,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("royal"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -6271,7 +6271,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("humble"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -6534,7 +6534,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("hwang"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -6795,7 +6795,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("platypus"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -7057,7 +7057,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("reedz"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -7320,7 +7320,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("sapore"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -7582,7 +7582,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("spinelli"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -7842,7 +7842,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("spice"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -8101,7 +8101,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("starbucksMD11"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -8362,7 +8362,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("starbucksYIH"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -8623,7 +8623,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("starbucksUTown"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -8884,7 +8884,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("uniClub"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -9144,7 +9144,7 @@ if(fbAuth) {
   var syncArray = $firebaseArray(userReference.child("waa"));
   $scope.images = syncArray;
 } else {
-  $state.go("bizCanteenContribute");
+  $state.go("bizCanteen_contribute");
 }
 
 $scope.takePic = function(){
@@ -9575,7 +9575,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("fassCanteen"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
@@ -9741,7 +9741,7 @@ $scope.takePic = function(){
     var syncArray = $firebaseArray(userReference.child("flavoursCanteen"));
     $scope.images = syncArray;
   } else {
-    $state.go("bizCanteenContribute");
+    $state.go("bizCanteen_contribute");
   }
 
   $scope.takePic = function(){
