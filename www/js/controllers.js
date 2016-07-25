@@ -349,7 +349,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var linkButter = new Firebase("https://orbital--1202.firebaseio.com/location/ButterMyBun");
   var linkHumble = new Firebase("https://orbital--1202.firebaseio.com/location/HumbleOrigins");
   var linkHwang = new Firebase("https://orbital--1202.firebaseio.com/location/HwangRestaurant");
-  var linkBistro = new Firebase("https://orbital--1202.firebaseio.com/location/TheRoyalsBistroCafe");
+  var linkBistro = new Firebase("https://orbital--1202.firebaseio.com/location/TheRoyalsBistroCafé");
   var linkPlatypus = new Firebase("https://orbital--1202.firebaseio.com/location/PlatypusFoodBar");
   var linkReedz = new Firebase("https://orbital--1202.firebaseio.com/location/ReedzCafé");
   var linkSapore = new Firebase("https://orbital--1202.firebaseio.com/location/SaporeItaliano");
@@ -357,7 +357,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   var linkSpice = new Firebase("https://orbital--1202.firebaseio.com/location/SpiceTablebyPines");
   var linkStarbucksMD11 = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksMD11");
   var linkStarbucksYIH = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksYIH");
-  var linkStarbucksUTown = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksUTown");
+  var linkStarbucksUTown = new Firebase("https://orbital--1202.firebaseio.com/location/StarbucksUtown");
   var linkUniversity = new Firebase("https://orbital--1202.firebaseio.com/location/UniversityClub");
   var linkWaaCow = new Firebase("https://orbital--1202.firebaseio.com/location/WaaCow");
 
@@ -1188,6 +1188,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
       })
       var total = 165;
       var percent = count / total * 100;
+      count = 2;
       if (count <= 1) {
                   //color = 'balanced'; ;
                   $scope.colorStarbucksUTown = "images/10.png";
@@ -1393,9 +1394,9 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.numberSubwayYIH = null;
   $scope.numberSubwayUTown = null;
 
-  var linkMac =  new Firebase("https://orbital--1202.firebaseio.com/location/Macdonalds");
-  var linkSubwayYIH =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayYIH");
-  var linkSubwayUTown =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayUTown");
+  var linkMac =  new Firebase("https://orbital--1202.firebaseio.com/location/McDonald");
+  var linkSubwayYIH =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayYIH ");
+  var linkSubwayUTown =  new Firebase("https://orbital--1202.firebaseio.com/location/SubwayUtown ");
 
   $scope.getColorMac = function() {
 
@@ -1468,7 +1469,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
   $scope.getColorSubwayYIH = function() {
 
     var count = 0;
-    linkSubwayYIH.once("value", function(snapshot) {
+    linkSubwayYIH.once("value", function(snapshot){
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
         //console.log(timestamp);
@@ -1539,7 +1540,7 @@ angular.module('app.controllers', ['ionic','ionic.service.core', 'ionic.service.
     linkSubwayUTown.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var timestamp = childSnapshot.val();
-        //console.log(timestamp);
+        console.log(timestamp);
         count++;
       })
       var total = 36;
