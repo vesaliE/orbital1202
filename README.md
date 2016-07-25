@@ -1,5 +1,5 @@
 <h3>Orbital Team1202</h3>
-Please refer to Wiki for an updated version. 
+Please refer to Wiki for an updated version. <br />
 What have we completed?
 
   We are using <b>Ionic</b> as our framework and <b>Firebase</b> as our backend database and using <b>Github</b> for our source code control.
